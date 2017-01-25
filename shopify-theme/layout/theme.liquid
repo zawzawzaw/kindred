@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   {% if settings.favicon_enable %}
-  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}" type="image/x-icon" />
   {% endif %}
 
   <!-- Title and description ================================================== -->
@@ -462,6 +462,7 @@
               {% if settings.newsletter_form_action != blank %}
                 <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
                   <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                  <input type="hidden" name="b_cb98e62f512d0d125cec95dd3_9ea7cd6c41" tabindex="-1" value="">
                   <span class="input-group-btn">
                     <input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
                   </span>
@@ -530,6 +531,28 @@
             <div id="desktop-footer-menu">
               <nav>
                 <ul>
+                  {% for link in linklists.footer.links %}
+                    {% comment %}
+                      Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+                      More info on dropdowns:
+                        - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                    {% endcomment %}
+                    {% assign child_list_handle = link.title | handleize %}
+                    {% if linklists[child_list_handle].links != blank %}
+                      <li class="{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                        <a href="{{ link.url }}">
+                          {{ link.title }}
+                        </a>
+                      </li>
+                    {% else %}
+                      <li {% if link.active %}class="site-nav--active"{% endif %}>
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+
+                  <!-- 
                   <li><a href="javascript:void(0);">About</a></li>
                   <li><a href="javascript:void(0);">News</a></li>
                   <li><a href="javascript:void(0);">My Account</a></li>
@@ -539,6 +562,7 @@
                   <li><a href="https://kindredteas.com/collections/tea-store">Tea Store</a></li>
                   <li><a href="javascript:void(0);">Locate</a></li>
                   <li><a href="javascript:void(0);">Terms & Privacy</a></li>
+                   -->
                 </ul>
               </nav>
             </div>
@@ -553,8 +577,10 @@
 
               {% if settings.newsletter_form_action != blank %}
 
+
                 <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" name="contact[email]" id="Email" aria-label="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                  <input type="hidden" name="b_cb98e62f512d0d125cec95dd3_9ea7cd6c41" tabindex="-1" value="">
                   <button type="submit" name="subscribe" id="subscribe"></button>
                 </form>
 
@@ -581,10 +607,31 @@
               <div id="desktop-footer-social-container">
                 <h4>Follow us</h4>
                 <ul>
+
+                  {% if settings.social_instagram_link != blank %}
+                    <li><a href="{{ settings.social_instagram_link }}" class="fa fa-instagram" title="{{ shop.name }} on Instagram" target="_blank"></a></li>
+                  {% endif %}
+
+                  {% if settings.social_facebook_link != blank %}
+                    <li><a href="{{ settings.social_facebook_link }}" class="fa fa-facebook" title="{{ shop.name }} on Facebook" target="_blank"></a></li>
+                  {% endif %}
+
+                  {% if settings.social_twitter_link != blank %}
+                    <li><a href="{{ settings.social_twitter_link }}" class="fa fa-twitter" title="{{ shop.name }} on Twitter" target="_blank"></a></li>
+                  {% endif %}
+
+                  {% if settings.social_pinterest_link != blank %}
+                    <li><a href="{{ settings.social_pinterest_link }}" class="fa fa-pinterest" title="{{ shop.name }} on Pinterest" target="_blank"></a></li>
+                  {% endif %}
+
+
+                  <!-- 
                   <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
                   <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
                   <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
                   <li><a href="javascript:void(0);" class="fa fa-pinterest"></a></li>
+                  -->
+
                 </ul>
               </div> <!-- desktop-footer-social-container -->
 

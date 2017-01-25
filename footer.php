@@ -63,7 +63,7 @@
 
 
 
-  <!-- 
+  
   <script type="text/javascript" src="source/libs/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="source/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
   <script type="text/javascript" src="source/libs/jquery-disablescroll/jquery.disablescroll.min.js"></script>
@@ -71,6 +71,7 @@
   <script type="text/javascript" src="source/libs/misc-js/manic-custom-polyfill.js"></script>
   <script type="text/javascript" src="source/libs/misc-js/mobile-detect.js"></script>
   <script type="text/javascript" src="source/libs/misc-js/preloadjs-0.4.0.min.js"></script>
+  <script type="text/javascript" src="source/libs/misc-js/instafeed.min.js"></script>
 
   <script type="text/javascript" src="source/libs/gsap/src/minified/TimelineMax.min.js"></script>
   <script type="text/javascript" src="source/libs/gsap/src/minified/TweenMax.min.js"></script>
@@ -81,6 +82,7 @@
   <script type="text/javascript" src="source/libs/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js"></script>
   <script type="text/javascript" src="source/libs/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js"></script>
 
+  <script type="text/javascript" src="source/libs/slick-carousel/slick/slick.min.js"></script>
   <script type="text/javascript" src="source/libs/slick-carousel/slick/slick.min.js"></script>
   <script type="text/javascript" src="source/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
@@ -106,12 +108,14 @@
   <script type="text/javascript">
     page = new kindred.page.Default({});
   </script>
-  -->
-  <script type="text/javascript" src="assets/head.load.min.js"></script>
+  
+
+  <!-- 
+  <script type="text/javascript" src="shopify-theme/assets/head.load.min.js"></script>
 
   <script type="text/javascript">
-    var PAGE_LIBRARY        = "assets/page-libraries.min.js";
-    var PAGE_JS             = "assets/page-default.min.js";
+    var PAGE_LIBRARY        = "shopify-theme/assets/page-libraries.min.js";
+    var PAGE_JS             = "shopify-theme/assets/page-default.min.js";
     // prevent variable override
     window.custom_head = head;
 
@@ -121,7 +125,7 @@
       });
     });
   </script>
-
+  -->
 
 </body>
 </html>

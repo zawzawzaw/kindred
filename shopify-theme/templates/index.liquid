@@ -218,92 +218,40 @@
         <div id="home-instagram-title">
           <h2>share your moment</h2>
         </div>
-
-        <div id="home-instagram-item-container">
-
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-01.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-02.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-03.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-04.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-05.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-06.jpg' | asset_url }}">
-            </div>
-          </div>
-
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-01.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-02.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-03.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-04.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-05.jpg' | asset_url }}">
-            </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="{{ 'home-instagram-06.jpg' | asset_url }}">
-            </div>
-          </div>
-
-        </div> <!-- home-instagram-item-container -->
+        
+        <!-- <div id="home-instagram-slider" data-user-id="332486289" data-access-token="332486289.1677ed0.721d54000fb84f659fb0df01a491fa71"> -->
+        <div id="home-instagram-slider" data-user-id="4472980938" data-access-token="4472980938.1677ed0.f7c09cd3b6984c8687fda1bd534dbb84">
+          <div id="home-instagram-item-container">
+          </div> <!-- home-instagram-item-container -->
+        </div>
 
         <div id="home-page-instagram-bottom">
           <h4>follow us @kindredteas</h4>
           <ul>
+
+            {% if settings.social_facebook_link != blank %}
+              <li><a href="{{ settings.social_facebook_link }}" class="fa fa-facebook" title="{{ shop.name }} on Facebook" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_twitter_link != blank %}
+              <li><a href="{{ settings.social_twitter_link }}" class="fa fa-twitter" title="{{ shop.name }} on Twitter" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_instagram_link != blank %}
+              <li><a href="{{ settings.social_instagram_link }}" class="fa fa-instagram" title="{{ shop.name }} on Instagram" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_pinterest_link != blank %}
+              <li><a href="{{ settings.social_pinterest_link }}" class="fa fa-pinterest" title="{{ shop.name }} on Pinterest" target="_blank"></a></li>
+            {% endif %}
+
+            <!-- 
             <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
             <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
             <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
             <li><a href="javascript:void(0);" class="fa fa-pinterest"></a></li>
+            -->
+
           </ul>
         </div> <!-- home-page-instagram-bottom -->
 

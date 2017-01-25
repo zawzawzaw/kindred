@@ -4,6 +4,7 @@ java -jar "compiler.jar" ^
   --js=..\misc-js\manic-custom-polyfill.js ^
   --js=..\misc-js\mobile-detect.js ^
   --js=..\misc-js\preloadjs-0.4.0.min.js ^
+  --js=..\misc-js\instafeed.min.js ^
   --js=..\gsap\src\minified\TimelineMax.min.js ^
   --js=..\gsap\src\minified\TweenMax.min.js ^
   --js=..\gsap\src\minified\jquery.gsap.min.js ^
@@ -15,4 +16,4 @@ java -jar "compiler.jar" ^
   --js=..\imagesloaded\imagesloaded.pkgd.min.js ^
   --js=..\hammer\hammer.min.js ^
   --compilation_level WHITESPACE_ONLY ^
-  --js_output_file=..\..\..\assets\page-libraries.min.js
+  --js_output_file=..\..\..\shopify-theme\assets\page-libraries.min.js

@@ -7,6 +7,9 @@ goog.require('goog.events.EventTarget');
 goog.require('manic.page.Page');
 
 
+goog.require('kindred.component.DesktopInstagramSlider');
+
+
 
 /**
  * The Default Page constructor
@@ -28,6 +31,13 @@ kindred.page.Default = function(options) {
   }
   
 
+  /**
+   * @type {kindred.component.DesktopInstagramSlider}
+   */
+  this.desktop_instagram_slider = null;
+
+
+  
 
 
 };
@@ -120,42 +130,28 @@ kindred.page.Default.prototype.init = function() {
     });
   }
 
-  if ($('#home-instagram-item-container').length != 0) {
-    $('#home-instagram-item-container').slick({
-      'speed': 350,
-      'dots': false,
-      'arrows': false,
-      'infinite': false,
-      'slidesToShow': 6,
-      'slidesToScroll': 1,
-      'pauseOnHover': false,
-      'autoplay': true,
-      'autoplaySpeed': 1000,
-      'responsive': [
-        {
-          'breakpoint': 1380,
-          'settings':{
-            'slidesToShow': 5,
-            'slidesToScroll': 1
-          }
-        },
-        {
-          'breakpoint': 1180,
-          'settings':{
-            'slidesToShow': 4,
-            'slidesToScroll': 1
-          }
-        },
-        {
-          'breakpoint': 980,
-          'settings':{
-            'slidesToShow': 3,
-            'slidesToScroll': 1
-          }
-        }
-      ]
-    });
+
+  if ($('#home-instagram-slider').length != 0) {
+
+
+    this.desktop_instagram_slider = new kindred.component.DesktopInstagramSlider({}, $('#home-instagram-slider'));
+    
+    goog.events.listen(this.desktop_instagram_slider, kindred.component.DesktopInstagramSlider.ON_INSTAGRAM_FEED_GENERATED, function(event){
+
+      console.log('instagram feed generated');
+      this.create_image_container();
+
+    }.bind(this));
+
+    
+    
+
+    
   }
+  
+  
+
+  
 
 
   

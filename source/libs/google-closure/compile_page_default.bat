@@ -14,4 +14,4 @@ java -jar "compiler.jar" ^
   --externs=closure-externs\scrollmagic.js ^
   --externs=closure-externs\new_fullpage.js ^
   --externs=closure-externs\others.js ^
-  --js_output_file=..\..\..\assets\page-default.min.js
+  --js_output_file=..\..\..\shopify-theme\assets\page-default.min.js

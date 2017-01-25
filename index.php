@@ -273,83 +273,90 @@
           <h2>share your moment</h2>
         </div>
 
-        <div id="home-instagram-item-container">
+        <div id="home-instagram-slider" data-user-id="332486289" data-access-token="332486289.1677ed0.721d54000fb84f659fb0df01a491fa71">
+          
+          <div id="home-instagram-item-container">
 
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-01.png">
+            <!-- 
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-01.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-02.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-02.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-03.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-03.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-04.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-04.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-05.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-05.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-06.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-06.png">
+              </div>
             </div>
-          </div>
 
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-01.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-01.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-02.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-02.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-03.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-03.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-04.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-04.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-05.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-05.png">
+              </div>
             </div>
-          </div>
-          <div class="home-instagram-item">
-            <div class="white-bg"></div>
-            <div class="manic-image-container">
-              <img src="" data-image="images/home-instagram-06.png">
+            <div class="home-instagram-item">
+              <div class="white-bg"></div>
+              <div class="manic-image-container">
+                <img src="" data-image="images/home-instagram-06.png">
+              </div>
             </div>
-          </div>
+            
+            -->
 
-        </div> <!-- home-instagram-item-container -->
+          </div> <!-- home-instagram-item-container -->
+        </div>
+        
 
         <div id="home-page-instagram-bottom">
           <h4>follow us @kindredteas</h4>

@@ -13,20 +13,21 @@
     Title of Page
   </title>
 
-  <link rel="stylesheet" type="text/css" href="assets/timber.css">
-  <link rel="stylesheet" type="text/css" href="assets/critical_style.css">
-  <link rel="stylesheet" type="text/css" href="assets/style.css">
+
+  <link rel="stylesheet" type="text/css" href="shopify-theme/assets/timber.css">
+  <link rel="stylesheet" type="text/css" href="shopify-theme/assets/critical_style.css">
+  <link rel="stylesheet" type="text/css" href="shopify-theme/assets/style.css">
 
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script type="text/javascript" src="assets/modernizr.min.js"></script>
-  
-  <!-- Brandon Grotesque Light, Regular, Medium -->
-  <script src="https://use.typekit.net/kfu6vsv.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+  <script type="text/javascript" src="shopify-theme/assets/modernizr.min.js"></script>
+    
 
-  <!-- Gotham Book, Medium -->
-  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6413692/6465372/css/fonts.css" />
-
+  <!--  
+    Muli: extra light
+    Josefin Sans: light, regular, semibold
+    Open Sans: regular, regular italic, semibold
+  -->
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600|Muli:200|Open+Sans:400,400i,600" rel="stylesheet">
 
 
   
