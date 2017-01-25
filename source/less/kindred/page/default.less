@@ -1,0 +1,239 @@
+
+
+//    ____  _____ _____ _   _   _ _   _____    ____ ___  ______   __
+//   |  _ \| ____|  ___/ \ | | | | | |_   _|  / ___/ _ \|  _ \ \ / /
+//   | | | |  _| | |_ / _ \| | | | |   | |   | |  | | | | |_) \ V /
+//   | |_| | |___|  _/ ___ \ |_| | |___| |   | |__| |_| |  __/ | |
+//   |____/|_____|_|/_/   \_\___/|_____|_|    \____\___/|_|    |_|
+//
+
+.default-copy{
+  text-align: left;
+
+  &.center-version{
+    text-align: center;
+  }
+
+  .first-letter{
+    .header-h1-style;
+    font-size: 50px;
+    line-height: 25px * 2;
+
+    text-transform: uppercase;
+    float: left;
+    margin-right: 0px;
+
+    position: relative;
+    top: 1px;
+    left: -4px;
+  }
+
+
+  p{
+    a{
+      color: @brown;
+
+      &:focus,
+      &:hover{
+        color: @light-brown;
+      }
+    }
+  }
+
+  p + p{
+    padding-top: 25px;
+  }
+
+
+
+  h1{
+    font-size: 37px;
+    line-height: 40px;
+  }
+  h4{
+    // letter-spacing: 0.08em;               // should i put this outside?
+  }
+
+  h1 + p{
+    padding-top: 19px;
+  }
+  h2 + p{
+    padding-top: 19px;
+  }
+  h3 + p {
+    padding-top: 6px;
+  }
+
+
+  .cta-container{
+    padding-top: 32px - 9px;
+    &.lower-version{
+      padding-top: 32px;
+    }
+
+  }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+//    ____  _____ _____ _   _   _ _   _____   ____    _    _   _ _   _ _____ ____
+//   |  _ \| ____|  ___/ \ | | | | | |_   _| | __ )  / \  | \ | | \ | | ____|  _ \
+//   | | | |  _| | |_ / _ \| | | | |   | |   |  _ \ / _ \ |  \| |  \| |  _| | |_) |
+//   | |_| | |___|  _/ ___ \ |_| | |___| |   | |_) / ___ \| |\  | |\  | |___|  _ <
+//   |____/|_____|_|/_/   \_\___/|_____|_|   |____/_/   \_\_| \_|_| \_|_____|_| \_\
+//
+
+
+
+#default-page-banner-section{
+  background: @off-white-02;
+}
+
+
+#default-page-banner{
+  .manic-image-container{
+    height: 550px;
+    // height: 1000px;
+  }
+}
+
+
+/*
+@media only screen and (max-width: 2080px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + ( 40px * 7 );
+  }
+}
+@media only screen and (max-width: 1980px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + ( 40px * 6 );
+  }
+}
+@media only screen and (max-width: 1880px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + ( 40px * 5 );
+  }
+}
+@media only screen and (max-width: 1780px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + ( 40px * 4 );
+  }
+}
+@media only screen and (max-width: 1680px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + ( 40px * 3 );
+  }
+}
+@media only screen and (max-width: 1580px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + ( 40px * 2 );
+  }
+}
+@media only screen and (max-width: 1480px) {
+  #default-page-banner .manic-image-container{
+    height: 550px + 40px;
+  }
+}
+@media only screen and (max-width: 1380px) {
+  #default-page-banner .manic-image-container{
+    height: 550px;
+  }
+}
+@media only screen and (max-width: 1280px) {
+  #default-page-banner .manic-image-container{
+    height: 550px - 40px;
+  }
+}
+@media only screen and (max-width: 1180px) {
+  #default-page-banner .manic-image-container{
+    height: 550px - ( 40px * 2 );
+  }
+}
+@media only screen and (max-width: 1080px) {
+  #default-page-banner .manic-image-container{
+    height: 550px - ( 40px * 3 );
+  }
+}
+*/
+
+
+
+
+
+
+//    ____  ____   ___  ____  _   _  ____ _____   ___ _____ _____ __  __
+//   |  _ \|  _ \ / _ \|  _ \| | | |/ ___|_   _| |_ _|_   _| ____|  \/  |
+//   | |_) | |_) | | | | | | | | | | |     | |    | |  | | |  _| | |\/| |
+//   |  __/|  _ <| |_| | |_| | |_| | |___  | |    | |  | | | |___| |  | |
+//   |_|   |_| \_\\___/|____/ \___/ \____| |_|   |___| |_| |_____|_|  |_|
+//
+
+
+
+
+
+.product-item{
+  text-align: center;
+
+  .manic-image-container{
+    height: 400px;
+
+    &:focus,
+    &:hover{
+      .opacity_important(0.7);
+    }
+  }
+
+  .product-item-detail{
+    // padding-top: 40px;
+    // padding-bottom: 90px;
+    padding-top: 35px;
+    padding-bottom: 90px;
+
+    .product-item-name{
+
+      .header-h4-style;
+      
+      font-size: 15px;
+      line-height: 25px;                  // there is a fixed height, if you modify this, modify height too
+      letter-spacing: 0.08em;
+      // white-space: nowrap;
+      color: #252525;
+
+      display: block;
+
+      // width: 200px;
+      width: 170px;
+      height: 25px * 2px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 10px;
+
+      &:focus,
+      &:hover{
+        color: @brown;
+      }
+
+    }
+    .product-item-category{
+      color: #7d7d7d;
+      margin-bottom: 15px;
+    }
+    .product-item-price{
+      color: @grey-02;
+    }
+
+  } // .product-item-detail
+
+} // .product-item

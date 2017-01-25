@@ -1,0 +1,298 @@
+
+
+//    ____   ___   ___ _____ ____ _____ ____      _    ____  
+//   | __ ) / _ \ / _ \_   _/ ___|_   _|  _ \    / \  |  _ \ 
+//   |  _ \| | | | | | || | \___ \ | | | |_) |  / _ \ | |_) |
+//   | |_) | |_| | |_| || |  ___) || | |  _ <  / ___ \|  __/ 
+//   |____/ \___/ \___/ |_| |____/ |_| |_| \_\/_/   \_\_|    
+//                                                           
+
+
+
+
+@container-fluid-padding: 60px;
+
+
+/*
+@media (min-width: 1200px) {
+  .container {
+    // width: 1170px;
+    width: 1270px;
+  }
+}
+*/
+
+
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px - (70px * 2);
+  }
+}
+
+@media (min-width: 1380px) {
+  .container {
+    width: 1380px - (70px * 2);
+  }
+}
+
+
+
+
+
+
+
+.container-fluid{
+  //padding-left: 10px;
+  //padding-right: 10px;
+  padding-left: 60px;
+  padding-right: 60px;
+  
+
+  &.has-breakpoint{
+    max-width: 1380px;
+    margin: 0 auto;
+  }
+
+}
+
+@container-mobile-padding: 25px;
+@container-tablet-padding: 40px;
+
+@media only screen and (max-width: 991px) {
+  .container-fluid{
+    // padding-left: 16px;
+    // padding-right: 16px;
+
+    padding-left: @container-mobile-padding;
+    padding-right: @container-mobile-padding;
+  }
+}
+
+// body.is-tablet.is-tablet-portrait{
+body.is-tablet{
+  .container-fluid{
+    padding-left: @container-tablet-padding;
+    padding-right: @container-tablet-padding;
+  }
+
+}
+
+.img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img{
+  width: 100%;
+  max-width: none;
+}
+
+
+
+
+
+
+
+
+
+.visible-tablet{
+  display: none;
+}
+.visible-tablet-portrait{
+  display: none;
+}
+.visible-tablet-landscape{
+  display: none;
+}
+
+.hidden-tablet{
+  display: block;
+}
+
+.hidden-tablet-portrait{
+  display: block;
+}
+.hidden-tablet-landscape{
+  display: block;
+}
+
+body.is-tablet{
+  .visible-tablet{
+    display: block;
+  }
+  .hidden-tablet{
+    display: none;
+  }
+}
+
+body.is-tablet.is-tablet-portrait{
+  .visible-tablet-portrait{
+    display: block !important;
+  }
+  .hidden-tablet-portrait{
+    display: none !important;
+  }
+  
+}
+body.is-tablet.is-tablet-landscape{
+  .visible-tablet-landscape{
+    display: block !important;
+  }
+  .hidden-tablet-landscape{
+    display: none !important;
+  }
+}
+
+
+
+
+.col-tablet-landscape-md-1,
+.col-tablet-landscape-md-2,
+.col-tablet-landscape-md-3,
+.col-tablet-landscape-md-4,
+.col-tablet-landscape-md-5,
+.col-tablet-landscape-md-6,
+.col-tablet-landscape-md-7,
+.col-tablet-landscape-md-8,
+.col-tablet-landscape-md-9,
+.col-tablet-landscape-md-10,
+.col-tablet-landscape-md-11,
+.col-tablet-landscape-md-12{
+  position: relative;
+  min-height: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  float: left;
+}
+
+@media (min-width: 992px) {
+  body.is-tablet.is-tablet-landscape{
+
+    .col-tablet-landscape-md-1,
+    .col-tablet-landscape-md-2,
+    .col-tablet-landscape-md-3,
+    .col-tablet-landscape-md-4,
+    .col-tablet-landscape-md-5,
+    .col-tablet-landscape-md-6,
+    .col-tablet-landscape-md-7,
+    .col-tablet-landscape-md-8,
+    .col-tablet-landscape-md-9,
+    .col-tablet-landscape-md-10,
+    .col-tablet-landscape-md-11,
+    .col-tablet-landscape-md-12{
+      min-height: 2px;
+    }
+    
+    .col-tablet-landscape-md-12 {
+      width: 100%;
+    }
+    .col-tablet-landscape-md-11 {
+      width: 91.66666667%;
+    }
+    .col-tablet-landscape-md-10 {
+      width: 83.33333333%;
+    }
+    .col-tablet-landscape-md-9 {
+      width: 75%;
+    }
+    .col-tablet-landscape-md-8 {
+      width: 66.66666667%;
+    }
+    .col-tablet-landscape-md-7 {
+      width: 58.33333333%;
+    }
+    .col-tablet-landscape-md-6 {
+      width: 50%;
+    }
+    .col-tablet-landscape-md-5 {
+      width: 41.66666667%;
+    }
+    .col-tablet-landscape-md-4 {
+      width: 33.33333333%;
+    }
+    .col-tablet-landscape-md-3 {
+      width: 25%;
+    }
+    .col-tablet-landscape-md-2 {
+      width: 16.66666667%;
+    }
+    .col-tablet-landscape-md-1 {
+      width: 8.33333333%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1280px) and (min-width:992px) {
+  
+  /*
+  html{
+    zoom: 0.9 !important;
+  }
+  */
+
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    min-height: 2px;
+  }
+  .col-tablet-landscape-md-1,
+  .col-tablet-landscape-md-2,
+  .col-tablet-landscape-md-3,
+  .col-tablet-landscape-md-4,
+  .col-tablet-landscape-md-5,
+  .col-tablet-landscape-md-6,
+  .col-tablet-landscape-md-7,
+  .col-tablet-landscape-md-8,
+  .col-tablet-landscape-md-9,
+  .col-tablet-landscape-md-10,
+  .col-tablet-landscape-md-11,
+  .col-tablet-landscape-md-12{
+    min-height: 2px;
+  }
+
+}
+
+
+
+
+
+// it is quite unfortunate that zoom would be needed in tablet
+
+html.actual-mobile{
+  // zoom: 1 !important;
+
+  body.is-tablet.is-tablet-landscape{
+    
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+      min-height: 2px;
+    }
+
+    /*
+    #page-wrapper-content{
+      zoom: 0.9 !important;
+    }
+    */
+    
+  }
+}
+
+
+body.is-tablet.is-tablet-landscape{
+  .container-fluid{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+}
+
+
+body.is-tablet.is-tablet-portrait{
+  .container{
+    width: 100%;
+  }
+}

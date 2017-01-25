@@ -1,0 +1,77 @@
+.muli-extra-light {
+  font-family: 'Muli', "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 200;
+}
+.josefin-sans-light {
+  font-family: 'Josefin Sans', "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+.josefin-sans-regular {
+  font-family: 'Josefin Sans', "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.josefin-sans-semibold {
+  font-family: 'Josefin Sans', "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+.open-sans-regular {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.open-sans-regular-italic {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+.open-sans-semibold {
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
+/*
+.brandon-grotesque-light{
+  font-family: "brandon-grotesque", "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+.brandon-grotesque-regular{
+  font-family: "brandon-grotesque", "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.brandon-grotesque-medium{
+  font-family: "brandon-grotesque", "Trebuchet MS", Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+*/
+/*
+.gotham-book{
+  font-family: "Gotham A", "Gotham B", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.gotham-medium{
+  font-family: "Gotham A", "Gotham B", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+*/
+/*
+@font-face {
+  font-family: 'fs_albertregular';
+  src: url('../fonts/fs_albert-webfont.eot');
+  src: url('../fonts/fs_albert-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/fs_albert-webfont.woff2') format('woff2'),
+       url('../fonts/fs_albert-webfont.woff') format('woff'),
+       url('../fonts/fs_albert-webfont.ttf') format('truetype'),
+       url('../fonts/fs_albert-webfont.svg#fs_albertregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+*/

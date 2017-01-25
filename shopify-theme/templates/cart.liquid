@@ -1,0 +1,299 @@
+<!-- /templates/cart.liquid -->
+{% comment %}
+
+  For info on test orders:
+    - General http://docs.shopify.com/manual/your-store/orders/test-orders
+    - Shopify Payments - http://docs.shopify.com/manual/more/shopify-payments/testing-shopify-payments
+
+{% endcomment %}
+
+{% if cart.item_count > 0 %}
+
+
+  
+  
+  <form action="/cart" method="post" novalidate class="cart table-wrap">
+    <!--
+       _   _ _____    _    ____  _____ ____
+      | | | | ____|  / \  |  _ \| ____|  _ \
+      | |_| |  _|   / _ \ | | | |  _| | |_) |
+      |  _  | |___ / ___ \| |_| | |___|  _ <
+      |_| |_|_____/_/   \_\____/|_____|_| \_\
+
+    -->
+
+    <div id="page-cart-preload-icons">
+      <span class="item-01"></span>
+      <span class="item-02"></span>
+      <span class="item-03"></span>
+      <span class="item-04"></span>
+      <span class="item-05"></span>
+      <span class="item-06"></span>
+    </div>
+    
+    <article id="page-cart-header-section">
+      <div class="container-fluid has-breakpoint">
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div id="page-cart-header-breadcrumb">
+              <ul>
+                <li class="selected">
+                  <h2>1.</h2>
+                  <h4>Shopping cart</h4>
+                </li>
+                <li>
+                  <h2>2.</h2>
+                  <h4>Customer information</h4>
+                </li>
+                <li>
+                  <h2>3.</h2>
+                  <h4>Shipping method</h4>
+                </li>
+                <li>
+                  <h2>4.</h2>
+                  <h4>Payment method</h4>
+                </li>
+              </ul>
+            </div>
+
+            
+            <h1>{{ 'cart.general.title' | t }}</h1>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!--
+        ____ ___  _   _ _____ _____ _   _ _____
+       / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+      | |  | | | |  \| | | | |  _| |  \| | | |
+      | |__| |_| | |\  | | | | |___| |\  | | |
+       \____\___/|_| \_| |_| |_____|_| \_| |_|
+
+    -->
+
+    <article id="page-cart-content-section">
+      <div class="container-fluid has-breakpoint">
+        <div class="row">
+          <div class="col-md-12">
+
+
+            <div id="page-cart-content">
+              <table class="cart-table full table--responsive">
+                <thead class="cart__row cart__header-labels">
+                  <th colspan="2" class="text-center">{{ 'cart.label.product' | t }}</th>
+                  <th class="text-center">{{ 'cart.label.unitprice' | t }}</th>
+                  <th class="text-center">{{ 'cart.label.quantity' | t }}</th>
+                  <th class="text-right">{{ 'cart.label.total' | t }}</th>
+                  <th class="text-right">&nbsp;</th>
+                </thead>
+                <tbody>
+                  {% for item in cart.items %}
+                    <tr class="cart__row table__section">
+                      <td data-label="{{ 'customer.order.product' | t }}">
+
+                        <a href="{{ item.url | within: collections.all }}" class="manic-image-container has-show-all cart__product__image">
+                          {% comment %}
+                            More image size options at:
+                              - http://docs.shopify.com/themes/filters/product-img-url
+                          {% endcomment %}
+                          <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                        </a>
+
+                      </td>
+                      <td>
+                        <p>
+                          <a href="{{ item.url }}">
+                            {{ item.product.title }}
+                          </a>
+                        </p>
+
+                        {% unless item.variant.title contains 'Default' %}
+                          <!-- <br><small></small> -->
+                          <p>{{ item.variant.title }}</p>
+                          
+                        {% endunless %}
+
+                        {% if settings.cart_vendor_enable %}
+                          <p>{{ item.vendor }}</p>
+                        {% endif %}
+
+                        {% comment %}
+                          Optional, loop through custom product line items if available
+
+                          For more info on line item properties, visit:
+                            - http://docs.shopify.com/support/your-store/products/how-do-I-collect-additional-information-on-the-product-page-Like-for-a-monogram-engraving-or-customization
+                        {% endcomment %}
+                        {% assign property_size = item.properties | size %}
+                        {% if property_size > 0 %}
+                          {% for p in item.properties %}
+                            {% unless p.last == blank %}
+                              {{ p.first }}:
+
+                              {% comment %}
+                                Check if there was an uploaded file associated
+                              {% endcomment %}
+                              {% if p.last contains '/uploads/' %}
+                                <a href="{{ p.last }}">{{ p.last | split: '/' | last }}</a>
+                              {% else %}
+                                {{ p.last }}
+                              {% endif %}
+
+                              <br>
+                            {% endunless %}
+                          {% endfor %}
+                        {% endif %}
+
+                        
+                      </td>
+                      <td data-label="{{ 'cart.label.price' | t }}" class="text-center">
+                        <p>{{ item.price | money }}</p>
+                      </td>
+                      <td data-label="{{ 'cart.label.quantity' | t }}">
+
+                        <div class="cart-quantity-container">
+                          <input type="number" name="updates[]" id="updates_{{ item.key }}" data-id="{{ item.key }}" value="{{ item.quantity }}" min="0">
+                        </div>
+
+                      </td>
+                      <td data-label="{{ 'cart.label.total' | t }}" class="text-right">
+                        {% if item.original_line_price != item.line_price %}
+                          <p class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></p>
+                        {% endif %}
+                        <p>{{ item.line_price | money }}</p>
+                        {% for discount in item.discounts %}
+                          <p class="cart-item__discount">{{ discount.title }}</p>
+                        {% endfor %}
+                      </td>
+                      <td class="text-right">
+                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove" title="{{ 'cart.general.remove' | t }}"></a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div> <!-- #page-cart-content -->
+
+
+            
+
+
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!--
+       _____ ___   ___ _____ _____ ____
+      |  ___/ _ \ / _ \_   _| ____|  _ \
+      | |_ | | | | | | || | |  _| | |_) |
+      |  _|| |_| | |_| || | | |___|  _ <
+      |_|   \___/ \___/ |_| |_____|_| \_\
+
+    -->
+
+
+    <article id="page-cart-footer-section">
+      <div class="container-fluid has-breakpoint">
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div id="page-cart-footer">
+
+              <div id="page-cart-update-container">
+                <button type="submit" name="update" class="update-cart">{{ 'cart.general.update' | t }}</button>
+              </div>
+              
+
+
+              <div class="row">
+                <div class="col-md-6">
+
+
+                  {% if settings.cart_notes_enable %}
+                    <div id="page-cart-note-container">
+                      <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+                      <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
+                    </div>
+                  {% endif %}
+
+                  <h5>{{ 'cart.general.shipping_at_checkout' | t }}</h5>
+                  
+                </div> <!-- col-md-4 -->
+                <div class="col-md-6">
+
+                  <div id="page-cart-checkout-container">
+
+                    <div class="row">
+                      <div class="col-md-7">
+                        <label><span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span></label>
+                      </div>
+                      <div class="col-md-5">
+                        <p><span class="cart__subtotal">{{ cart.total_price | money }}</span></p>
+                      </div>
+                    </div>
+
+                    {% if cart.total_discounts > 0 %}
+                      {% assign savings = cart.total_discounts | money %}
+
+                      <div class="row">
+                        <div class="col-md-7">
+                          <label></label>
+                        </div>
+                        <div class="col-md-5">
+                          <p><span class="cart-subtotal__savings">{{ 'cart.general.savings_html' | t: price: savings }}</span></p>
+                        </div>
+                      </div>
+
+                    {% endif %}
+                    
+
+                    <div class="cta-container">
+                      <button type="submit" name="checkout" class="square-cta">{{ 'cart.general.checkout' | t }}</button>
+                    </div>
+
+                  </div> <!-- page-cart-checkout-container -->
+                  
+                </div> <!-- col-md-6 -->
+              </div> <!-- row -->
+
+            </div> <!-- #page-cart-footer -->
+
+          </div> <!-- col-md-12 -->
+        </div> <!-- row -->
+      </div> <!-- container-fluid -->
+    </article>
+
+
+  </form>
+
+
+
+{% else %}
+  {% comment %}
+    The cart is empty
+  {% endcomment %}
+
+
+  <article id="page-cart-copy-section">
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+
+          <div class="default-copy">
+            <h2>{{ 'cart.general.title' | t }}</h2>
+            <p>{{ 'cart.general.empty' | t }}</p>
+            <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+{% endif %}

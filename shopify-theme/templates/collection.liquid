@@ -1,0 +1,110 @@
+<!-- /templates/collection.liquid -->
+{% comment %}
+
+  For more information on collection tags:
+    - http://docs.shopify.com/themes/liquid-variables/collection
+
+{% endcomment %}
+
+{% paginate collection.products by 12 %}
+
+
+{% if collection.image %}
+  <article id="default-page-banner-section">
+    <div id="default-page-banner">
+      <div class="manic-image-container">
+        <img src="" data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" alt="{{ collection.image.alt }}">
+      </div>
+    </div>
+  </article>
+{% endif %}
+
+
+
+
+<!--
+   ____  ____   ___  ____  _   _  ____ _____
+  |  _ \|  _ \ / _ \|  _ \| | | |/ ___|_   _|
+  | |_) | |_) | | | | | | | | | | |     | |
+  |  __/|  _ <| |_| | |_| | |_| | |___  | |
+  |_|   |_| \_\\___/|____/ \___/ \____| |_|
+
+-->
+
+<article id="collection-page-product-section">
+  <div class="container-fluid has-breakpoint">
+
+    <div class="row">
+      <div class="col-md-3 col-sm-2"></div>
+      <div class="col-md-6 col-sm-8">
+        
+        <div id="collection-page-product-title">
+          {% if collection.description != blank %}
+            {{ collection.description }}
+          {% endif %}
+        </div> <!-- collection-page-product-title -->
+
+      </div>
+    </div> <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="product-item-container">
+
+          {% comment %}
+            Loop through our products in the current collection.
+            See the snippet 'product-grid-item' for the layout.
+          {% endcomment %}
+          {% for product in collection.products %}
+
+            {% include 'product-grid-item' %}
+
+          {% else %}
+
+            {% if collection.handle == 'all' and current_tags == '' %}
+
+              {% comment %}
+                Add default products to help with onboarding for collections/all only
+              {% endcomment %}
+              {% unless emptyState %}
+                {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
+                {% assign emptyState = true %}
+              {% endunless %}
+              {% include 'onboarding-empty-collection' %}
+
+            {% else %}
+
+              {% comment %}
+                If collection exists but is empty, display message
+              {% endcomment %}
+              <div class="grid__item">
+                <p>{{ 'collections.general.no_matches' | t }}</p>
+              </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+
+        </div> <!-- product-item-container -->
+
+
+        {% if paginate.pages > 1 %}
+          <div class="space20"></div>
+          <hr>
+          <div class="pagination">
+            {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+          </div>
+        {% endif %}
+
+
+
+      </div> <!-- col-md-12 -->
+    </div> <!-- row -->
+  </div>
+</article>
+
+
+
+
+{% endpaginate %}

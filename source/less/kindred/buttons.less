@@ -1,0 +1,151 @@
+//       _    ____  ____   _____        __
+//      / \  |  _ \|  _ \ / _ \ \      / /
+//     / _ \ | |_) | |_) | | | \ \ /\ / /
+//    / ___ \|  _ <|  _ <| |_| |\ V  V /
+//   /_/   \_\_| \_\_| \_\\___/  \_/\_/
+//
+
+.arrow-cta{
+  .josefin-sans-semibold;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: @grey;
+
+  .display-inline-block;
+  position: relative;
+  // padding-right: 26px;
+  padding-right: 18px;
+
+  //.transition-in(0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.1s);
+  
+  .transition-in(0.3s);
+
+
+  &:after{
+    .fa;
+    font-size: 14px;
+    line-height: 20px;
+    color: @grey;
+
+    // content: "\f061"; // fa-arrow-right
+    content: "\f054";  // .fa-chevron-right
+
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0;
+    width: 16px;
+    height: 20px;
+
+    .transition-in(0.3s);
+
+    //.transition-in(0.3s, cubic-bezier(0.645, 0.045, 0.355, 1), 0.1s);
+  }
+  
+  &:focus,
+  &:hover{
+    color: @brown;
+
+    //.transition-in(0.4s);
+
+    &:after{
+      right: -5px;
+      color: @brown;
+      //.transition-in(0.4s);
+    }
+  }
+
+}
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  .arrow-cta{
+    font-size: 13px;
+    padding-right: 18px;
+
+    &:after{
+      font-size: 14px;
+    }
+  }
+}
+
+
+
+
+
+
+//    ____   ___  _   _   _    ____  _____
+//   / ___| / _ \| | | | / \  |  _ \| ____|
+//   \___ \| | | | | | |/ _ \ | |_) |  _|
+//    ___) | |_| | |_| / ___ \|  _ <| |___
+//   |____/ \__\_\\___/_/   \_\_| \_\_____|
+//
+
+.square-cta{
+  
+  .josefin-sans-semibold;
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: @white;
+  
+  .display-inline-block;
+  
+  padding-top: 10px;
+  padding-bottom: 9px;
+  padding-left: 18px + 6px;
+  padding-right: 18px + 6px;
+  
+
+  outline: none;
+  border: none;
+  background: @grey;
+  // .round(5px);
+
+  .transition-in(0.3s);
+
+  &:focus,
+  &:hover{
+    color: @white;
+    background: @brown;
+  }
+
+
+  &.large-version{
+    font-size: 18px;
+    line-height: 20px;
+
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+  &.small-version{
+
+    font-size: 12px;
+    line-height: 14px;
+
+    padding-top: 9px - 3px;
+    padding-bottom: 8px - 3px;
+    padding-left: 18px - 5px;
+    padding-right: 18px - 5px;
+  }
+
+  &.full-width-version{
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    
+  }
+
+} // .square-cta
+
+
+
