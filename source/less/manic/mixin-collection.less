@@ -151,7 +151,14 @@
   }
 }
 
-
+.appearance(@appearance) {
+  -webkit-appearance: @appearance;
+      -ms-appearance: @appearance;
+       -o-appearance: @appearance;
+          appearance: @appearance;
+         text-indent: 0.01px;
+       text-overflow: '';
+}
 
 // from http://stackoverflow.com/questions/10953037/google-webfonts-render-choppy-in-chrome-on-windows
 

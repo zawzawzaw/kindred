@@ -1,0 +1,80 @@
+//     ____ ___  _   _ _____ _____ _   _ _____
+//    / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+//   | |  | | | |  \| | | | |  _| |  \| | | |
+//   | |__| |_| | |\  | | | | |___| |\  | | |
+//    \____\___/|_| \_| |_| |_____|_| \_| |_|
+//
+
+#page-login-content-section {
+  padding-top: 77px;
+  padding-bottom: 180px;
+  #CustomerRegisterForm {
+    // padding-left: 110px;
+  }
+  #CustomerLoginForm, #CustomerRegisterForm {
+    margin-bottom: 0px;
+    h1 {
+      .header-h1-style;
+      text-transform: none;
+      font-size: 45px;
+      line-height: 50px;
+      padding-bottom: 25px;
+    }
+    p {
+      padding-bottom: 30px;
+    }
+    label {
+      .header-h4-style;      
+      font-size: 12px;
+      line-height: 15px;
+    }
+    input[type=email], input[type=password] {
+      background-color: @off-white-03;
+      border: none;
+      border-radius: 0px;
+      width: 355px;
+      height: 35px;
+      padding-left: 17px;
+      .body-font;      
+      margin-bottom: 20px;
+    }
+    input:-webkit-autofill,
+     input:-webkit-autofill:hover,
+     input:-webkit-autofill:focus,
+     input:-webkit-autofill:active {
+     -webkit-box-shadow: 0 0 0px 1000px @off-white-03 inset !important;
+    }
+
+    .link-container {
+     padding-top: 15px;
+      a {
+        &#RecoverPassword {
+          .body-font;
+          color:@grey;  
+        }
+      }  
+    }
+    
+    
+    .cta-container {
+      padding-top: 45px;
+      input[type="submit"] {        
+        border-radius: 0px;
+        display: inline-block;
+        margin-right: 10px;
+        width: 44%;
+      } 
+      #login-with-facebook {
+        width: 53%;
+      }
+    }
+    
+
+  }
+  .vertical-seperator-line {
+    width: 1px;
+    height: 380px;
+    border-right: 1px solid @off-white;
+    margin: 0 auto;
+  }
+}

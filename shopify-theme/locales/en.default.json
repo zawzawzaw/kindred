@@ -158,14 +158,18 @@
       "delete": "Delete"
     },
     "login": {
-      "title": "Login",
-      "email": "Email",
-      "password": "Password",
+      "title": "Sign In",
+      "desc": "Welcome back! Login to your Kindred Teas account here.",
+      "email": "Email Address*",
+      "password": "Password*",
       "forgot_password": "Forgot your password?",
-      "sign_in": "Sign In",
+      "sign_in": "Sign In With Email",
+      "sign_in_with_facebook": "Sign In With Facebook",
       "cancel": "Return to Store",
       "guest_title": "Continue as a guest",
-      "guest_continue": "Continue"
+      "guest_continue": "Continue",
+      "create_account_title": "Create Account",
+      "create_account_desc": "Create an account with us for quick checkout, to keep track of your order, and more."
     },
     "orders": {
       "title": "Order History",
@@ -212,12 +216,16 @@
       "submit": "Reset Password"
     },
     "register": {
-      "title": "Create Account",
-      "first_name": "First Name",
-      "last_name": "Last Name",
-      "email": "Email",
-      "password": "Password",
-      "submit": "Create",
+      "title": "Create an Account",
+      "salutation": "Salutation*",
+      "first_name": "First Name*",
+      "last_name": "Last Name*",
+      "date_of_birth": "Date of Birth",
+      "email": "Email Address*",
+      "password": "Password*",
+      "confirm_password": "Confirm Password*",
+      "submit": "Create New Account",
+      "newsletter": "Please add me to the Kindred Teas email list.",
       "cancel": "Return to Store"
     }
   },
