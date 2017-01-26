@@ -250,7 +250,14 @@
     </header>
 
 
+    <!--
+       _   _ _____    _    ____  _____ ____
+      | | | | ____|  / \  |  _ \| ____|  _ \
+      | |_| |  _|   / _ \ | | | |  _| | |_) |
+      |  _  | |___ / ___ \| |_| | |___|  _ <
+      |_| |_|_____/_/   \_\____/|_____|_| \_\
 
+    -->
 
     <div id="desktop-header-spacer"></div>
     <header id="desktop-header">
@@ -333,7 +340,32 @@
           <div class="col-md-4">
 
             <div id="desktop-header-right-container">
+
+
+              <div id="desktop-header-search-container" data-search-placeholder="{{ 'general.search.placeholder' | t }}">
+                <form id="desktop-header-search-form" action="/search" method="get" class="input-group search-bar" role="search">
+                  {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+                  <input type="search" name="q" value="{{ search.terms | escape }}" class="input-group-field" aria-label="{{ 'general.search.placeholder' | t }}">
+                </form>
+                <div id="desktop-header-search-button"></div>
+              </div>
               
+              <div id="desktop-menu-currency-container">
+                <p>s$ currency</p>
+              </div>
+              <div id="desktop-menu-account-login-container">
+                <span class="account-icon"></span>
+                <a href="#">log in</a>
+                <span class="seperator">|</span>
+                <a href="#">join</a>
+              </div>
+              <div id="desktop-menu-cart-container">
+                <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
+                  <span class="cart-icon"></span>
+                  <span class="cart-text">$36.80 (2)</span>
+                </a>
+              </div>
+
             </div> <!-- desktop-header-right-container -->
 
           </div> <!-- col-md-4 -->
@@ -341,6 +373,15 @@
 
       </div>
     </header>
+
+    <!--
+       _   _ _____    _    ____  _____ ____    _____ _   _ ____
+      | | | | ____|  / \  |  _ \| ____|  _ \  | ____| \ | |  _ \
+      | |_| |  _|   / _ \ | | | |  _| | |_) | |  _| |  \| | | | |
+      |  _  | |___ / ___ \| |_| | |___|  _ <  | |___| |\  | |_| |
+      |_| |_|_____/_/   \_\____/|_____|_| \_\ |_____|_| \_|____/
+
+    -->
 
 
     <nav class="nav-bar" role="navigation" style="display:none !important;">
