@@ -36,7 +36,7 @@
                   </div>
                   <div class="col-md-12">
                     <div class="dropdown">
-                      <select name="customer[salutation]" id="Salutation" class="input-full">
+                      <select name="customer[note][Salutation]" id="Salutation" class="input-full" required>
                         <option value="Mr">Mr</option>
                         <option value="Mrs">Mrs</option>
                         <option value="Miss">Miss</option>
@@ -50,7 +50,7 @@
                     <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
                   </div>
                   <div class="col-md-12">
-                    <input type="text" name="customer[first_name]" id="FirstName" class="input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+                    <input type="text" name="customer[first_name]" id="FirstName" class="input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus required>
                   </div>
                 </div>
                 
@@ -59,7 +59,7 @@
                     <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
                   </div>
                   <div class="col-md-12">
-                    <input type="text" name="customer[last_name]" id="LastName" class="input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+                    <input type="text" name="customer[last_name]" id="LastName" class="input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" required>
                   </div>
                 </div>   
 
@@ -68,18 +68,19 @@
                     <label for="LastName">{{ 'customer.register.date_of_birth' | t }}</label>
                   </div>
                   <div class="col-md-4">
+                    <input type="hidden" name="customer[note][Birthday]" id="birthday">
                     <div class="dropdown">
-                      <select name="customer[day]" id="day">
-                        <option value="Day">Day</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                      <select name="customer[day]" id="day" required>
+                        <option value="">Day</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
@@ -101,22 +102,23 @@
                         <option value="28">28</option>
                         <option value="29">29</option>
                         <option value="30">30</option>
+                        <option value="31">31</option>
                       </select>
                     </div>                    
                   </div>
                   <div class="col-md-4">
                     <div class="dropdown">
-                      <select name="customer[month]" id="month">
-                        <option value="Month">Month</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                      <select name="customer[month]" id="month" required>
+                        <option value="">Month</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>                        
@@ -125,8 +127,8 @@
                   </div>
                   <div class="col-md-4">
                     <div class="dropdown">
-                      <select name="customer[year]" id="year">
-                        <option value="Year">Year</option>
+                      <select name="customer[year]" id="year" required>
+                        <option value="">Year</option>
                         <option value="2000">2000</option>
                         <option value="1999">1999</option>
                         <option value="1998">1998</option>
@@ -195,7 +197,7 @@
                     <label for="Email">{{ 'customer.register.email' | t }}</label>
                   </div>
                   <div class="col-md-12">
-                    <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+                    <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required email>
                   </div>
                 </div>
                 
@@ -204,7 +206,7 @@
                     <label for="CreatePassword">{{ 'customer.register.password' | t }}</label>
                   </div>
                   <div class="col-md-12">
-                    <input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}">
+                    <input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
                   </div>
                 </div>    
 
@@ -213,7 +215,7 @@
                     <label for="ConfirmCreatePassword">{{ 'customer.register.confirm_password' | t }}</label>
                   </div>
                   <div class="col-md-12">
-                    <input type="password" name="customer[confirm_password]" id="ConfirmCreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}">
+                    <input type="password" name="customer[confirm_password]" id="ConfirmCreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
                   </div>
                 </div> 
 
@@ -255,6 +257,56 @@
                 $("#Email").val(email);
                 $("#CreatePassword").val(password);
                 $("#ConfirmCreatePassword").val(password);
+
+                $("#day").on("chnage", function(e){
+                  var dd = $(this).val();
+                  var mm = $('#month').val();
+                  var yyyy = $('#year').val();
+
+                  if(dd=="") dd = 01;
+                  if(mm=="") mm = 01;
+                  if(yyyy=="") yyyy = 1999;
+
+                  $('#birthday').val(dd+'/'+mm+'/'+yyyy);
+                });
+
+                $("#month").on("chnage", function(e){
+                  var dd = $('#day').val();
+                  var mm = $(this).val();
+                  var yyyy = $('#year').val();
+
+                  if(dd=="") dd = 01;
+                  if(mm=="") mm = 01;
+                  if(yyyy=="") yyyy = 1999;
+
+                  $('#birthday').val(dd+'/'+mm+'/'+yyyy);
+                });
+
+                $("#year").on("chnage", function(e){
+                  var dd = $('#day').val();
+                  var mm = $('#month').val();
+                  var yyyy = $(this).val();
+
+                  if(dd=="") dd = 01;
+                  if(mm=="") mm = 01;
+                  if(yyyy=="") yyyy = 1999;
+
+                  $('#birthday').val(dd+'/'+mm+'/'+yyyy);
+                });
+
+                var password = document.getElementById("CreatePassword")
+                  , confirm_password = document.getElementById("ConfirmCreatePassword");
+
+                function validatePassword(){
+                  if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Passwords Don't Match");
+                  } else {
+                    confirm_password.setCustomValidity('');
+                  }
+                }
+ 
+                password.onchange = validatePassword;
+                confirm_password.onkeyup = validatePassword;
                 </script>
 
               </div>
