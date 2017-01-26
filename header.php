@@ -74,7 +74,36 @@
         <div class="col-md-4">
 
           <div id="desktop-header-right-container">
-            
+              
+
+            <div id="desktop-header-search-container" data-search-placeholder="search">
+
+              <form id="desktop-header-search-form" action="/search" method="get" class="input-group search-bar" role="search">
+                <input type="search" id="s" name="q" value="search" />
+              </form>
+              <div id="desktop-header-search-button"></div>
+            </div>
+
+
+            <div id="desktop-menu-currency-container">
+              <p>s$ currency</p>
+            </div>
+            <div id="desktop-menu-account-login-container">
+              <span class="account-icon"></span>
+              <a href="#">log in</a>
+              <span class="seperator">|</span>
+              <a href="#">join</a>
+            </div>
+            <div id="desktop-menu-cart-container">
+              <a href="/cart">
+                <span class="cart-icon"></span>
+                <span class="cart-text">$36.80 (2)</span>
+              </a>
+            </div>
+
+
+
+
           </div> <!-- desktop-header-right-container -->
 
         </div> <!-- col-md-4 -->

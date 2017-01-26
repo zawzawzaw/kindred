@@ -8,7 +8,8 @@ goog.require('manic.page.Page');
 
 
 goog.require('kindred.component.DesktopInstagramSlider');
-
+goog.require('kindred.component.DesktopHeader');
+goog.require('kindred.component.MobileHeader');
 
 
 /**
@@ -35,6 +36,11 @@ kindred.page.Default = function(options) {
    * @type {kindred.component.DesktopInstagramSlider}
    */
   this.desktop_instagram_slider = null;
+
+  /**
+   * @type {kindred.component.DesktopHeader}
+   */
+  this.desktop_header = null;
 
 
   
@@ -81,6 +87,14 @@ kindred.page.Default.EVENT_02 = '';
  */
 kindred.page.Default.prototype.init = function() {
   kindred.page.Default.superClass_.init.call(this);
+
+
+
+  if ($('#desktop-header').length != 0) {
+    this.desktop_header = new kindred.component.DesktopHeader({}, $('#desktop-header'));
+  }
+
+  
 
 
 
