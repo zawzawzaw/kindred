@@ -649,10 +649,6 @@
                 <h4>Follow us</h4>
                 <ul>
 
-                  {% if settings.social_instagram_link != blank %}
-                    <li><a href="{{ settings.social_instagram_link }}" class="fa fa-instagram" title="{{ shop.name }} on Instagram" target="_blank"></a></li>
-                  {% endif %}
-
                   {% if settings.social_facebook_link != blank %}
                     <li><a href="{{ settings.social_facebook_link }}" class="fa fa-facebook" title="{{ shop.name }} on Facebook" target="_blank"></a></li>
                   {% endif %}
@@ -661,6 +657,10 @@
                     <li><a href="{{ settings.social_twitter_link }}" class="fa fa-twitter" title="{{ shop.name }} on Twitter" target="_blank"></a></li>
                   {% endif %}
 
+                  {% if settings.social_instagram_link != blank %}
+                    <li><a href="{{ settings.social_instagram_link }}" class="fa fa-instagram" title="{{ shop.name }} on Instagram" target="_blank"></a></li>
+                  {% endif %}
+                  
                   {% if settings.social_pinterest_link != blank %}
                     <li><a href="{{ settings.social_pinterest_link }}" class="fa fa-pinterest" title="{{ shop.name }} on Pinterest" target="_blank"></a></li>
                   {% endif %}
