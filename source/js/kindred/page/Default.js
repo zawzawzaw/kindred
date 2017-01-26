@@ -97,7 +97,17 @@ kindred.page.Default.prototype.init = function() {
       'autoplay': true,
       'autoplaySpeed': 4000
     });
-  }
+
+    // update on slick init/resize
+    $('#home-page-banner').on('breakpoint', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+    $('#home-page-banner').on('init', function(event, slick){
+      this.update_page_layout();
+    }.bind(this));
+
+
+  } // #home-page-banner
 
 
   if ($('#home-page-shop-item-container').length != 0) {
@@ -128,7 +138,18 @@ kindred.page.Default.prototype.init = function() {
         }
       ]
     });
-  }
+
+    // update on slick init/resize
+    $('#home-page-shop-item-container').on('breakpoint', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+    $('#home-page-shop-item-container').on('init', function(event, slick){
+      this.update_page_layout();
+    }.bind(this));
+
+  } // #home-page-shop-item-container
+
+
 
 
   if ($('#home-instagram-slider').length != 0) {
