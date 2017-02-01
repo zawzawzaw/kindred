@@ -35,15 +35,35 @@ kindred.component.DesktopHeader = function(options, element) {
   }
   
 
-  
 
+
+  // for currencies
+  this.currency_btn = this.element.find('#desktop-menu-currency-btn');
+  this.currency_container = this.element.find('#desktop-menu-currency-item-container');
+  this.currency_container_container = this.element.find('#desktop-menu-currency-item-container-container');
+  this.currency_select = this.element.find('[name=currencies]');
+
+  this.currency_item_elements = null;
+  this.currency_item_array = [];
+
+  this.is_currency_open = false;
+  
 
 
 
   this.create_search_pop_out();
+  this.create_currency_pop_out();
 
 
-  
+  // 
+  this.element.mouseleave(function(event){
+
+    console.log('this.element.mouseleave');
+
+    this.close_search();
+    this.close_currency();
+
+  }.bind(this));
 
 
   console.log('kindred.component.DesktopHeader: init');
@@ -124,9 +144,7 @@ kindred.component.DesktopHeader.prototype.create_search_pop_out = function() {
   }.bind(this));
 
 
-  this.element.mouseleave(function(event){
-    this.close_search();
-  }.bind(this));
+  
 
 };
 
@@ -138,7 +156,7 @@ kindred.component.DesktopHeader.prototype.open_search = function() {
 
     TweenMax.killTweensOf(this.search_form);
     TweenMax.to(this.search_form, 0.5, {autoAlpha: 1, onComplete: function(){
-      this.update_layout();
+      // this.update_layout();
     }.bind(this)});
 
   }
@@ -150,13 +168,92 @@ kindred.component.DesktopHeader.prototype.close_search = function() {
 
     TweenMax.killTweensOf(this.search_form);
     TweenMax.to(this.search_form, 0.5, {autoAlpha: 0, onComplete: function(){
-      this.update_layout();
+      // this.update_layout();
     }.bind(this)});
   }
 };
-kindred.component.DesktopHeader.prototype.private_method_04 = function() {};
-kindred.component.DesktopHeader.prototype.private_method_05 = function() {};
-kindred.component.DesktopHeader.prototype.private_method_06 = function() {};
+
+
+
+
+
+
+
+//     ____ _   _ ____  ____  _____ _   _  ______   __
+//    / ___| | | |  _ \|  _ \| ____| \ | |/ ___\ \ / /
+//   | |   | | | | |_) | |_) |  _| |  \| | |    \ V /
+//   | |___| |_| |  _ <|  _ <| |___| |\  | |___  | |
+//    \____|\___/|_| \_\_| \_\_____|_| \_|\____| |_|
+//
+
+
+
+kindred.component.DesktopHeader.prototype.create_currency_pop_out = function() {
+
+  this.currency_btn.click(function(event){
+
+    if (this.is_currency_open == true) {
+      this.close_currency();
+    } else {
+      this.open_currency();
+    }
+
+  }.bind(this));
+
+
+
+  this.currency_item_elements = this.currency_container.find('.desktop-menu-currency-item');
+  var item = null;
+
+
+  for (var i = 0, l=this.currency_item_elements.length; i < l; i++) {
+    item = $(this.currency_item_elements[i]);
+
+    item.click(function(event){
+      var target = $(event.currentTarget);
+      var value = target.attr('data-value');
+
+      if (goog.isDefAndNotNull(value) && value != '') {
+        this.set_currency(value);
+      }
+      
+      
+    }.bind(this));
+
+    this.currency_item_array[i] = item;
+
+  }
+  
+  
+
+  
+
+
+};
+kindred.component.DesktopHeader.prototype.open_currency = function() {
+
+  if (this.is_currency_open == false) {
+    this.is_currency_open = true;
+
+    this.currency_container_container.addClass('expand-version');
+
+    TweenMax.killTweensOf(this.currency_container);
+    TweenMax.to(this.currency_container, 0.3, {autoAlpha: 1});
+  }
+};
+
+kindred.component.DesktopHeader.prototype.close_currency = function() {
+  if (this.is_currency_open == true) {
+    this.is_currency_open = false;
+
+    this.currency_container_container.removeClass('expand-version');
+
+    TweenMax.killTweensOf(this.currency_container);
+    TweenMax.to(this.currency_container, 0.3, {autoAlpha: 0});
+  }
+
+};
+
 
 
 //    ____  _   _ ____  _     ___ ____
@@ -167,7 +264,13 @@ kindred.component.DesktopHeader.prototype.private_method_06 = function() {};
 //
 
 
-kindred.component.DesktopHeader.prototype.public_method_01 = function() {};
+kindred.component.DesktopHeader.prototype.set_currency = function(str_param) {
+
+  this.currency_select.val(str_param).trigger('change');
+
+  // select class is added on the callback of the select (in the original code currencies.liquid)
+
+};
 kindred.component.DesktopHeader.prototype.public_method_02 = function() {};
 kindred.component.DesktopHeader.prototype.public_method_03 = function() {};
 kindred.component.DesktopHeader.prototype.public_method_04 = function() {};

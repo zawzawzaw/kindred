@@ -54,6 +54,15 @@ jQuery('[name=currencies]').val(Currency.currentCurrency).change(function() {
   var newCurrency = jQuery(this).val();
   Currency.convertAll(Currency.currentCurrency, newCurrency);
   jQuery('.selected-currency').text(Currency.currentCurrency);
+
+
+
+  // KNDRED ONLY !!!
+  jQuery('.desktop-menu-currency-item').removeClass('selected');
+  jQuery('.desktop-menu-currency-item[data-value=' + Currency.currentCurrency + ']').addClass('selected');
+
+
+
 });
 
 var original_selectCallback = window.selectCallback;
@@ -61,6 +70,15 @@ var selectCallback = function(variant, selector) {
   original_selectCallback(variant, selector);
   Currency.convertAll(shopCurrency, jQuery('[name=currencies]').val());
   jQuery('.selected-currency').text(Currency.currentCurrency);
+
+
+
+  // KNDRED ONLY !!!
+  jQuery('.desktop-menu-currency-item').removeClass('selected');
+  jQuery('.desktop-menu-currency-item[data-value=' + Currency.currentCurrency + ']').addClass('selected');
+
+
+
 };
 
 // $('body').on('ajaxCart.afterCartLoad', function(cart) {
@@ -74,6 +92,13 @@ $('body').on('afterCartLoad.ajaxCart', function(event, cart) {
 });
 
 jQuery('.selected-currency').text(Currency.currentCurrency);
+
+
+// KNDRED ONLY !!!
+jQuery('.desktop-menu-currency-item').removeClass('selected');
+jQuery('.desktop-menu-currency-item[data-value=' + Currency.currentCurrency + ']').addClass('selected');
+
+
 
 </script>
 

@@ -149,6 +149,24 @@
     height: 500px;
     margin-left: 30px;
   }
+
+  .default-copy{
+    h1{
+      .special-i{
+        position: relative;
+        &:after{
+          content: "";
+          position: absolute;
+          top: 8px;
+          left: 0;
+          width: 8px;
+          height: 8px;
+
+          background: @white;
+        }
+      }
+    }
+  }
 }
 
 // TABLET PORTRAIT & SMALL DESKTOP
@@ -288,6 +306,17 @@
     left: 0;
     width: 100%;
     height: 100%;
+
+  }
+
+  &:focus,
+  &:hover{
+    .manic-image-container{
+      img{
+        .opacity_important(0.7);
+      }
+    }
+
   }
 }
 

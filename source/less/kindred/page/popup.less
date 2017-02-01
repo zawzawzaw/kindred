@@ -1,0 +1,80 @@
+
+
+
+@mailing-list-pop-up-width: 530px;
+@mailing-list-pop-up-height: 225px;
+
+
+#mailing-list-pop-up-container{
+  position: fixed;
+  display: block;
+  // display: none;               // not immediately visible
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: @off-black;
+  background: fade(@off-black, 70%);
+
+
+}
+#mailing-list-pop-up{
+  width: @mailing-list-pop-up-width;
+  height: @mailing-list-pop-up-height;
+
+  margin-left: -1 * @mailing-list-pop-up-width / 2;
+  margin-top: -1 * @mailing-list-pop-up-height / 2;
+
+
+  background: @off-white-03;
+  border: 5px solid @brown;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+
+}
+#mailing-list-pop-up-close-btn{
+
+}
+
+
+#mailing-list-pop-up-copy{
+  margin-bottom: 10px;
+  .default-copy{
+
+  }
+}
+#mailing-list-pop-up-form{
+  position: relative;
+
+  input[type=text],
+  input[type=email]{
+    .josefin-sans-semibold;
+    font-size: 11px;
+    line-height: 20px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #f4f3f1;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+
+    padding-top: 1px;
+    padding-left: 16px;
+    padding-right: 30px;
+
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  .square-cta{
+
+  }
+}
