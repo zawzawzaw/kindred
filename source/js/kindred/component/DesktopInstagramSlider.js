@@ -165,6 +165,15 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
         }
       ]
     });
+
+    this.item_container.on('breakpoint', function(event, slick, breakpoint){
+      this.update_layout();
+    }.bind(this));
+    this.item_container.on('init', function(event, slick){
+      this.update_layout();
+    }.bind(this));
+    
+
   }
 
 };
@@ -181,7 +190,9 @@ kindred.component.DesktopInstagramSlider.prototype.private_method_06 = function(
 //
 
 
-kindred.component.DesktopInstagramSlider.prototype.public_method_01 = function() {};
+kindred.component.DesktopInstagramSlider.prototype.update_layout = function() {
+
+};
 kindred.component.DesktopInstagramSlider.prototype.public_method_02 = function() {};
 kindred.component.DesktopInstagramSlider.prototype.public_method_03 = function() {};
 kindred.component.DesktopInstagramSlider.prototype.public_method_04 = function() {};

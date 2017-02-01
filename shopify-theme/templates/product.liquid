@@ -23,7 +23,18 @@
   {% assign current_variant = product.selected_or_first_available_variant %}
 
 
-  <article id="product-page-detail-section">
+
+  {% comment %}
+    If product has multiple incredients, add responsiveness for height 
+  {% endcomment %}
+
+  {% assign extra_product_detail_class = '' %}
+  {% if product.metafields.description.p11_multiple_ingredients != blank %}
+    {% assign extra_product_detail_class = 'multiple-ingredient-version' %}
+  {% endif %}
+  
+
+  <article id="product-page-detail-section" class="{{ extra_product_detail_class }}">
 
     <div class="container-fluid">
       <div class="row">

@@ -86,16 +86,17 @@
 
 
 <div id="mailing-list-pop-up-container">
+  <div class="black-bg"></div>
   <div id="mailing-list-pop-up">
     <div id="mailing-list-pop-up-close-btn"></div>
     <div id="mailing-list-pop-up-copy">
-      <div class="default-copy">
+      <div class="default-copy center-version">
         <h1>Stay in the Loop</h1>
         <p>Stay up to date with latest news and exclusive orders.</p>
       </div>
     </div>
-    <form id="mailing-list-pop-up-form">
-      <input type="email">
+    <form id="mc-embedded-subscribe-form">
+      <input type="email" placeholder="Enter your email">
       <button type="submit" class="square-cta">Submit</button>
     </form>
   </div> <!-- mailing-list-pop-up -->

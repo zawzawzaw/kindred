@@ -10,6 +10,7 @@ goog.require('manic.page.Page');
 goog.require('kindred.component.DesktopInstagramSlider');
 goog.require('kindred.component.DesktopHeader');
 goog.require('kindred.component.MobileHeader');
+goog.require('kindred.component.MailingListPopup');
 
 
 /**
@@ -41,6 +42,11 @@ kindred.page.Default = function(options) {
    * @type {kindred.component.DesktopHeader}
    */
   this.desktop_header = null;
+
+  /**
+   * @type {kindred.component.MailingListPopup}
+   */
+  this.mailing_list_popup = null;
 
 
   
@@ -119,6 +125,8 @@ kindred.page.Default.prototype.init = function() {
     $('#home-page-banner').on('init', function(event, slick){
       this.update_page_layout();
     }.bind(this));
+    
+    
 
 
   } // #home-page-banner
@@ -176,14 +184,18 @@ kindred.page.Default.prototype.init = function() {
       console.log('instagram feed generated');
       this.create_image_container();
 
-    }.bind(this));
-
-    
-    
-
-    
+    }.bind(this));    
   }
   
+
+
+  if ($('#mailing-list-pop-up-container').length != 0) {
+
+    // this will auto open if there is no cookie 
+    // cookie expires in 10 hrs
+    this.mailing_list_popup = new kindred.component.MailingListPopup({}, $('#mailing-list-pop-up-container'));
+
+  }
   
 
   
@@ -238,8 +250,13 @@ kindred.page.Default.prototype.public_method_06 = function() {};
 kindred.page.Default.prototype.update_page_layout = function(){
   kindred.page.Default.superClass_.update_page_layout.call(this);
 
-  
-
+  if ($('#home-page-banner').length != 0 && $('#home-page-banner').hasClass('slick-initialized') == true) {
+    $('#home-page-banner').slick('setPosition');
+  }
+  if ($('#home-page-shop-item-container').length != 0 && $('#home-page-shop-item-container').hasClass('slick-initialized') == true) {
+    $('#home-page-shop-item-container').slick('setPosition');
+  }
+  // $('.your-element').slick('setPosition');
 
 };
 

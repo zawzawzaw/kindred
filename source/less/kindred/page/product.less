@@ -68,6 +68,61 @@
 
 
 
+//    __  __ _   _ _   _____ ___ ____  _     _____   ___ _   _  ____ ____  _____ ____ ___ _____ _   _ _____
+//   |  \/  | | | | | |_   _|_ _|  _ \| |   | ____| |_ _| \ | |/ ___|  _ \| ____|  _ \_ _| ____| \ | |_   _|
+//   | |\/| | | | | |   | |  | || |_) | |   |  _|    | ||  \| | |  _| |_) |  _| | | | | ||  _| |  \| | | |
+//   | |  | | |_| | |___| |  | ||  __/| |___| |___   | || |\  | |_| |  _ <| |___| |_| | || |___| |\  | | |
+//   |_|  |_|\___/|_____|_| |___|_|   |_____|_____| |___|_| \_|\____|_| \_\_____|____/___|_____|_| \_| |_|
+//
+
+#product-page-detail-section.multiple-ingredient-version{
+
+  #product-page-detail-image,
+  #product-page-detail-image .manic-image-container,
+  #product-page-detail-copy{
+    height: @product-page-detail-height + 100px;
+  }
+}
+
+
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1380px) {
+  #product-page-detail-section.multiple-ingredient-version{
+
+    #product-page-detail-image,
+    #product-page-detail-image .manic-image-container,
+    #product-page-detail-copy{
+      height: @product-page-detail-height + 150px;
+    }
+  }
+}
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1280px) {
+  #product-page-detail-section.multiple-ingredient-version{
+
+    #product-page-detail-image,
+    #product-page-detail-image .manic-image-container,
+    #product-page-detail-copy{
+      height: @product-page-detail-height + 200px;
+    }
+  }
+}
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1180px) {
+  #product-page-detail-section.multiple-ingredient-version{
+
+    #product-page-detail-image,
+    #product-page-detail-image .manic-image-container,
+    #product-page-detail-copy{
+      height: @product-page-detail-height + 250px;
+    }
+  }
+}
+
+
 
 
 
@@ -383,6 +438,14 @@
       margin-left: 5%;
       margin-right: 5%;
     }
+
+    // max 3; 6*3 = 18; 18 < 25
+    &.square-version{
+      .product-item{
+        margin-left: 3%;
+        margin-right: 3%;
+      }
+    }
   }
 
 }
@@ -393,9 +456,18 @@
     margin-left: 2%;
     margin-right: 2%;
   }
+  #product-page-also-like-section #product-item-container.square-version .product-item{
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
 }
 @media only screen and (max-width: 1010px) {
   #product-page-also-like-section #product-item-container .product-item{
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  #product-page-also-like-section #product-item-container.square-version .product-item{
     margin-left: 0%;
     margin-right: 0%;
   }
@@ -403,6 +475,10 @@
 }
 @media only screen and (max-width: 840px) {
   #product-page-also-like-section #product-item-container .product-item{
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  #product-page-also-like-section #product-item-container.square-version .product-item{
     margin-left: 0%;
     margin-right: 0%;
   }
@@ -417,8 +493,6 @@
   h2{
     // .header-h2-style-02;
   }
-
-
-  
-
 }
+
+

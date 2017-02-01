@@ -112,7 +112,7 @@
 
                         {% unless item.variant.title contains 'Default' %}
                           <!-- <br><small></small> -->
-                          <p>{{ item.variant.title }}</p>
+                          <p> &ndash; {{ item.variant.title | replace: ' / ', ', '}}</p>
                           
                         {% endunless %}
 

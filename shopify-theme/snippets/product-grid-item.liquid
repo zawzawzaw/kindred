@@ -39,7 +39,13 @@
 
 
 
-<div class="product-item" data-id="rooibos-orange">
+
+
+{% unless image_container_classes %}
+  {% assign image_container_classes = ' has-show-all' %}
+{% endunless %}
+
+<div class="product-item">
 
   {% comment %}
     Link to your product with the 'within: collection' filter for the link to be aware of the collection.
@@ -53,7 +59,8 @@
       - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
 
   {% endcomment %}
-  <a href="{{ product.url | within: collection }}" class="manic-image-container has-show-all" data-vertical-align="bottom">
+      
+  <a href="{{ product.url | within: collection }}" class="manic-image-container {{ image_container_classes }}" data-vertical-align="bottom">
     <img src="" data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}">
   </a>
   <div class="product-item-detail">
