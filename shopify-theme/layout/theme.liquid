@@ -352,6 +352,22 @@
               
               <div id="desktop-menu-currency-container">
                 <p>s$ currency</p>
+
+
+                <label class="currency-picker__wrapper">
+                  <span class="currency-picker__label">Pick a currency</span>
+                  <select class="currency-picker" name="currencies" style="display: inline; width: auto; vertical-align: inherit;">
+                  {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+                  {% assign supported_codes = settings.supported_currencies | split: ' ' %}
+                  <option value="{{ shop.currency }}" selected="selected">{{ shop.currency }}</option>
+                  {% for code in supported_codes %}
+                    {% if code != shop.currency and codes contains code %}
+                    <option value="{{ code }}">{{ code }}</option>
+                    {% endif %}
+                  {% endfor %}
+                  </select>
+                </label>
+
               </div>
               <div id="desktop-menu-account-login-container">
                 <span class="account-icon"></span>
@@ -362,7 +378,7 @@
               <div id="desktop-menu-cart-container">
                 <a href="/cart" class="js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
                   <span class="cart-icon"></span>
-                  <span class="cart-text">$888.88 (88)</span>
+                  <span class="cart-text">{{ cart.total_price | money }} ({{ cart.item_count }})</span>
                 </a>
               </div>
 
@@ -730,6 +746,8 @@
       jQuery(document.body).on('afterCartLoad.ajaxCart', function(evt, cart) {
         // Bind to 'afterCartLoad.ajaxCart' to run any javascript after the cart has loaded in the DOM
         timber.RightDrawer.open();
+
+        
       });
     </script>
   {% endif %}
@@ -749,6 +767,8 @@
       });
     });
   </script>
+
+  {% include 'currencies' %}
 
 </body>
 </html>

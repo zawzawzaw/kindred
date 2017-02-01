@@ -133,7 +133,7 @@
 
 
 
-                    {% if product.metafields.description.p01_origin != blank && product.metafields.description.p02_teatype != blank %}
+                    {% if product.metafields.description.p01_origin != blank and product.metafields.description.p02_teatype != blank %}
                       <div class="row">
                         <div class="col-md-6">
 
@@ -169,7 +169,8 @@
                           </div>
                         {% endif %}
 
-                        {% if product.metafields.description.p04_tastingnotes != blank %}
+
+                        {% if product.metafields.description.p04_tastingnotes != blank and product.metafields.description.p11_multiple_ingredients == blank %}
                           <div class="product-detail">
                             <label>tasting notes</label>
                             <p>{{ product.metafields.description.p04_tastingnotes }}</p>
@@ -209,13 +210,32 @@
 
 
 
-                        
+                        {% if product.metafields.description.p11_multiple_ingredients != blank %}
+                          <div class="product-detail">
+                            <label>ingredients</label>
+                          </div>
+
+                          {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
+                          {% for ingredient_array_item in ingredient_array %}
+                            <div class="product-detail multiple-version">
+                              <p>{{ ingredient_array_item }}</p>
+                            </div>
+                          {% endfor %}
+                        {% endif %}
                         
                         
                         
 
                       </div>
                       <div class="col-md-6">
+
+
+                        {% if product.metafields.description.p04_tastingnotes != blank and product.metafields.description.p11_multiple_ingredients != blank %}
+                          <div class="product-detail">
+                            <label>tasting notes</label>
+                            <p>{{ product.metafields.description.p04_tastingnotes }}</p>
+                          </div>
+                        {% endif %}
 
                         {% if product.metafields.description.p05_brewingtemperature != blank || product.metafields.description.p06_brewingvolume != blank || product.metafields.description.p07_brewingtearatio != blank || product.metafields.description.p08_brewingtime != blank %}
                           <div class="product-detail">
@@ -241,14 +261,7 @@
                           </div>
                         {% endif %}
 
-                        {% if product.metafields.description.p11_multiple_ingredients != blank %}
-                          {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
-                          {% for ingredient_array_item in ingredient_array %}
-                            <div class="product-detail multiple-version">
-                              <p>{{ ingredient_array_item }}</p>
-                            </div>
-                          {% endfor %}
-                        {% endif %}
+                        
 
 
                         {% if product.metafields.description.p14_material != blank %}
