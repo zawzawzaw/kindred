@@ -322,7 +322,7 @@ var ajaxCart = (function(module, $) {
         url: cartItem.url,
         img: prodImg,
         name: cartItem.product_title,
-        variation: cartItem.variant_title,
+        variation: cartItem.variant_title.split(' / ').join(', '),
         properties: cartItem.properties,
         itemAdd: cartItem.quantity + 1,
         itemMinus: cartItem.quantity - 1,

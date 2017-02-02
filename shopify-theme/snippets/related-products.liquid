@@ -82,11 +82,19 @@
       {% assign grid_item_width = 'large--one-quarter medium--one-third small--one-half' %}
   {% endcase %}
 
+  
+  {% assign extra_product_item_container_class = '' %}
+  {% if collection.template_suffix == 'square' %}
+    {% assign extra_product_item_container_class = 'square-version' %}
+  {% endif %}
+
   {% capture related_items %}
     {% for product in collection.products %}
       {% unless product.handle == current_product.handle %}
          {% unless same_vendor and current_product.vendor != product.vendor %}
            {% unless same_type and current_product.type != product.type %}
+
+             {% assign image_container_classes = extra_product_item_container_class %}
              {% include 'product-grid-item' %}
              {% assign counter = counter | plus: 1 %}
              {% if counter == break_at %}
@@ -112,7 +120,7 @@
             <h2>{{ heading }}</h2>
           </div>
 
-          <div id="product-item-container">
+          <div id="product-item-container" class="{{ extra_product_item_container_class }}">
 
             {{ related_items }}
 

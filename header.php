@@ -42,7 +42,7 @@
   <header id="desktop-header">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
 
           <div id="desktop-header-left-container">
             <div id="desktop-header-logo-container">
@@ -71,7 +71,7 @@
           </div>
 
         </div> <!-- col-md-8 -->
-        <div class="col-md-4">
+        <div class="col-md-5">
 
           <div id="desktop-header-right-container">
               
@@ -86,7 +86,24 @@
 
 
             <div id="desktop-menu-currency-container">
-              <p>s$ currency</p>
+              <!-- <p>s$ currency</p> -->
+              <p id="desktop-menu-currency-btn">SGD currency</p>
+
+              <div id="desktop-menu-currency-item-container-container">
+                
+                <div id="desktop-menu-currency-item-container">
+                  <div class="desktop-menu-currency-item" data-value="AUD"><span>AUD</span>Australian Dollar</div>
+                  <div class="desktop-menu-currency-item" data-value="GBP"><span>GBP</span>British Pound Sterling</div>
+                  <div class="desktop-menu-currency-item" data-value="CNY"><span>CNY</span>Chinese Yuan</div>
+                  <div class="desktop-menu-currency-item" data-value="EUR"><span>EUR</span>Euro</div>
+                  <div class="desktop-menu-currency-item" data-value="HKD"><span>HKD</span>Hong Kong Dollar</div>
+                  <div class="desktop-menu-currency-item" data-value="JPY"><span>JPY</span>Japanese Yen</div>
+                  <div class="desktop-menu-currency-item" data-value="MYR"><span>MYR</span>Malaysian Ringgit</div>
+                  <div class="desktop-menu-currency-item selected" data-value="SGD"><span>SGD</span>Singapore Dollar</div>
+                  <div class="desktop-menu-currency-item" data-value="USD"><span>USD</span>US Dollar</div>
+                </div>
+              </div>
+
             </div>
             <div id="desktop-menu-account-login-container">
               <span class="account-icon"></span>
