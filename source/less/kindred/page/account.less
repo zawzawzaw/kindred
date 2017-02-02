@@ -1,0 +1,101 @@
+#page-account-header-section {
+  h1 {
+    text-align: center;
+    .header-h2-style;
+    font-size: 40px;
+    line-height: 44px;
+    color: @grey;
+    text-transform: none;
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+  hr {
+    border-color: @line-grey;
+  }
+  #account-menu-container {    
+    ul {
+      text-align: center;
+      li {
+        display: inline-block;
+        width: 240px;
+        a {
+          .header-h4-style;
+          font-size: 14px;
+          line-height: 12px;
+          letter-spacing: 0.075em;
+          color: @grey;
+          position: relative;
+          &:hover, &.active {
+            color: @brown;
+            &:before {
+              visibility: visible;
+              // .opacity(1);
+            }
+          }
+          &:before {
+            .transition(.3s);
+            visibility: hidden;
+            // .opacity(0);
+            content: ".";
+            position: absolute;
+            top: -6px;
+            left: -12px;
+            font-size: 35px;
+            color: @brown;
+          }
+        }
+      }
+    }
+  }
+}
+
+//     ____ ___  _   _ _____ _____ _   _ _____
+//    / ___/ _ \| \ | |_   _| ____| \ | |_   _|
+//   | |  | | | |  \| | | | |  _| |  \| | | |
+//   | |__| |_| | |\  | | | | |___| |\  | | |
+//    \____\___/|_| \_| |_| |_____|_| \_| |_|
+//
+
+#page-account-details-content-section {
+  padding-top: 100px;
+  padding-bottom: 180px;
+  
+  .account-content-title {
+    padding-bottom: 45px;
+    h2 {
+      .header-h2-style;
+      font-size: 28px;
+      color: @brown;
+      text-transform: capitalize;
+      margin: 0px;
+    }
+    hr {
+      border-color: @brown;
+      margin: 0px;
+    }
+  }
+  .account-content-container {
+    h4 {
+      .header-h4-style;
+      font-size: 13px;
+      line-height: 12px;
+      letter-spacing: 0.075em;
+      color: @off-black;
+      text-transform: uppercase;
+    }
+    p {
+      .body-font;
+      color: @grey-02;
+    }
+    .row {
+      &:nth-of-type(1) {
+        padding-bottom: 40px;
+      }
+    }
+  }  
+  .account-cta-container {
+    text-align: right;
+    padding-top: 100px;
+  }
+}
+

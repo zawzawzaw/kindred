@@ -314,6 +314,10 @@ timber.loginForms = function() {
   function showRecoverPasswordForm() {
     timber.cache.$recoverPasswordForm.show();
     timber.cache.$customerLoginForm.hide();
+
+    // added by zaw
+    $("#CustomerRegisterForm").hide();
+    $(".vertical-seperator-line").hide();
   }
 
   function hideRecoverPasswordForm() {
