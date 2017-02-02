@@ -420,7 +420,9 @@
                     
                     {% if customer.first_name != blank %}
                       {% capture first_name %}{{ customer.first_name }}{% endcapture %}
-                      <a href="/account">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+                      <!-- <a href="/account">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a> -->
+                      <a href="/account">{{ customer.first_name }}</a>
+
                     {% else %}
                       <a href="/account">{{ 'layout.customer.account' | t }}</a>
                     {% endif %}
