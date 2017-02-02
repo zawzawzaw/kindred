@@ -39,10 +39,14 @@
 
 
 
-
+{% comment %}
+  if image container classes is not assigned, it is a regular image
+{% endcomment %}
+{% assign is_regular_image = false %}
 
 {% unless image_container_classes %}
   {% assign image_container_classes = ' has-show-all' %}
+  {% assign is_regular_image = true %}
 {% endunless %}
 
 <div class="product-item">
@@ -61,7 +65,12 @@
   {% endcomment %}
       
   <a href="{{ product.url | within: collection }}" class="manic-image-container {{ image_container_classes }}" data-vertical-align="bottom">
-    <img src="" data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}">
+
+    {% if is_regular_image == true %}
+      <img src="" data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}">
+    {% else %}
+      <img src="" data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" alt="{{ product.featured_image.alt | escape }}">
+    {% endif %}
   </a>
   <div class="product-item-detail">
     <a href="{{ product.url | within: collection }}" class="product-item-name">{{ product.title }}</a>
