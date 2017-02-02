@@ -71,7 +71,7 @@
                 {% endif %}
 
                 <div class="cta-container">                  
-                    <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.login.sign_in' | t }}">                  
+                    <input id="sign-in" type="submit" class="btn btn--full square-cta" value="{{ 'customer.login.sign_in' | t }}">                  
                     <button id="login-with-facebook" class="square-cta">{{ 'customer.login.sign_in_with_facebook' | t }}</button>                  
                 </div>
                 
@@ -168,5 +168,39 @@
         </div>
       </div>
     </article>
+    
+    <script>
+    $('#login-with-facebook').on("click", function(e){
+      e.preventDefault();
+      window.location.href = 'http://clients.manic.com.sg/kindred/shopify_app?email=zaw@manic.com.sg';
+    });
 
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+
+    var email = getUrlParameter('email');
+    var password = getUrlParameter('password');
+
+    console.log(email);
+    console.log(password);
+
+    if(email!=="" && password!=="") {
+      $("#CustomerEmail").val(email);
+      $("#CustomerPassword").val(password);
+
+      $("#sign-in").trigger("click");
+    }
+    </script>
 
