@@ -29,13 +29,13 @@
             color: @brown;
             &:before {
               visibility: visible;
-              // .opacity(1);
+              .opacity(1);
             }
           }
           &:before {
             .transition(.3s);
             visibility: hidden;
-            // .opacity(0);
+            .opacity(0);
             content: ".";
             position: absolute;
             top: -6px;
@@ -59,8 +59,13 @@
 #page-account-details-content-section {
   padding-top: 100px;
   padding-bottom: 180px;
+  display: none;
+
+  &.active-section {
+    display: block;
+  }
   
-  .account-content-title {
+  .account-content-title, .account-address-title {
     padding-bottom: 45px;
     h2 {
       .header-h2-style;
@@ -68,13 +73,15 @@
       color: @brown;
       text-transform: capitalize;
       margin: 0px;
-    }
+    } 
     hr {
       border-color: @brown;
       margin: 0px;
     }
   }
+  
   .account-content-container {
+    padding-bottom: 80px;
     h4 {
       .header-h4-style;
       font-size: 13px;
@@ -93,9 +100,84 @@
       }
     }
   }  
+
+  .account-address-container {
+    .address-content {
+      padding-bottom: 40px;
+      h4 {
+        .header-h4-style;
+        font-size: 13px;
+        line-height: 12px;
+        letter-spacing: 0.075em;
+        color: @off-black;
+        text-transform: uppercase;
+      }
+      p {
+        .body-font;
+        color: @grey-02;
+      }
+    }
+
+    form {
+      label {
+        .header-h4-style;
+        font-size: 11px;
+        line-height: 11px;
+        letter-spacing: 0.075em;
+        color: @off-black;
+        text-transform: uppercase;
+      }
+      input {
+        background-color: @off-white-03;
+        height: 35px;
+        padding-left: 15px;
+      }
+    }
+  }
+
   .account-cta-container {
     text-align: right;
     padding-top: 100px;
+  }
+}
+
+//
+//
+//
+//
+//
+//
+
+#page-account-order-history-section {
+  padding-top: 100px;
+  padding-bottom: 180px;
+  display: none;
+
+  &.active-section {
+    display: block;
+  }
+
+  #account-order-table {
+    thead {      
+      background-color: @light-brown;
+      th {
+        padding: 20px;
+        .header-h4-style;
+        font-size: 13px;
+        line-height: 12px;
+        letter-spacing: 0.075em;
+        color: @off-black;
+        text-transform: uppercase;
+      }
+    }
+    tbody {
+      tr {
+        td {
+          padding: 20px;
+          border-bottom: 1px solid @line-grey;
+        }
+      }
+    }
   }
 }
 
