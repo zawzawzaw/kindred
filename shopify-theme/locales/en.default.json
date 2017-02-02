@@ -265,7 +265,7 @@
       "logged_in_as_html": "Logged in as {{ first_name }}",
       "log_out": "Log out",
       "log_in": "Log in",
-      "create_account": "Create account"
+      "create_account": "Join"
     },
     "footer": {
       "social_title": "Get Connected",

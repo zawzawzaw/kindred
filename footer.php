@@ -1,3 +1,4 @@
+    </div> <!-- .main-content -->
   </div> <!-- #PageContainer -->
 
 

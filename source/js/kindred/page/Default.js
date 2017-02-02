@@ -31,6 +31,12 @@ kindred.page.Default = function(options) {
   if ($('body').hasClass('bahasa-version')) {
     manic.SITE_LANGUAGE = 'in';
   }
+
+
+  
+  this.desktop_header_element = $('#desktop-header');
+  this.desktop_footer_element = $('#desktop-footer');
+  this.main_content_element = $('#PageContainer .main-content');
   
 
   /**
@@ -249,6 +255,23 @@ kindred.page.Default.prototype.public_method_06 = function() {};
  */
 kindred.page.Default.prototype.update_page_layout = function(){
   kindred.page.Default.superClass_.update_page_layout.call(this);
+
+  // set min height of main content
+  
+  if (manic.IS_MOBILE == false) {
+    // only if desktop
+    
+    console.log('update min height')
+    var target_min_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
+
+    console.log('this.desktop_header_element.height(): ' + this.desktop_header_element.outerHeight());
+    console.log('this.desktop_footer_element.height():' + this.desktop_footer_element.outerHeight());
+    this.main_content_element.css({
+      'min-height': target_min_height + 'px'
+    });
+
+  }
+
 
   if ($('#home-page-banner').length != 0 && $('#home-page-banner').hasClass('slick-initialized') == true) {
     $('#home-page-banner').slick('setPosition');

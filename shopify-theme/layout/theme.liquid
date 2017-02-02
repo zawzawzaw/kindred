@@ -405,13 +405,43 @@
                   </select>
                 </label>
 
-              </div>
+              </div> <!-- desktop-menu-currency-container -->
+
+
               <div id="desktop-menu-account-login-container">
                 <span class="account-icon"></span>
-                <a href="#">log in</a>
-                <span class="seperator">|</span>
-                <a href="#">join</a>
-              </div>
+
+                {% comment %}
+                  If customer accounts are enabled, provide login and create account links
+                {% endcomment %}
+                {% if shop.customer_accounts_enabled %}
+                  {% if customer %}
+
+                    
+                    {% if customer.first_name != blank %}
+                      {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+                      <a href="/account">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+                    {% else %}
+                      <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                    {% endif %}
+
+                    <span class="seperator">|</span>
+
+                    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+
+                  {% else %}
+
+                    {{ 'layout.customer.log_in' | t | customer_login_link }}
+                    <span class="seperator">|</span>
+                    {{ 'layout.customer.create_account' | t | customer_register_link }}
+
+                  {% endif %}
+                {% endif %}
+                
+              </div> <!-- desktop-menu-account-login-container -->
+
+
+
               <div id="desktop-menu-cart-container">
                 <a href="/cart" class="js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
                   <span class="cart-icon"></span>
