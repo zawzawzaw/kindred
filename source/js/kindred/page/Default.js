@@ -146,7 +146,7 @@ kindred.page.Default.prototype.init = function() {
       'infinite': false,
       'slidesToShow': 5,
       'slidesToScroll': 5,
-      'pauseOnHover': false,
+      'pauseOnHover': true,
       'autoplay': true,
       'autoplaySpeed': 4000,
       'responsive': [

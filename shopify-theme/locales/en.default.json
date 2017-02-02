@@ -64,7 +64,7 @@
       "update": "Update Shopping Cart",
       "checkout": "Proceed to Check Out",
       "empty": "Your cart is currently empty.",
-      "continue_browsing_html": "Continue browsing <a href=\"/collections/all\">here</a>.",
+      "continue_browsing_html": "Continue browsing <a href=\"/collections/tea-store\">here</a>.",
       "close_cart": "Close Cart",
       "savings_html": "You're saving {{ price }}",
       "reduce_quantity": "Reduce item quantity by one",

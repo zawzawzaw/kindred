@@ -315,6 +315,11 @@ var ajaxCart = (function(module, $) {
         var prodImg = "//cdn.shopify.com/s/assets/admin/no-image-medium-cc9732cb976dd349a0df1d39816fbcc7.gif";
       }
 
+      var temp_variation_title = cartItem.variant_title;
+      if (temp_variation_title != undefined && temp_variation_title != null) {
+        temp_variation_title = temp_variation_title.split(' / ').join(', ');
+      }
+
       // Create item's data object and add to 'items' array
       item = {
         key: cartItem.key,
@@ -322,7 +327,7 @@ var ajaxCart = (function(module, $) {
         url: cartItem.url,
         img: prodImg,
         name: cartItem.product_title,
-        variation: cartItem.variant_title.split(' / ').join(', '),
+        variation: temp_variation_title,
         properties: cartItem.properties,
         itemAdd: cartItem.quantity + 1,
         itemMinus: cartItem.quantity - 1,
