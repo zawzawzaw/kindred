@@ -89,6 +89,7 @@
   {% endif %}
 
   {% capture related_items %}
+
     {% for product in collection.products %}
       {% unless product.handle == current_product.handle %}
          {% unless same_vendor and current_product.vendor != product.vendor %}
@@ -112,6 +113,32 @@
 
   {% assign related_items = related_items | trim %}
 
+
+
+
+  {% comment %}
+    To randomize the related products, display all the related products in a div with display:none
+  {% endcomment %}
+
+  {% capture all_related_items %}
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+         {% unless same_vendor and current_product.vendor != product.vendor %}
+           {% unless same_type and current_product.type != product.type %}
+
+              {% if collection.template_suffix == 'square' %}
+                {% assign image_container_classes = ' square-version' %}
+              {% endif %}
+
+             {% include 'product-grid-item' %}
+           {% endunless %}
+        {% endunless %}
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+  {% assign all_related_items = all_related_items | trim %}
+
+
   {% unless related_items == blank %}
 
 
@@ -122,6 +149,10 @@
 
           <div id="product-page-also-like-title">
             <h2>{{ heading }}</h2>
+          </div>
+
+          <div id="all-related-product-item-container">
+            {{ all_related_items }}
           </div>
 
           <div id="product-item-container" class="{{ extra_product_item_container_class }}">

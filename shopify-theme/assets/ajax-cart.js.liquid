@@ -317,7 +317,7 @@ var ajaxCart = (function(module, $) {
 
       var temp_variation_title = cartItem.variant_title;
       if (temp_variation_title != undefined && temp_variation_title != null) {
-        temp_variation_title = temp_variation_title.split(' / ').join(', ');
+        temp_variation_title = temp_variation_title.split(' / ').join(' & ');
       }
 
       // Create item's data object and add to 'items' array

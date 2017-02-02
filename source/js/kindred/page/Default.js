@@ -3,6 +3,8 @@ goog.provide('kindred.page.Default');
 goog.require('goog.events.Event');
 goog.require('goog.events.EventTarget');
 
+goog.require('manic.util.ArrayUtil');
+
 
 goog.require('manic.page.Page');
 
@@ -205,6 +207,35 @@ kindred.page.Default.prototype.init = function() {
   
 
   
+  // RANDOMIZE PRODUCT DETAIL 'related items' section
+  
+
+  if ($('#product-page-also-like-section #all-related-product-item-container').length != 0 && $('#product-page-also-like-section #product-item-container').length != 0) {
+    
+
+    var arr = $('#product-page-also-like-section #all-related-product-item-container').find('.product-item');
+    var item = null;
+    var item_array = [];
+    for (var i = 0, l=arr.length; i < l; i++) {
+      item = $(arr[i]);
+      item_array[i] = item;
+    }
+
+    item_array = manic.util.ArrayUtil.shuffle(item_array);
+
+    var fragment = $(document.createDocumentFragment());
+
+    // get first 3
+    for (var i = 0, l=3; i < l; i++) {
+      item = item_array[i];
+      fragment.append(item);
+    }
+
+    $('#product-page-also-like-section #product-item-container').empty();
+    $('#product-page-also-like-section #product-item-container').append(fragment);
+    
+
+  }
 
 
   

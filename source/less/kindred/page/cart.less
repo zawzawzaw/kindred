@@ -168,6 +168,8 @@
 
 
   .cart-table{
+    margin-bottom: 0;
+
     th{
       .header-h4-style;
       font-size: 13px;
@@ -199,6 +201,11 @@
       .cart__row:first-child{
         border-top: none;
       }
+      tr{
+        td:first-child{
+          vertical-align: middle;
+        }
+      }
     }
 
   }
@@ -219,6 +226,11 @@
 
     margin-top: -1 * ( 30px + 27px ) + 10px;
     margin-bottom: -1 * ( 30px + 19px ) + 10px;
+
+    // margin-top: -57px + 10px;
+    // margin-bottom: -49px + 10px;
+    
+
   }
 
   .cart__remove{
@@ -405,6 +417,10 @@
     line-height: 30px;
     text-align: right;
     padding-right: 66px;
+
+  }
+  .cart__subtotal{
+    white-space: nowrap;
   }
 
   .cta-container{
