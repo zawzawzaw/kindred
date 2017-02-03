@@ -1,0 +1,156 @@
+
+
+//    ___ _   _ _____ ____   ___
+//   |_ _| \ | |_   _|  _ \ / _ \
+//    | ||  \| | | | | |_) | | | |
+//    | || |\  | | | |  _ <| |_| |
+//   |___|_| \_| |_| |_| \_\\___/
+//
+
+#about-page-intro-section{
+  background: @white;
+  padding-top: 80px + 8px;
+  padding-bottom: 80px + 15px;
+}
+
+
+#about-page-intro-title{
+  margin-bottom: 60px + 7px;
+
+  h2{
+    text-align: center;
+  }
+}
+
+
+#about-page-intro-image-title{
+  margin-bottom: 50px;
+
+  h1{
+    font-size: 40px;
+    line-height: 40px;
+
+    .special-i{
+      position: relative;
+      &:after{
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 0;
+        width: 8px;
+        height: 8px;
+
+        background: @white;
+      }
+    }
+  }
+}
+#about-page-intro-image{
+  .manic-image-container{
+    height: 495px;
+  }
+}
+
+
+
+#about-page-intro-copy-title{
+  margin-bottom: 42px;
+
+
+
+  .copy-title-item{
+    margin-bottom: 40px;
+
+    h4{
+      color: @off-black;
+    }
+    h3{
+      color: @grey-05;
+      font-size: 35px;
+      line-height: 35px;
+    }
+
+
+    &:last-child{
+      margin-bottom: 0px;
+    }
+  }
+}
+
+#about-page-intro-copy{
+  .default-copy{
+
+  }
+}
+
+
+//    _     ___   ____  ___
+//   | |   / _ \ / ___|/ _ \
+//   | |  | | | | |  _| | | |
+//   | |__| |_| | |_| | |_| |
+//   |_____\___/ \____|\___/
+//
+
+#about-page-logo-section{
+  background: @light-brown-02;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+#about-page-logo-image{
+  .manic-image-container{
+    height: 250px;
+  }
+}
+#about-page-logo-copy{
+  height: 250px;
+  display: table;
+
+  .default-copy{
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+
+//     ____ ___  ______   __
+//    / ___/ _ \|  _ \ \ / /
+//   | |  | | | | |_) \ V /
+//   | |__| |_| |  __/ | |
+//    \____\___/|_|    |_|
+//
+
+#about-page-copy-section{
+  background: @white;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+#about-page-copy-copy{
+
+  width: 100%;
+  height: 625px;
+  display: table;
+
+  .default-copy{
+    display: table-cell;
+    vertical-align: middle;
+
+    padding-top: 20px;    // just in case it goes over
+    padding-bottom: 20px;
+  }
+}
+#about-page-copy-image{
+  .manic-image-container{
+    height: 625px;
+  }
+}
+
+
+// SHORT VERSION
+
+#about-page-copy-section.short-version{
+  #about-page-copy-copy,
+  #about-page-copy-image .manic-image-container{
+    height: 450px;
+  }
+}
+
