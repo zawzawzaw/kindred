@@ -185,7 +185,7 @@
       "date": "Placed on {{ date }}",
       "cancelled": "Order Cancelled on {{ date }}",
       "cancelled_reason": "Reason: {{ reason }}",
-      "billing_address": "Billing Address",
+      "billing_address": "Bill to",
       "payment_status": "Payment Status",
       "shipping_address": "Shipping Address",
       "fulfillment_status": "Fulfillment Status",
@@ -194,11 +194,12 @@
       "tax": "Tax",
       "product": "Product",
       "sku": "SKU",
-      "price": "Price",
+      "price": "Unit Price",
       "quantity": "Quantity",
       "total": "Total",
       "fulfilled_at": "Fulfilled {{ date }}",
-      "subtotal": "Subtotal"
+      "subtotal": "Subtotal",
+      "grand_total": "Grand Total"
     },
     "recover_password": {
       "title": "Reset your password",

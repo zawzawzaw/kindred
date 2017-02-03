@@ -258,7 +258,7 @@
                 $("#CreatePassword").val(password);
                 $("#ConfirmCreatePassword").val(password);
 
-                $("#day").on("chnage", function(e){
+                $("#day").on("change", function(e){
                   var dd = $(this).val();
                   var mm = $('#month').val();
                   var yyyy = $('#year').val();
@@ -270,7 +270,7 @@
                   $('#birthday').val(dd+'/'+mm+'/'+yyyy);
                 });
 
-                $("#month").on("chnage", function(e){
+                $("#month").on("change", function(e){
                   var dd = $('#day').val();
                   var mm = $(this).val();
                   var yyyy = $('#year').val();
@@ -282,7 +282,7 @@
                   $('#birthday').val(dd+'/'+mm+'/'+yyyy);
                 });
 
-                $("#year").on("chnage", function(e){
+                $("#year").on("change", function(e){
                   var dd = $('#day').val();
                   var mm = $('#month').val();
                   var yyyy = $(this).val();

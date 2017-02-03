@@ -8,36 +8,52 @@ $shop = (isset($_GET['shop'])) ? $_GET['shop'] : "";
 $hmac = (isset($_GET['hmac'])) ? $_GET['hmac'] : "";
 $state = (isset($_GET['state'])) ? $_GET['state'] : "";
 $email = (isset($_GET['email'])) ? $_GET['email'] : "";
+$first_name = (isset($_GET['first_name'])) ? $_GET['first_name'] : "";
+$last_name = (isset($_GET['last_name'])) ? $_GET['last_name'] : "";
+$gender = (isset($_GET['gender'])) ? $_GET['gender'] : "";
+$birthday = (isset($_GET['birthday'])) ? $_GET['birthday'] : "";
 
 // if coming back from redirection
 if(!empty($code) && isset($_SESSION['email'])) $email = $_SESSION['email'];
+if(!empty($code) && isset($_SESSION['first_name'])) $first_name = $_SESSION['first_name'];
+if(!empty($code) && isset($_SESSION['last_name'])) $last_name = $_SESSION['last_name'];
+if(!empty($code) && isset($_SESSION['gender'])) $gender = $_SESSION['gender'];
+if(!empty($code) && isset($_SESSION['birthday'])) $birthday = $_SESSION['birthday'];
 
 $access_token = "";
 
-// if($state!==$_SESSION['nonce']) {
-//   echo "Failed.";
-//   exit();
-// }
+function retrieveStoredAccessToken() {
+  $servername = "localhost:3306";
+  $username = "kindred_dbadmin";
+  $password = "e8oQy#54";
+  $dbname = "kindred";
 
-function curlPostJson($url, $fields, $headr) {
-  $fields_string = '';
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $stmt = $conn->prepare("SELECT token FROM access_token WHERE DATE(expiry_date) > DATE(NOW())"); 
+  $stmt->execute();
 
-  //url-ify the data for the POST
-  foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-  rtrim($fields_string, '&');
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  $ch = curl_init( );    
+  $last_token = end($result);
 
-  curl_setopt( $ch, CURLOPT_URL, $url );
-  // curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-  curl_setopt( $ch, CURLOPT_POST, true );
-  curl_setopt( $ch, CURLOPT_POSTFIELDS, $fields_string );  
+  if($last_token) $access_token = $last_token['token'];
+  else $access_token = "";
+
+  return $access_token;
+}
+
+$access_token = retrieveStoredAccessToken();
+
+function curlPostJson($url, $payload, $headr) {
+
+  $ch = curl_init( $url );  
+  curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
   curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
   curl_setopt( $ch, CURLOPT_HTTPHEADER, $headr );
-  
   $res = curl_exec($ch);
   curl_close($ch);
-
+  
   return $res;
 }
 
@@ -86,19 +102,42 @@ function curlGet($url, $headr) {
   return $rest;  
 }
 
+function saveAccessToken($access_token, $expiry_date) {
+  $servername = "localhost:3306";
+  $username = "kindred_dbadmin";
+  $password = "e8oQy#54";
+  $dbname = "kindred";
+
+
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  // prepare sql and bind parameters  
+  $stmt = $conn->prepare("UPDATE access_token SET token=:token, expiry_date=DATE_ADD( NOW(), INTERVAL 24 HOUR ) WHERE id = 1");
+  $stmt->bindParam(':token', $token);
+
+  $token = $access_token;
+  $stmt->execute();
+
+  $conn = null;
+
+}
+
 function getAccessToken($url, $fields) {  
   $res = curlPost($url, $fields);
-  $response_arr = json_decode($res, true);  
+  $response_arr = json_decode($res, true);
 
-  $access_token = $response_arr['access_token'];  
-
-  return $access_token;
+  return $response_arr;
 }
 
 if(empty($access_token)) {
 
   if(empty($code)) {
     $_SESSION['email'] = $email;
+    $_SESSION['first_name'] = $first_name;
+    $_SESSION['last_name'] = $last_name;
+    $_SESSION['gender'] = $gender;
+    $_SESSION['birthday'] = $birthday;
     header("Location: http://clients.manic.com.sg/kindred/shopify_app");
   }
 
@@ -109,7 +148,13 @@ if(empty($access_token)) {
     'code' => urlencode($code)
   );
   
-  $access_token = getAccessToken($url, $fields);
+  $response_arr = getAccessToken($url, $fields);
+
+  $access_token = $response_arr['access_token'];
+  // $expiry_date = $response_arr['expires_in'];
+  $expiry_date = "";
+
+  saveAccessToken($access_token, $expiry_date);
   
 }
 
@@ -121,7 +166,6 @@ function searchCustomerByEmail($url, $headr) {
 }
 
 // echo $access_token;
-
 
 # START API CALL
 $url = 'https://'.$shop_name.'.myshopify.com/admin/customers/search.json?query='.$email;
@@ -147,51 +191,66 @@ if(count($rest_arr['customers']) > 0) {
   $headr = array();
   $headr[] = 'X-Shopify-Access-Token: '.$access_token;
 
-  $first_name = 'Steve';
-  $last_name = 'Lastnameson';
-  $phone = '+15142546011';
-  $address1_address = '123 Oak St';
-  $address1_city = 'Ottawa';
-  $address1_province = 'ON';
-  $address1_phone = '555-1212';
-  $address1_zip = '123 ABC';
-  $address1_last_name = 'Lastnameson';
-  $address1_first_name = 'Mother';
-  $address1_country = 'CA';
+  if($gender=='male') $salutation = "Mr";
+  else $salutation = "Ms";
 
-  $address_1 = [
-    'address1' => $address1_address,
-    'city' => $address1_city,
-    'province' => $address1_province,
-    'phone' => $address1_phone,
-    'zip' => $address1_zip,
-    'last_name' => $address1_last_name,
-    'first_name' => $address1_first_name,
-    'country' => $address1_country
+  $metafields = array();  
+
+  $metafield = [
+    'key' => 'salutation',
+    'value' => $salutation,
+    'value_type' => 'string',
+    'namespace' => 'global'
   ];
 
-  $addresses = array();
-  $addresses[] = $address_1;
+  $metafield_2 = [
+    'key' => 'birthday',
+    'value' => $birthday,
+    'value_type' => 'string',
+    'namespace' => 'global'
+  ];
+
+  $metafields[] = $metafield;
+  $metafields[] = $metafield_2;
 
   $data = [
     'first_name' => $first_name,
     'last_name' => $last_name,
     'email' => $email,
-    'phone' => $phone,
     'verified_email' => true,
-    'addresses' => $addresses
+    "password" => "FB_PASS!",
+    "password_confirmation" => "FB_PASS!",
+    "send_email_welcome" => true,
+    "metafields" => $metafields
   ];
 
   $payload = array( "customer"=> $data );
 
+  $payload = json_encode($payload);
+
+  // print_r($payload); exit();
+
   $headr = array();
   $headr[] = 'X-Shopify-Access-Token: '.$access_token;
+  $headr[] = 'Accept: application/json';
+  $headr[] = 'Accept-Encoding: gzip, deflate';
+  $headr[] = 'Content-Type: application/json';
+  $headr[] = 'Accept-Language: en-us';
 
   // $res = curlPostJson($url, $payload, $headr);
   $res = curlPostJson($url, $payload, $headr);
 
-  $response_arr = json_decode($res, true); 
+  $response_arr = json_decode($res, true);
 
-  print_r($response_arr);
+  // print_r($response_arr);
+
+  $login_url = 'https://kindredteas.com/account/login';
+
+  if(isset($response_arr['customer']) && count($response_arr['customer']) > 0) {    
+    header('Location: '.$login_url.'?email='.$email.'&password=FB_PASS!');
+  }else {
+    echo "Failed to login please try again. You will be redirect back to login page in 5 secs";
+    header('Refresh: 5;url='.$login_url);
+  }
 }
 ?>

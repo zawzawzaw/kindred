@@ -1,0 +1,99 @@
+#page-account-order-individual-header-section {
+  h1 {
+    .header-h2-style;
+    font-size: 40px;
+    line-height: 44px;
+    color: @grey;
+    text-transform: none;
+    padding-top: 70px;
+    padding-bottom: 40px;
+  }
+}
+
+#page-account-order-individual-content-section {
+  padding-bottom: 100px;
+  #billing-shipping-content-container {
+    h4 {
+      .header-h4-style;
+      font-size: 16px;
+      line-height: 11px;
+      letter-spacing: 0.075em;
+      color: @off-black;
+      text-transform: uppercase;
+    }
+    p {
+      .body-font;
+      color: @grey-02;
+    }
+    hr {
+      border-color: @off-white;
+      margin: 10px 0px 15px;
+    }
+
+    .address-detail-content {
+      padding-bottom: 30px;
+      h4 {
+        font-size: 13px;
+        line-height: 12px;
+      }
+    }
+  }
+
+  #order-detail-content-container {
+    padding-top: 90px;
+    table {
+      thead {      
+        background-color: @light-brown;
+        th {
+          padding: 20px;
+          .header-h4-style;
+          font-size: 13px;
+          line-height: 12px;
+          letter-spacing: 0.075em;
+          color: @off-black;
+          text-transform: uppercase;
+        }
+      }
+      tbody {
+        tr {
+          td {
+            padding: 20px;
+            border-bottom: 1px solid @line-grey;
+            .img-container {
+              display: inline-block;
+              width: 100px;
+              vertical-align: middle;
+              margin-right: 40px;
+            }          
+          }
+        }
+      }
+      tfoot {
+        tr {
+          &:nth-of-type(2) {
+            border-bottom: 1px solid @line-grey;
+            td {
+              padding-bottom: 20px;
+            }
+          }
+          td {
+            padding: 15px 20px 0px;
+            h4 {
+              .header-h4-style;
+              font-size: 12px;
+              line-height: 12px;
+              letter-spacing: 0.075em;
+              color: @off-black;
+              text-transform: uppercase;
+            }
+            h2 {
+              .header-h2-style;
+              font-size: 28px;
+              line-height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
