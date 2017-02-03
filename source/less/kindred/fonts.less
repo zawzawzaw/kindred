@@ -154,6 +154,16 @@
 }
 
 
+.body-font-small(@multiplier: 1){
+  .open-sans-semibold;
+  // font-size: 15px * @multiplier;
+  font-size: 10px * @multiplier;
+  line-height: 14px * @multiplier;
+  
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
 
 
 
@@ -175,7 +185,8 @@
 
 .header-h3-style(@multiplier: 1){
   // .josefin-sans-light;
-  .josefin-sans-regular;
+  /// .josefin-sans-regular;  (removed feb 03)
+  .muli-extra-light; // lowercase brandon light
   font-size: 31px * @multiplier;
   line-height: 35px * @multiplier;
 }
