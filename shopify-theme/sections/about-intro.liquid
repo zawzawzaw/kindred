@@ -1,0 +1,133 @@
+
+<!--
+   ___ _   _ _____ ____   ___
+  |_ _| \ | |_   _|  _ \ / _ \
+   | ||  \| | | | | |_) | | | |
+   | || |\  | | | |  _ <| |_| |
+  |___|_| \_| |_| |_| \_\\___/
+
+-->
+
+<article id="about-page-intro-section">
+  <div class="container-fluid has-breakpoint">
+
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="about-page-intro-title">
+          {% if section.settings.title != blank %}
+            <h2>{{ section.settings.title }}</h2>
+          {% endif %}
+                  
+        </div> <!-- about-page-intro-title -->
+
+      </div>
+    </div> <!-- row -->
+    <div class="row">
+      <div class="col-md-5">
+
+        {% if section.settings.image-title != blank %}
+          <div id="about-page-intro-image-title">
+            <h1>{{ section.settings.image-title }}</h1>
+          </div>
+        {% endif %}
+
+        <div id="about-page-intro-image">
+          <div class="manic-image-container">
+            <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+          </div>
+        </div> <!-- about-page-intro-image -->
+
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+
+        <div id="about-page-intro-copy-title">
+
+          {% if section.settings.copy-pretitle-01 != blank and section.settings.copy-title-01 != blank %}
+            <div class="copy-title-item">
+              {% if section.settings.copy-pretitle-01 != blank %}
+                <h4>{{ section.settings.copy-pretitle-01 }}</h4>
+              {% endif %}
+
+              {% if section.settings.copy-title-01 != blank %}
+                <h3>{{ section.settings.copy-title-01 }}</h3>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% if section.settings.copy-pretitle-02 != blank and section.settings.copy-title-02 != blank %}
+            <div class="copy-title-item">
+              {% if section.settings.copy-pretitle-02 != blank %}
+                <h4>{{ section.settings.copy-pretitle-02 }}</h4>
+              {% endif %}
+
+              {% if section.settings.copy-title-02 != blank %}
+                <h3>{{ section.settings.copy-title-02 }}</h3>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div> <!-- about-page-intro-copy-title -->
+
+        <div id="about-page-intro-copy">
+          <div class="default-copy">
+            {{ section.settings.contentcopy }}
+          </div>
+        </div> <!-- about-page-intro-copy -->
+      </div> <!-- col-md-6 -->
+
+    </div> <!-- row -->
+  </div>
+</article>
+
+
+{% schema %}
+  {
+
+    "name": "About Intro",
+    "class": "about-page-intro-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "image-title",
+        "label": "Image Title"
+      },
+      {
+        "type": "text",
+        "id": "copy-pretitle-01",
+        "label": "Copy Pretitle 01"
+      },
+      {
+        "type": "text",
+        "id": "copy-title-01",
+        "label": "Copy Title 01"
+      },
+      {
+        "type": "text",
+        "id": "copy-pretitle-02",
+        "label": "Copy Pretitle 02"
+      },
+      {
+        "type": "text",
+        "id": "copy-title-02",
+        "label": "Copy Title 02"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Content Copy"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image",
+        "label": "Content Image"
+      }
+    ]
+  }
+{% endschema %}
