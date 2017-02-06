@@ -1,6 +1,9 @@
 <div id="contact-page-form-title">
-  <h2>{{ section.settings.title }}</h2>
-  <h1>{{ section.settings.contentcopy }}</h1>
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title }}</h2>
+  {% endif %}
+  
+  {{ section.settings.contentcopy }}
 </div> <!-- contact-page-form-title -->
 
 
