@@ -4,7 +4,7 @@ goog.addDependency('../../../../../js/kindred/component/DesktopHeader.js', ['kin
 goog.addDependency('../../../../../js/kindred/component/DesktopInstagramSlider.js', ['kindred.component.DesktopInstagramSlider'], ['goog.events.Event', 'goog.events.EventTarget']);
 goog.addDependency('../../../../../js/kindred/component/MailingListPopup.js', ['kindred.component.MailingListPopup'], ['goog.events.Event', 'goog.events.EventTarget', 'goog.net.cookies']);
 goog.addDependency('../../../../../js/kindred/component/MobileHeader.js', ['kindred.component.MobileHeader'], ['goog.events.Event', 'goog.events.EventTarget']);
-goog.addDependency('../../../../../js/kindred/page/Default.js', ['kindred.page.Default'], ['goog.events.Event', 'goog.events.EventTarget', 'kindred.component.DesktopHeader', 'kindred.component.DesktopInstagramSlider', 'kindred.component.MailingListPopup', 'kindred.component.MobileHeader', 'manic.page.Page', 'manic.util.ArrayUtil']);
+goog.addDependency('../../../../../js/kindred/page/Default.js', ['kindred.page.Default'], ['goog.events.Event', 'goog.events.EventTarget', 'kindred.component.DesktopHeader', 'kindred.component.DesktopInstagramSlider', 'kindred.component.MailingListPopup', 'kindred.component.MobileHeader', 'manic.google.Map2', 'manic.page.Page', 'manic.util.ArrayUtil']);
 goog.addDependency('../../../../../js/manic/Manic.js', ['manic'], []);
 goog.addDependency('../../../../../js/manic/canvas/ImageSequenceCanvas.js', ['manic.canvas.ImageSequenceCanvas'], ['goog.events.Event', 'goog.events.EventTarget', 'goog.string', 'goog.userAgent', 'manic.canvas.PixiCanvas', 'manic.util.ArrayImagePreloader', 'manic.util.StringUtil']);
 goog.addDependency('../../../../../js/manic/canvas/PixiCanvas.js', ['manic.canvas.PixiCanvas'], ['goog.events.Event', 'goog.events.EventTarget']);
@@ -16,6 +16,7 @@ goog.addDependency('../../../../../js/manic/fullpage/Fullpage.js', ['manic.fullp
 goog.addDependency('../../../../../js/manic/fullpage/Indicator.js', ['manic.fullpage.Indicator'], ['goog.events.Event', 'goog.events.EventTarget']);
 goog.addDependency('../../../../../js/manic/fullpage/Section.js', ['manic.fullpage.Section'], ['goog.events.Event', 'goog.events.EventTarget']);
 goog.addDependency('../../../../../js/manic/google/Map.js', ['manic.google.Map'], ['goog.events.Event', 'goog.events.EventTarget']);
+goog.addDependency('../../../../../js/manic/google/Map2.js', ['manic.google.Map2'], ['goog.events.Event', 'goog.events.EventTarget']);
 goog.addDependency('../../../../../js/manic/page/Page.js', ['manic.page.Page'], ['goog.events.Event', 'goog.events.EventTarget', 'goog.userAgent', 'goog.userAgent.product', 'manic', 'manic.ui.Dropdown', 'manic.ui.ExpandContainer', 'manic.ui.FormCheck', 'manic.ui.ImageContainer', 'manic.ui.ImageContainerPadding', 'manic.ui.TextPadding', 'manic.ui.VideoContainer']);
 goog.addDependency('../../../../../js/manic/ui/ComboBox.js', ['manic.ui.ComboBox'], ['goog.events.Event', 'goog.events.EventTarget', 'goog.math.Box', 'goog.ui.ComboBox', 'goog.ui.ComboBoxItem', 'goog.ui.MenuItem']);
 goog.addDependency('../../../../../js/manic/ui/DingMasonry.js', ['manic.ui.DingMasonry', 'manic.ui.DingMasonryItem'], ['goog.events.Event', 'goog.events.EventTarget']);

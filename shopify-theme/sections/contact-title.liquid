@@ -1,0 +1,25 @@
+<div id="contact-page-form-title">
+  <h2>{{ section.settings.title }}</h2>
+  <h1>{{ section.settings.contentcopy }}</h1>
+</div> <!-- contact-page-form-title -->
+
+
+{% schema %}
+  {
+
+    "name": "Contact Title",
+    "class": "contact-page-form-title-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Copy"
+      }
+    ]
+  }
+{% endschema %}

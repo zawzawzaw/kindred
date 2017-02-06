@@ -7,6 +7,7 @@ goog.require('manic.util.ArrayUtil');
 
 
 goog.require('manic.page.Page');
+goog.require('manic.google.Map2');
 
 
 goog.require('kindred.component.DesktopInstagramSlider');
@@ -57,6 +58,10 @@ kindred.page.Default = function(options) {
   this.mailing_list_popup = null;
 
 
+  /**
+   * @type {manic.google.Map2}
+   */
+  this.contact_map = null;
   
 
 
@@ -237,6 +242,14 @@ kindred.page.Default.prototype.init = function() {
 
   }
 
+
+
+  if ($('#contact-page-detail-map').length != 0) {
+    this.contact_map = new manic.google.Map2({}, $('#contact-page-detail-map'));
+    console.log('create map');
+
+  }
+  
 
   
 
