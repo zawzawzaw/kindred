@@ -130,7 +130,7 @@
           </div>
           <div class="col-md-5">
             <div id="CustomerRegisterForm" class="form-vertical">
-              <form action="/account/register" method="GET">
+              {% form 'create_customer' %}
 
                 {{ form.errors | default_errors }}
 
@@ -140,14 +140,34 @@
                 
                 <div class="row">
                   <div class="col-md-4">
-                    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+                    <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="email" name="email" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" autofocus required email>
+                    <input type="text" name="customer[first_name]" id="FirstName" class="input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus required>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-4">
+                    <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" name="customer[last_name]" id="LastName" class="input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" required>
                   </div>
                 </div>
 
                 <div class="row">
+                  <div class="col-md-4">
+                    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required email>
+
+                    <input type="hidden" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" value="p@ssword">
+                  </div>
+                </div>
+
+                <!-- <div class="row">
                   <div class="col-md-4">
                     <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
                   </div>
@@ -156,13 +176,13 @@
                   </div>
                   
                   
-                </div>
+                </div> -->
 
                 <div class="cta-container">    
                   <input type="submit" class="btn square-cta" value="{{ 'customer.login.create_account_title' | t }}">                                
                 </div>
                 
-              </form>
+              {% endform %}
             </div>
           </div>
         </div>
