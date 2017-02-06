@@ -38,14 +38,14 @@
         
         <div class="row account-content-container">
           <div class="col-md-5">
-            <div class="row">
-              <div class="col-md-6">
-                <h4>Salutation</h4>
-                <p>{{ customer.metafields.salutation }}</p>
-              </div>
+            <div class="row">              
               <div class="col-md-6">
                 <h4>Name</h4>
                 <p>{{ customer.name }}</p>
+              </div>
+              <div class="col-md-6">
+                <h4>Email</h4>
+                <p>{{ customer.email }}</p>
               </div>
             </div>
             <div class="row">
@@ -63,10 +63,6 @@
           </div>
           <div class="col-md-6">
             <div class="row">
-              <div class="col-md-6">
-                <h4>Email</h4>
-                <p>{{ customer.email }}</p>
-              </div>
               <div class="col-md-6">
                 <h4>Address</h4>
                 {% if customer.default_address != nil %}
@@ -91,17 +87,11 @@
                   </p>
                 {% endif %}
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-6">
                 <h4>Phone Number</h4>
                 <p>{{ customer.default_address.phone }}</p>
               </div>
-              <div class="col-md-6">
-                <h4>Date of Birth</h4>
-                <p>{{ customer.birthday }}</p>
-              </div>
-            </div>
+            </div>            
           </div>  
         </div>
           
@@ -128,23 +118,25 @@
               {% for address in customer.addresses %}
                 
                 <div class="col-md-6">
-                  <div class="address-content">
+                  <div class="address-content-container">
+                    
+                    <div class="address-content">
+                      <h4>
+                        Address {% if address == customer.default_address %}({{ 'customer.addresses.default' | t }}){% endif %}
+                      </h4>
 
-                    <h4>
-                      Address {% if address == customer.default_address %}({{ 'customer.addresses.default' | t }}){% endif %}
-                    </h4>
-
-                    <p>
-                      {{ address.company }}
-                      {{ address.street }}
-                      {{ address.city | capitalize }}
-                      {% if address.province_code %}
-                        {{ address.province_code | upcase }} 
-                      {% endif %}
-                      {{ address.zip | upcase }}
-                      {{ address.country }}
-                      {{ address.phone }}
-                    </p>
+                      <p>
+                        {{ address.company }}
+                        {{ address.street }}
+                        {{ address.city | capitalize }}
+                        {% if address.province_code %}
+                          {{ address.province_code | upcase }} 
+                        {% endif %}
+                        {{ address.zip | upcase }}
+                        {{ address.country }}
+                        {{ address.phone }}
+                      </p>
+                    </div>
 
                     <div class="address-content-cta">
                       {{ 'customer.addresses.edit' | t | edit_customer_address_link: address.id }} |
@@ -343,6 +335,17 @@
                 toggleForm: function(id) {
                   var editEl = document.getElementById('EditAddress_'+id);
                   editEl.style.display = editEl.style.display == 'none' ? '' : 'none';
+
+                  if(editEl.style.display == '') {                    
+                    $(editEl).parent().parent().parent().removeClass('col-md-6').addClass('col-md-12');
+                    $(".address-content").hide();
+                    $(".address-content-cta").hide();
+                  } else {
+                    $(editEl).parent().parent().parent().removeClass('col-md-12').addClass('col-md-6');
+                    $(".address-content").show();
+                    $(".address-content-cta").show();
+                  }                  
+
                   return false;
                 },
 

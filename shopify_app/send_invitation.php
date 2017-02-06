@@ -17,7 +17,7 @@ function saveReferrals($data) {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // prepare sql and bind parameters  
-  $stmt = $conn->prepare("UPDATE access_token SET token=:token, expiry_date=DATE_ADD( NOW(), INTERVAL 24 HOUR ) WHERE id = 1");
+  $stmt = $conn->prepare("INSERT INTO friend_referral ('referrer_name', 'referrer_email', 'friend_name', 'friend_email') VALUES ()");
   $stmt->bindParam(':token', $token);
 
   $token = $access_token;
