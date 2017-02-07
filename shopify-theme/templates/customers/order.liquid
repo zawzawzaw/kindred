@@ -50,7 +50,11 @@
               </div>
               <div class="col-md-6">
                 <h4>Payment Transaction</h4>
-                <p></p>
+                {% for transaction in order.transactions %}
+                  {% if forloop.first %}
+                    <p>{{ transaction.gateway }}</p>
+                  {% endif %}
+                {% endfor %}
               </div>
             </div>        
           </div>             

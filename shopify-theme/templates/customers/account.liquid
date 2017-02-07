@@ -152,56 +152,70 @@
 
                         {{ form.errors | default_errors }}
 
-                        <div class="grid">
-                          <div class="grid__item one-half small--one-whole">
+                        <div class="row">
+                          <div class="col-md-6">
                             <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
                             <input type="text" id="AddressFirstName_{{ form.id }}" class="input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
                           </div>
 
-                          <div class="grid__item one-half small--one-whole">
+                          <div class="col-md-6">
                             <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
                             <input type="text" id="AddressLastName_{{ form.id }}" class="input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
                           </div>
                         </div>
-
-                        <label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
-                        <input type="text" id="AddressCompany_{{ form.id }}" class="input-full" name="address[company]" value="{{ form.company }}" autocapitalize="words">
-
-                        <label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
-                        <input type="text" id="AddressAddress1_{{ form.id }}" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
-
-                        <label for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
-                        <input type="text" id="AddressAddress2_{{ form.id }}" class="input-full" name="address[address2]" value="{{ form.address2 }}" autocapitalize="words">
-
-                        <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
-                        <input type="text" id="AddressCity_{{ form.id }}" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
-
-                        <label for="AddressCountry_{{ form.id }}">{{ 'customer.addresses.country' | t }}</label>
-                        <div class="dropdown"> 
-                          <select id="AddressCountry_{{ form.id }}" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                        
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="AddressCompany_{{ form.id }}">{{ 'customer.addresses.company' | t }}</label>
+                            <input type="text" id="AddressCompany_{{ form.id }}" class="input-full" name="address[company]" value="{{ form.company }}" autocapitalize="words">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
+                            <input type="text" id="AddressAddress1_{{ form.id }}" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
+                          </div>
                         </div>
-
-                        <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
-                          <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}</label>
-                          <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
-                        </div>
-
-                        <div class="grid">
-                          <div class="grid__item one-half small--one-whole">
+                        
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label for="AddressAddress2_{{ form.id }}">{{ 'customer.addresses.address2' | t }}</label>
+                            <input type="text" id="AddressAddress2_{{ form.id }}" class="input-full" name="address[address2]" value="{{ form.address2 }}" autocapitalize="words">  
+                          </div>
+                          <div class="col-md-6">
+                            <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
+                            <input type="text" id="AddressCity_{{ form.id }}" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+                          </div>                          
+                        </div>                        
+                        
+                        <div class="row">
+                          <div class="col-md-6" style="max-height: 70px;">
+                            <label for="AddressCountry_{{ form.id }}">{{ 'customer.addresses.country' | t }}</label>
+                            <div class="dropdown"> 
+                              <select id="AddressCountry_{{ form.id }}" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                            </div>    
+                          </div>
+                          <div class="col-md-6">
+                            <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
+                              <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}</label>
+                              <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
+                            </div>    
+                          </div>
+                          <div class="col-md-6">
                             <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
                             <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
                           </div>
 
-                          <div class="grid__item one-half small--one-whole">
+                          <div class="col-md-6">
                             <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
                             <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
                           </div>
                         </div>
 
-                        <p>
-                          {{ form.set_as_default_checkbox }}
-                          <label for="address_default_address_{{ form.id }}" class="inline">{{ 'customer.addresses.set_default' | t }}</label>
-                        </p>
+                        <div class="row">
+                          <div class="col-md-12">
+                            {{ form.set_as_default_checkbox }}
+                            <label for="address_default_address_{{ form.id }}" class="inline checkbox-label"><span></span><p>{{ 'customer.addresses.set_default' | t }}</p></label>
+                          </div>
+                        </div>
                         
                         <div class="edit-address-form-cta-container">
                           <input type="submit" class="square-cta btn" value="{{ 'customer.addresses.update' | t }}">
@@ -224,96 +238,128 @@
               </div>
             {% endif %}            
           </div>
-          
-          <div id="new-address-container" class="adderss-container-content">
-            {% comment %}
-              Add address form, hidden by default
-            {% endcomment %}
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="add-new-address-cta">
-                  <a href="#" class="square-cta btn" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.add_new' | t }}</a>
+          {% endpaginate %}
+        </div>
+      </div>
+    </div>
+    
+    <!-- <div class="row">
+      <div class="col-md-12">
+
+        <div class="account-cta-container">
+          <a class="square-cta" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
+        </div>
+
+      </div>
+    </div> -->
+
+  </div>
+  
+  <div class="bg-divider">
+    <div class="container-fluid has-breakpoint">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="account-address-container">
+            <div id="new-address-container" class="adderss-container-content">
+              {% comment %}
+                Add address form, hidden by default
+              {% endcomment %}
+
+              <div class="row">
+                <div class="col-md-12">
+                  <!-- <div class="add-new-address-cta">
+                    <a href="#" class="square-cta btn" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.add_new' | t }}</a>
+                  </div> -->
+                  
+                  {% form 'customer_address', customer.new_address %}
+                    <div id="AddAddress" class="add-address-form form-vertical" {% unless form.errors %}style=""{% endunless %}>
+
+                      <h2>{{ 'customer.addresses.add_new' | t }}</h2>
+
+                      {{ form.errors | default_errors }}
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
+                          <input type="text" id="AddressFirstNameNew" class="input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
+                        </div>
+
+                        <div class="col-md-6">
+                          <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
+                          <input type="text" id="AddressLastNameNew" class="input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
+                          <input type="text" id="AddressCompanyNew" class="input-full" name="address[company]" value="{{ form.company }}" autocapitalize="words">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
+                          <input type="text" id="AddressAddress1New" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
+                        </div>
+                      </div>
+                      
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
+                          <input type="text" id="AddressAddress2New" class="input-full" name="address[address2]" value="{{ form.address2 }}" autocapitalize="words">
+                        </div>
+                        <div class="col-md-6">
+                          <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
+                          <input type="text" id="AddressCityNew" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+                        </div>
+                      </div>
+                      
+
+                      
+
+                      <div class="row">
+
+                        <div class="col-md-6" style="max-height: 70px;">
+                          <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+                          <div class="dropdown">
+                            <select id="AddressCountryNew" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6" id="AddressProvinceContainerNew">
+                          <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
+                          <div class="dropdown">
+                            <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
+                          </div>
+                        </div>
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="col-md-6">
+                          <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+                          <input type="text" id="AddressZipNew" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                        </div>
+
+                        <div class="col-md-6">
+                          <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
+                          <input type="tel" id="AddressPhoneNew" class="input-full" name="address[phone]" value="{{ form.phone }}">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-12">
+                          {{ form.set_as_default_checkbox }}
+                          <label for="address_default_address_new" class="inline checkbox-label"><span></span><p>{{ 'customer.addresses.set_default' | t }}</p></label>
+                        </div>
+                      </div>
+
+                      <div class="add-address-form-cta">
+                        <input type="submit" class="square-cta btn" value="{{ 'customer.addresses.add' | t }}">
+                        <!-- <a href="#" class="square-cta" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | t }}</a> -->
+                      </div>
+
+                    </div>
+                  {% endform %}
                 </div>
-                
-                {% form 'customer_address', customer.new_address %}
-                  <div id="AddAddress" class="add-address-form form-vertical" {% unless form.errors %}style="display:none;"{% endunless %}>
-
-                    <h4>{{ 'customer.addresses.add_new' | t }}</h4>
-
-                    <hr>
-
-                    {{ form.errors | default_errors }}
-
-                    <div class="grid">
-
-                      <div class="grid__item one-half small--one-whole">
-                        <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
-                        <input type="text" id="AddressFirstNameNew" class="input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
-                      </div>
-
-                      <div class="grid__item one-half small--one-whole">
-                        <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
-                        <input type="text" id="AddressLastNameNew" class="input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
-                      </div>
-
-                    </div>
-
-                    <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
-                    <input type="text" id="AddressCompanyNew" class="input-full" name="address[company]" value="{{ form.company }}" autocapitalize="words">
-
-                    <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
-                    <input type="text" id="AddressAddress1New" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
-
-                    <label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
-                    <input type="text" id="AddressAddress2New" class="input-full" name="address[address2]" value="{{ form.address2 }}" autocapitalize="words">
-
-                    <div class="grid">
-                      <div class="grid__item large--one-half">
-                        <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
-                        <input type="text" id="AddressCityNew" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
-                      </div>
-
-                      <div class="grid__item large--one-half">
-                        <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
-                        <div class="dropdown">
-                          <select id="AddressCountryNew" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
-                        </div>
-                      </div>
-
-                      <div class="grid__item" id="AddressProvinceContainerNew" style="display:none">
-                        <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
-                        <div class="dropdown">
-                          <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
-                        </div>
-                      </div>
-
-                      <div class="grid__item large--one-half">
-                        <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
-                        <input type="text" id="AddressZipNew" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
-                      </div>
-
-                      <div class="grid__item large--one-half">
-                        <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
-                        <input type="tel" id="AddressPhoneNew" class="input-full" name="address[phone]" value="{{ form.phone }}">
-                      </div>
-                    </div>
-
-                    <p>
-                      {{ form.set_as_default_checkbox }}
-                      <label for="address_default_address_new" class="inline">{{ 'customer.addresses.set_default' | t }}</label>
-                    </p>
-
-                    <div class="add-address-form-cta">
-                      <input type="submit" class="square-cta btn" value="{{ 'customer.addresses.add' | t }}">
-                      <a href="#" class="square-cta" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | t }}</a>
-                    </div>
-
-                  </div>
-                {% endform %}
               </div>
             </div>
-          </div>
 
             <script>
               // Initialize observers on address selectors
@@ -337,13 +383,18 @@
                   editEl.style.display = editEl.style.display == 'none' ? '' : 'none';
 
                   if(editEl.style.display == '') {                    
+
+                    $(".account-address-container").addClass("editing");
+
                     $(editEl).parent().parent().parent().removeClass('col-md-6').addClass('col-md-12');
-                    $(".address-content").hide();
-                    $(".address-content-cta").hide();
+                    // $(".address-content").hide();
+                    // $(".address-content-cta").hide();
                   } else {
+                    $(".account-address-container").removeClass("editing");
+
                     $(editEl).parent().parent().parent().removeClass('col-md-12').addClass('col-md-6');
-                    $(".address-content").show();
-                    $(".address-content-cta").show();
+                    // $(".address-content").show();
+                    // $(".address-content-cta").show();
                   }                  
 
                   return false;
@@ -362,22 +413,10 @@
                 }
               }
             </script>
-
-          {% endpaginate %}
+          </div>
         </div>
       </div>
     </div>
-    
-    <!-- <div class="row">
-      <div class="col-md-12">
-
-        <div class="account-cta-container">
-          <a class="square-cta" href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a>
-        </div>
-
-      </div>
-    </div> -->
-
   </div>
 </article>
 
@@ -439,18 +478,99 @@
 
 
 <article id="page-account-friend-referral-section">
-    <div id='invtrflfloatbtn'></div>
-    <script>    
-    var invite_referrals = window.invite_referrals || {}; (function() { 
-        invite_referrals.auth = { bid_e :'13FC7B0E0D4836A75E987EF31E1529A2',
-                                    bid : '14558', 
-                                    t : '420', 
-                                    email : '', userParams : {'fname': ''}};    
-                                    invite_referrals.async = false;
-    var script = document.createElement('script');
-    script.src = "//cdn.invitereferrals.com/js/invite-referrals-1.0.js";
-    var entry = document.getElementsByTagName('script')[0];entry.parentNode.insertBefore(script, entry); })();
-    </script>
+    <div class="container-fluid has-breakpoint">
+      <div class="friend-referral-title">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>{{ 'customer.friend_referral.title' | t }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="friend-referral-content">
+        <form action="" method="post">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">{{ 'customer.friend_referral.title' | t }}</label>
+                  <div class="dropdown">
+                    <select name="salutation" id="salutation">
+                      <option value="">Please select</option>
+                      <option value="Mr">Mr</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Miss">Miss</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <label for="">{{ 'customer.friend_referral.name' | t }}</label>
+                  <input type="text" name="from_name" class="input-full">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="">{{ 'customer.friend_referral.to' | t }}</label>
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name" class="to_name input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email" class="to_email input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name_2" class="input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email_2" class="input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name_3" class="input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email_3" class="input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name_4" class="input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email_4" class="input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div id="paste-clone"></div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="message-input-container">
+                <label for="">{{ 'customer.friend_referral.name' | t }}</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="cta-container" class="row">
+            <div class="col-md-12">
+              <div class="add-more-cta-container">
+                <a href="#" id="add-more-name"><i class="fa fa-user-plus" aria-hidden="true"></i> Add more names</a>
+              </div>
+              <div class="send-message-cta-container">
+                <input type="submit" id="send-message" class="square-cta" value="Send Message">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 </article>
 
 <script>
@@ -469,6 +589,40 @@
         $(href).addClass("active-section");
         
       }
+    });
+
+    $("#add-more-name").on("click", function(e){
+      e.preventDefault();
+
+      var no = $(".text-input-container").length + 1;
+      var html = $(".text-input-container:first").clone()
+
+      var newNameInputAttr = $(html).find('input.to_name').attr("name") + "_" + no;
+      var newEmailInputAttr = $(html).find('input.to_email').attr("name") + "_" + no;
+
+      $(html).find('input.to_name').attr("name", newNameInputAttr)
+      $(html).find('input.to_email').attr("name", newEmailInputAttr)
+
+      var anchor = '<a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a>';
+
+      $(html).find('input.to_email').after(anchor);      
+
+      $("#paste-clone").append(html);
+    });
+
+    function updateFields() {
+      var $textInputContainer = $("#paste-clone").find(".text-input-container");
+      $.each($textInputContainer, function(k, v){
+        console.log(v)
+      });
+    }
+
+    $("#paste-clone").on("click", ".delete", function(e){
+      e.preventDefault();
+
+      $(this).parent().parent().remove();
+
+      updateFields();
     });
   });
 </script>
