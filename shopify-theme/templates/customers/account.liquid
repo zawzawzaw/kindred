@@ -478,18 +478,99 @@
 
 
 <article id="page-account-friend-referral-section">
-    <div id='invtrflfloatbtn'></div>
-    <script>    
-    var invite_referrals = window.invite_referrals || {}; (function() { 
-        invite_referrals.auth = { bid_e :'13FC7B0E0D4836A75E987EF31E1529A2',
-                                    bid : '14558', 
-                                    t : '420', 
-                                    email : '', userParams : {'fname': ''}};    
-                                    invite_referrals.async = false;
-    var script = document.createElement('script');
-    script.src = "//cdn.invitereferrals.com/js/invite-referrals-1.0.js";
-    var entry = document.getElementsByTagName('script')[0];entry.parentNode.insertBefore(script, entry); })();
-    </script>
+    <div class="container-fluid has-breakpoint">
+      <div class="friend-referral-title">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>{{ 'customer.friend_referral.title' | t }}</h2>
+          </div>
+        </div>
+      </div>
+      <div class="friend-referral-content">
+        <form action="" method="post">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="row">
+                <div class="col-md-4">
+                  <label for="">{{ 'customer.friend_referral.title' | t }}</label>
+                  <div class="dropdown">
+                    <select name="salutation" id="salutation">
+                      <option value="">Please select</option>
+                      <option value="Mr">Mr</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Mrs">Mrs</option>
+                      <option value="Miss">Miss</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-8">
+                  <label for="">{{ 'customer.friend_referral.name' | t }}</label>
+                  <input type="text" name="from_name" class="input-full">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="">{{ 'customer.friend_referral.to' | t }}</label>
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name" class="to_name input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email" class="to_email input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name_2" class="input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email_2" class="input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name_3" class="input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email_3" class="input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="row text-input-container">
+                <div class="col-md-5">                
+                  <input type="text" name="to_name_4" class="input-full" placeholder="Name">
+                </div>
+                <div class="col-md-7">
+                  <input type="email" name="to_email_4" class="input-full" placeholder="Email Address">
+                </div>
+              </div>
+              <div id="paste-clone"></div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="message-input-container">
+                <label for="">{{ 'customer.friend_referral.name' | t }}</label>
+                <textarea name="message" id="message" cols="30" rows="10"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div id="cta-container" class="row">
+            <div class="col-md-12">
+              <div class="add-more-cta-container">
+                <a href="#" id="add-more-name"><i class="fa fa-user-plus" aria-hidden="true"></i> Add more names</a>
+              </div>
+              <div class="send-message-cta-container">
+                <input type="submit" id="send-message" class="square-cta" value="Send Message">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 </article>
 
 <script>
@@ -508,6 +589,40 @@
         $(href).addClass("active-section");
         
       }
+    });
+
+    $("#add-more-name").on("click", function(e){
+      e.preventDefault();
+
+      var no = $(".text-input-container").length + 1;
+      var html = $(".text-input-container:first").clone()
+
+      var newNameInputAttr = $(html).find('input.to_name').attr("name") + "_" + no;
+      var newEmailInputAttr = $(html).find('input.to_email').attr("name") + "_" + no;
+
+      $(html).find('input.to_name').attr("name", newNameInputAttr)
+      $(html).find('input.to_email').attr("name", newEmailInputAttr)
+
+      var anchor = '<a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a>';
+
+      $(html).find('input.to_email').after(anchor);      
+
+      $("#paste-clone").append(html);
+    });
+
+    function updateFields() {
+      var $textInputContainer = $("#paste-clone").find(".text-input-container");
+      $.each($textInputContainer, function(k, v){
+        console.log(v)
+      });
+    }
+
+    $("#paste-clone").on("click", ".delete", function(e){
+      e.preventDefault();
+
+      $(this).parent().parent().remove();
+
+      updateFields();
     });
   });
 </script>

@@ -2,10 +2,14 @@
 require 'PHPMailerAutoload.php';
 
 $data = array();
+$data['salutation'] = $_POST['salutation'];
 $data['from_name'] = $_POST['from_name'];
 $data['from_email'] = $_POST['from_email'];
 $data['to_name'] = $_POST['to_name'];
 $data['to_email'] = $_POST['to_email'];
+$data['message'] = $_POST['message'];
+
+$data['discount_code'] = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
 
 function saveReferrals($data) {
   $servername = "localhost:3306";
@@ -17,14 +21,16 @@ function saveReferrals($data) {
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
   // prepare sql and bind parameters  
-  $stmt = $conn->prepare("INSERT INTO friend_referral ('referrer_name', 'referrer_email', 'friend_name', 'friend_email') VALUES ()");
-  $stmt->bindParam(':token', $token);
+  $stmt = $conn->prepare("INSERT INTO friend_referral ('referrer_name', 'referrer_email', 'friend_name', 'friend_email', 'discount_code') VALUES (:referrer_name, :referrer_email, :friend_name, :friend_email, :discount_code)");
+  $stmt->bindParam(':referrer_name', $data['from_name']);
+  $stmt->bindParam(':referrer_email', $data['from_email']);
+  $stmt->bindParam(':friend_name', $data['friend_name']);
+  $stmt->bindParam(':friend_email', $data['friend_email']);
+  $stmt->bindParam(':discount_code', $data['discount_code']);
 
-  $token = $access_token;
   $stmt->execute();
 
   $conn = null;
-
 }
 
 function sendEmail($data) {
@@ -47,14 +53,18 @@ function sendEmail($data) {
   $mail->isHTML(true);                                  // Set email format to HTML
 
   $mail->Subject = 'Your friend '.$data['from_name']. 'invites you to try Kindred Tea!';
-  $mail->Body    = 'Hi,<br><br>You are invited to Kindred Tea by your friend. You and your friend will receive 10% discount code on your first purchase at Kindred Tea.';
+  $mail->Body    = 'Hi,<br><br>You are invited to Kindred Tea by your friend. You and your friend will receive 10% discount code after you make first purchase at Kindred Tea.';
   $mail->AltBody = '';
 
   if(!$mail->send()) {
       echo 'Message could not be sent.';
       echo 'Mailer Error: ' . $mail->ErrorInfo;
+      return false;
   } else {
-      echo 'Message has been sent';
+      return true;
   }
 }
+
+saveReferrals($data);
+return sendEmail($data);
 ?>

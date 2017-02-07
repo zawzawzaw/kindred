@@ -228,6 +228,13 @@
       "submit": "Create New Account",
       "newsletter": "Please add me to the Kindred Teas email list.",
       "cancel": "Return to Store"
+    },
+    "friend_referral": {
+      "title": "Invite a friend",
+      "salutation": "Salutation*",      
+      "name": "Your Name*",
+      "message": "Your Message*",
+      "to": "To*"
     }
   },
   "homepage": {
