@@ -1,0 +1,98 @@
+<!--
+   _____ ___ _____ _     _____
+  |_   _|_ _|_   _| |   | ____|
+    | |  | |  | | | |   |  _|
+    | |  | |  | | | |___| |___
+    |_| |___| |_| |_____|_____|
+
+-->
+
+
+<article id="page-faq-title-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="page-faq-title">
+          <h2>{{ page.title }}</h2>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!--
+   _____ _____ ____  __  __ ____     ____ ___  ______   __
+  |_   _| ____|  _ \|  \/  / ___|   / ___/ _ \|  _ \ \ / /
+    | | |  _| | |_) | |\/| \___ \  | |  | | | | |_) \ V /
+    | | | |___|  _ <| |  | |___) | | |__| |_| |  __/ | |
+    |_| |_____|_| \_\_|  |_|____/   \____\___/|_|    |_|
+
+-->
+
+<article id="terms-page-content-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+
+        <div id="terms-page-content-item-container">
+
+          {% for block in section.blocks limit: section.blocks.size %}
+
+
+            <div class="terms-page-content-item">
+              <div class="default-copy">
+                {% if block.settings.title != blank %}
+                  <h4>{{ block.settings.title }}</h4>
+                {% else %}}
+                  <h4>Section Title</h4>
+                {% endif %}
+
+                {% if block.settings.copy != blank %}
+                  {{ block.settings.copy }}
+                {% else %}
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                {% endif %}
+                
+              </div>
+            </div>
+
+          {% endfor %}
+
+        </div> <!-- terms-page-content-item-container -->
+
+      </div>
+    </div> <!-- row -->
+  </div>
+</article>
+
+{% schema %}
+  {
+    "name": "Terms Content",
+    "class": "terms-page-content-section",
+    "max_blocks": 50,
+    "blocks": [
+      {
+        "type": "termsitem",
+        "name": "Terms Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "copy",
+            "label": "Copy"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

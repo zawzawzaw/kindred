@@ -1,0 +1,122 @@
+<article id="contact-page-detail-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-6">
+
+        <div id="contact-page-detail-map-container">
+
+          {% if section.settings.maplat != blank and section.settings.maplng != blank %}
+
+            <div id="contact-page-detail-map" 
+              data-home-icon="{{ 'contact-pin.svg' | asset_url }}"
+              data-lat="{{ section.settings.maplat }}" 
+              data-lng="{{ section.settings.maplng }}">
+            </div>
+
+          {% else %}
+
+            <div id="contact-page-detail-map" 
+              data-home-icon="{{ 'contact-pin.svg' | asset_url }}"
+              data-lat="1.333848" 
+              data-lng="103.697271">
+            </div>
+          {% endif %}
+
+        </div>
+        
+
+      </div> <!-- col-md-6 -->
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+        <div id="contact-page-detail-copy">
+          <div id="contact-page-detail-copy-title">
+            
+            {% if section.settings.title != blank %}
+              <h1>{{ section.settings.title }}</h1>
+            {% else %}
+              <h1>Get in Touch</h1>
+            {% endif %}
+
+          </div>
+
+          <div id="contact-page-detail-copy-item-container">
+            {% for block in section.blocks limit: section.blocks.size %}
+              <div class="contact-page-detail-copy-item">
+                <h4>{{ block.settings.title }}</h4>
+                {{ block.settings.copy }}
+              </div>
+            {% endfor %}
+          </div> <!-- contact-page-detail-copy-item-container -->
+
+          {% if section.settings.fineprint != blank %}
+            <div id="contact-page-detail-copy-fineprint">
+              <small>{{ section.settings.fineprint }}</small>
+            </div>
+          {% endif %}
+
+
+        </div> <!-- contact-page-detail-copy -->
+
+
+      </div> <!-- col-md-5 -->
+    </div> <!-- row -->
+  </div>
+</article>
+
+
+<!-- important -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2SOmCXdM5TEYYk81BFxiFwJZ_Z56moYo&v=3.exp"></script>
+
+
+
+{% schema %}
+  {
+
+    "name": "Contact Detail",
+    "class": "contact-page-detail-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+
+      {
+        "type": "text",
+        "id": "maplat",
+        "label": "Map Latitude"
+      },
+      {
+        "type": "text",
+        "id": "maplng",
+        "label": "Map Longitude"
+      },
+      {
+        "type": "text",
+        "id": "fineprint",
+        "label": "Fine Print"
+      }
+      
+    ],
+    "max_blocks": 10,
+    "blocks": [
+      {
+        "type": "contactdetailitem",
+        "name": "Contact Detail Item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "textarea",
+            "id": "copy",
+            "label": "Copy"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,63 +1,124 @@
 <!-- /templates/page.contact.liquid -->
-{% comment %}
 
-  This page template is a requirement if you are submitting your theme to the Shopify Theme Store.
-  Be sure to select page.contact as the template from the admin page to have this template take effect.
 
-  For information on adding more fields, visit:
-    - http://docs.shopify.com/support/configuration/store-customization/adding-fields-to-the-liquid-contact-form
 
-{% endcomment %}
 
-<div class="grid">
+<article id="contact-page-form-section">
+  <div class="container-fluid has-breakpoint">
 
-  <div class="grid__item large--two-thirds push--large--one-sixth">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
 
-    <h1>{{ page.title }}</h1>
+        {% section 'contact-title' %}
 
-    {% comment %}
-      Regular page content goes here.
-    {% endcomment %}
-    <div class="rte">
-      {{ page.content }}
+      </div>
     </div>
 
-    {% comment %}
-      Contact form starts here
-    {% endcomment %}
-    <div class="form-vertical">
-      {% form 'contact' %}
 
-        {% comment %}
-          Successful message
-        {% endcomment %}
-        {% if form.posted_successfully? %}
-          <p class="note form-success">
-            {{ 'contact.form.post_success' | t }}
-          </p>
-        {% endif %}
 
-        {{ form.errors | default_errors }}
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
 
-        {% assign name_attr = 'contact.form.name' | t | handle %}
-        <label for="ContactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
-        <input type="text" id="ContactFormName" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        <div id="contact-page-form-container">
+          <div id="contact-page-form">
 
-        <label for="ContactFormEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
-        <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+            {% form 'contact' %}
 
-        {% assign name_attr = 'contact.form.phone' | t | handle %}
-        <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
-        <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              {% if form.posted_successfully? %}
+                <p class="note form-success">
+                  {{ 'contact.form.post_success' | t }}
+                </p>
+              {% endif %}
 
-        <label for="ContactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
-        <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              {{ form.errors | default_errors }}
 
-        <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
 
-      {% endform %}
+              <div class="row">
+                <div class="col-md-6">
+
+                  <div class="contact-page-column-01">
+                    <label for="ContactFormSalutation">salutation</label>
+                    <div class="dropdown">
+                      <select id="ContactFormSalutation" name="contact[salutation]">
+                        <option>Mr.</option>
+                        <option>Ms.</option>
+                        <option>Mrs.</option>
+                        <option>Dr.</option>
+                      </select>
+                    </div>
+
+                    <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
+                    <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+
+                    <label>preference of contact</label>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div>
+                          <input type="checkbox" name="contact[contact preference]">
+                          <label class="checkbox-label"><span></span><p>Email</p></label>
+                        </div>
+
+                      </div>
+                      <div class="col-md-6">
+
+                        <div>
+                          <input type="checkbox" name="contact[contact preference]">
+                          <label class="checkbox-label"><span></span><p>Email</p></label>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div> <!-- contact-page-column-01 -->
+
+                </div>
+                <div class="col-md-6">
+
+                  <div class="contact-page-column-02">
+                    
+                    {% assign name_attr = 'contact.form.name' | t | handle %}
+                    <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+                    <input type="text" id="ContactFormName" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+                    {% assign name_attr = 'contact.form.phone' | t | handle %}
+                    <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+                    <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+
+
+
+                    <label for="ContactFormOrderID">order id (if applicable)</label>
+                    <input type="text" id="ContactFormOrderID" name="contact[orderid]">
+                    
+                  </div> <!-- contact-page-column-02 -->
+
+                </div>
+              </div> <!-- row -->
+
+              <label>subject</label>
+              <input type="text" id="ContactFormSubject" name="contact[subject]">
+
+              <label>message</label>
+              <textarea id="ContactFormMessage" name="contact[body]"></textarea>
+
+              <div class="cta-container">
+                <button type="submit" class="square-cta">send message</button>
+              </div>
+
+
+
+
+            {% endform %}
+                    
+          </div>
+        </div> <!-- #contact-page-form-container -->
+
+      </div>
     </div>
-
   </div>
+</article>
 
-</div>
+
+{% section 'contact-detail' %}
