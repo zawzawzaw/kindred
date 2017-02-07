@@ -152,14 +152,14 @@
       "phone": "Phone",
       "set_default": "Set as default address",
       "add": "Add Address",
-      "update": "Update Address",
+      "update": "Save Changes",
       "cancel": "Cancel",
       "edit": "Edit",
       "delete": "Delete"
     },
     "login": {
       "title": "Sign In",
-      "desc": "Welcome back! Login to your Kindred Teas account here.",
+      "desc": "Welcome back! Login to your Kindred Teas’ account here.",
       "email": "Email Address*",
       "password": "Password*",
       "forgot_password": "Forgot your password?",
@@ -169,7 +169,7 @@
       "guest_title": "Continue as a guest",
       "guest_continue": "Continue",
       "create_account_title": "Create Account",
-      "create_account_desc": "Create an account with us for quick checkout, to keep track of your order, and more."
+      "create_account_desc": "Create an account with us to keep track of your orders, experience a fuss-free checkout process and more!"
     },
     "orders": {
       "title": "Order History",

@@ -59,7 +59,7 @@
 
 #page-account-details-content-section {
   padding-top: 100px;
-  padding-bottom: 100px;
+  // padding-bottom: 100px;
   display: none;
 
   &.active-section {
@@ -102,8 +102,14 @@
     }
   }  
 
-  .account-address-container {
+  .bg-divider {
+    // padding-top: 40px;
+    // padding-bottom: 40px;
+    background-color: rgba(232, 215, 210, 0.38);
+  }
 
+  .account-address-container {
+ 
     #exisiting-address-container {
       .address-content-container {
         padding-bottom: 40px;      
@@ -116,23 +122,39 @@
       }
     }  
 
-    .adderss-container-content {
+    .adderss-container-content {      
       .edit-address-form, .add-address-form {
         padding: 30px 0px;
         // border-top: 1px solid @line-grey;
-        border-bottom: 1px solid @line-grey;
+        // border-bottom: 1px solid @line-grey;
         margin-top: 10px;
 
         hr {
           margin: 10px 0;
           border-color: @line-grey;
         }
-      }  
 
-      .add-address-form {
-        border: none;
+        .edit-address-form-cta-container, .add-address-form-cta {
+          text-align: right;
+        }
       }  
+      
+      .address-content-cta {
+        a {
+          font-size: 12px;
+          .body-font;
+          color: @grey-05;
+        }  
+      }
+      
 
+      h2 {
+        .header-h2-style;
+        font-size: 28px;
+        color: @off-black;
+        text-transform: capitalize;
+        margin: 0px;
+      } 
       h4 {
         .header-h4-style;
         font-size: 13px;
@@ -156,7 +178,7 @@
           text-transform: uppercase;
         }
         input[type=text],input[type=tel] {
-          background-color: @off-white-03;
+          background-color: @white;
           height: 35px;
           padding-left: 15px;
           border: none;        
@@ -172,7 +194,7 @@
           position: relative;
           
           select {
-            background-color: @off-white-03;
+            background-color: @white;
             background-image: none!important;
             border: none;
             height: 35px;        
@@ -205,10 +227,90 @@
             height: 35px;
             pointer-events: none;
             background-color: @brown;
+            color: @white;
           }
         }
-      }    
+        input[type="checkbox"] {
+          .body-font;
+          margin: 0px;
+          .opacity(0);
+          z-index: 999;
+          position: relative;
+          top: 0px;
+          left: 2px;
+          display: inline-block;
+        }
+
+        input[type="checkbox"] + label span {  
+          width: 20px;  
+          height: 20px;
+          margin-right: 8px;
+          border: 1px solid #a7a9ac;
+          z-index: -999;
+          display: inline-block;
+          font-size: 17px;
+          line-height: 18px;
+          vertical-align: middle;
+        }
+        
+        input[type="checkbox"]:checked + label span:after {  
+          content: '\2713';
+          position: absolute;
+          top: 1px;
+          left: 3px;
+          font-size: 25px;      
+        }
+
+        label.checkbox-label {
+          display: inline-block;
+          margin-left: -17px;
+          position: relative;
+          vertical-align: top;
+          margin-bottom: 20px;
+          
+          p {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          
+        }
+      }      
+
+      .edit-address-form {
+        hr {
+          border-color: @grey-05;
+        }
+        input[type="checkbox"] + label span { 
+          border-color: @grey-05;
+        }
+        input[type=text],input[type=tel] {
+          background-color: @off-white-03;
+        }
+        select {
+          background-color: @off-white-03;
+        }
+      }  
+
     }
+
+    &.editing {
+      #exisiting-address-container {
+        padding-bottom: 40px;
+        .address-content-container {
+          padding-bottom: 0px; 
+          .address-content {
+            display: none;
+          }
+          .address-content-cta {
+            display: none;
+          }    
+          .edit-address-form {
+            padding: 0px;
+            margin: 0px;  
+          }   
+        }
+      }  
+    }    
       
   }
 
