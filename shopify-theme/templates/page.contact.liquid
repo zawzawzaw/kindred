@@ -22,7 +22,7 @@
       <div class="col-md-8">
 
         <div id="contact-page-form-container">
-          <div id="contact-page-form">
+          <div id="contact-page-form" class="simple-form-check add-element-version">
 
             {% form 'contact' %}
 
@@ -42,6 +42,7 @@
                     <label for="ContactFormSalutation">salutation</label>
                     <div class="dropdown">
                       <select id="ContactFormSalutation" name="contact[salutation]">
+                        <option value="">Please select</option>
                         <option>Mr.</option>
                         <option>Ms.</option>
                         <option>Mrs.</option>
@@ -49,15 +50,15 @@
                       </select>
                     </div>
 
-                    <label for="ContactFormEmail">{{ 'contact.form.email' | t }}</label>
-                    <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+                    <label for="ContactFormEmail">{{ 'contact.form.email' | t }}<span class="asterisk">*</span></label>
+                    <input type="email" id="ContactFormEmail" class="input-full required only-email" name="contact[email]" placeholder="Please enter your email address" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
 
                     <label>preference of contact</label>
 
                     <div class="row">
                       <div class="col-md-6">
                         <div>
-                          <input type="checkbox" name="contact[contact preference]">
+                          <input type="checkbox" value="email" name="contact[contact preference]">
                           <label class="checkbox-label"><span></span><p>Email</p></label>
                         </div>
 
@@ -65,8 +66,8 @@
                       <div class="col-md-6">
 
                         <div>
-                          <input type="checkbox" name="contact[contact preference]">
-                          <label class="checkbox-label"><span></span><p>Email</p></label>
+                          <input type="checkbox" value="phone" name="contact[contact preference]">
+                          <label class="checkbox-label"><span></span><p>Phone</p></label>
                         </div>
                         
                       </div>
@@ -79,18 +80,18 @@
                   <div class="contact-page-column-02">
                     
                     {% assign name_attr = 'contact.form.name' | t | handle %}
-                    <label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
-                    <input type="text" id="ContactFormName" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                    <label for="ContactFormName">{{ 'contact.form.name' | t }}<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormName" class="required input-full" name="contact[{{ name_attr }}]" placeholder="How should we address you" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
 
                     {% assign name_attr = 'contact.form.phone' | t | handle %}
                     <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
-                    <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                    <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="Please include country code" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
 
 
 
 
                     <label for="ContactFormOrderID">order id (if applicable)</label>
-                    <input type="text" id="ContactFormOrderID" name="contact[orderid]">
+                    <input type="text" id="ContactFormOrderID" name="contact[orderid]" placeholder="Write your order ID here">
                     
                   </div> <!-- contact-page-column-02 -->
 
@@ -98,13 +99,13 @@
               </div> <!-- row -->
 
               <label>subject</label>
-              <input type="text" id="ContactFormSubject" name="contact[subject]">
+              <input type="text" id="ContactFormSubject" name="contact[subject]" placeholder="Please enter your subject">
 
-              <label>message</label>
-              <textarea id="ContactFormMessage" name="contact[body]"></textarea>
+              <label>message<span class="asterisk">*</span></label>
+              <textarea id="ContactFormMessage" class="required" name="contact[body]" placeholder="Please write your message here."></textarea>
 
               <div class="cta-container">
-                <button type="submit" class="square-cta">send message</button>
+                <button type="submit" class="square-cta form-check-force-submit">send message</button>
               </div>
 
 

@@ -8,20 +8,61 @@
 // To standardize the forms in the website.
 
 
+
+.format-form-label-font{
+  .header-h4-style;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.075em;
+  color: @off-black;
+  text-transform: uppercase;
+}
+
+.format-form-input-font{
+  .body-font;
+  line-height: 25px;
+
+  // padding: 0;
+  padding-left: 16px;
+  padding-right: 0px;
+  padding-top: 6px;
+  padding-bottom: 5px;
+}
+
+
+
+
 // function to format the form
 
 .format-form(){
 
-
-
-
   label {
-    .header-h4-style;
-    font-size: 11px;
-    line-height: 11px;
-    letter-spacing: 0.075em;
-    color: @off-black;
-    text-transform: uppercase;
+    .format-form-label-font;
+
+    display: block;
+    margin-bottom: 6px;
+
+    span.asterisk{
+      .header-h4-style;
+      font-size: 22px;
+      line-height: 16px;
+      letter-spacing: 0.075em;
+      color: @off-black;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .error-element{
+    .format-form-label-font;
+    color: @brown;
+
+    display: block;
+    height: 0px;
+    text-align: right;
+
+    position: relative;
+    top: -22px;          // ??
   }
   
   input[type=email], 
@@ -37,9 +78,9 @@
     border-radius: 0px;
     // width: 459px;
     height: 35px;
-    .body-font;  
-    padding-left: 17px;      
-    margin-bottom: 20px;   
+    .format-form-input-font;
+
+    margin-bottom: 25px;   
   }
   textarea{
     height: 190px;
@@ -54,7 +95,9 @@
 
 
   input {
-    .round(0px);
+    // .round(0px);
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
   }
   input[type=submit] {
     display: inline-block;
@@ -67,16 +110,20 @@
       background-color: @off-white-03;
       background-image: none!important;
       border: none;
+      width: 100%;
       height: 35px;        
-      width: 100%;              
+      
+
+      // .round(0px);  
+      -webkit-border-radius: 0px;
+      border-radius: 0px;
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      .round(0px);  
-      .body-font; 
-      padding: 0;        
-      padding-left: 17px;   
-      margin-bottom: 20px;
+
+      .format-form-input-font;
+      
+      margin-bottom: 25px;
     }
 
     &:before {
@@ -86,9 +133,11 @@
     &:after{
       .fa;
       content: "\f107";
-      font-size: 13px;
+      // font-size: 13px;
+      font-size: 16px;
       line-height: 35px;        
       text-align: center;
+      color: @white;
 
       position: absolute;
       top: 0px;
@@ -117,7 +166,7 @@
     border: 1px solid #a7a9ac;
     z-index: -999;
     display: inline-block;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 18px;
     vertical-align: middle;
   }
@@ -132,9 +181,10 @@
 
   label.checkbox-label {
     display: inline-block;
-    margin-left: -17px;
+    margin-left: -16px;
     position: relative;
     vertical-align: top;
+    margin-bottom: 0;
     
     p {
       display: inline-block;

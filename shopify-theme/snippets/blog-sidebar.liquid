@@ -46,7 +46,7 @@
         <ul>
           {% for tag in blog.all_tags %}
             {% if current_tags contains tag %}
-            <li>{{ tag }}</li>
+            <li><div class="current-tag">{{ tag }}</div></li>
             {% else %}
             <li>{{ tag | link_to_tag: tag }}</li>
             {% endif %}

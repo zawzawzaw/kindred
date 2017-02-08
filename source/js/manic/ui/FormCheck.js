@@ -22,6 +22,31 @@ manic.ui.FormCheck = function(options, element) {
   this.options = $.extend({}, manic.ui.FormCheck.DEFAULT, options);
   this.element = element;
 
+
+  this.is_add_element_version = false;
+  if (this.element.hasClass('add-element-version')) {
+    this.is_add_element_version = true;
+  }
+
+  this.is_ajax_version = false;
+  if (this.element.hasClass('ajax-version')) {
+    this.is_ajax_version = true;
+  }
+
+  // if for some reason you are not able to add a class to the form
+  if(this.element.prop("tagName").toLowerCase() != 'form'){
+    console.log('manic.ui.FormCheck: added to form inside');
+    this.element = this.element.find('form');
+  }
+
+
+  // add reference of the form check
+  this.element.data('manic.ui.FormCheck', this);
+  
+  
+
+
+
   //    ___ _   _ ___ _____
   //   |_ _| \ | |_ _|_   _|
   //    | ||  \| || |  | |
@@ -41,15 +66,20 @@ manic.ui.FormCheck = function(options, element) {
   this.submit_button = this.element.find("input[type=submit]");
 
 
-  this.is_ajax_version = false;
-  if (this.element.hasClass('ajax-version')) {
-    this.is_ajax_version = true;
-  }
+  
   
 
 
 
-  this.element.submit($.proxy(this.on_form_submit,this));                           // listen to form submit
+  this.element.submit(this.on_form_submit.bind(this));                           // listen to form submit
+
+  // this.element.submit($.proxy(this.on_form_submit,this));                           // listen to form submit
+
+  // FORCED SUBMIT...
+  this.element.find('.form-check-force-submit').click(function(event){
+    console.log('manic.ui.FormCheck: forced submit...');
+    this.element.submit();
+  }.bind(this));
 
 
   this.create_input_array();
@@ -260,6 +290,15 @@ manic.ui.FormCheck.prototype.remove_input_error = function(input_item) {
   input_item.removeClass(this.options["error_class"]);
   input_item.trigger('form-check-no-error');
 
+  if (this.is_add_element_version == true) {
+    if (goog.isDefAndNotNull(input_item.data('error-element'))) {
+      var error_element = input_item.data('error-element');
+      error_element.remove();
+    } else {
+      // nothing to remove
+    }
+  }  
+
   /**
    * @type {jQuery}
    */
@@ -277,6 +316,28 @@ manic.ui.FormCheck.prototype.remove_input_error = function(input_item) {
 manic.ui.FormCheck.prototype.add_input_error = function(input_item,input_name,message) {
   input_item.addClass(this.options["error_class"]);
   input_item.trigger('form-check-error');
+
+  if (this.is_add_element_version == true) {
+    if (goog.isDefAndNotNull(input_item.data('error-element'))) {
+
+      // modify html, then add again
+      var error_element = input_item.data('error-element');
+      error_element.html(message);
+      input_item.before(error_element);
+      
+    } else {
+      // create one, then add before input
+      var error_element = $('<div class="error-element">' + message + '</div>');
+
+      input_item.data('error-element', error_element);
+      input_item.before(error_element);
+    }
+  }
+
+
+
+  
+
 
   console.log('has error: ' + input_name);
 
@@ -333,6 +394,8 @@ manic.ui.FormCheck.prototype.sample_method_calls = function() {
 
 manic.ui.FormCheck.prototype.check_form = function() {
 
+  console.log('manic.ui.FormCheck: check_form');
+
   /**
    * @type {jQuery}
    */
@@ -388,7 +451,8 @@ manic.ui.FormCheck.prototype.check_form = function() {
       // check required
       if(input_item.hasClass("required")){
 
-
+        console.log('manic.ui.FormCheck: has required');
+        console.log(input_item);
 
         if( 
           (input_item.attr("type") == "checkbox" && input_item.is(':checked') == false) || 
@@ -396,6 +460,8 @@ manic.ui.FormCheck.prototype.check_form = function() {
           (input_item.attr("type") != "checkbox" && has_placeholder == true && input_item.val() == "") || 
           (input_item.attr("type") != "checkbox" && has_placeholder == true && input_item.val() == placeholder_str) 
         ){
+
+          console.log('has error');
           this.error_id_array[this.error_id_array.length] = input_id;
           this.add_input_error(input_item, input_name, manic.ui.FormCheck.STRING_REQUIRED );    ///////////////
 
@@ -557,11 +623,13 @@ manic.ui.FormCheck.prototype.public_method_04 = function() {};
  * @param  {object} event
  */
 manic.ui.FormCheck.prototype.on_form_submit = function(event) {
+  
   var return_value = this.check_form();
+  
+  // return false;                           //                                            // THIS WILL PREVENT FORM FROM SUBMITTING. debug
   
   return return_value;
   
-  // return false;                           //                                            // THIS WILL PREVENT FORM FROM SUBMITTING.
 };
 
 /**
@@ -569,6 +637,9 @@ manic.ui.FormCheck.prototype.on_form_submit = function(event) {
  * @param  {object} event
  */
 manic.ui.FormCheck.prototype.on_input_item_placeholder_focus = function(event) {
+
+  console.log('manic.ui.FormCheck: on focus?');
+
   var current_target = $(event.currentTarget);
   var placeholder = current_target.data('placeholder');
   var value = current_target.val();
@@ -591,6 +662,9 @@ manic.ui.FormCheck.prototype.on_input_item_placeholder_focus = function(event) {
  * @param  {object} event
  */
 manic.ui.FormCheck.prototype.on_input_item_placeholder_blur = function(event) {
+
+  console.log('manic.ui.FormCheck: on blur?');
+
   var current_target = $(event.currentTarget);
   var placeholder = current_target.data('placeholder');
   var value = current_target.val();

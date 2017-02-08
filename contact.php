@@ -25,14 +25,15 @@
       <div class="col-md-8">
 
         <div id="contact-page-form-container">
-          <div id="contact-page-form">
+          <div id="contact-page-form" class="simple-form-check add-element-version">
             <form>
 
               <div class="row">
                 <div class="col-md-6">
 
                   <div class="contact-page-column-01">
-                    <label for="nameofitem">salutation</label>
+                    <label for="nameofitem">salutation<span>*</span></label>
+
                     <div class="dropdown">
                       <select id="nameofitem" name="nameofitem">
                         <option>Option 01</option>
@@ -41,7 +42,7 @@
                       </select>
                     </div>
 
-                    <label for="nameofitem">email address*</label>
+                    <label for="nameofitem">email address<span>*</span></label>
                     <input type="text" id="nameofitem" name="nameofitem">
 
                     <label>preference of contact</label>
@@ -84,7 +85,7 @@
               </div> <!-- row -->
 
               <label>subject</label>
-              <input type="text" id="nameofitem" name="nameofitem">
+              <input type="text" id="nameofitem" name="nameofitem" class="required" placeholder="this is a placeholder">
 
               <label>message</label>
               <textarea></textarea>

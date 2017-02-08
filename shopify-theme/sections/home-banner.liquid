@@ -1,0 +1,91 @@
+<!--
+   _   _  ___  __  __ _____   ____    _    _   _ _   _ _____ ____
+  | | | |/ _ \|  \/  | ____| | __ )  / \  | \ | | \ | | ____|  _ \
+  | |_| | | | | |\/| |  _|   |  _ \ / _ \ |  \| |  \| |  _| | |_) |
+  |  _  | |_| | |  | | |___  | |_) / ___ \| |\  | |\  | |___|  _ <
+  |_| |_|\___/|_|  |_|_____| |____/_/   \_\_| \_|_| \_|_____|_| \_\
+
+-->
+
+
+
+<article id="home-page-banner-section">
+  <div id="home-page-banner">
+
+    {% for block in section.blocks limit: section.blocks.size %}
+
+      <div class="home-page-banner-item manic-padding-container">
+        <div class="manic-image-container manic-padding-image home-page-banner-image">
+          {% if block.settings.image != blank %}
+            <img src="" data-image-desktop="{{ block.settings.image | img_url: 'master' }}">
+          {% else %}
+            <img src="" data-image-desktop="{{ 'product-no-image.jpg' | asset_url }}">
+          {% endif %}
+        </div>
+        <div class="text-overlay">
+          <div class="container-fluid has-breakpoint">
+            <div class="row">
+              <div class="col-md-4 col-sm-3">
+
+                <div class="home-page-banner-overlay-image">
+                  <div class="manic-image-container has-show-all">
+                    {% if block.settings.image != blank %}
+                      <img src="" data-image-desktop="{{ block.settings.overlayimage | img_url: 'master' }}">
+                    {% else %}
+                      <img src="" data-image-desktop="{{ 'product-no-image.jpg' | asset_url }}">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8 col-sm-9">
+                <div class="manic-padding-text" data-y="{% if block.settings.textposition != blank %}{{ block.settings.textposition }}{% else %}400{% endif %}">
+                  {% if block.settings.text != blank %}
+                    <h1>{{ block.settings.text }}</h1>
+                  {% endif %}
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+  </div> <!-- home-page-banner -->
+</article>
+
+{% schema %}
+  {
+    "name": "Home Banner",
+    "class": "home-page-banner-section-container",
+    "max_blocks": 6,
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Banner",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "overlayimage",
+            "label": "Overlay Image"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Text"
+          },
+          {
+            "type": "text",
+            "id": "textposition",
+            "label": "Text Position Y"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
