@@ -37,25 +37,48 @@
 
   -->
 
-  {% if blog.all_tags.size > 0 %}
+  {% if article.tags.size > 0 %}
+
     <div class="blog-page-sidebar-item" id="blog-page-sidebar-tags">
       <div class="blog-page-sidebar-item-title">
-        <h4>Tags</h4>
+        <h4>Article Tags</h4>
       </div>
       <div class="blog-page-sidebar-item-content">
         <ul>
-          {% for tag in blog.all_tags %}
-            {% if current_tags contains tag %}
-            <li><div class="current-tag">{{ tag }}</div></li>
-            {% else %}
-            <li>{{ tag | link_to_tag: tag }}</li>
-            {% endif %}
+
+          {% for tag in article.tags %}
+            <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>{% unless forloop.last %}, {% endunless %}
           {% endfor %}
+
         </ul>
       </div>
     </div> <!-- #blog-page-sidebar-tags -->
 
+  {% else %}
+
+
+    {% if blog.all_tags.size > 0 %}
+      <div class="blog-page-sidebar-item" id="blog-page-sidebar-tags">
+        <div class="blog-page-sidebar-item-title">
+          <h4>Tags</h4>
+        </div>
+        <div class="blog-page-sidebar-item-content">
+          <ul>
+            {% for tag in blog.all_tags %}
+              {% if current_tags contains tag %}
+              <li><div class="current-tag">{{ tag }}</div></li>
+              {% else %}
+              <li>{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div> <!-- #blog-page-sidebar-tags -->
+
+    {% endif %}
+
   {% endif %}
+
 
 
 
@@ -78,7 +101,8 @@
       {% for article in blogs[blog.handle].articles limit:3 %}
 
         <div class="sidebar-popular-post-item">
-          <h3>{{ article.title }}</h3>
+          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+
           <!-- <h5>January 5, 2017</h5> -->
           <h5>{{ article.published_at | date: format: 'month_day_year' }}</h5>
           <a href="{{ article.url }}" class="arrow-cta small-version">Learn more</a>

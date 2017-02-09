@@ -6,8 +6,6 @@
 
 {% endcomment %}
 
-{% paginate collection.products by 12 %}
-
 
 {% if collection.image %}
   <article id="default-page-banner-section">
@@ -17,6 +15,17 @@
       </div>
     </div>
   </article>
+
+{% else %}
+
+  <article id="default-page-banner-section">
+    <div id="default-page-banner">
+      <div class="manic-image-container">
+        <img src="" data-image-desktop="{{ 'collection-banner.jpg' | asset_url }}" alt="Collection Page Banner">
+      </div>
+    </div>
+  </article>
+
 {% endif %}
 
 
@@ -41,6 +50,9 @@
         <div id="collection-page-product-title">
           {% if collection.description != blank %}
             {{ collection.description }}
+          {% else %}
+            <h2>Shop our Teas</h2>
+            <p>We have created a selection of specially crafted teas that we hope you will enjoy just as much as we have enjoyed searching for them.</p>
           {% endif %}
         </div> <!-- collection-page-product-title -->
 
@@ -50,52 +62,14 @@
       <div class="col-md-12">
 
         <div id="product-item-container">
-
-          {% comment %}
-            Loop through our products in the current collection.
-            See the snippet 'product-grid-item' for the layout.
-          {% endcomment %}
+          
           {% for product in collection.products %}
-
             {% include 'product-grid-item' %}
-
-          {% else %}
-
-            {% if collection.handle == 'all' and current_tags == '' %}
-
-              {% comment %}
-                Add default products to help with onboarding for collections/all only
-              {% endcomment %}
-              {% unless emptyState %}
-                {{ 'theme-onboarding.css' | global_asset_url | stylesheet_tag }}
-                {% assign emptyState = true %}
-              {% endunless %}
-              {% include 'onboarding-empty-collection' %}
-
-            {% else %}
-
-              {% comment %}
-                If collection exists but is empty, display message
-              {% endcomment %}
-              <div class="grid__item">
-                <p>{{ 'collections.general.no_matches' | t }}</p>
-              </div>
-
-            {% endif %}
-
           {% endfor %}
 
 
         </div> <!-- product-item-container -->
 
-
-        {% if paginate.pages > 1 %}
-          <div class="space20"></div>
-          <hr>
-          <div class="pagination">
-            {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
-          </div>
-        {% endif %}
 
 
 
@@ -107,4 +81,3 @@
 
 
 
-{% endpaginate %}

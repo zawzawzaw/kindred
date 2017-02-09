@@ -29,7 +29,9 @@
               <article class="blog-page-article">
 
                 <div class="blog-page-article-title">
-                  <h1>{{ article.title }}</h1>
+                  <h1><a href="{{ article.url }}">{{ article.title }}</a></h1>
+                  
+
                   <!-- <h4>january 5, 2017</h4> -->
                   {% capture author %}{{ article.author }}{% endcapture %}
                   {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}

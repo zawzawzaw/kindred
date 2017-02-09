@@ -21,6 +21,7 @@
 .format-form-input-font{
   .body-font;
   line-height: 25px;
+  color: @grey-05;
 
   // padding: 0;
   padding-left: 16px;
@@ -102,6 +103,9 @@
   input[type=submit] {
     display: inline-block;
   }
+
+
+
   .dropdown {
     display: block;
     position: relative;
@@ -149,49 +153,92 @@
     }
   } // .dropdown
 
-  input[type="checkbox"] {
-    margin: 0px;
-    .opacity(0);
-    z-index: 999;
-    position: relative;
-    top: 0px;
-    left: 2px;
-    display: inline-block;
-  }
 
-  input[type="checkbox"] + label span {  
-    width: 20px;  
-    height: 20px;
-    margin-right: 8px;
-    border: 1px solid #a7a9ac;
-    z-index: -999;
-    display: inline-block;
-    font-size: 16px;
-    line-height: 18px;
-    vertical-align: middle;
-  }
-  
-  input[type="checkbox"]:checked + label span:after {  
-    content: '\2713';
-    position: absolute;
-    top: 1px;
-    left: 3px;
-    font-size: 25px;      
-  }
-
-  label.checkbox-label {
-    display: inline-block;
-    margin-left: -16px;
+  .checkbox{
     position: relative;
-    vertical-align: top;
-    margin-bottom: 0;
-    
-    p {
-      display: inline-block;
-      vertical-align: middle;
+
+    padding-top: 10px;
+    margin-bottom: 25px;
+    margin-left: -8px;
+
+
+    input[type="checkbox"] {
+      .display-inline-block;
+      position: relative;
+      z-index: 20;
+      top: 2px;
+      left: 8px;
+      width: 20px;
+      height: 20px;
+
+
+      margin: 0px;
+      .opacity(0);
+
+      cursor: pointer;
     }
-    
-  }
+
+
+    input[type="checkbox"] + label{
+      .display-inline-block;
+      position: relative;
+      margin-bottom: 0;
+      margin-left: -16px;
+
+      cursor: pointer;
+
+      span{
+        font-size: 16px;
+        line-height: 18px;
+
+        .display-inline-block;
+        position: relative;
+        z-index: 1;
+        width: 20px;  
+        height: 20px;
+        margin-right: 8px + 3px;
+
+        .round(3px);
+        border: 1px solid #cccccc;
+
+        &:after{
+          content: "";
+          display: block;
+
+          .tick-icon;
+          position: absolute;
+          top: -6px;
+          left: 1px;
+
+          .opacity(0);
+          .transition-in(0.3s);
+        }
+      }
+
+      p {
+        .body-font;
+        text-transform: none;
+        line-height: 25px;
+        color: @grey-02;
+
+        .display-inline-block;
+        position: relative;
+        top: -2px;
+      }
+    }
+
+    // on state
+    input[type="checkbox"]:checked + label{
+      span{
+        &:after{
+          .opacity(1);
+        }
+      }
+    }
+
+
+  } // .checkbox
+
 
 
   .cta-container {

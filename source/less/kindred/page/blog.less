@@ -324,9 +324,17 @@
       }
     }
   }
+}
 
-  
 
+.is-mac{
+  #blog-page-sidebar-tags ul li{
+    .current-tag,
+    a{
+      padding-top: 5px;
+      padding-bottom: 1px;
+    }
+  }
 }
 
 
@@ -353,6 +361,15 @@
 
       // margin-bottom: 7px - 1px;
       margin-bottom: 6px;
+
+      a{
+        color: @grey;
+
+        &:focus,
+        &:hover{
+          color: @brown;
+        }
+      }
     }
     h5{
       font-size: 11px;
@@ -405,6 +422,14 @@
       font-size: 41px;
       line-height: 45px;
       // letter-spacing: -0.06em;
+      a{
+        color: @grey;
+
+        &:focus,
+        &:hover{
+          color: @brown;
+        }
+      }
     }
     h4{
       // letter-spacing: 0.1em;
@@ -437,6 +462,14 @@
       padding-top: 40px;
     }
 
+
+
   } // .blog-page-article-content
+
+  .blog-page-article-content-image{
+    height: 350px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 
 } // .blog-page-article

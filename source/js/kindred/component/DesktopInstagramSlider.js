@@ -26,12 +26,12 @@ kindred.component.DesktopInstagramSlider = function(options, element) {
   this.item_container = this.element.find('#home-instagram-item-container');
 
   this.item_template = [
-    '<div class="home-instagram-item">',
+    '<a href="{{link}}" target="_blank" class="home-instagram-item">',
       '<div class="white-bg"></div>',
       '<div class="manic-image-container" data-scale-mode="best_fit_no_scale_down">',
         '<img src="" data-image="{{image}}">',
       '</div>',
-    '</div>'
+    '</a>'
   ].join('');
 
 

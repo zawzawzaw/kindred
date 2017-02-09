@@ -14,6 +14,7 @@ goog.require('kindred.component.DesktopInstagramSlider');
 goog.require('kindred.component.DesktopHeader');
 goog.require('kindred.component.MobileHeader');
 goog.require('kindred.component.MailingListPopup');
+goog.require('kindred.component.Giftcard');
 
 
 /**
@@ -63,6 +64,10 @@ kindred.page.Default = function(options) {
    */
   this.contact_map = null;
   
+  /**
+   * @type {kindred.component.Giftcard}
+   */
+  this.giftcard = null;
 
 
 };
@@ -244,6 +249,15 @@ kindred.page.Default.prototype.init = function() {
 
 
 
+  if ($('#product-page-giftcard-design-container').length != 0) {
+    this.giftcard = new kindred.component.Giftcard({}, $('#product-page-giftcard-design-container'));
+  }
+
+  
+  
+
+
+
   if ($('#contact-page-detail-map').length != 0) {
     this.contact_map = new manic.google.Map2({}, $('#contact-page-detail-map'));
     console.log('create map');
@@ -251,7 +265,20 @@ kindred.page.Default.prototype.init = function() {
   }
   
 
+  // wrap article images in a row & manic-image-container 
   
+  if ($('.blog-page-article.article-version').length != 0) {
+    var arr = $('.blog-page-article.article-version .blog-page-article-content img');
+    var item = null;
+
+    for (var i = 0, l=arr.length; i < l; i++) {
+      item = $(arr[i]);
+      item.wrap('<div class="row"><div class="col-md-10 col-md-push-1"><div class="blog-page-article-content-image manic-image-container"></div></div></div>');
+    }
+
+    this.create_image_container();  // instantiate them
+
+  } // end if article-version
 
   console.log('kindred.page.Default: init');
 };

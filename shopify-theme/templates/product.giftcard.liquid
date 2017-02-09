@@ -1,11 +1,7 @@
 <!-- /templates/product.giftcard.liquid -->
 {% comment %}
 
-  Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
-  and allow search engines to easily understand what the content is.
-
-  For more information on these Scheme.org tags, visit:
-    - http://schema.org/docs/gs.html
+  GIFT CARD DOESN'T HAVE META FIELDS :D
 
 {% endcomment %}
 
@@ -30,21 +26,57 @@
         <div class="col-md-6">
 
           <div id="product-page-detail-image-container">
-            <div id="product-page-detail-image">
 
-              <div class="manic-image-container" data-vertical-align="bottom">
-                
-                {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-                {% if product.images.size >= 2 %}
-                  <img src="" data-image-desktop="{{ product.images[1]  | product_img_url: 'master' }}" alt="{{ product.images[1].alt | escape }}">
-                {% else %}
-                  <img src="" data-image-desktop="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" >
-                  <!-- <img src="" data-image-desktop="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" > -->
-                {% endif %}
 
+            <div id="product-page-giftcard-design-container">
+
+
+              <div class="product-page-giftcard-design" data-value="Design 01">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-01.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+              <div class="product-page-giftcard-design" data-value="Design 02">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-02.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+              <div class="product-page-giftcard-design" data-value="Design 03">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-03.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+              <div class="product-page-giftcard-design" data-value="Design 04">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-04.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
               </div>
 
-            </div> <!-- product-page-detail-image -->
+
+            </div> <!-- product-page-giftcard-design-container -->
+
+              
+
           </div> <!-- product-page-detail-image-container -->
 
         </div>
@@ -93,27 +125,33 @@
 
                     <div class="product-giftcard-custom-fields">
                       <div class="form-group">
-                        <label for="select-giftcard-design">Giftcard Design</label>
-                        <select id="select-giftcard-design" name="properties[Giftcard Design]">
-                          <option>Design 01</option>
-                          <option>Design 02</option>
-                          <option>Design 03</option>
-                          <option>Design 04</option>
-                        </select>
+                        <label for="select-giftcard-design">Design</label>
+                        <div class="giftcart-select-wrapper">
+                          <div class="select-wrapper">
+                            <select id="select-giftcard-design" name="properties[Giftcard Design]">
+                              <option>Design 01</option>
+                              <option>Design 02</option>
+                              <option>Design 03</option>
+                              <option>Design 04</option>
+                            </select>
+                          </div>
+                        </div>
+
                       </div>
                       <div class="form-group">
                         <label for="input-giftcard-name">Recipient's Name</label>
-                        <input id="input-giftcard-name" type="text" name="properties[Giftcard Name]" placeholder="">
+                        <input id="input-giftcard-name" type="text" name="properties[Giftcard Name]" value="Recipient's Name">
                       </div>
                       <div class="form-group">
                         <label for="input-giftcard-message">Message</label>
-                        <textarea id="input-giftcard-message" name="properties[Giftcard Message]"></textarea>
+                        <textarea id="input-giftcard-message" name="properties[Giftcard Message]">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</textarea>
                       </div>
                       
                     </div>
 
 
                     <div class="product-variant-container">
+                      <label>Value</label>
 
                       {% comment %}
                         Add product variants as a dropdown.
@@ -154,134 +192,11 @@
 
 
 
-                    {% if product.metafields.description.p01_origin != blank and product.metafields.description.p02_teatype != blank %}
-                      <div class="row">
-                        <div class="col-md-6">
-
-                          {% if product.metafields.description.p01_origin != blank %}
-                            <div class="product-detail inline-version">
-                              <label>Origin</label>
-                              <p>{{ product.metafields.description.p01_origin }}</p>
-                            </div>
-                          {% endif %}
-
-                        </div>
-                        <div class="col-md-6">
-
-                          {% if product.metafields.description.p02_teatype != blank %}
-                            <div class="product-detail inline-version">
-                              <label>Tea Type</label>
-                              <p>{{ product.metafields.description.p02_teatype }}</p>
-                            </div>
-                          {% endif %}
-
-                        </div>
-                      </div> <!-- row -->
-                    {% endif %}
-
-                    
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        {% if product.metafields.description.p03_ingredients != blank %}
-                          <div class="product-detail">
-                            <label>ingredients</label>
-                            <p>{{ product.metafields.description.p03_ingredients }}</p>
-                          </div>
-                        {% endif %}
-
-                        {% if product.metafields.description.p04_tastingnotes != blank %}
-                          <div class="product-detail">
-                            <label>tasting notes</label>
-                            <p>{{ product.metafields.description.p04_tastingnotes }}</p>
-                          </div>
-                        {% endif %}
-
-                        {% if product.metafields.description.p09_netweightcustom != blank %}
-                          <div class="product-detail">
-                            <label>net weight</label>
-                            <p>{{ product.metafields.description.p09_netweightcustom }}</p>
-                          </div>
-                        {% endif %}
-
-                        
-                        {% if product.metafields.description.p12_brewingcustom != blank %}
-                          <div class="product-detail">
-                            <label>brewing instructions</label>
-                            <p>{{ product.metafields.description.p12_brewingcustom }}</p>
-                          </div>
-                        {% endif %}
 
 
 
-                        {% if product.metafields.description.p13_dimension != blank %}
-                          <div class="product-detail">
-                            <label>Dimensions</label>
-                            <p>{{ product.metafields.description.p13_dimension }}</p>
-                          </div>
-                        {% endif %}
-
-                        {% if product.metafields.description.p15_characteristicstyle != blank %}
-                          <div class="product-detail">
-                            <label>Characteristic Style</label>
-                            <p>{{ product.metafields.description.p15_characteristicstyle }}</p>
-                          </div>
-                        {% endif %}
 
 
-
-                        
-                        
-                        
-                        
-
-                      </div>
-                      <div class="col-md-6">
-
-                        {% if product.metafields.description.p05_brewingtemperature != blank || product.metafields.description.p06_brewingvolume != blank || product.metafields.description.p07_brewingtearatio != blank || product.metafields.description.p08_brewingtime != blank %}
-                          <div class="product-detail">
-                            <label>brewing instructions</label>
-                            <ul>
-                              {% if product.metafields.description.p05_brewingtemperature != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-thermometer"></span>{{ product.metafields.description.p05_brewingtemperature }}</li>
-                              {% endif %}
-
-                              {% if product.metafields.description.p06_brewingvolume != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-teapot"></span>{{ product.metafields.description.p06_brewingvolume }}</li>
-                              {% endif %}
-
-                              {% if product.metafields.description.p07_brewingtearatio != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-leaf"></span>{{ product.metafields.description.p07_brewingtearatio }}</li>
-                              {% endif %}
-
-                              {% if product.metafields.description.p08_brewingtime != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-clock"></span>{{ product.metafields.description.p08_brewingtime }}</li>
-                              {% endif %}
-
-                            </ul>
-                          </div>
-                        {% endif %}
-
-                        {% if product.metafields.description.p11_multiple_ingredients != blank %}
-                          {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
-                          {% for ingredient_array_item in ingredient_array %}
-                            <div class="product-detail multiple-version">
-                              <p>{{ ingredient_array_item }}</p>
-                            </div>
-                          {% endfor %}
-                        {% endif %}
-
-
-                        {% if product.metafields.description.p14_material != blank %}
-                          <div class="product-detail">
-                            <label>Material</label>
-                            <p>{{ product.metafields.description.p14_material }}</p>
-                          </div>
-                        {% endif %}
-
-
-                      </div>
-                    </div> <!-- row -->
 
                     <hr>
 
@@ -389,7 +304,7 @@
     });
 
     
-    $('.selector-wrapper .single-option-selector').wrap('<div class="single-option-selector-custom-wrapper"></div>');
+    $('.selector-wrapper .single-option-selector').wrap('<div class="single-option-selector-custom-wrapper giftcard-version"></div>');
 
     // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
     {% if product.options.size == 1 and product.options.first != 'Title' %}
