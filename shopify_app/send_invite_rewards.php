@@ -1,16 +1,28 @@
 <?php
+$http_origin = $_SERVER['HTTP_ORIGIN'];
+
+$allowed_domains = array(
+  'https://kindredteas.com',
+  'http://kindredteas.com',
+);
+
+if (in_array($http_origin, $allowed_domains))
+{  
+    header("Access-Control-Allow-Origin: $http_origin");
+}
+
 require 'PHPMailer/PHPMailerAutoload.php';
 
 $inputs = file_get_contents('php://input');
 
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-fwrite($myfile, $inputs);
-fclose($myfile);
+// $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+// fwrite($myfile, $inputs);
+// fclose($myfile);
 
 $inputs = json_decode($inputs);
 
 function findEmail($email) {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -30,9 +42,9 @@ function findEmail($email) {
 function sendEmail($subject, $message, $email, $name) {
   $mail = new PHPMailer;
 
-  $mail->setFrom('info@kindredtea.com', 'Kindred Tea');
+  $mail->setFrom('no-reply@kindredtea.com', 'Kindred Tea');
   $mail->addAddress($email, $name);     // Add a recipient
-  $mail->addReplyTo('info@kindredtea.com', 'Kindred Tea');
+  $mail->addReplyTo('no-reply@kindredtea.com', 'Kindred Tea');
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
@@ -50,7 +62,7 @@ function sendEmail($subject, $message, $email, $name) {
 }
 
 function updateStatus($data) {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";

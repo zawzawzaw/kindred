@@ -179,7 +179,7 @@
                   <tr class="order_summary discount">
                     <td colspan="2"></td>
                     <td><h4>{{ discount.code }} {{ 'customer.order.discount' | t }}</h4></td>
-                    <td class="text-right">{{ discount.savings | money }}</td>
+                    <td class="text-right">-{{ discount.amount | money }}</td>
                   </tr>
                 {% endfor %}
 

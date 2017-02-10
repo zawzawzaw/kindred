@@ -3,7 +3,7 @@ require 'PHPMailer/PHPMailerAutoload.php';
 
 // update_admin_about_generated_code
 function getCode() {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -23,7 +23,7 @@ function getCode() {
 }
 
 function updateGeneratedCodeStatus($id) {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";

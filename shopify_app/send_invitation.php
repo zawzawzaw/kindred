@@ -1,8 +1,24 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$http_origin = $_SERVER['HTTP_ORIGIN'];
+
+$allowed_domains = array(
+  'https://kindredteas.com',
+  'http://kindredteas.com',
+);
+
+if (in_array($http_origin, $allowed_domains))
+{  
+    header("Access-Control-Allow-Origin: $http_origin");
+}
+
 require 'PHPMailer/PHPMailerAutoload.php';
 
 function saveReferrals($data) {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -50,7 +66,7 @@ function sendEmail($data) {
 
   $mail->setFrom($data['from_email'], $data['from_name']);
   $mail->addAddress($data['to_email'], $data['to_name']);     // Add a recipient
-  $mail->addReplyTo('info@kindredtea.com', 'Kindred Tea');
+  $mail->addReplyTo('no-reply@kindredtea.com', 'Kindred Tea');
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
@@ -68,7 +84,7 @@ function sendEmail($data) {
 }
 
 function checkIfAlreadyInvited($referrer_email, $friend_email) {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";

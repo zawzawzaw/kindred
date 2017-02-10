@@ -498,6 +498,7 @@
                 <div class="col-md-8">
                   <label for="">{{ 'customer.friend_referral.name' | t }}</label>
                   <input type="text" name="from_name" class="input-full">
+                  <input type="hidden" name="from_email" value="{{ customer.email }}">
                 </div>
               </div>
 
@@ -625,15 +626,27 @@
       var datastring = $("#friend-referral-form").serialize();
       $.ajax({
           type: "POST",
-          url: "//clients.manic.com.sg/kindred/shopify_app/send_invitation.php",
+          url: "//www.manic.com.sg/kindred/shopify_app/send_invitation.php",
           data: datastring,
           dataType: "json",
           success: function(data) {
+            console.log(data);
+
+            var params = [
+              "success=true"
+            ];
+
+            window.location.href =
+                "http://" +
+                window.location.host +
+                window.location.pathname +
+                '?' + params.join('&');
+
               //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
               // do what ever you want with the server response
           },
-          error: function() {
-              alert('error handing here');
+          error: function (xhr, ajaxOptions, thrownError) {
+              console.log(xhr);
           }
       });
 
