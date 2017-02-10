@@ -118,11 +118,6 @@ kindred.page.Default.prototype.init = function() {
     this.desktop_header = new kindred.component.DesktopHeader({}, $('#desktop-header'));
   }
 
-  
-
-
-
-
   if ($('#home-page-banner').length != 0) {
     $('#home-page-banner').slick({
       'speed': 350,
@@ -137,16 +132,10 @@ kindred.page.Default.prototype.init = function() {
     });
 
     // update on slick init/resize
-    $('#home-page-banner').on('breakpoint', function(event, slick, breakpoint){
-      this.update_page_layout();
-    }.bind(this));
-    $('#home-page-banner').on('init', function(event, slick){
+    $('#home-page-banner').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
       this.update_page_layout();
     }.bind(this));
     
-    
-
-
   } // #home-page-banner
 
 
@@ -180,13 +169,10 @@ kindred.page.Default.prototype.init = function() {
     });
 
     // update on slick init/resize
-    $('#home-page-shop-item-container').on('breakpoint', function(event, slick, breakpoint){
+    $('#home-page-shop-item-container').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
       this.update_page_layout();
     }.bind(this));
-    $('#home-page-shop-item-container').on('init', function(event, slick){
-      this.update_page_layout();
-    }.bind(this));
-
+    
   } // #home-page-shop-item-container
 
 
@@ -343,13 +329,15 @@ kindred.page.Default.prototype.update_page_layout = function(){
 
   }
 
-
+  /*
   if ($('#home-page-banner').length != 0 && $('#home-page-banner').hasClass('slick-initialized') == true) {
     $('#home-page-banner').slick('setPosition');
   }
   if ($('#home-page-shop-item-container').length != 0 && $('#home-page-shop-item-container').hasClass('slick-initialized') == true) {
     $('#home-page-shop-item-container').slick('setPosition');
   }
+  */
+
   // $('.your-element').slick('setPosition');
 
 };

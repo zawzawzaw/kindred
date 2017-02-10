@@ -166,13 +166,15 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
       ]
     });
 
-    this.item_container.on('breakpoint', function(event, slick, breakpoint){
+    this.item_container.on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
       this.update_layout();
     }.bind(this));
+
+    /*
     this.item_container.on('init', function(event, slick){
       this.update_layout();
     }.bind(this));
-    
+    */
 
   }
 

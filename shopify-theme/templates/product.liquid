@@ -76,9 +76,6 @@
                   {% endcomment %}
                   <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
 
-
-
-
                     <h1 class="product-name" itemprop="name">{{ product.title }}</h1>
                     <p class="product-price">
 
@@ -101,6 +98,78 @@
                         {{ product.description }}
                       </div>
                     </div>
+
+                    {% if product.id == 8748908297 or product.id == 8747743433 %}
+                      <div class="product-custom-properties-container">
+                        {% if product.id == 8748908297 %}
+
+                          <!-- teapot-one-tea-tin -->
+
+                          <div class="custom-wrapper">
+                            <label>Tea Tin</label>
+                            <div class="custom-wrapper-wrapper">
+                              <select name="properties[Tea Tin]" class="required">
+                                <option value="">Please select</option>
+                                <option>Rooibos Orange</option>
+                                <option>Chrysanthemum Pu Erh Tuocha</option>
+                                <option>Roasted Oolong</option>
+                                <option>Genmaicha Matcha-iri</option>
+                                <option>Elder &amp; Cream Black Tea</option>
+                                <option>Chamomile Rose Silver Needle</option>
+                                <option>Endearment</option>
+                                <option>Mulberry Leaf Tea</option>
+                                <option>Maple Vanille Green Tea</option>
+                                <option>Blessings</option>
+                              </select>
+                            </div>
+                          </div>
+
+                        {% elsif product.id == 8747743433 %}
+
+                          <!-- teapot-two-tea-tins -->
+
+                          <div class="custom-wrapper">
+                            <label>First Tin</label>
+                            <div class="custom-wrapper-wrapper">
+                              <select name="properties[Tea Tin 01]" class="required">
+                                <option value="">Please select</option>
+                                <option>Rooibos Orange</option>
+                                <option>Chrysanthemum Pu Erh Tuocha</option>
+                                <option>Roasted Oolong</option>
+                                <option>Genmaicha Matcha-iri</option>
+                                <option>Elder &amp; Cream Black Tea</option>
+                                <option>Chamomile Rose Silver Needle</option>
+                                <option>Endearment</option>
+                                <option>Mulberry Leaf Tea</option>
+                                <option>Maple Vanille Green Tea</option>
+                                <option>Blessings</option>
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="custom-wrapper">
+                            <label>Second Tin</label>
+                            <div class="custom-wrapper-wrapper">
+                              <select name="properties[Tea Tin 02]" class="required">
+                                <option value="">Please select</option>
+                                <option>Rooibos Orange</option>
+                                <option>Chrysanthemum Pu Erh Tuocha</option>
+                                <option>Roasted Oolong</option>
+                                <option>Genmaicha Matcha-iri</option>
+                                <option>Elder &amp; Cream Black Tea</option>
+                                <option>Chamomile Rose Silver Needle</option>
+                                <option>Endearment</option>
+                                <option>Mulberry Leaf Tea</option>
+                                <option>Maple Vanille Green Tea</option>
+                                <option>Blessings</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                        {% endif %}
+                      </div> <!-- product-custom-properties-container -->
+
+                    {% endif %}
 
 
                     <div class="product-variant-container">
