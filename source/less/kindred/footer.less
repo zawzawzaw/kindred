@@ -12,7 +12,36 @@
 }
 
 
+#desktop-footer-left-container{
+  position: relative;
 
+  #desktop-footer-logo-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #desktop-footer-menu{
+    position: absolute;
+    top: 0;
+    left: 170px;
+    right: 0;
+    height: 170px;
+  }
+
+}
+
+@media only screen and (max-width: 1180px) {
+  #desktop-footer-left-container #desktop-footer-menu{
+    left: 130px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  #desktop-footer-left-container #desktop-footer-menu{
+    left: 110px;
+    right: -20px;
+  }
+}
 
 
 
@@ -24,6 +53,9 @@
 //
 
 #desktop-footer-logo-container{
+
+  .display-inline-block;
+
   padding-top: 20px;
 }
 
@@ -41,22 +73,41 @@
 
 #desktop-footer-menu{
 
+  // .display-inline-block;
   padding-top: 36px;
 
+
   nav{
+    font-size: 0;
+    .justify-inline-blocks;
+
+
     ul{
       font-size: 0;
-      width: 190px * 3;
+      .display-inline-block;
 
-      margin-left: -30px;
+      // padding-right: 40px;
+
+      &:last-child{
+        padding-right: 0px;
+      }
+
+      // width: 190px * 3;
+
+      // margin-left: -30px;
+      
+
+      .display-inline-block;
 
       li{
         text-align: left;
 
-        .display-inline-block;
-        width: 190px;
         // margin-bottom: 10px;
+        /// width: 190px;
+        
+        // .display-inline-block;
         margin-bottom: 8px;
+        display: block;
 
         a{
           // .gotham-medium;
@@ -83,6 +134,8 @@
 
 
 
+
+/*
 @media only screen and (max-width: 1380px) {
   #desktop-footer-menu nav ul{
     width: 185px * 3;
@@ -127,7 +180,7 @@
     width: 125px;
   }
 }
-
+*/
 
 
 

@@ -668,55 +668,88 @@
 
 
 
+
+
     <footer id="desktop-footer">
       <div class="container-fluid has-breakpoint">
         <div class="row">
-          <div class="col-md-3">
-            <div id="desktop-footer-logo-container">
-              <a href="https://kindredteas.com/" id="desktop-footer-logo"></a>
-              
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div id="desktop-footer-menu">
-              <nav>
-                <ul>
-                  {% for link in linklists.footer.links %}
-                    {% comment %}
-                      Create a dropdown menu by naming a linklist the same as a link in the parent nav
+          <div class="col-md-8">
 
-                      More info on dropdowns:
-                        - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
-                    {% endcomment %}
-                    {% assign child_list_handle = link.title | handleize %}
-                    {% if linklists[child_list_handle].links != blank %}
-                      <li class="{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
-                        <a href="{{ link.url }}">
-                          {{ link.title }}
-                        </a>
-                      </li>
-                    {% else %}
-                      <li {% if link.active %}class="site-nav--active"{% endif %}>
-                        <a href="{{ link.url }}">{{ link.title }}</a>
-                      </li>
-                    {% endif %}
+            <div id="desktop-footer-left-container">
+
+              <div id="desktop-footer-logo-container">
+                <a href="https://kindredteas.com/" id="desktop-footer-logo"></a>
+              </div>
+
+              <div id="desktop-footer-menu">
+                <nav>
+
+                  {% for ul_index in (0..2) %}
+
+                    <ul>
+                      {% for link in linklists.footer.links %}
+
+                        {% assign footer_modulo = forloop.index0 | modulo: 3 %}
+                        
+                        {% if footer_modulo == ul_index %}
+                          <li {% if link.active %}class="site-nav--active"{% endif %}>
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                          </li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                    
                   {% endfor %}
 
+
+
                   <!-- 
-                  <li><a href="javascript:void(0);">About</a></li>
-                  <li><a href="javascript:void(0);">News</a></li>
-                  <li><a href="javascript:void(0);">My Account</a></li>
-                  <li><a href="https://kindredteas.com/collections/tea-store">Our Teas</a></li>
-                  <li><a href="javascript:void(0);">FAQS</a></li>
-                  <li><a href="javascript:void(0);">Contact Us</a></li>
-                  <li><a href="https://kindredteas.com/collections/tea-store">Tea Store</a></li>
-                  <li><a href="javascript:void(0);">Locate</a></li>
-                  <li><a href="javascript:void(0);">Terms & Privacy</a></li>
+                  <ul>
+                    {% for link in linklists.footer.links %}
+                      {% comment %}
+                        Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+                        More info on dropdowns:
+                          - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                      {% endcomment %}
+                      {% assign child_list_handle = link.title | handleize %}
+                      {% if linklists[child_list_handle].links != blank %}
+                        <li class="{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                          <a href="{{ link.url }}">
+                            {{ link.title }}
+                          </a>
+                        </li>
+                      {% else %}
+                        <li {% if link.active %}class="site-nav--active"{% endif %}>
+                          <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+
+                  </ul>
+                  -->
+
+                  <!-- 
+                  <ul>
+                    <li><a href="javascript:void(0);">About</a></li>
+                    <li><a href="javascript:void(0);">News</a></li>
+                    <li><a href="javascript:void(0);">My Account</a></li>
+                    <li><a href="https://kindredteas.com/collections/tea-store">Our Teas</a></li>
+                    <li><a href="javascript:void(0);">FAQS</a></li>
+                    <li><a href="javascript:void(0);">Contact Us</a></li>
+                    <li><a href="https://kindredteas.com/collections/tea-store">Tea Store</a></li>
+                    <li><a href="javascript:void(0);">Locate</a></li>
+                    <li><a href="javascript:void(0);">Terms & Privacy</a></li>
+                  </ul>
                    -->
-                </ul>
-              </nav>
-            </div>
+
+                </nav>
+              </div> <!-- desktop-footer-menu -->
+            </div> <!-- #desktop-footer-left-container -->
+
           </div>
+          
+
           <div class="col-md-1">
             <div id="desktop-footer-seperator">
             </div>
