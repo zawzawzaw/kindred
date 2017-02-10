@@ -487,7 +487,8 @@
         </div>
       </div>
       <div class="friend-referral-content">
-        <form action="" method="post">
+        <form id="friend-referral-form" action="" method="post">
+          <input type="hidden" name="to_count" id="to_count">
           <div class="row">
             <div class="col-md-6">
 
@@ -589,7 +590,7 @@
         $(href).addClass("active-section");
         
       }
-    });
+    });    
 
     $("#add-more-name").on("click", function(e){
       e.preventDefault();
@@ -605,16 +606,17 @@
 
       var anchor = '<a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a>';
 
-      $(html).find('input.to_email').after(anchor);      
+      // $(html).find('input.to_email').after($(anchor));      
 
-      $("#paste-clone").append(html);
+      $("#paste-clone").append($(html));
+
+      $('#to_count').val(no);
     });
 
-    function updateFields() {
-      var $textInputContainer = $("#paste-clone").find(".text-input-container");
-      $.each($textInputContainer, function(k, v){
-        console.log(v)
-      });
+    function updateFields() {            
+      
+      
+      
     }
 
     $("#paste-clone").on("click", ".delete", function(e){
@@ -624,5 +626,26 @@
 
       updateFields();
     });
+
+    $("#send-message").on("click", function(e){
+      e.preventDefault();    
+
+      var datastring = $("#friend-referral-form").serialize();
+      $.ajax({
+          type: "POST",
+          url: "//clients.manic.com.sg/kindred/shopify_app/send_invitation.php",
+          data: datastring,
+          dataType: "json",
+          success: function(data) {
+              //var obj = jQuery.parseJSON(data); if the dataType is not specified as json uncomment this
+              // do what ever you want with the server response
+          },
+          error: function() {
+              alert('error handing here');
+          }
+      });
+
+    });
+    
   });
 </script>

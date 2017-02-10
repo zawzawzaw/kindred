@@ -1,15 +1,5 @@
 <?php
-require 'PHPMailerAutoload.php';
-
-$data = array();
-$data['salutation'] = $_POST['salutation'];
-$data['from_name'] = $_POST['from_name'];
-$data['from_email'] = $_POST['from_email'];
-$data['to_name'] = $_POST['to_name'];
-$data['to_email'] = $_POST['to_email'];
-$data['message'] = $_POST['message'];
-
-$data['discount_code'] = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+require 'PHPMailer/PHPMailerAutoload.php';
 
 function saveReferrals($data) {
   $servername = "localhost:3306";
@@ -17,18 +7,30 @@ function saveReferrals($data) {
   $password = "e8oQy#54";
   $dbname = "kindred";
 
+  $discount_code = substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 10);
+
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  // prepare sql and bind parameters  
-  $stmt = $conn->prepare("INSERT INTO friend_referral ('referrer_name', 'referrer_email', 'friend_name', 'friend_email', 'discount_code') VALUES (:referrer_name, :referrer_email, :friend_name, :friend_email, :discount_code)");
-  $stmt->bindParam(':referrer_name', $data['from_name']);
-  $stmt->bindParam(':referrer_email', $data['from_email']);
-  $stmt->bindParam(':friend_name', $data['friend_name']);
-  $stmt->bindParam(':friend_email', $data['friend_email']);
-  $stmt->bindParam(':discount_code', $data['discount_code']);
+  try {
+    // prepare sql and bind parameters  
+    $stmt = $conn->prepare("INSERT INTO `friend_referral` (`salutation`, `referrer_name`, `referrer_email`, `friend_name`, `friend_email`, `discount_code`, `message`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bindParam(1, $data['salutation']);
+    $stmt->bindParam(2, $data['from_name']);
+    $stmt->bindParam(3, $data['from_email']);
+    $stmt->bindParam(4, $data['to_name']);
+    $stmt->bindParam(5, $data['to_email']);
+    $stmt->bindParam(6, $discount_code);
+    $stmt->bindParam(7, $data['message']);
 
-  $stmt->execute();
+    $stmt->execute();
+  } catch( PDOException $e ) { 
+      /*
+       * save the error to the error log defined as @ERROR_LOG
+       */ 
+      print_r($e->getMessage());
+      die( "FATAL ERROR...Please check the error log." );
+  }
 
   $conn = null;
 }
@@ -65,6 +67,71 @@ function sendEmail($data) {
   }
 }
 
-saveReferrals($data);
-return sendEmail($data);
+function checkIfAlreadyInvited($referrer_email, $friend_email) {
+  $servername = "localhost:3306";
+  $username = "kindred_dbadmin";
+  $password = "e8oQy#54";
+  $dbname = "kindred";
+
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+  $stmt = $conn->prepare("SELECT * FROM friend_referral WHERE friend_email = ? AND referrer_email = ?");
+  $stmt->bindParam(1, $friend_email);
+  $stmt->bindParam(2, $referrer_email);
+  $stmt->execute();
+
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  
+  return $result;
+}
+
+
+$data = array();
+$to_count = $_POST['to_count'];
+$data['salutation'] = $_POST['salutation'];
+$data['from_name'] = $_POST['from_name'];
+$data['from_email'] = $_POST['from_email'];
+$data['to_name'] = $_POST['to_name'];
+$data['to_email'] = $_POST['to_email'];
+$data['message'] = $_POST['message'];
+
+// to check if to_email already has an account
+
+$result = checkIfAlreadyInvited($data['from_email'], $data['to_email']);
+
+$invited_email = array();
+
+if(count($result) == 0) {
+  saveReferrals($data);
+  sendEmail($data);
+} else {
+  $invited_email[] = $data['to_email'];
+}
+
+for($i=2; $i <= $to_count; $i++) {
+  
+  if(!empty($_POST['to_name_'.$i]) && !empty($_POST['to_email_'.$i])) {
+    $data['to_name'] = $_POST['to_name_'.$i];
+    $data['to_email'] = $_POST['to_email_'.$i];
+
+    $result = checkIfAlreadyInvited($data['from_email'], $data['to_email']);
+
+    if(count($result) == 0) {
+      saveReferrals($data);
+      sendEmail($data);
+    }else {
+      $invited_email[] = $data['to_email'];
+    }
+
+  }
+}
+
+if(count($invited_email) > 0) {
+  $invited_emails = implode(", ", $invited_email);
+
+  echo "The following emails were already invited: ".$invited_emails.".";
+}else {
+  echo "Successfully invited.";
+}
 ?>
