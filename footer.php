@@ -5,27 +5,43 @@
   <footer id="desktop-footer">
     <div class="container-fluid has-breakpoint">
       <div class="row">
-        <div class="col-md-3">
-          <div id="desktop-footer-logo-container">
-            <a href="" id="desktop-footer-logo"></a>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <div id="desktop-footer-menu">
-            <nav>
-              <ul>
-                <li><a href="javascript:void(0);">About</a></li>
-                <li><a href="javascript:void(0);">News</a></li>
-                <li><a href="javascript:void(0);">My Account</a></li>
-                <li><a href="javascript:void(0);">Our Teas</a></li>
-                <li><a href="javascript:void(0);">FAQS</a></li>
-                <li><a href="javascript:void(0);">Contact Us</a></li>
-                <li><a href="javascript:void(0);">Tea Store</a></li>
-                <li><a href="javascript:void(0);">Locate</a></li>
-                <li><a href="javascript:void(0);">Terms & Privacy</a></li>
-              </ul>
-            </nav>
-          </div>
+        <div class="col-md-8">
+
+
+          <div id="desktop-footer-left-container">
+
+            <div id="desktop-footer-logo-container">
+              <a href="" id="desktop-footer-logo"></a>
+            </div>
+
+            <div id="desktop-footer-menu">
+              <nav>
+                <ul>
+                  <li><a href="javascript:void(0);">About</a></li>
+                  <li><a href="javascript:void(0);">News</a></li>
+                  <li><a href="javascript:void(0);">My Account</a></li>
+                </ul>
+
+                <ul>
+                  <li><a href="javascript:void(0);">Our Teas</a></li>
+                  <li><a href="javascript:void(0);">FAQS</a></li>
+                  <li><a href="javascript:void(0);">Contact Us</a></li>
+                </ul>
+
+                <ul>
+                  <li><a href="javascript:void(0);">Tea Store</a></li>
+                  <li><a href="javascript:void(0);">Locate</a></li>
+                  <li><a href="javascript:void(0);">Terms & Privacy</a></li>
+                </ul>
+              </nav>
+            </div> <!-- desktop-footer-menu -->
+
+            <div class="spacer"></div>
+
+          </div> <!-- #desktop-footer-left-container -->
+          
+
+
         </div>
         <div class="col-md-1">
           <div id="desktop-footer-seperator">

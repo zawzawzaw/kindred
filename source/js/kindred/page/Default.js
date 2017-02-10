@@ -139,6 +139,10 @@ kindred.page.Default.prototype.init = function() {
   } // #home-page-banner
 
 
+  
+
+
+
   if ($('#home-page-shop-item-container').length != 0) {
     $('#home-page-shop-item-container').slick({
       'speed': 350,
@@ -148,7 +152,8 @@ kindred.page.Default.prototype.init = function() {
       'slidesToShow': 5,
       'slidesToScroll': 5,
       'pauseOnHover': true,
-      'autoplay': true,
+      // 'autoplay': true,
+      'autoplay': false,
       'autoplaySpeed': 4000,
       'responsive': [
         {
@@ -172,6 +177,26 @@ kindred.page.Default.prototype.init = function() {
     $('#home-page-shop-item-container').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
       this.update_page_layout();
     }.bind(this));
+
+
+    var home_scene = new ScrollMagic.Scene({
+      'triggerHook': 0.5,
+      'triggerElement': '#home-page-shop-section',
+      reverse: false
+    });
+
+    home_scene.on('enter', function(event){
+      
+      // $('#home-page-shop-item-container')
+      console.log('near the home shop items');
+      $('#home-page-shop-item-container').slick('slickSetOption', 'autoplay', true, true);
+
+
+    }.bind(this));
+
+    // home_scene.addIndicators({name: "Home Shop"});
+    home_scene.addTo(this.controller);
+
     
   } // #home-page-shop-item-container
 
