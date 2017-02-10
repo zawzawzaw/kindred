@@ -113,6 +113,7 @@
     #exisiting-address-container {
       .address-content-container {
         padding-bottom: 40px;      
+        min-height: 130px;
       }
     }  
 
@@ -286,9 +287,11 @@
         input[type=text],input[type=tel] {
           background-color: @off-white-03;
         }
-        select {
-          background-color: @off-white-03;
-        }
+        .dropdown {
+          select {
+            background-color: @off-white-03;
+          }  
+        }        
       }  
 
     }
@@ -298,6 +301,7 @@
         padding-bottom: 40px;
         .address-content-container {
           padding-bottom: 0px; 
+          min-height: auto;
           .address-content {
             display: none;
           }
