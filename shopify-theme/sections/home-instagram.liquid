@@ -1,0 +1,99 @@
+<!--
+   _   _  ___  __  __ _____   ___ _   _ ____ _____  _    ____ ____      _    __  __
+  | | | |/ _ \|  \/  | ____| |_ _| \ | / ___|_   _|/ \  / ___|  _ \    / \  |  \/  |
+  | |_| | | | | |\/| |  _|    | ||  \| \___ \ | | / _ \| |  _| |_) |  / _ \ | |\/| |
+  |  _  | |_| | |  | | |___   | || |\  |___) || |/ ___ \ |_| |  _ <  / ___ \| |  | |
+  |_| |_|\___/|_|  |_|_____| |___|_| \_|____/ |_/_/   \_\____|_| \_\/_/   \_\_|  |_|
+
+-->
+
+<article id="home-instagram-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="home-instagram-title">
+          
+          {% if section.settings.title != blank %}
+            <h2>{{ section.settings.title }}</h2>
+          {% endif %}
+
+          {{ section.settings.contentcopy }}
+
+        </div>
+        
+
+        <div id="home-instagram-slider" data-user-id="{{ section.settings.instagramuserid }}" data-access-token="{{ section.settings.instagramaccesstoken }}">
+          <div id="home-instagram-item-container">
+          </div> <!-- home-instagram-item-container -->
+        </div>
+
+        <div id="home-page-instagram-bottom">
+
+          {% if section.settings.socialmediatitle != blank %}
+            <h4>{{ section.settings.socialmediatitle }}</h4>
+          {% endif %}
+
+          <ul>
+
+            {% if settings.social_facebook_link != blank %}
+              <li><a href="{{ settings.social_facebook_link }}" class="fa fa-facebook" title="{{ shop.name }} on Facebook" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_twitter_link != blank %}
+              <li><a href="{{ settings.social_twitter_link }}" class="fa fa-twitter" title="{{ shop.name }} on Twitter" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_instagram_link != blank %}
+              <li><a href="{{ settings.social_instagram_link }}" class="fa fa-instagram" title="{{ shop.name }} on Instagram" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_pinterest_link != blank %}
+              <li><a href="{{ settings.social_pinterest_link }}" class="fa fa-pinterest" title="{{ shop.name }} on Pinterest" target="_blank"></a></li>
+            {% endif %}
+
+          </ul>
+        </div> <!-- home-page-instagram-bottom -->
+
+      </div>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+  {
+
+    "name": "Home Instagram",
+    "class": "home-instagram-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Content Copy"
+      },
+      {
+        "type": "text",
+        "id": "instagramuserid",
+        "label": "Instagram ID",
+        "info": "generate an access token for the instagram slider. Needed authenticate the instagram loader script"
+      },
+      {
+        "type": "text",
+        "id": "instagramaccesstoken",
+        "label": "Instagram Access Token",
+        "info": "do not modify if you do not know how"
+      },
+      {
+        "type": "text",
+        "id": "socialmediatitle",
+        "label": "Social Media Title"
+      }
+      
+    ]
+  }
+{% endschema %}

@@ -296,6 +296,9 @@ body.is-mobile-header{
 
 // copied from quest
 
+// @desktop-header-search-width: 150px;
+@desktop-header-search-width: 200px;
+
 #desktop-header-search-container{
 
   .display-inline-block;
@@ -311,7 +314,7 @@ body.is-mobile-header{
 
 
   &.expand-version{
-    width: 150px;
+    width: @desktop-header-search-width;
   }
 
 }
@@ -401,14 +404,26 @@ body.is-mobile-header{
   right: 0px;
 
   // border-bottom: 1px solid @border-grey;
-  border-bottom: 1px solid @grey-02;
+  // border-bottom: 1px solid @grey-02;
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    left: 1px;
+    right: 6px;
 
-  width: 150px;
+    border-bottom: 1px solid @grey-02;
+  }
+
+  width: @desktop-header-search-width;
   // height: 24px;
   height: 28px;
 
   .opacity(0);
   visibility: hidden;
+
+
 
   input[type=text],
   input[type=search]{

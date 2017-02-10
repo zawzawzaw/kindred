@@ -1,0 +1,89 @@
+<!--
+   _   _  ___  __  __ _____   ___ _   _ _____ ____   ___
+  | | | |/ _ \|  \/  | ____| |_ _| \ | |_   _|  _ \ / _ \
+  | |_| | | | | |\/| |  _|    | ||  \| | | | | |_) | | | |
+  |  _  | |_| | |  | | |___   | || |\  | | | |  _ <| |_| |
+  |_| |_|\___/|_|  |_|_____| |___|_| \_| |_| |_| \_\\___/
+
+-->
+
+<article id="home-page-intro-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-5">
+
+        <div class="default-copy">
+
+          {% if section.settings.pretitle != blank %}
+            <h4>{{ section.settings.pretitle }}</h4>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            <h1>{{ section.settings.title }}</h1>
+          {% endif %}
+
+          
+          {{ section.settings.contentcopy }}
+
+
+          {% if section.settings.link != blank and section.settings.linkcopy != blank %}
+            <div class="cta-container lower-version">
+              <a href="{{ section.settings.link }}" class="square-cta">{{ section.settings.linkcopy }}</a>
+            </div>
+          {% endif %}
+
+
+
+        </div>
+
+      </div>
+      <div class="col-md-7">
+
+        <div class="manic-image-container">
+          <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+{% schema %}
+  {
+
+    "name": "Home Intro",
+    "class": "home-page-intro-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "pretitle",
+        "label": "Pre-title"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Content Copy"
+      },
+      {
+        "type": "text",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "linkcopy",
+        "label": "Link Copy"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image",
+        "label": "Content Image"
+      }
+    ]
+  }
+{% endschema %}

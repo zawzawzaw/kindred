@@ -1,0 +1,67 @@
+<!--
+   _   _  ___  __  __ _____   ____  _   _  ___  ____
+  | | | |/ _ \|  \/  | ____| / ___|| | | |/ _ \|  _ \
+  | |_| | | | | |\/| |  _|   \___ \| |_| | | | | |_) |
+  |  _  | |_| | |  | | |___   ___) |  _  | |_| |  __/
+  |_| |_|\___/|_|  |_|_____| |____/|_| |_|\___/|_|
+
+-->
+
+<article id="home-page-shop-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="home-page-shop-title">
+
+          {% if section.settings.title != blank %}
+            <h2>{{ section.settings.title }}</h2>
+          {% endif %}
+          
+          {{ section.settings.contentcopy }}
+        </div>
+
+
+        <div id="home-page-shop-item-container">
+
+          {% comment %}
+            Loop through products in your Frontpage collection.
+          {% endcomment %}
+          {% for product in collections.frontpage.products %}
+
+            <a href="{{ product.url | within: collection }}" title="{{ product.title }}" class="home-page-shop-item">
+              <div class="manic-image-container has-show-all">
+                <img src="" data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}">
+              </div>
+            </a>
+
+          {% endfor %}
+
+        </div> <!-- home-page-shop-item-container -->
+
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+{% schema %}
+  {
+
+    "name": "Home Shop",
+    "class": "home-page-shop-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Content Copy"
+      }
+    ]
+  }
+{% endschema %}

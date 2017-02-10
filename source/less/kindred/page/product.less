@@ -173,6 +173,14 @@
 
   .product-variant-container{
     margin-bottom: 30px;
+
+    label{
+      .header-h5-style;
+      color: @off-black;
+
+      display: block;
+      margin-bottom: 3px;
+    }
   }
 
 
@@ -251,6 +259,8 @@
     }
     p{
       .display-inline-block;
+      position: relative;
+      top: -2px;
     }
   }
   &.multiple-version{
@@ -362,6 +372,13 @@
       .display-inline-block;
       width: 300px;
       position: relative;
+
+      &.giftcard-version{
+        width: 400px;
+        .single-option-selector{
+          width: 475px !important;
+        }
+      }
 
       &:after{
         .fa;
@@ -503,3 +520,188 @@
 }
 
 
+
+
+
+//     ____ ___ _____ _____    ____    _    ____  ____
+//    / ___|_ _|  ___|_   _|  / ___|  / \  |  _ \|  _ \
+//   | |  _ | || |_    | |   | |     / _ \ | |_) | | | |
+//   | |_| || ||  _|   | |   | |___ / ___ \|  _ <| |_| |
+//    \____|___|_|     |_|    \____/_/   \_\_| \_\____/
+//
+
+
+
+#product-page-giftcard-design-container{
+  position: relative;
+  width: 100%;
+  height: @product-page-detail-height;
+  // background: @grey;
+  // 
+  background: @brown;
+
+  .product-page-giftcard-design{
+    .opacity(0);
+    visibility: hidden;
+
+    &:first-child{
+      .opacity(1);
+      visibility: visible;
+    }
+  }
+}
+
+
+
+.product-page-giftcard-design{
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  // height: @product-page-detail-height;
+
+  .manic-image-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: @product-page-detail-height - 80px;
+  }
+  .product-page-giftcard-design-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 400px;
+    height: 300px;              // this is a guess
+    margin-left: -200px;
+    margin-top: -150px;
+
+    text-align: center;
+
+    h4{
+      font-size: 35px;
+      line-height: 45px;
+      margin-bottom: 60px;
+      .value{
+        font-size: 40px;
+      }
+    }
+
+    h1{
+      font-size: 30px;
+      line-height: 35px;
+      margin-bottom: 20px;
+
+      .muli-light;
+    }
+    p{
+
+    }
+
+  }
+}
+
+
+.product-giftcard-custom-fields{
+
+  label{
+    .header-h5-style;
+    color: @off-black;
+
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  input[type=text],
+  textarea{
+    .open-sans-regular;
+    font-size: 14px;;
+    color: @grey-02;
+
+
+    display: block;
+    width: 400px;
+    height: 35px;
+    border: none;
+    background: @white;
+    .round(0);
+
+    outline: none !important;
+
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    margin-bottom: 25px;
+  }
+  textarea{
+    height: 173px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    overflow: hidden;
+    resize: none;
+  }
+
+  .giftcart-select-wrapper{
+    margin-bottom: 25px;
+    
+    .select-wrapper{
+      .display-inline-block;
+      width: 400px;
+      position: relative;
+
+      &:after{
+        .fa;
+        font-size: 14px;
+        line-height: 24px;
+
+        content: "\f107"; // .fa-angle-down
+        display: block;
+        text-align: center;
+        color: @white;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 35px;
+        height: 100%;
+        background: @grey;
+
+        padding-top: 6px;
+        padding-bottom: 6px;
+
+        pointer-events: none;
+      }
+
+    }
+    select{
+
+      outline: none !important;
+
+      color: @grey-02;
+      .open-sans-regular;
+      // font-size: 15px;;
+      font-size: 14px;;
+
+
+      .display-inline-block;
+      // width: 300px;
+      // width: 375px;
+      width: 475px;
+
+      padding-top: 6px;
+      padding-bottom: 6px;
+      padding-left: 18px;
+      padding-right: 35px;
+      margin-bottom: 0px;
+
+      border: none;
+      background: @white;
+      .round(0);
+
+    }
+  }
+}

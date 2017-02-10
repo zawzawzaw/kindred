@@ -1,0 +1,37 @@
+<!--
+   ____    _    _   _ _   _ _____ ____
+  | __ )  / \  | \ | | \ | | ____|  _ \
+  |  _ \ / _ \ |  \| |  \| |  _| | |_) |
+  | |_) / ___ \| |\  | |\  | |___|  _ <
+  |____/_/   \_\_| \_|_| \_|_____|_| \_\
+
+-->
+
+<article id="blog-page-banner-section">
+  <div id="blog-page-banner">
+    <div class="manic-image-container">
+      <img src="" data-image-desktop="{{ section.settings.banner-image.src | img_url: 'master' }}">
+    </div>
+    <h1>The Brew Journal</h1>
+  </div>
+</article>
+
+
+{% schema %}
+  {
+    "name": "Blog Banner",
+    "class": "default-page-banner-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner-image",
+        "label": "Banner Image"
+      }
+    ]
+  }
+{% endschema %}

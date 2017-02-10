@@ -36,7 +36,7 @@
       <div class="col-md-12">
 
         <div id="page-faq-title">
-          <h2>Search results for "elder"</h2>
+          <h2>Privacy Policy</h2>
         </div>
 
       </div>
@@ -65,8 +65,9 @@
 
           <div class="terms-page-content-item">
             <div class="default-copy">
-              <h4>ELDER & CREAM BLACK TEA</h4>
-              <p>We understand Canadians’ love affair with maple syrup. Though tough to beat poured over a tall stack of pancakes, this maple-flavoured green tea is sweet, warm and comforting. A touch of vanilla adds wonderful depth of flavour. Our idea of the perfect breakfast drink!</p>
+              <h4>Here lies the title of the item</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
           </div>
           <div class="terms-page-content-item">

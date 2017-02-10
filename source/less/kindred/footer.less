@@ -268,6 +268,32 @@
 
 
 
+.is-mac{
+  #desktop-footer-newsletter-form,
+  #desktop-footer-right-container #mc-embedded-subscribe-form,
+  #desktop-footer-right-container form{
+
+    input[type=text],
+    input[type=email]{
+      padding-top: 2px;
+    }
+  }
+}
+
+.is-mac.is-safari{
+  #desktop-footer-newsletter-form,
+  #desktop-footer-right-container #mc-embedded-subscribe-form,
+  #desktop-footer-right-container form{
+
+    input[type=text],
+    input[type=email]{
+      padding-top: 3px;
+    }
+  }
+}
+
+
+
 //    ____   ___   ____ ___    _    _
 //   / ___| / _ \ / ___|_ _|  / \  | |
 //   \___ \| | | | |    | |  / _ \ | |
@@ -286,7 +312,8 @@
     letter-spacing: 0.17em;
 
     .display-inline-block;
-    margin-right: 26px;
+    // margin-right: 26px;
+    margin-right: 13px;
 
   }
   ul{
@@ -297,7 +324,9 @@
     li{
       .display-inline-block;
 
-      margin-right: 11px;
+      // margin-right: 11px;
+      margin-right: 14px;
+
       &:last-child{
         margin-right: 0px;
       }

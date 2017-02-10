@@ -88,12 +88,24 @@
   }
   h4{
     // letter-spacing: 0.08em;               // should i put this outside?
+    
+    a{
+      color: @grey;
+
+      &:focus,
+      &:hover{
+        color: @brown;
+      }
+    }
   }
 
 
 
   p + p{
     padding-top: 25px;
+  }
+  p.same-paragraph + p{
+    padding-top: 0px;
   }
 
 
@@ -122,9 +134,20 @@
     padding-top: 6px;
   }
 
+  p + h4{
+    padding-top: 25px;
+  }
+
 
   .cta-container{
     padding-top: 32px - 9px;
+
+    font-size: 0;
+
+    .square-cta + .square-cta{
+      margin-left: 20px;
+    }
+
     &.lower-version{
       padding-top: 32px;
     }

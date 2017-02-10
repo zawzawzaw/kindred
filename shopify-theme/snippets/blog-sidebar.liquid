@@ -1,30 +1,116 @@
 <!-- /snippets/blog-sidebar.liquid -->
-{% comment %}
-  Recent blog posts
-{% endcomment %}
-<h3 class="h4">{{ 'blogs.sidebar.recent_articles' | t }}</h3>
-<ul class="no-bullets">
-  {% for article in blogs[blog.handle].articles limit:6 %}
-    <li>
-      <a href="{{ article.url }}">{{ article.title }}</a>
-      <br>
-      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>
-    </li>
-  {% endfor %}
-</ul>
 
-{% comment %}
-  Blog tags
-{% endcomment %}
-{% if blog.all_tags.size > 0 %}
-  <h3 class="h4">{{ 'blogs.sidebar.categories' | t }}</h3>
-  <ul class="no-bullets">
-    {% for tag in blog.all_tags %}
-      {% if current_tags contains tag %}
-      <li>{{ tag }}</li>
-      {% else %}
-      <li>{{ tag | link_to_tag: tag }}</li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-{% endif %}
+
+<div id="blog-page-sidebar">
+
+  <!-- 
+  <div class="blog-page-sidebar-item" id="blog-page-sidebar-categories">
+    <div class="blog-page-sidebar-item-title">
+      <h4>Categories</h4>
+    </div>
+    <div class="blog-page-sidebar-item-content">
+      <ul>
+        <li><a href="">About Tea</a></li>
+        <li><a href="">All</a></li>
+        <li><a href="">Cafe Guide</a></li>
+        <li><a href="">Featured</a></li>
+        <li><a href="">Food & Drinks</a></li>
+        <li><a href="">Lifestyle</a></li>
+        <li><a href="">Living & Dining</a></li>
+        <li><a href="">News & Events</a></li>
+        <li><a href="">Portraits</a></li>
+        <li><a href="">Tea Facts</a></li>
+        <li><a href="">Tea Health</a></li>
+        <li><a href="">Tea of the Month</a></li>
+      </ul>
+    </div>
+  </div> 
+  -->
+  <!-- #blog-page-sidebar-categories -->
+
+  <!--
+     _____  _    ____ ____
+    |_   _|/ \  / ___/ ___|
+      | | / _ \| |  _\___ \
+      | |/ ___ \ |_| |___) |
+      |_/_/   \_\____|____/
+
+  -->
+
+  {% if article.tags.size > 0 %}
+
+    <div class="blog-page-sidebar-item" id="blog-page-sidebar-tags">
+      <div class="blog-page-sidebar-item-title">
+        <h4>Article Tags</h4>
+      </div>
+      <div class="blog-page-sidebar-item-content">
+        <ul>
+
+          {% for tag in article.tags %}
+            <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+
+        </ul>
+      </div>
+    </div> <!-- #blog-page-sidebar-tags -->
+
+  {% else %}
+
+
+    {% if blog.all_tags.size > 0 %}
+      <div class="blog-page-sidebar-item" id="blog-page-sidebar-tags">
+        <div class="blog-page-sidebar-item-title">
+          <h4>Tags</h4>
+        </div>
+        <div class="blog-page-sidebar-item-content">
+          <ul>
+            {% for tag in blog.all_tags %}
+              {% if current_tags contains tag %}
+              <li><div class="current-tag">{{ tag }}</div></li>
+              {% else %}
+              <li>{{ tag | link_to_tag: tag }}</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div> <!-- #blog-page-sidebar-tags -->
+
+    {% endif %}
+
+  {% endif %}
+
+
+
+
+  <!--
+     ____  _____ ____ _____ _   _ _____   ____   ___  ____ _____ ____
+    |  _ \| ____/ ___| ____| \ | |_   _| |  _ \ / _ \/ ___|_   _/ ___|
+    | |_) |  _|| |   |  _| |  \| | | |   | |_) | | | \___ \ | | \___ \
+    |  _ <| |__| |___| |___| |\  | | |   |  __/| |_| |___) || |  ___) |
+    |_| \_\_____\____|_____|_| \_| |_|   |_|    \___/|____/ |_| |____/
+
+  -->
+
+
+  <div class="blog-page-sidebar-item" id="blog-page-sidebar-popular">
+    <div class="blog-page-sidebar-item-title">
+      <h4>Popular Post</h4>
+    </div>
+    <div class="blog-page-sidebar-item-content">
+
+      {% for article in blogs[blog.handle].articles limit:3 %}
+
+        <div class="sidebar-popular-post-item">
+          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+
+          <!-- <h5>January 5, 2017</h5> -->
+          <h5>{{ article.published_at | date: format: 'month_day_year' }}</h5>
+          <a href="{{ article.url }}" class="arrow-cta small-version">Learn more</a>
+        </div>
+
+      {% endfor %}
+      
+    </div>
+  </div> <!-- #blog-page-sidebar-popular -->
+
+</div> <!-- blog-page-sidebar -->

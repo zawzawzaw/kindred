@@ -5,8 +5,8 @@
       "page": "Page {{ page }}"
     },
     "404": {
-      "title": "404 Page Not Found",
-      "subtext_html": "The page you requested does not exist. Click <a href=\"/collections/all\">here</a> to continue shopping."
+      "title": "Error 404: Page Not Found",
+      "subtext_html": "The page that you have requested for does not exist. Click <a href=\"/collections/tea-store\">here</a> to continue shopping."
     },
     "breadcrumbs": {
       "home": "Home",
