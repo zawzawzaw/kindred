@@ -169,11 +169,11 @@
                   <div class="col-md-8">
                     <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required email>
 
-                    <input type="hidden" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" value="p@ssword">
+                    <!-- <input type="hidden" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" value="p@ssword"> -->
                   </div>
                 </div>
 
-                <!-- <div class="row">
+                <div class="row">
                   <div class="col-md-4">
                     <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
                   </div>
@@ -182,7 +182,7 @@
                   </div>
                   
                   
-                </div> -->
+                </div>
 
                 <div class="cta-container">    
                   <input type="submit" class="btn square-cta" value="{{ 'customer.login.create_account_title' | t }}">                                

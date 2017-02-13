@@ -10,7 +10,7 @@
 <article id="page-activation-content-section">
   <div class="container-fluid has-breakpoint">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-6">
         <h1>{{ 'customer.activate_account.title' | t }}</h1>
         <p>{{ 'customer.activate_account.subtext' | t }}</p>
 
@@ -24,7 +24,7 @@
           
           <div class="row">
             <div class="col-md-4">
-              <label for="CustomerPassword" class="hidden-label">{{ 'customer.activate_account.password' | t }}</label>
+              <label for="CustomerPassword">{{ 'customer.activate_account.password' | t }}</label>
             </div>
             <div class="col-md-8">
               <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full" placeholder="{{ 'customer.activate_account.password' | t }}">
@@ -33,7 +33,7 @@
 
           <div class="row">
             <div class="col-md-4">
-              <label for="CustomerPasswordConfirmation" class="hidden-label">{{ 'customer.activate_account.password_confirm' | t }}</label>
+              <label for="CustomerPasswordConfirmation">{{ 'customer.activate_account.password_confirm' | t }}</label>
             </div>
             <div class="col-md-8">
               <input type="password" value="" name="customer[password_confirmation]" id="CustomerPasswordConfirmation" class="input-full" placeholder="{{ 'customer.activate_account.password_confirm' | t }}">
