@@ -57,6 +57,10 @@
                       {% if blog.next_article %}
                         <a href="{{ blog.next_article }}" class="square-cta">{{ 'blogs.article.newer_post' | t }}</a>
                       {% endif %}
+
+
+                      {% include 'blog-share' %}
+
                     </div> <!-- cta-container -->
                   {% endif %}
 

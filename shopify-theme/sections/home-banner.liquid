@@ -51,6 +51,37 @@
       </div>
     {% endfor %}
 
+
+
+    <div class="home-page-banner-item manic-padding-container">
+      <div class="manic-image-container manic-padding-image home-page-banner-image">
+        <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+      </div>
+      <div class="text-overlay shop-all-version">
+        <div class="container-fluid has-breakpoint">
+          <div class="row">
+            <div class="col-md-2 col-sm-3"></div>
+            <div class="col-md-8 col-sm-6">
+              <div class="manic-padding-text" data-y="250">
+
+                {% if section.settings.shopallcopy != blank %}
+                  <h1>{{ section.settings.shopallcopy }}</h1>
+                {% endif %}
+
+                {% if section.settings.link != blank and section.settings.linkcopy != blank %}
+                  <div class="cta-container">
+                    <a href="{{ section.settings.link }}" class="square-cta">{{ section.settings.linkcopy }}</a>
+                  </div>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div> <!-- home-page-banner -->
 </article>
 
@@ -85,6 +116,28 @@
             "label": "Text Position Y"
           }
         ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "id": "shopallcopy",
+        "label": "Shop All Copy"
+      },
+      {
+        "type": "text",
+        "id": "link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "linkcopy",
+        "label": "Link Copy"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image",
+        "label": "Shop All Image"
       }
     ]
   }

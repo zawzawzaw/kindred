@@ -352,6 +352,30 @@
                         {% endif %}
 
 
+                        <div class="product-detail">
+                          <label>Share</label>
+                          {% assign share_message = "Try out Kindred's " | append: product.title %}
+                          {% assign share_message_escaped = share_message | url_param_escape %}
+
+                          {% assign share_image = featured_image | img_url: 'master' %}
+                          {% assign share_image_escaped = share_image | url_param_escape %}
+
+                          {% assign share_url = shop.url | append: product.url %}
+                          {% assign share_url_escaped = share_url | url_param_escape %}
+
+                          {% assign social_facebook_share_url = 'http://www.facebook.com/sharer.php?u=' | append: share_url_escaped %}
+                          {% assign social_twitter_share_url = 'https://twitter.com/share?url=' | append: share_url_escaped | append: '&amp;text=' | append: share_message_escaped %}
+                          {% assign social_pinterest_share_url = '//pinterest.com/pin/create%2Fbutton/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
+
+                          <div class="product-detail-social-container">
+                            <ul>
+                              <li><a href="{{ social_pinterest_share_url }}" target="_blank" class="fa fa-pinterest"></a></li>
+                              <li><a href="{{ social_facebook_share_url }}" target="_blank" class="fa fa-facebook"></a></li>
+                              <li><a href="{{ social_twitter_share_url }}" target="_blank" class="fa fa-twitter"></a></li>
+                            </ul>
+                          </div>
+                        </div>
+
                       </div>
                     </div> <!-- row -->
 
