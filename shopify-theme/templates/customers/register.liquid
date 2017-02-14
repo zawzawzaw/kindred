@@ -43,7 +43,7 @@
                     <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" autofocus required email>
+                    <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" required email>
                   </div>
                 </div>
 
@@ -53,7 +53,7 @@
                     <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}"" required>
+                    <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}"" required>
                   </div>
                   
                   
