@@ -28,7 +28,7 @@
           </div> <!-- home-instagram-item-container -->
         </div>
 
-        <div id="home-page-instagram-bottom">
+        <div id="home-page-instagram-bottom" class="visible-md visible-lg">
 
           {% if section.settings.socialmediatitle != blank %}
             <h4>{{ section.settings.socialmediatitle }}</h4>
@@ -55,10 +55,20 @@
           </ul>
         </div> <!-- home-page-instagram-bottom -->
 
+
+        {% if settings.social_instagram_link != blank %}
+          <div id="home-page-instagram-bottom-mobile" class="visible-sm visible-xs">
+            <h4><a href="{{ settings.social_instagram_link }}" title="{{ shop.name }} on Pinterest"  target="_blank">{{ section.settings.socialmediatitle }}</a></h4>
+          </div>
+        {% endif %}
+
+
       </div>
     </div>
   </div>
 </article>
+
+
 
 {% schema %}
   {

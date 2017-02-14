@@ -7,7 +7,7 @@
 
 -->
 
-<article id="home-page-shop-section">
+<article id="home-page-shop-section" class="visible-md visible-lg">
   <div class="container-fluid has-breakpoint">
     <div class="row">
       <div class="col-md-12">
@@ -44,6 +44,61 @@
     </div>
   </div>
 </article>
+
+
+
+<!-- testing -->
+<!-- testing -->
+<!-- testing -->
+
+
+
+<article id="home-page-shop-section-mobile" class="visible-sm visible-xs">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="home-page-shop-title-mobile">
+          <h2>Shop the Kindred Range</h2>
+          <div class="cta-container">
+            <a href="" class="square-cta">Vist tea store</a>
+          </div>
+        </div> <!-- home-page-shop-title-mobile -->
+      </div>
+    </div> <!-- row -->
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="home-page-shop-item-mobile-container">
+
+          <div class="row">
+
+            {% comment %}
+              Loop through products in your Frontpage collection.
+            {% endcomment %}
+            {% for product in collections.frontpage.products %}
+              
+              <div class="col-sm-4 col-xs-6">
+                <a href="{{ product.url | within: collection }}" title="{{ product.title }}" class="home-page-shop-item-mobile">
+                  <div class="manic-image-container has-show-all">
+                    <img src="" data-image-mobile="{{ product.featured_image.src | img_url: 'master' }}">
+                  </div>
+                </a>
+              </div>
+
+            {% endfor %}
+
+
+          </div> <!-- row -->
+        </div> <!-- home-page-shop-item-mobile-container -->
+
+      </div> <!-- col-md-12 -->
+    </div> <!-- row -->
+  </div>
+</article>
+
+
 
 
 {% schema %}

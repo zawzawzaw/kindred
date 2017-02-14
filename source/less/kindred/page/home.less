@@ -151,6 +151,134 @@
 */
 
 
+//    _   _  ___  __  __ _____   ____    _    _   _ _   _ _____ ____    __  __  ___  ____ ___ _     _____
+//   | | | |/ _ \|  \/  | ____| | __ )  / \  | \ | | \ | | ____|  _ \  |  \/  |/ _ \| __ )_ _| |   | ____|
+//   | |_| | | | | |\/| |  _|   |  _ \ / _ \ |  \| |  \| |  _| | |_) | | |\/| | | | |  _ \| || |   |  _|
+//   |  _  | |_| | |  | | |___  | |_) / ___ \| |\  | |\  | |___|  _ <  | |  | | |_| | |_) | || |___| |___
+//   |_| |_|\___/|_|  |_|_____| |____/_/   \_\_| \_|_| \_|_____|_| \_\ |_|  |_|\___/|____/___|_____|_____|
+//
+
+#home-page-banner-section-mobile{
+
+}
+
+#home-page-banner-mobile{
+  // set height later
+}
+
+
+
+.home-page-banner-item-mobile{
+  position: relative;
+  height: 630px;
+
+  .banner-image-bg{
+    .manic-image-container{
+      height: 630px;
+    }
+  }
+
+  .banner-image-overlay{
+    position: absolute;
+    // top: 30px;
+    top: -9px;
+    
+
+    left: 20%;    // 40/2
+    width: 60%;
+
+    .manic-image-container{
+      height: 450px;
+    }
+  }
+
+  .text-overlay{
+    position: absolute;
+    left: 50%;
+    
+    padding-left: 30px;
+    padding-right: 30px;
+
+    bottom: 41px;
+
+    width: 550px;
+    margin-left: -550px / 2;
+    text-align: center;
+
+    h1{
+      font-size: 23px * 1.5;
+      line-height: 27px * 1.5;
+      letter-spacing: 0.0em;
+
+      margin-right: 0px;
+
+      .display-inline-block;
+      text-align: left;
+
+      span{
+        font-size: 33px * 1.5;
+        line-height: 37px * 1.5;
+        letter-spacing: -0.02em; // regular size
+
+        display: block;
+        padding-top: 3px;
+        padding-bottom: 4px;
+      }
+    }
+  }
+
+
+
+} // .home-page-banner-item-mobile
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+
+  .home-page-banner-item-mobile{
+    height: 420px;
+
+    .banner-image-overlay{
+      top: -5px;
+      .manic-image-container{
+        height: 295px;
+      }
+    }
+    .banner-image-bg{
+      .manic-image-container{
+        height: 420px;
+      }
+    }
+
+    
+    .text-overlay{
+      width: 320px;
+      margin-left: -320px / 2;
+
+      h1{
+        font-size: 23px;
+        line-height: 27px;
+        letter-spacing: 0.0em;
+
+        margin-right: -10px;
+        display: block;
+
+        span{
+          font-size: 33px;
+          line-height: 37px;
+          letter-spacing: -0.02em; // regular size
+
+          display: block;
+          padding-top: 3px;
+          padding-bottom: 4px;
+        }
+      }
+    }
+  }
+}
+
+
+
 //    _   _  ___  __  __ _____   ___ _   _ _____ ____   ___
 //   | | | |/ _ \|  \/  | ____| |_ _| \ | |_   _|  _ \ / _ \
 //   | |_| | | | | |\/| |  _|    | ||  \| | | | | |_) | | | |
@@ -353,6 +481,70 @@
 }
 
 
+//    _   _  ___  __  __ _____   ____  _   _  ___  ____    __  __  ___  ____ ___ _     _____
+//   | | | |/ _ \|  \/  | ____| / ___|| | | |/ _ \|  _ \  |  \/  |/ _ \| __ )_ _| |   | ____|
+//   | |_| | | | | |\/| |  _|   \___ \| |_| | | | | |_) | | |\/| | | | |  _ \| || |   |  _|
+//   |  _  | |_| | |  | | |___   ___) |  _  | |_| |  __/  | |  | | |_| | |_) | || |___| |___
+//   |_| |_|\___/|_|  |_|_____| |____/|_| |_|\___/|_|     |_|  |_|\___/|____/___|_____|_____|
+//
+
+
+#home-page-shop-section-mobile{
+  padding-top: 32px + 16px;
+  padding-bottom: 8px + 13px;
+
+}
+
+#home-page-shop-title-mobile{
+  text-align: center;
+  margin-bottom: 29px + 17px;
+
+  .cta-container{
+    padding-top: 17px + 9px;
+  }
+}
+
+#home-page-shop-item-mobile-container{
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.home-page-shop-item-mobile{
+  display: block;                     // for links
+  margin-bottom: 25px + 20px;
+
+  .manic-image-container{
+    height: 240px;
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #home-page-shop-section-mobile{
+    padding-top: 32px;
+    padding-bottom: 8px;
+  }
+
+  #home-page-shop-title-mobile{
+    margin-bottom: 29px;
+
+    .cta-container{
+      padding-top: 17px;
+    }
+  }
+
+  .home-page-shop-item-mobile{
+    margin-bottom: 25px;
+
+    .manic-image-container{
+
+    }
+  }
+
+}
+
+
 //    _   _  ___  __  __ _____   __  __  ___  ____  _____
 //   | | | |/ _ \|  \/  | ____| |  \/  |/ _ \|  _ \| ____|
 //   | |_| | | | | |\/| |  _|   | |\/| | | | | |_) |  _|
@@ -385,6 +577,10 @@
   .default-copy{
     position: relative;
     z-index: 20;
+
+    h1{
+      font-size: 32px;
+    }
     
     p{
       // padding: 0 10px;
@@ -426,6 +622,47 @@
 
 
 
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #home-instagram-section{
+    // padding-top: 33px * 1.5;
+    // padding-bottom: 32px * 1.5;
+    
+    padding-top: 49px;
+    padding-bottom: 53px;
+  }
+  #home-instagram-title{
+    margin-bottom: 29px;
+  }
+}
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #home-instagram-section{
+    padding-top: 33px;
+    padding-bottom: 32px;
+  }
+  #home-instagram-title{
+    margin-bottom: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #home-instagram-slider{
 
 }
@@ -436,6 +673,7 @@
 
 
 @desktop-home-instagram-item-container-height: 200px;
+@mobile-home-instagram-item-container-height: 280px;
 
 #home-instagram-item-container{
   width: 100%;
@@ -512,6 +750,40 @@
 
 
 
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #home-instagram-item-container{
+    height: @mobile-home-instagram-item-container-height;
+  }
+  .home-instagram-item{
+    width: 100%;
+    height: @mobile-home-instagram-item-container-height;
+
+    .white-bg{
+      width: 260px;
+      height: 260px;
+
+      margin-top: -260px / 2;
+      margin-left: -260px / 2;
+    }
+    .manic-image-container{
+      width: 246px;
+      height: 246px;
+
+      margin-top: -246px / 2;
+      margin-left: -246px / 2;
+    }
+  }
+}
+
+
+
+
+
+
+
 #home-page-instagram-bottom{
   font-size: 0;
   padding-top: 43px;
@@ -546,5 +818,36 @@
         }
       }
     }
+  }
+}
+
+
+
+
+
+
+#home-page-instagram-bottom-mobile{
+  padding-top: 13px + 19px;
+  text-align: center;
+
+  h4{
+    color: @grey !important;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 0.06em;
+
+    a{
+      color: @grey !important;
+    }
+  }
+}
+
+
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #home-page-instagram-bottom-mobile{
+    padding-top: 13px;
   }
 }

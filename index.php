@@ -10,11 +10,12 @@
 
 -->
 
-<article id="home-page-banner-section">
+<article id="home-page-banner-section" class="visible-md visible-lg">
   <div id="home-page-banner">
 
+
     <div class="home-page-banner-item manic-padding-container">
-      <div class="manic-image-container manic-padding-image">
+      <div class="manic-image-container manic-padding-image home-page-banner-image">
         <img src="" data-image-desktop="images/home-banner-01.png">
       </div>
       <div class="text-overlay">
@@ -32,7 +33,7 @@
     </div>
 
     <div class="home-page-banner-item manic-padding-container">
-      <div class="manic-image-container manic-padding-image">
+      <div class="manic-image-container manic-padding-image home-page-banner-image">
         <img src="" data-image-desktop="images/home-banner-02.png">
       </div>
       <div class="text-overlay">
@@ -52,6 +53,32 @@
   </div> <!-- home-page-banner -->
 </article>
 
+
+
+<article id="home-page-banner-section-mobile" class="visible-sm visible-xs">
+  <div id="home-page-banner-mobile">
+
+    <div class="home-page-banner-item-mobile">
+      <div class="banner-image-bg">
+        <div class="manic-image-container">
+          <img src="" data-image-mobile="images/home-banner-01v2.jpg" data-image-tablet="images/home-banner-01v2.jpg">
+        </div>
+      </div>
+      <div class="banner-image-overlay">
+        <div class="manic-image-container has-show-all">
+          <img src="" data-image-mobile="images/home-banner-overlay-01.png" data-image-tablet="images/home-banner-overlay-01.png">
+        </div>
+      </div>
+      <div class="text-overlay">
+        <h1><span>Elderflower <br>Elderberry & Cream</span> Nothing like hand-picked tea.</h1>
+      </div>
+    </div>
+
+
+  </div> <!-- home-page-banner-mobile -->
+</article>
+
+
 <!--
    _   _  ___  __  __ _____   ___ _   _ _____ ____   ___
   | | | |/ _ \|  \/  | ____| |_ _| \ | |_   _|  _ \ / _ \
@@ -61,7 +88,7 @@
 
 -->
 
-<article id="home-page-intro-section">
+<article id="home-page-intro-section" class="visible-md visible-lg">
   <div class="container-fluid has-breakpoint">
     <div class="row">
       <div class="col-md-5">
@@ -99,7 +126,7 @@
 
 -->
 
-<article id="home-page-featured-section">
+<article id="home-page-featured-section" class="visible-md visible-lg">
   <div class="manic-image-container has-full-width">
     <img src="" data-image-desktop="images/home-featured.png">
   </div>
@@ -115,7 +142,7 @@
 
 -->
 
-<article id="home-page-shop-section">
+<article id="home-page-shop-section" class="visible-md visible-lg">
   <div class="container-fluid has-breakpoint">
     <div class="row">
       <div class="col-md-12">
@@ -187,6 +214,113 @@
   </div>
 </article>
 
+
+
+
+
+
+<article id="home-page-shop-section-mobile" class="visible-sm visible-xs">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div id="home-page-shop-title-mobile">
+          <h2>Shop the Kindred Range</h2>
+          <div class="cta-container">
+            <a href="" class="square-cta">Vist tea store</a>
+          </div>
+        </div> <!-- home-page-shop-title-mobile -->
+      </div>
+    </div> <!-- row -->
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div id="home-page-shop-item-mobile-container">
+
+          <div class="row">
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-chamomile.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-endearment.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-mulberry-leaf.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-maple-vanilla.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-blessings.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-elder-and-cream.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-roasted-oolong.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-genmaicha.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-chrysanthemum.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4 col-xs-6">
+              <div class="home-page-shop-item-mobile">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image-mobile="images/product-rooibos-orange.png">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div> <!-- home-page-shop-item-mobile-container -->
+
+      </div> <!-- col-md-12 -->
+    </div> <!-- row -->
+  </div>
+</article>
+
+
+
 <!--
    _   _  ___  __  __ _____   __  __  ___  ____  _____
   | | | |/ _ \|  \/  | ____| |  \/  |/ _ \|  _ \| ____|
@@ -196,7 +330,7 @@
 
 -->
 
-<article id="home-page-more-section">
+<article id="home-page-more-section" class="visible-md visible-lg">
   <div class="container-fluid has-breakpoint">
     <div class="row">
       <div class="col-md-12">
@@ -277,88 +411,11 @@
           
           <div id="home-instagram-item-container">
 
-            <!-- 
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-01.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-02.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-03.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-04.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-05.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-06.png">
-              </div>
-            </div>
-
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-01.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-02.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-03.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-04.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-05.png">
-              </div>
-            </div>
-            <div class="home-instagram-item">
-              <div class="white-bg"></div>
-              <div class="manic-image-container">
-                <img src="" data-image="images/home-instagram-06.png">
-              </div>
-            </div>
-            
-            -->
-
           </div> <!-- home-instagram-item-container -->
         </div>
         
 
-        <div id="home-page-instagram-bottom">
+        <div id="home-page-instagram-bottom" class="visible-md visible-lg">
           <h4>follow us @kindredteas</h4>
           <ul>
             <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
@@ -367,6 +424,10 @@
             <li><a href="javascript:void(0);" class="fa fa-pinterest"></a></li>
           </ul>
         </div> <!-- home-page-instagram-bottom -->
+
+        <div id="home-page-instagram-bottom-mobile" class="visible-sm visible-xs">
+          <h4><a href="" target="_blank">follow us @kindredteas</a></h4>
+        </div>
 
       </div>
     </div>

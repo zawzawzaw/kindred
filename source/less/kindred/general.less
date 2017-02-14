@@ -76,22 +76,26 @@ body{
 
 .general-text-declaration(1);
 
+/*
 @media only screen and (max-width: 991px) {
   .general-text-declaration(0.8);
 }
 @media only screen and (max-width: 767px) {
+*/
+
+@media only screen and (max-width: 991px) {
   .general-text-declaration(1);
 
   // override
   // 
   h1 {
-    font-size: 21px;
-    line-height: 23px;
+    .header-h1-style-mobile(1.5);
+    .josefin-sans-light;                  // still use light in tablet landscape
   }
 
   h2 {
-    font-size: 19px;
-    line-height: 23px;
+    .header-h2-style-mobile(1.5);
+    .josefin-sans-light;                  // still use light in tablet landscape
   }
 
   h3 {
@@ -117,8 +121,16 @@ body{
     font-size: 11.5px;
     line-height: 20px;
   }
+}
 
+@media only screen and (max-width: 767px) {
+  h1 {
+    .header-h1-style-mobile;
+  }
 
+  h2 {
+    .header-h2-style-mobile;
+  }
 }
 
 

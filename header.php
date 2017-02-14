@@ -14,6 +14,14 @@
   </title>
 
 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, minimal-ui"/>
+
+
+
   <link rel="stylesheet" type="text/css" href="shopify-theme/assets/timber.css">
   <link rel="stylesheet" type="text/css" href="shopify-theme/assets/critical_style.css">
   <link rel="stylesheet" type="text/css" href="shopify-theme/assets/style.css">

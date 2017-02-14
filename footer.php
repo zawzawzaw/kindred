@@ -1,8 +1,16 @@
     </div> <!-- .main-content -->
   </div> <!-- #PageContainer -->
 
+  <!--
+     ____  _____ ____  _  _______ ___  ____    _____ ___   ___ _____ _____ ____
+    |  _ \| ____/ ___|| |/ /_   _/ _ \|  _ \  |  ___/ _ \ / _ \_   _| ____|  _ \
+    | | | |  _| \___ \| ' /  | || | | | |_) | | |_ | | | | | | || | |  _| | |_) |
+    | |_| | |___ ___) | . \  | || |_| |  __/  |  _|| |_| | |_| || | | |___|  _ <
+    |____/|_____|____/|_|\_\ |_| \___/|_|     |_|   \___/ \___/ |_| |_____|_| \_\
 
-  <footer id="desktop-footer">
+  -->
+
+  <footer id="desktop-footer" class="visible-md visible-lg">
     <div class="container-fluid has-breakpoint">
       <div class="row">
         <div class="col-md-8">
@@ -75,6 +83,54 @@
     </div>
   </footer>
 
+  <!--
+     __  __  ___  ____ ___ _     _____   _____ ___   ___ _____ _____ ____
+    |  \/  |/ _ \| __ )_ _| |   | ____| |  ___/ _ \ / _ \_   _| ____|  _ \
+    | |\/| | | | |  _ \| || |   |  _|   | |_ | | | | | | || | |  _| | |_) |
+    | |  | | |_| | |_) | || |___| |___  |  _|| |_| | |_| || | | |___|  _ <
+    |_|  |_|\___/|____/___|_____|_____| |_|   \___/ \___/ |_| |_____|_| \_\
+
+  -->
+
+  <article id="mobile-footer" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-6 col-xs-12">
+
+          <div id="mobile-footer-newsletter-form-container">
+            <h4>join mailing list</h4>
+            
+            <form id="mobile-footer-newsletter-form">
+              <input type="text" placeholder="Join our mailing list">
+              <button type="submit"></button>
+            </form> <!-- mobile-footer-newsletter-form -->
+
+            <hr>
+          </div>
+
+        </div> <!-- col -->
+        <div class="col-sm-6 col-xs-12">
+
+          <div id="mobile-footer-social-container">
+            <h4>Follow us</h4>
+            <ul>
+              <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
+              <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
+              <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
+              <li><a href="javascript:void(0);" class="fa fa-pinterest"></a></li>
+            </ul>
+          </div> <!-- mobile-footer-social-container -->
+
+          <div id="mobile-footer-copywrite">
+            <small>&copy; 2017 kindred teas. All rights reserved</small>
+          </div> <!-- mobile-footer-copywrite -->
+
+        </div> <!-- col -->
+
+      </div> <!-- row -->
+    </div>
+  </article>
 
 
 

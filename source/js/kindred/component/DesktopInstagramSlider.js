@@ -157,14 +157,24 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
           }
         },
         {
-          'breakpoint': 980,
+          'breakpoint': 991,  //   tablet portrait
           'settings':{
             'slidesToShow': 3,
+            'slidesToScroll': 1
+          }
+        },
+        {
+          'breakpoint': 767,  //   mobile
+          'settings':{
+            'slidesToShow': 1,
             'slidesToScroll': 1
           }
         }
       ]
     });
+
+    
+    
 
     this.item_container.on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
       this.update_layout();

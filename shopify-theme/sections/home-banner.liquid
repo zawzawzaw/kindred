@@ -9,8 +9,37 @@
 
 
 
-<article id="home-page-banner-section">
+<article id="home-page-banner-section" class="visible-md visible-lg">
   <div id="home-page-banner">
+
+    <div class="home-page-banner-item manic-padding-container">
+      <div class="manic-image-container manic-padding-image home-page-banner-image">
+        <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+      </div>
+      <div class="text-overlay shop-all-version">
+        <div class="container-fluid has-breakpoint">
+          <div class="row">
+            <div class="col-md-2 col-sm-3"></div>
+            <div class="col-md-8 col-sm-6">
+              <div class="manic-padding-text" data-y="320">
+
+                {% if section.settings.shopallcopy != blank %}
+                  <h1>{{ section.settings.shopallcopy }}</h1>
+                {% endif %}
+
+                {% if section.settings.link != blank and section.settings.linkcopy != blank %}
+                  <div class="cta-container">
+                    <a href="{{ section.settings.link }}" class="square-cta">{{ section.settings.linkcopy }}</a>
+                  </div>
+                {% endif %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     {% for block in section.blocks limit: section.blocks.size %}
 
@@ -49,41 +78,53 @@
           </div>
         </div>
       </div>
+
     {% endfor %}
-
-
-
-    <div class="home-page-banner-item manic-padding-container">
-      <div class="manic-image-container manic-padding-image home-page-banner-image">
-        <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
-      </div>
-      <div class="text-overlay shop-all-version">
-        <div class="container-fluid has-breakpoint">
-          <div class="row">
-            <div class="col-md-2 col-sm-3"></div>
-            <div class="col-md-8 col-sm-6">
-              <div class="manic-padding-text" data-y="250">
-
-                {% if section.settings.shopallcopy != blank %}
-                  <h1>{{ section.settings.shopallcopy }}</h1>
-                {% endif %}
-
-                {% if section.settings.link != blank and section.settings.linkcopy != blank %}
-                  <div class="cta-container">
-                    <a href="{{ section.settings.link }}" class="square-cta">{{ section.settings.linkcopy }}</a>
-                  </div>
-                {% endif %}
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
 
   </div> <!-- home-page-banner -->
 </article>
+
+
+
+
+<article id="home-page-banner-section-mobile" class="visible-sm visible-xs">
+
+  <div id="home-page-banner-mobile">
+
+    {% for block in section.blocks limit: section.blocks.size %}
+
+      <div class="home-page-banner-item-mobile">
+        <div class="banner-image-bg">
+          <div class="manic-image-container">
+            {% if block.settings.image != blank %}
+              <img src="" data-image-mobile="{{ block.settings.image | img_url: 'master' }}">
+            {% else %}
+              <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="banner-image-overlay">
+          <div class="manic-image-container has-show-all">
+            {% if block.settings.image != blank %}
+              <img src="" data-image-mobile="{{ block.settings.overlayimage | img_url: 'master' }}">
+            {% else %}
+              <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}">
+            {% endif %}
+          </div>
+        </div>
+        <div class="text-overlay">
+          {% if block.settings.text != blank %}
+            <h1>{{ block.settings.text }}</h1>
+          {% endif %}
+        </div>
+      </div>
+
+    {% endfor %}
+
+  </div> <!-- home-page-banner-mobile -->
+
+</article>
+
 
 {% schema %}
   {
