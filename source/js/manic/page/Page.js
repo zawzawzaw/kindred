@@ -210,8 +210,8 @@ manic.page.Page.prototype.init = function(){
   this.hide_preloader();
 
   this.update_page_layout();
-
   this.options['on_init_complete']();
+  
 
   console.log('manic.page.Page: init');
 };

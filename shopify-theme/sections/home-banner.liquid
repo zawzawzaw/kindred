@@ -91,15 +91,35 @@
 
   <div id="home-page-banner-mobile">
 
+
+    <div class="home-page-banner-item-mobile">
+      <div class="banner-image-bg">
+        <div class="manic-image-container">
+          <img src="" data-image-mobile="{{ section.settings.content-image.src | img_url: 'master' }}" data-image-tablet="{{ section.settings.content-image.src | img_url: 'master' }}">
+        </div>
+      </div>
+      <div class="text-overlay top-version">
+        {% if section.settings.shopallcopy != blank %}
+          <h1><span>{{ section.settings.shopallcopy }}</span></h1>
+        {% endif %}
+
+        {% if section.settings.link != blank and section.settings.linkcopy != blank %}
+          <div class="cta-container">
+            <a href="{{ section.settings.link }}" class="square-cta">{{ section.settings.linkcopy }}</a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
     {% for block in section.blocks limit: section.blocks.size %}
 
       <div class="home-page-banner-item-mobile">
         <div class="banner-image-bg">
           <div class="manic-image-container">
             {% if block.settings.image != blank %}
-              <img src="" data-image-mobile="{{ block.settings.image | img_url: 'master' }}">
+              <img src="" data-image-mobile="{{ block.settings.image | img_url: '620x630', crop: 'center' }}" data-image-tablet="{{ block.settings.image | img_url: 'master' }}">
             {% else %}
-              <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}">
+              <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}" data-image-tablet="{{ 'product-no-image.jpg' | asset_url }}">
             {% endif %}
           </div>
         </div>

@@ -139,6 +139,30 @@ kindred.page.Default.prototype.init = function() {
   } // #home-page-banner
 
 
+
+
+  if ($('#home-page-banner-mobile').length != 0) {
+    $('#home-page-banner-mobile').slick({
+      'speed': 350,
+      'dots': false,
+      'arrows': false,
+      'infinite': false,
+      'slidesToShow': 1,
+      'slidesToScroll': 1,
+      'pauseOnHover': false,
+      'autoplay': true,
+      'autoplaySpeed': 4000
+    });
+
+    // update on slick init/resize
+    $('#home-page-banner-mobile').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+    
+  } // #home-page-banner
+
+  
+
   
 
 
@@ -218,7 +242,9 @@ kindred.page.Default.prototype.init = function() {
   
 
 
-  if ($('#mailing-list-pop-up-container').length != 0) {
+  // create only when in desktop mode
+  
+  if ($('#mailing-list-pop-up-container').length != 0 && manic.IS_MOBILE == false) {
 
     // this will auto open if there is no cookie 
     // cookie expires in 10 hrs

@@ -126,12 +126,22 @@
   background: @white;
   padding-top: 100px;
   padding-bottom: 100px;
+
+  &.grey-bg-version{
+    background: @off-white-02;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
 }
 #about-page-copy-copy{
 
   width: 100%;
   height: 625px;
   display: table;
+
+  &.short-version-02{
+    height: 450px;
+  }
 
   .default-copy{
     display: table-cell;
@@ -144,6 +154,12 @@
 #about-page-copy-image{
   .manic-image-container{
     height: 625px;
+  }
+
+  &.short-version-02{
+    .manic-image-container{
+      height: 450px;
+    }
   }
 }
 

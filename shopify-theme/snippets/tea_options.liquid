@@ -1,0 +1,9 @@
+
+<option value="">Please select</option>
+
+{% for product in collections.teas.products %}
+  {% if product.available %}
+    <option>{{ product.title }}</option>
+
+  {% endif %}
+{% endfor %}

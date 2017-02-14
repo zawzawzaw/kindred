@@ -9,6 +9,7 @@
 
 <article id="about-page-copy-section">
   <div class="container-fluid has-breakpoint">
+
     <div class="row">
 
       <div class="col-md-5">
@@ -32,8 +33,48 @@
 
       </div>
     </div> <!-- row -->
+
   </div>
 </article>
+
+
+
+
+
+
+
+<article id="about-page-copy-section" class="short-version grey-bg-version">
+  <div class="container-fluid has-breakpoint">
+
+    <div class="row">
+
+      <div class="col-md-5">
+
+        <div id="about-page-copy-image" class="short-version-02">
+          <div class="manic-image-container">
+            <img src="" data-image-desktop="{{ section.settings.content-image-2.src | img_url: 'master' }}">
+          </div>
+        </div> <!-- about-page-copy-image -->
+
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-5">
+
+        <div id="about-page-copy-copy" class="short-version-02">
+          <div class="default-copy">
+            <h1>{{ section.settings.title2 }}</h1>
+            {{ section.settings.contentcopy2 }}
+          </div>
+        </div> <!-- about-page-copy-copy -->
+        
+      </div>
+    </div> <!-- row -->
+
+
+
+  </div>
+</article>
+
 
 {% schema %}
   {
@@ -55,6 +96,21 @@
         "type": "image_picker",
         "id": "content-image",
         "label": "Content Image"
+      },
+      {
+        "type": "text",
+        "id": "title2",
+        "label": "Title 2"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy2",
+        "label": "Content Copy 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image-2",
+        "label": "Content Image 2"
       }
     ]
   }

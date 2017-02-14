@@ -98,7 +98,7 @@
                         {{ product.description }}
                       </div>
                     </div>
-                    
+
                     <div class="product-variant-container">
 
                       {% comment %}
@@ -140,6 +140,55 @@
 
 
 
+
+                    
+
+
+
+                    {% if product.id == 8748908297 or product.id == 8747743433 %}
+                      <div class="product-custom-properties-container">
+                        {% if product.id == 8748908297 %}
+
+                          <!-- teapot-one-tea-tin -->
+
+                          <div class="custom-wrapper">
+                            <label>Tea Tin</label>
+                            <div class="custom-wrapper-wrapper">
+                              <select name="properties[Tea Tin]" required>
+                                {% include 'tea_options' %}
+                              </select>
+                            </div>
+                          </div>
+
+                        {% elsif product.id == 8747743433 %}
+
+                          <!-- teapot-two-tea-tins -->
+
+                          <div class="custom-wrapper">
+                            <label>First Tin</label>
+                            <div class="custom-wrapper-wrapper">
+                              <select name="properties[Tea Tin 1]" required>
+                                {% include 'tea_options' %}
+                              </select>
+                            </div>
+                          </div>
+
+                          <div class="custom-wrapper">
+                            <label>Second Tin</label>
+                            <div class="custom-wrapper-wrapper">
+                              <select name="properties[Tea Tin 2]" required>
+                                {% include 'tea_options' %}
+                              </select>
+                            </div>
+                          </div>
+                          
+                        {% endif %}
+                      </div> <!-- product-custom-properties-container -->
+
+                    {% endif %}
+
+
+                    
                     {% if product.metafields.description.p01_origin != blank and product.metafields.description.p02_teatype != blank %}
                       <div class="row">
                         <div class="col-md-6">
