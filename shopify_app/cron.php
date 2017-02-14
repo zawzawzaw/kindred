@@ -46,13 +46,13 @@ function updateGeneratedCodeStatus($id) {
 function sendEmail($codes) {
   $mail = new PHPMailer;
 
-  $mail->setFrom('info@kindredtea.com', 'Kindred Tea');
+  $mail->setFrom('hello@kindredtea.com', 'Kindred Tea');
   $mail->addAddress('zaw@manic.com.sg', 'Kindred Tea Admin');     // Add a recipient
-  $mail->addReplyTo('info@kindredtea.com', 'Kindred Tea');
+  $mail->addReplyTo('hello@kindredtea.com', 'Kindred Tea');
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
-  $mail->Subject = "To Generate discount code at Kindred Tea Admin Panel";
+  $mail->Subject = "Please generate new discount codes at Kindred Tea Admin Panel";
   $mail->Body    = "Hi, <br><br>Please generate the following discount codes: <br><br> ".$codes;
   $mail->AltBody = '';
 
