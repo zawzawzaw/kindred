@@ -129,14 +129,15 @@
 
               <div id="page-login-guest-login-container">
 
-                <hr>
+                
 
-                <p>If you want to continue without creating an account</p>
+
+
+
 
                 {% form 'guest_login' %}
-                   
-                  <div class="cta-container">
-                    <input type="submit" class="btn square-cta" value="{{ 'customer.login.guest_title' | t }}">
+                  <div class="default-copy">
+                    <p>If you want to continue without creating an account: <a href="javascript:void(0);" id="page-login-guest-login-btn">{{ 'customer.login.guest_title' | t }}</a></p>
                   </div>
                   
                 {% endform %}

@@ -288,7 +288,8 @@
 }
 
 .form-success {
-  color: @brown;
+  // color: @brown;
+  color: darken(@brown, 10%);
   border-color: @brown;
   background: @light-brown-02;
 }
@@ -333,12 +334,14 @@
   }
 
   .dropzone{
-    border: 2px dashed @border-grey-02;
+    // border: 2px dashed @border-grey-02;
+    border: 2px dashed @white;
     margin: 0;
     height: @upload-box-height-02;
 
     p{
       line-height: @upload-box-height-02;
+      color: @grey-05;
     }
   }
   .dropzone + .status{

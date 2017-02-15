@@ -75,8 +75,11 @@
             {% form 'contact' %}
 
               {% if form.posted_successfully? %}
+
+                <!-- <p class="note form-success">{{ 'contact.form.post_success' | t }}</p> -->
+
                 <p class="note form-success">
-                  {{ 'contact.form.post_success' | t }}
+                  Thanks for your payment. We will get back to you as soon as possible.
                 </p>
               {% endif %}
 
@@ -106,8 +109,10 @@
                     <label for="ContactFormOrderNo">Order No.<span class="asterisk">*</span></label>
                     <input type="text" id="ContactFormOrderNo" class="required" name="contact[orderno]" placeholder="Write your order no. here">
 
-                    <label for="ContactFormIbankingName">iBanking Name <small>(Where applicable)</small></label>
-                    <input type="text" id="ContactFormIbankingName" class="required" name="contact[ibankingname]" placeholder="Please enter iBanking name">
+                    <label for="ContactFormOrderAmount">Amount<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormOrderAmount" class="required" name="contact[orderamount]" placeholder="Please enter deposit amount">
+
+                    
 
                   </div>
                 </div>
@@ -119,10 +124,8 @@
                     <label for="ContactFormTransactionNo">Transaction / Reference No.<span class="asterisk">*</span></label>
                     <input type="text" id="ContactFormTransactionNo" class="required" name="contact[transactionno]" placeholder="Write your transaction/reference no. here">
 
-                    <label for="ContactFormOrderAmount">Amount<span class="asterisk">*</span></label>
-                    <input type="text" id="ContactFormOrderAmount" class="required" name="contact[orderamount]" placeholder="Please enter deposit amount">
-
-                    
+                    <label for="ContactFormIbankingName">iBanking Name <small>(Where applicable)</small></label>
+                    <input type="text" id="ContactFormIbankingName" name="contact[ibankingname]" placeholder="Please enter iBanking name">
 
                     <label for="ContactFormImage">Upload Receipt Snapshot <small>(Where applicable)</small></label>
                     <div id="imgur-upload-container">
@@ -137,7 +140,7 @@
               
 
               <div class="cta-container">
-                <button type="submit" class="square-cta form-check-force-submit">send message</button>
+                <button type="submit" class="square-cta form-check-force-submit">Submit</button>
               </div>
 
 

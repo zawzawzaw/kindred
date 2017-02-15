@@ -290,6 +290,17 @@ kindred.page.Default.prototype.init = function() {
     this.giftcard = new kindred.component.Giftcard({}, $('#product-page-giftcard-design-container'));
   }
 
+
+
+
+  
+
+  if ($('#page-login-guest-login-container').length != 0) {
+    $('#page-login-guest-login-btn').click(function(event){
+      $('#page-login-guest-login-container form').submit();
+    });
+  }
+
   
   
   

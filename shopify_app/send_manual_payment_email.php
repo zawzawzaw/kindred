@@ -102,7 +102,7 @@ function get_bank_deposit_email($inputs){   // input is passed to this function
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td class="link__cell"><a href="https://kindredteas.com/pages/bank-deposit" class="link__text">Proceed for payment</a></td>
-                                                                                    <td class="link__cell"or</td>
+                                                                                    <td class="link__cell">or</td>
                                                                                     <td class="link__cell"><a href="https://kindredteas.com/account" class="link__text">Login to your account</a></td>
                                                                                 </tr>
                                                                             </tbody>
@@ -155,9 +155,9 @@ function get_bank_deposit_email($inputs){   // input is passed to this function
 function sendEmail($subject, $message, $email, $name) {
   $mail = new PHPMailer;
 
-  $mail->setFrom('hello@kindredteas.com', 'Kindred Tea');
+  $mail->setFrom('hello@kindredteas.com', 'Kindred Teas');
   $mail->addAddress($email, $name);     // Add a recipient
-  $mail->addReplyTo('hello@kindredteas.com', 'Kindred Tea');
+  $mail->addReplyTo('hello@kindredteas.com', 'Kindred Teas');
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
@@ -185,7 +185,7 @@ if ($inputs->payment_gateway_names && $inputs->payment_gateway_names[0] == "Bank
   $customer_name = $inputs->billing_address->first_name . ' ' . $inputs->billing_address->last_name;
   $customer_email = $inputs->email;
   
-  $subject = 'Kindred Tea Bank Deposit Payment Details';
+  $subject = 'Kindred Teas Bank Deposit Payment Details';
   $message = get_bank_deposit_email($inputs);
 
 
