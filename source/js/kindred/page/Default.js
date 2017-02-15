@@ -292,6 +292,29 @@ kindred.page.Default.prototype.init = function() {
 
   
   
+  
+  if ($('#imgur-upload-container').length != 0) {
+    
+    new Imgur({
+      clientid: '08e0d0ee169efcf',
+      callback: function(res){
+        if (res.success === true) {
+
+          var image_src = res.data.link;
+          image_src = image_src.replace(/^http:/, 'https:');
+
+          console.log('image uploaded');
+          console.log(image_src);
+
+          $('#imgur-upload-container #ContactFormImage').val('' + image_src);
+          $('#imgur-upload-container').addClass('loaded-version');
+          $('#imgur-upload-container').append('<div class="manic-image-container has-show-all"><img src="' + image_src + '"></div>');
+          this.create_image_container();
+        }
+      }.bind(this)
+    });
+
+  }
 
 
 
@@ -300,6 +323,10 @@ kindred.page.Default.prototype.init = function() {
     console.log('create map');
 
   }
+
+
+
+
   
 
   // wrap article images in a row & manic-image-container 

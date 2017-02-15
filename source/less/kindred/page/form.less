@@ -52,6 +52,13 @@
       position: relative;
       top: 2px;
     }
+
+    small{
+      .display-inline-block;
+      position: relative;
+      top: 0px;
+      margin-left: 3px;
+    }
   }
 
   .error-element{
@@ -294,5 +301,58 @@
   background: @off-white-02;
   ul {
     margin-left: 0;
+  }
+}
+
+
+//    ___ __  __  ____ _   _ ____
+//   |_ _|  \/  |/ ___| | | |  _ \
+//    | || |\/| | |  _| | | | |_) |
+//    | || |  | | |_| | |_| |  _ <
+//   |___|_|  |_|\____|\___/|_| \_\
+//
+
+
+
+@upload-box-height: 202px;
+@upload-box-height-02: 202px - 20px;
+
+#imgur-upload-container{
+  background: @off-white-03;
+  height: @upload-box-height;
+
+  padding: 10px;
+  margin-bottom: 25px;
+
+  #ContactFormImage{
+    display: none;
+  }
+  .error-element{
+    margin-top: -10px;
+    margin-bottom: -10px;
+  }
+
+  .dropzone{
+    border: 2px dashed @border-grey-02;
+    margin: 0;
+    height: @upload-box-height-02;
+
+    p{
+      line-height: @upload-box-height-02;
+    }
+  }
+  .dropzone + .status{
+    padding: 0;
+    margin: 0;
+  }
+  .manic-image-container{
+    background: darken(@off-white-03, 5%);
+    height: @upload-box-height-02;
+  }
+
+  &.loaded-version{
+    .dropzone{
+      display: none;
+    }
   }
 }

@@ -1,3 +1,54 @@
+
+<!--
+    ____ ___  ______   __
+   / ___/ _ \|  _ \ \ / /
+  | |  | | | | |_) \ V /
+  | |__| |_| |  __/ | |
+   \____\___/|_|    |_|
+
+-->
+
+<article id="about-page-copy-section" class="grey-bg-version">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+
+      <div class="col-md-5">
+
+        <div id="about-page-copy-copy">
+          <div class="default-copy">
+            <h1>Bank Deposit</h1>
+            <p><span class="first-letter">F</span>or bank deposit, internet banking and ATM transfers, please follow the steps below. All payments will be verified within 1 working day and we will send you an email once your parcel is ready for shipment.</p>
+
+            <h4>Step 1</h4>
+            <p>Kindly transfer the payable amount to one of our accounts below within 24 hours after your order has been confirmed.</p>
+            <p>POSB XXX-XXXXXX-X <br>UOB XXX-XXXXXX-X</p>
+
+            <h4>Step 2</h4>
+            <p>Once you have made your payment, please return to this page and fill up the form below regarding your bank transaction details. Please be as detailed as you can.</p>
+
+            <h4>Step 3</h4>
+            <p>If you do not hear from us within 3 working days, please check your order status via your order confirmation email or drop us an email at <a href="mailto:hello@kindredteas.com">hello@kindredteas.com</a>.</p>
+
+
+          </div>
+        </div> <!-- about-page-copy-copy -->
+        
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+
+        <div id="about-page-copy-image">
+          <div class="manic-image-container">
+            <img src="" data-image-desktop="{{ 'about-content-02.jpg' | asset_url }}">
+          </div>
+        </div> <!-- about-page-copy-image -->
+
+      </div>
+    </div> <!-- row -->
+  </div>
+</article>
+
+
 <article id="contact-page-form-section">
   <div class="container-fluid has-breakpoint">
 
@@ -6,45 +57,13 @@
       <div class="col-md-8">
 
         <div id="contact-page-form-title">
-          <h2>Bank Deposit</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim </p>
+          <h2>Bank Transaction Details</h2>
+          <p>Once you have made your payment, please fill in the form below and be as accurate as you can.</p>
         </div> <!-- contact-page-form-title -->
 
       </div>
     </div>
     
-
-    <div class="row">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-
-        <div id="contact-page-form-step-container">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="step-item">
-                <h4>Step 1.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="step-item">
-                <h4>Step 1.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="step-item">
-                <h4>Step 1.</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-              </div>
-            </div>
-          </div>
-        </div> <!-- contact-page-form-step-container -->
-
-      </div>
-    </div>
-
-
 
     <div class="row">
       <div class="col-md-2"></div>
@@ -64,75 +83,58 @@
               {{ form.errors | default_errors }}
 
 
+              <input type="hidden" id="ContactFormSubject" name="contact[subject]" value="Bank Deposit Detail Form">
+              <input type="hidden" id="ContactFormMessage" name="contact[body]" value="This is the bank deposit details of the customer">
+
               <div class="row">
                 <div class="col-md-6">
-
                   <div class="contact-page-column-01">
-                    <label for="ContactFormSalutation">salutation</label>
-                    <div class="dropdown">
-                      <select id="ContactFormSalutation" name="contact[salutation]">
-                        <option value="">Please select</option>
-                        <option>Mr.</option>
-                        <option>Ms.</option>
-                        <option>Mrs.</option>
-                        <option>Dr.</option>
-                      </select>
-                    </div>
+
+                    {% assign name_attr = 'contact.form.name' | t | handle %}
+                    <label for="ContactFormName">{{ 'contact.form.name' | t }}<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormName" class="required input-full" name="contact[{{ name_attr }}]" placeholder="How should we address you" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
 
                     <label for="ContactFormEmail">{{ 'contact.form.email' | t }}<span class="asterisk">*</span></label>
                     <input type="email" id="ContactFormEmail" class="input-full required only-email" name="contact[email]" placeholder="Please enter your email address" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
 
-                    <label>preference of contact</label>
-
-                    <div class="row">
-                      <div class="col-md-4">
-
-                        <div class="checkbox">
-                          <input type="checkbox" value="email" name="contact[contact preference]">
-                          <label class="checkbox-label"><span></span><p>Email</p></label>
-                        </div>
-
-                      </div>
-                      <div class="col-md-4">
-
-                        <div class="checkbox">
-                          <input type="checkbox" value="phone" name="contact[contact preference]">
-                          <label class="checkbox-label"><span></span><p>Phone</p></label>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div> <!-- contact-page-column-01 -->
-
-                </div>
-                <div class="col-md-6">
-
-                  <div class="contact-page-column-02">
                     
-                    {% assign name_attr = 'contact.form.name' | t | handle %}
-                    <label for="ContactFormName">{{ 'contact.form.name' | t }}<span class="asterisk">*</span></label>
-                    <input type="text" id="ContactFormName" class="required input-full" name="contact[{{ name_attr }}]" placeholder="How should we address you" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
 
                     {% assign name_attr = 'contact.form.phone' | t | handle %}
                     <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
                     <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="Please include country code" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
 
+                    <label for="ContactFormOrderNo">Order No.<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormOrderNo" class="required" name="contact[orderno]" placeholder="Write your order no. here">
 
+                    <label for="ContactFormIbankingName">iBanking Name <small>(Where applicable)</small></label>
+                    <input type="text" id="ContactFormIbankingName" class="required" name="contact[ibankingname]" placeholder="Please enter iBanking name">
 
-
-                    <label for="ContactFormOrderID">order id (if applicable)</label>
-                    <input type="text" id="ContactFormOrderID" name="contact[orderid]" placeholder="Write your order ID here">
-                    
-                  </div> <!-- contact-page-column-02 -->
-
+                  </div>
                 </div>
-              </div> <!-- row -->
+                <div class="col-md-6">
+                  <div class="contact-page-column-02">
 
-              <label>subject</label>
-              <input type="text" id="ContactFormSubject" name="contact[subject]" placeholder="Please enter your subject">
+                    
 
-              <label>message<span class="asterisk">*</span></label>
-              <textarea id="ContactFormMessage" class="required" name="contact[body]" placeholder="Please write your message here."></textarea>
+                    <label for="ContactFormTransactionNo">Transaction / Reference No.<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormTransactionNo" class="required" name="contact[transactionno]" placeholder="Write your transaction/reference no. here">
+
+                    <label for="ContactFormOrderAmount">Amount<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormOrderAmount" class="required" name="contact[orderamount]" placeholder="Please enter deposit amount">
+
+                    
+
+                    <label for="ContactFormImage">Upload Receipt Snapshot <small>(Where applicable)</small></label>
+                    <div id="imgur-upload-container">
+                      <input type="text" id="ContactFormImage" name="contact[image]">
+                      <div class="dropzone"></div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              
 
               <div class="cta-container">
                 <button type="submit" class="square-cta form-check-force-submit">send message</button>

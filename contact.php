@@ -78,6 +78,11 @@
 
                     <label for="nameofitem">order id (if applicable)</label>
                     <input type="text" id="nameofitem" name="nameofitem">
+
+                    <label>Image</label>
+                    <div id="imgur-upload-container">
+                      <div class="dropzone"></div>
+                    </div>
                     
                   </div> <!-- contact-page-column-02 -->
 

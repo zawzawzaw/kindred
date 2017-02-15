@@ -64,6 +64,32 @@
     }
   }
 
+  ol{
+    counter-reset: ol-counter;
+
+    li{
+      position: relative;
+      padding-left: 16px;
+
+      margin-bottom: 25px;
+
+      &:before{
+        .body-font-bold;
+        color: @off-black;
+        content: counter(ol-counter);
+        counter-increment: ol-counter;
+        display: block;
+
+        .display-inline-block;
+        position: absolute;
+        top: 0px;
+        // left: 3px + 4px;
+        /// left: 11px;
+        left: 0px;
+      }
+    }
+  }
+
 
 
 
@@ -115,11 +141,17 @@
   ul + p {
     padding-top: 20px;
   }
+  ol + p {
+    padding-top: 20px;
+  }
 
   p + .default-table{
     margin-top: 40px;
   }
   ul + .default-table{
+    margin-top: 40px;
+  }
+  ol + .default-table{
     margin-top: 40px;
   }
 
