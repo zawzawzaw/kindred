@@ -31,6 +31,10 @@
 
 
 
+
+
+
+
 <!--
    ____  ____   ___  ____  _   _  ____ _____
   |  _ \|  _ \ / _ \|  _ \| | | |/ ___|_   _|
@@ -62,8 +66,21 @@
       <div class="col-md-12">
 
         <div id="product-item-container">
+
           
           {% for product in collection.products %}
+
+            {% assign is_product_tea = false %}
+            {% for c in product.collections %}
+              {% if c.handle == 'teas' %}
+                {% assign is_product_tea = true %}
+              {% endif %}
+            {% endfor %}
+
+            {% if is_product_tea == false %}
+              {% assign image_container_classes = ' square-version' %}
+            {% endif %}
+            
             {% include 'product-grid-item' %}
           {% endfor %}
 

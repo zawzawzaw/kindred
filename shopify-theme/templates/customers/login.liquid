@@ -81,6 +81,7 @@
             {% comment %}
               JS shows/hides this form in timber.loginForms()
             {% endcomment %}
+
             <div id="RecoverPasswordForm" style="display: none;">
 
               <h1>{{ 'customer.recover_password.title' | t }}</h1>
@@ -107,9 +108,13 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-8 col-md-offset-4">
-                    <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.recover_password.submit' | t }}">
-                    <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
+                  <div class="col-md-8">
+                    
+                    <div class="cta-container">
+                      <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.recover_password.submit' | t }}">
+                      <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
+                    </div>
+
                   </div>
                 </div>
               {% endform %}
@@ -121,13 +126,23 @@
               during checkout, not on the default /login page.
             {% endcomment %}
             {% if shop.checkout.guest_login %}
-              <hr>
 
-              <h2>{{ 'customer.login.guest_title' | t }}</h2>
+              <div id="page-login-guest-login-container">
 
-              {% form 'guest_login' %}
-                <input type="submit" class="btn square-cta" value="{{ 'customer.login.guest_continue' | t }}">
-              {% endform %}
+                <hr>
+
+                <p>If you want to continue without creating an account</p>
+
+                {% form 'guest_login' %}
+                   
+                  <div class="cta-container">
+                    <input type="submit" class="btn square-cta" value="{{ 'customer.login.guest_title' | t }}">
+                  </div>
+                  
+                {% endform %}
+  
+              </div> <!-- page-login-guest-login-container -->
+
             {% endif %}
 
           </div>
