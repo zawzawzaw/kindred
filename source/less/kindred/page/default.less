@@ -366,13 +366,14 @@
       line-height: 25px;                  // there is a fixed height, if you modify this, modify height too
       letter-spacing: 0.08em;
       // white-space: nowrap;
-      color: #252525;
+      color: @off-black;
 
       display: block;
 
       // width: 200px;
       width: 170px;
-      height: 25px * 2px;
+      // height: 25px * 2px;
+      min-height: 25px * 2px;         // this is really important
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 10px;
@@ -412,8 +413,21 @@
 
     .product-item-detail{
       .product-item-name{
+
+        font-size: 14px;
+        line-height: 15px;
+        color: @off-black !important;   // no hover over color
+
         width: auto;
-        color: #252525 !important;
+        min-height: 15px * 2;
+
+
+      }
+      .product-item-category{
+
+      }
+      .product-item-price{
+
       }
     } // .product-item-detail
   } // .product-item

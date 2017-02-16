@@ -13,7 +13,10 @@
 <article id="default-page-banner-section">
   <div id="default-page-banner">
     <div class="manic-image-container">
-      <img src="" data-image-desktop="{{ 'about-banner.jpg' | asset_url }}">
+      <img src="" 
+        data-image-desktop="{{ 'about-banner.jpg' | asset_url }}"
+        data-image-mobile="{{ 'about-banner.jpg' | asset_img_url: 'x370' }}"
+        data-image-tablet="{{ 'about-banner.jpg' | asset_img_url: 'x560' }}">
     </div>
   </div>
 </article>

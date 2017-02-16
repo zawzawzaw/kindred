@@ -27,7 +27,11 @@
   <article id="default-page-banner-section">
     <div id="default-page-banner">
       <div class="manic-image-container">
-        <img src="" data-image-desktop="{{ collection.image.src | collection_img_url: 'original' }}" alt="{{ collection.image.alt }}">
+        <img src="" 
+          data-image-desktop="{{ collection.image.src | collection_img_url: 'original' }}" 
+          data-image-mobile="{{ collection.image.src | collection_img_url: 'x370' }}" 
+          data-image-tablet="{{ collection.image.src | collection_img_url: 'x560' }}" 
+          alt="{{ collection.image.alt }}">
       </div>
     </div>
   </article>

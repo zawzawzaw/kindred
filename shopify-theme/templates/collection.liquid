@@ -11,7 +11,11 @@
   <article id="default-page-banner-section">
     <div id="default-page-banner">
       <div class="manic-image-container">
-        <img src="" data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" alt="{{ collection.image.alt }}">
+        <img src="" 
+          data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" 
+          data-image-mobile="{{ collection.image.src | collection_img_url: 'x370' }}"
+          data-image-tablet="{{ collection.image.src | collection_img_url: 'x560' }}"
+          alt="{{ collection.image.alt }}">
       </div>
     </div>
   </article>
@@ -21,16 +25,16 @@
   <article id="default-page-banner-section">
     <div id="default-page-banner">
       <div class="manic-image-container">
-        <img src="" data-image-desktop="{{ 'collection-banner.jpg' | asset_url }}" alt="Collection Page Banner">
+        <img src="" 
+          data-image-desktop="{{ 'collection-banner.jpg' | asset_url }}" 
+          data-image-mobile="{{ 'collection-banner.jpg' | asset_img_url: 'x370' }}" 
+          data-image-tablet="{{ 'collection-banner.jpg' | asset_img_url: 'x560' }}"
+          alt="Collection Page Banner">
       </div>
     </div>
   </article>
 
 {% endif %}
-
-
-
-
 
 
 
