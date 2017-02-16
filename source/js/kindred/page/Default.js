@@ -118,7 +118,58 @@ kindred.page.Default.prototype.init = function() {
     this.desktop_header = new kindred.component.DesktopHeader({}, $('#desktop-header'));
   }
 
+
+  this.create_home_page();
+  this.create_product_page();
+  this.create_contact_page();
+
+  this.create_misc_page();
+
+
+
+  // create only when in desktop mode
+  
+  if ($('#mailing-list-pop-up-container').length != 0 && manic.IS_MOBILE == false) {
+
+    // this will auto open if there is no cookie 
+    // cookie expires in 10 hrs
+    this.mailing_list_popup = new kindred.component.MailingListPopup({}, $('#mailing-list-pop-up-container'));
+
+  }
+  
+
+
+  
+
+  console.log('kindred.page.Default: init');
+};
+
+
+
+
+
+
+
+//    _   _  ___  __  __ _____   ____   _    ____ _____
+//   | | | |/ _ \|  \/  | ____| |  _ \ / \  / ___| ____|
+//   | |_| | | | | |\/| |  _|   | |_) / _ \| |  _|  _|
+//   |  _  | |_| | |  | | |___  |  __/ ___ \ |_| | |___
+//   |_| |_|\___/|_|  |_|_____| |_| /_/   \_\____|_____|
+//
+
+kindred.page.Default.prototype.create_home_page = function() {
+
+
   if ($('#home-page-banner').length != 0) {
+
+    // update on slick init/resize
+    $('#home-page-banner').on('init', function(event, slick){
+      this.create_image_container();
+    }.bind(this));
+    $('#home-page-banner').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+
     $('#home-page-banner').slick({
       'speed': 350,
       'dots': false,
@@ -131,17 +182,21 @@ kindred.page.Default.prototype.init = function() {
       'autoplaySpeed': 4000
     });
 
-    // update on slick init/resize
-    $('#home-page-banner').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
-      this.update_page_layout();
-    }.bind(this));
+    
     
   } // #home-page-banner
 
 
-
-
   if ($('#home-page-banner-mobile').length != 0) {
+
+    // update on slick init/resize
+    $('#home-page-banner-mobile').on('init', function(event, slick){
+      this.create_image_container();
+    }.bind(this));
+    $('#home-page-banner-mobile').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+
     $('#home-page-banner-mobile').slick({
       'speed': 350,
       'dots': false,
@@ -154,20 +209,24 @@ kindred.page.Default.prototype.init = function() {
       'autoplaySpeed': 4000
     });
 
-    // update on slick init/resize
-    $('#home-page-banner-mobile').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
-      this.update_page_layout();
-    }.bind(this));
     
-  } // #home-page-banner
+    
+  } // #home-page-banner-mobile
 
-  
 
-  
 
 
 
   if ($('#home-page-shop-item-container').length != 0) {
+
+    // update on slick init/resize
+    $('#home-page-shop-item-container').on('init', function(event, slick){
+      this.create_image_container();
+    }.bind(this));
+    $('#home-page-shop-item-container').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+
     $('#home-page-shop-item-container').slick({
       'speed': 350,
       'dots': false,
@@ -197,10 +256,7 @@ kindred.page.Default.prototype.init = function() {
       ]
     });
 
-    // update on slick init/resize
-    $('#home-page-shop-item-container').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
-      this.update_page_layout();
-    }.bind(this));
+    
 
 
     var home_scene = new ScrollMagic.Scene({
@@ -237,28 +293,33 @@ kindred.page.Default.prototype.init = function() {
       console.log('instagram feed generated');
       this.create_image_container();
 
-    }.bind(this));    
-  }
-  
+    }.bind(this));
+
+  } // #home-instagram-slider
 
 
-  // create only when in desktop mode
-  
-  if ($('#mailing-list-pop-up-container').length != 0 && manic.IS_MOBILE == false) {
 
-    // this will auto open if there is no cookie 
-    // cookie expires in 10 hrs
-    this.mailing_list_popup = new kindred.component.MailingListPopup({}, $('#mailing-list-pop-up-container'));
 
-  }
-  
 
-  
+
+};
+
+//    ____  ____   ___  ____  _   _  ____ _____   ____   _    ____ _____
+//   |  _ \|  _ \ / _ \|  _ \| | | |/ ___|_   _| |  _ \ / \  / ___| ____|
+//   | |_) | |_) | | | | | | | | | | |     | |   | |_) / _ \| |  _|  _|
+//   |  __/|  _ <| |_| | |_| | |_| | |___  | |   |  __/ ___ \ |_| | |___
+//   |_|   |_| \_\\___/|____/ \___/ \____| |_|   |_| /_/   \_\____|_____|
+//
+
+kindred.page.Default.prototype.create_product_page = function() {
+
   // RANDOMIZE PRODUCT DETAIL 'related items' section
   
 
   if ($('#product-page-also-like-section #all-related-product-item-container').length != 0 && $('#product-page-also-like-section #product-item-container').length != 0) {
-    
+  
+    console.log('create product related products ...');
+
 
     var arr = $('#product-page-also-like-section #all-related-product-item-container').find('.product-item');
     var item = null;
@@ -271,6 +332,7 @@ kindred.page.Default.prototype.init = function() {
     item_array = manic.util.ArrayUtil.shuffle(item_array);
 
     var fragment = $(document.createDocumentFragment());
+    
 
     // get first 3
     for (var i = 0, l=3; i < l; i++) {
@@ -281,8 +343,89 @@ kindred.page.Default.prototype.init = function() {
     $('#product-page-also-like-section #product-item-container').empty();
     $('#product-page-also-like-section #product-item-container').append(fragment);
     
+    
+
+    
+
+    
+
+    
+
+    
+    this.create_image_container();
+
+  } // #product-page-also-like-section
+
+
+
+  // mobile related items
+  if ($('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').length != 0 && $('#product-page-also-like-section-mobile #product-item-container').length != 0) {
+    
+    
+    console.log('create product related products 2 ...');
+
+
+    var arr = $('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').find('.product-item');
+
+
+    var item = null;
+    var item_array = [];
+    for (var i = 0, l=arr.length; i < l; i++) {
+      item = $(arr[i]);
+      item_array[i] = item;
+    }
+
+    item_array = manic.util.ArrayUtil.shuffle(item_array);
+
+    var mobile_fragment = $(document.createDocumentFragment());
+
+    for (var i = 0, l=item_array.length; i < l; i++) {
+      item = item_array[i];
+      mobile_fragment.append(item);
+    }
+
+    // update on slick init/resize
+    $('#product-page-also-like-section-mobile #product-item-container').on('init', function(event, slick){
+      this.create_image_container();
+    }.bind(this));
+    $('#product-page-also-like-section-mobile #product-item-container').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+      this.update_page_layout();
+    }.bind(this));
+
+
+    $('#product-page-also-like-section-mobile #product-item-container').empty();
+    $('#product-page-also-like-section-mobile #product-item-container').append(mobile_fragment);
+
+    // create the array if there is more than 2 items
+    if (arr.length > 2) {
+
+      $('#product-page-also-like-section-mobile #product-item-container').slick({
+        'speed': 350,
+        'dots': false,
+        'arrows': false,
+        'infinite': false,
+        'slidesToShow': 2,
+        'slidesToScroll': 2,
+        'pauseOnHover': false,
+        'autoplay': true,
+        'autoplaySpeed': 4000
+      });
+    }
+
+    this.create_image_container();
 
   }
+
+  
+
+
+
+
+
+
+
+
+
 
 
 
@@ -292,17 +435,20 @@ kindred.page.Default.prototype.init = function() {
 
 
 
+};
 
-  
+//     ____ ___  _   _ _____  _    ____ _____   ____   _    ____ _____
+//    / ___/ _ \| \ | |_   _|/ \  / ___|_   _| |  _ \ / \  / ___| ____|
+//   | |  | | | |  \| | | | / _ \| |     | |   | |_) / _ \| |  _|  _|
+//   | |__| |_| | |\  | | |/ ___ \ |___  | |   |  __/ ___ \ |_| | |___
+//    \____\___/|_| \_| |_/_/   \_\____| |_|   |_| /_/   \_\____|_____|
+//
 
-  if ($('#page-login-guest-login-container').length != 0) {
-    $('#page-login-guest-login-btn').click(function(event){
-      $('#page-login-guest-login-container form').submit();
-    });
-  }
+kindred.page.Default.prototype.create_contact_page = function() {
 
-  
-  
+
+
+  // upload via imgur (on bank detail page)
   
   if ($('#imgur-upload-container').length != 0) {
     
@@ -329,16 +475,32 @@ kindred.page.Default.prototype.init = function() {
 
 
 
+  // create contact us detail map
+
   if ($('#contact-page-detail-map').length != 0) {
     this.contact_map = new manic.google.Map2({}, $('#contact-page-detail-map'));
-    console.log('create map');
-
   }
 
 
+};
 
 
-  
+
+
+//     ___ _____ _   _ _____ ____    __  __ ___ ____   ____   ____   _    ____ _____ ____
+//    / _ \_   _| | | | ____|  _ \  |  \/  |_ _/ ___| / ___| |  _ \ / \  / ___| ____/ ___|
+//   | | | || | | |_| |  _| | |_) | | |\/| || |\___ \| |     | |_) / _ \| |  _|  _| \___ \
+//   | |_| || | |  _  | |___|  _ <  | |  | || | ___) | |___  |  __/ ___ \ |_| | |___ ___) |
+//    \___/ |_| |_| |_|_____|_| \_\ |_|  |_|___|____/ \____| |_| /_/   \_\____|_____|____/
+//
+
+kindred.page.Default.prototype.create_misc_page = function() {
+  // to force the guest login 'link' to be a submit
+  if ($('#page-login-guest-login-container').length != 0) {
+    $('#page-login-guest-login-btn').click(function(event){
+      $('#page-login-guest-login-container form').submit();
+    });
+  }
 
   // wrap article images in a row & manic-image-container 
   
@@ -355,8 +517,13 @@ kindred.page.Default.prototype.init = function() {
 
   } // end if article-version
 
-  console.log('kindred.page.Default: init');
+
+
+
+
 };
+
+
 
 //    ____  ____  _____     ___  _____ _____
 //   |  _ \|  _ \|_ _\ \   / / \|_   _| ____|

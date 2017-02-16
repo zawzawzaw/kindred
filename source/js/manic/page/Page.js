@@ -420,12 +420,18 @@ manic.page.Page.prototype.create_hammer = function(){
 */
 
 manic.page.Page.prototype.create_image_container = function() {
+
+  console.log('create_image_container');
   
-  var arr = $('.manic-image-container').not('.not-default-version').not('.instantiated-version');
+  // var arr = $('.manic-image-container').not('.not-default-version').not('.instantiated-version');
+  var arr = $('.manic-image-container').not('.manic-image-container.not-default-version').not('.manic-image-container.instantiated-version');
   var image_container = null;
   var item = null;
 
+  console.log('arr.length: ' + arr.length);
+
   for (var i = 0, l=arr.length; i < l; i++) {
+    console.log('i:' + i);
     item = $(arr[i]);
 
     item.addClass('instantiated-version');
