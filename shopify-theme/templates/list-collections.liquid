@@ -29,8 +29,8 @@
       <div class="manic-image-container">
         <img src="" 
           data-image-desktop="{{ collection.image.src | collection_img_url: 'original' }}" 
-          data-image-mobile="{{ collection.image.src | collection_img_url: 'x370' }}" 
-          data-image-tablet="{{ collection.image.src | collection_img_url: 'x560' }}" 
+          data-image-mobile="{{ collection.image.src | collection_img_url: '640x500', crop: 'center' }}" 
+          data-image-tablet="{{ collection.image.src | collection_img_url: '1152x570', crop: 'center' }}" 
           alt="{{ collection.image.alt }}">
       </div>
     </div>

@@ -15,8 +15,8 @@
     <div class="manic-image-container">
       <img src="" 
         data-image-desktop="{{ 'about-banner.jpg' | asset_url }}"
-        data-image-mobile="{{ 'about-banner.jpg' | asset_img_url: 'x370' }}"
-        data-image-tablet="{{ 'about-banner.jpg' | asset_img_url: 'x560' }}">
+        data-image-mobile="{{ 'about-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}"
+        data-image-tablet="{{ 'about-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}">
     </div>
   </div>
 </article>

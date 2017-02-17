@@ -55,7 +55,10 @@
     {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
   {% endif %}
 
+  <!-- 
+  took it out
   <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'" />
+  -->
 
 </head>
 
@@ -308,17 +311,17 @@
                 
                 <div id="desktop-menu-currency-item-container-container">
                   <div id="desktop-menu-currency-item-container">
-                    {% for code in supported_codes %}
-                      {% for code_item in codes %}
-                        {% if code_item == code %}
+                    {%- for code in supported_codes -%}
+                      {%- for code_item in codes -%}
+                        {%- if code_item == code -%}
                           {% if code == shop.currency %}
                             <div class="desktop-menu-currency-item selected" data-value="{{ code }}"><span>{{ code }}</span>{{ name_codes[forloop.index0] }}</div>
                           {% else %}
                             <div class="desktop-menu-currency-item" data-value="{{ code }}"><span>{{ code }}</span>{{ name_codes[forloop.index0] }}</div>
                           {% endif %}
-                        {% endif %}
-                      {% endfor %}
-                    {% endfor %}
+                        {%- endif -%}
+                      {%- endfor -%}
+                    {%- endfor -%}
                   </div>
                 </div>
 
@@ -327,28 +330,17 @@
                   <!-- <span class="currency-picker__label">Pick a currency</span> -->
 
                   <select class="currency-picker" name="currencies" style="display: inline; width: auto; vertical-align: inherit;">
-                  
-
-                  {% for code in supported_codes %}
-
-                    {% for code_item in codes %}
-                      {% if code_item == code %}
-                        
-
+                  {%- for code in supported_codes -%}
+                    {%- for code_item in codes -%}
+                      {%- if code_item == code -%}
                         {% if code == shop.currency %}
                           <option value="{{ code }}" selected="selected">{{ name_codes[forloop.index0] }}</option>
                         {% else %}
                           <option value="{{ code }}">{{ name_codes[forloop.index0] }}</option>
                         {% endif %}
-
-
-                      {% endif %}
-                    {% endfor %}
-
-                    
-                  {% endfor %}
-
-
+                      {%- endif -%}
+                    {%- endfor -%}
+                  {%- endfor -%}
                   </select>
                 </label>
 

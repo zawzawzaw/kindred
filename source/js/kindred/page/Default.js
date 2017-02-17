@@ -266,9 +266,7 @@ kindred.page.Default.prototype.create_home_page = function() {
     });
 
     home_scene.on('enter', function(event){
-      
       // $('#home-page-shop-item-container')
-      console.log('near the home shop items');
       $('#home-page-shop-item-container').slick('slickSetOption', 'autoplay', true, true);
 
 
@@ -317,10 +315,7 @@ kindred.page.Default.prototype.create_product_page = function() {
   
 
   if ($('#product-page-also-like-section #all-related-product-item-container').length != 0 && $('#product-page-also-like-section #product-item-container').length != 0) {
-  
-    console.log('create product related products ...');
-
-
+    
     var arr = $('#product-page-also-like-section #all-related-product-item-container').find('.product-item');
     var item = null;
     var item_array = [];
@@ -361,10 +356,6 @@ kindred.page.Default.prototype.create_product_page = function() {
   // mobile related items
   if ($('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').length != 0 && $('#product-page-also-like-section-mobile #product-item-container').length != 0) {
     
-    
-    console.log('create product related products 2 ...');
-
-
     var arr = $('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').find('.product-item');
 
 
@@ -574,11 +565,11 @@ kindred.page.Default.prototype.update_page_layout = function(){
   if (manic.IS_MOBILE == false) {
     // only if desktop
     
-    console.log('update min height')
     var target_min_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
 
-    console.log('this.desktop_header_element.height(): ' + this.desktop_header_element.outerHeight());
-    console.log('this.desktop_footer_element.height():' + this.desktop_footer_element.outerHeight());
+    // console.log('this.desktop_header_element.height(): ' + this.desktop_header_element.outerHeight());
+    // console.log('this.desktop_footer_element.height():' + this.desktop_footer_element.outerHeight());
+    
     this.main_content_element.css({
       'min-height': target_min_height + 'px'
     });

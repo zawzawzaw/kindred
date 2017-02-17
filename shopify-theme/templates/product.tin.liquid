@@ -50,14 +50,14 @@
                 {% if product.images.size >= 2 %}
                   <img src="" 
                     data-image-desktop="{{ product.images[1]  | product_img_url: 'master' }}" 
-                    data-image-mobile="{{ product.images[1]  | product_img_url: 'x370' }}" 
-                    data-image-tablet="{{ product.images[1]  | product_img_url: 'x560' }}" 
+                    data-image-mobile="{{ product.images[1]  | product_img_url: '640x500', crop: 'center' }}" 
+                    data-image-tablet="{{ product.images[1]  | product_img_url: '1152x570', crop: 'center' }}" 
                     alt="{{ product.images[1].alt | escape }}">
                 {% else %}
                   <img src="" 
                     data-image-desktop="{{ featured_image | img_url: 'master' }}" 
-                    data-image-mobile="{{ featured_image | img_url: 'x370' }}" 
-                    data-image-tablet="{{ featured_image | img_url: 'x560' }}" 
+                    data-image-mobile="{{ featured_image | img_url: '640x500', crop: 'center' }}" 
+                    data-image-tablet="{{ featured_image | img_url: '1152x570', crop: 'center' }}" 
                     alt="{{ featured_image.alt | escape }}" >
                   <!-- <img src="" data-image-desktop="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" > -->
                 {% endif %}

@@ -62,6 +62,8 @@
 @border-grey: @grey;
 @border-grey-02: #b7b7b7;
 @border-grey-03: #e5e5e5;
+@border-grey-04: #d7d7d7;
+
 
 
 // @desktop-header-height: 80px;
@@ -72,8 +74,17 @@
 
 
 // if you change this, you have to override the padding of .container-fluid found in bootstrap
-@mobile-padding: 25px;
+// @mobile-padding: 25px;
 
+@mobile-padding: 20px;
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .container-fluid{
+    padding-left: @mobile-padding;
+    padding-right: @mobile-padding;
+  }
+}
 
 /*
 
@@ -103,6 +114,7 @@
 @import "kindred/images.less";
 
 @import "kindred/header.less";
+@import "kindred/header_mobile.less";
 @import "kindred/footer.less";
 
 @import "kindred/page/default.less";

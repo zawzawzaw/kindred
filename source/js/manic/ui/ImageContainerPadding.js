@@ -152,7 +152,8 @@ manic.ui.ImageContainerPadding.prototype.on_target_image_container_update_layout
 
   //this.data_offset_y += this.data_offset_y;
   this.padding_y += this.data_offset_y;
-  console.log('this.data_offset_y: ' + this.data_offset_y);
+  
+  // console.log('this.data_offset_y: ' + this.data_offset_y);
   
   this.padding_y = this.padding_y <= this.min_padding ? this.min_padding : this.padding_y;
   

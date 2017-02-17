@@ -306,10 +306,20 @@
       margin-bottom: 20px;
     }
     .product-description{
+      margin-bottom: 45px;
     }
     hr{
       margin-top: 35px;
       margin-bottom: 26px;
+    }
+    .product-variant-container{
+      margin-bottom: 19px;
+
+      label{
+        .header-h5-style-mobile;
+        white-space: nowrap;
+        margin-bottom: 4px;
+      }
     }
 
     .cta-container{
@@ -344,6 +354,7 @@
       margin-bottom: 11px;
     }
     .product-description{
+      margin-bottom: 25px;
     }
 
     hr{
@@ -548,14 +559,17 @@
 
 // TABLET PORTRAIT & SMALL DESKTOP
 @media only screen and (max-width: 991px) {
-  ul{
-    li{
-      margin-right: 18px;
-      padding-top: 2px;
-      margin-bottom: 0px;
+  
+  .product-detail-social-container{
+    ul{
+      li{
+        margin-right: 18px;
+        padding-top: 2px;
+        margin-bottom: 0px;
 
-      &:last-child{
-        margin-right: 0px;
+        &:last-child{
+          margin-right: 0px;
+        }
       }
     }
   }
@@ -765,9 +779,19 @@
         display: block;
         width: 100% !important;
 
+        &.giftcard-version{
+          width: 100% !important;
+          .single-option-selector{
+            width: 100% !important;
+          }
+        }
+
         &:after{
+          width: 31px;
           font-size: 13px;
           line-height: 23px;
+          padding-top: 4px;
+          padding-bottom: 4px;
         }
       }
       select,
@@ -938,6 +962,9 @@
 //
 
 
+@giftcard-design-tablet-height: 550px;
+// @giftcard-design-mobile-height: 400px;
+@giftcard-design-mobile-height: 420px;
 
 #product-page-giftcard-design-container{
   position: relative;
@@ -960,14 +987,38 @@
 
 
 
-.character-counter{
-  .body-font-small;
-  color: @grey-05;
-  position: relative;
-  
-  top: 0px;
-  margin-left: 3px;
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #product-page-giftcard-design-container{
+    height: @giftcard-design-tablet-height !important;
+
+    .product-page-giftcard-design{
+
+    }
+  }
 }
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #product-page-giftcard-design-container{
+    height: @giftcard-design-mobile-height !important;
+
+    .product-page-giftcard-design{
+
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1020,6 +1071,81 @@
 
   }
 }
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .product-page-giftcard-design{
+    top: 20px;
+    bottom: 20px;
+
+    .manic-image-container{
+      height: ( @giftcard-design-tablet-height - 20px - 20px ) !important;
+
+    }
+    .product-page-giftcard-design-text{
+      
+      height: 230px;
+      margin-top: -230px / 2;
+
+      width: 380px;
+      margin-left: -380px / 2;
+
+      h4{
+        font-size: 23px;
+        line-height: 30px;
+        margin-bottom: 39px;
+        .value{
+          font-size: 26px;
+        }
+      }
+      h1{
+        font-size: 20px;
+        line-height: 23px;
+        margin-bottom: 13px;
+      }
+      p{
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+
+
+    }
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  .product-page-giftcard-design{
+    top: 15px;
+    bottom: 15px;
+
+    .manic-image-container{
+      height: ( @giftcard-design-mobile-height - 15px - 15px ) !important;
+    }
+    .product-page-giftcard-design-text{
+      width: 320px;
+      margin-left: -320px / 2;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .product-page-giftcard-design{
+    
+    .manic-image-container{
+      
+    }
+    .product-page-giftcard-design-text{
+      width: 280px;
+      margin-left: -280px / 2;
+    }
+  }
+}
+
+
+
+
 
 
 .product-giftcard-custom-fields{
@@ -1121,5 +1247,80 @@
       .round(0);
 
     }
+  }
+}
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .product-giftcard-custom-fields{
+    padding-bottom: 1px;  // so it will have a different block as the hr below it
+    margin-bottom: -4px;  // weird huh
+
+    label{
+      .header-h5-style-mobile;
+      white-space: nowrap;
+      margin-bottom: 4px;
+    }
+    input[type=text],
+    textarea{
+      width: 100%;
+      margin-bottom: 19px;
+    }
+    textarea{
+
+    }
+    .giftcart-select-wrapper{
+      width: 100%;
+
+      margin-bottom: 19px;
+
+      .select-wrapper{
+        width: 100%;
+        &:after{
+          width: 31px;
+          font-size: 13px;
+          line-height: 23px;
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+      }
+      select{
+        padding-top: 4px;
+        padding-bottom: 4px;
+        width: 100%;
+      }
+    }
+
+
+  }
+
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  .product-giftcard-custom-fields{
+    label{
+    }
+  }
+}
+
+
+
+
+.character-counter{
+  .body-font-small;
+  color: @grey-05;
+  position: relative;
+  
+  top: 0px;
+  margin-left: 3px;
+}
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .character-counter{
+    .body-font-small-mobile;
   }
 }
