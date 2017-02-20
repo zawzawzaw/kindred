@@ -69,78 +69,6 @@
 
 
 
-// TABLET PORTRAIT & SMALL DESKTOP
-@media only screen and (max-width: 991px) {
-  #product-page-detail-section{
-    background: @off-white-03;
-
-    .container-fluid{
-      padding-left: @mobile-padding;   // revert to original
-      padding-right: @mobile-padding;
-    }
-    .form-vertical{
-      margin-bottom: 0;
-    }
-  }
-  #product-page-detail-image-container{
-    margin-left: -1 * @mobile-padding;
-    margin-right: -1 * @mobile-padding;
-  }
-  #product-page-detail-image{
-    height: 380px !important;
-    .manic-image-container{
-      height: 380px !important;
-    }
-  }
-
-  #product-page-detail-copy-container{
-    margin-left: 0;
-    margin-right: 0;
-  }
-  #product-page-detail-copy{
-    padding-left: 0px;
-    padding-right: 0px;
-
-    height: auto;             // 
-  }
-  #product-page-detail-copy-content{
-  }
-
-  
-}
-
-// MOBILE
-@media only screen and (max-width: 767px) {
-  #product-page-detail-section{
-
-  }
-  #product-page-detail-image-container{
-
-  }
-  #product-page-detail-image{
-    height: 250px !important;
-    .manic-image-container{
-      height: 250px !important;     // override the multiple ingredient declarations
-    }
-  }
-  #product-page-detail-copy-container{
-
-  }
-  #product-page-detail-copy{
-
-  }
-  #product-page-detail-copy-content{
-
-  }
-}
-@media only screen and (max-width: 320px) {
-  #product-page-detail-copy-container{
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-}
-
-
 
 
 //    __  __ _   _ _   _____ ___ ____  _     _____   ___ _   _  ____ ____  _____ ____ ___ _____ _   _ _____
@@ -196,6 +124,102 @@
     }
   }
 }
+
+
+//    __  __  ___  ____ ___ _     _____
+//   |  \/  |/ _ \| __ )_ _| |   | ____|
+//   | |\/| | | | |  _ \| || |   |  _|
+//   | |  | | |_| | |_) | || |___| |___
+//   |_|  |_|\___/|____/___|_____|_____|
+//
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+
+
+  #product-page-detail-section,
+  #product-page-detail-section.multiple-ingredient-version{
+    background: @off-white-03;
+
+    .container-fluid{
+      padding-left: @mobile-padding;   // revert to original
+      padding-right: @mobile-padding;
+    }
+    .form-vertical{
+      margin-bottom: 0;
+    }
+
+    #product-page-detail-image-container{
+      margin-left: -1 * @mobile-padding;
+      margin-right: -1 * @mobile-padding;
+    }
+    #product-page-detail-image{
+      height: 380px !important;
+      .manic-image-container{
+        height: 380px !important;
+      }
+    }
+
+    #product-page-detail-copy-container{
+      margin-left: 0;
+      margin-right: 0;
+    }
+    #product-page-detail-copy{
+      padding-left: 0px;
+      padding-right: 0px;
+
+      display: block;
+      height: auto;             // 
+    }
+    #product-page-detail-copy-content{
+      display: block;
+    }
+    
+  }
+
+  
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #product-page-detail-section,
+  #product-page-detail-section.multiple-ingredient-version{
+
+
+    #product-page-detail-image-container{
+
+    }
+    #product-page-detail-image{
+      height: 250px !important;
+      .manic-image-container{
+        height: 250px !important;     // override the multiple ingredient declarations
+      }
+    }
+    #product-page-detail-copy-container{
+
+    }
+    #product-page-detail-copy{
+
+    }
+    #product-page-detail-copy-content{
+
+    }
+  }
+}
+
+/*
+@media only screen and (max-width: 320px) {
+  #product-page-detail-section,
+  #product-page-detail-section.multiple-ingredient-version{
+    #product-page-detail-copy-container{
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+  }
+}
+*/
 
 
 
@@ -463,15 +487,7 @@
     margin-bottom: 10px;
 
 
-    &.inline-version{
-      margin-bottom: 5px;
-      label{
-        margin-bottom: 0px;
-      }
-      p{
-        top: 0;
-      }
-    }
+    
 
     label{
       .header-h5-style-mobile;
@@ -503,6 +519,28 @@
         }
       }
     }
+
+    &.inline-version{
+      margin-bottom: 5px;
+      label{
+        margin-bottom: 0px;
+      }
+      p{
+        top: 0;
+      }
+    }
+
+    &.multiple-version{
+      p{
+        font-size: 12px;
+        // line-height: 18px;
+
+        span{
+          margin-bottom: 0px;
+        }
+      }
+    }
+
   } // .product-detail
 }
 

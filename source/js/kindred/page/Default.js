@@ -54,6 +54,17 @@ kindred.page.Default = function(options) {
   this.desktop_header = null;
 
   /**
+   * @type {kindred.component.MobileHeader}
+   */
+  this.mobile_header = null;
+
+
+  
+  
+  
+
+
+  /**
    * @type {kindred.component.MailingListPopup}
    */
   this.mailing_list_popup = null;
@@ -117,6 +128,13 @@ kindred.page.Default.prototype.init = function() {
   if ($('#desktop-header').length != 0) {
     this.desktop_header = new kindred.component.DesktopHeader({}, $('#desktop-header'));
   }
+
+  if ($('#mobile-header').length != 0 && $('#mobile-header-expanded').length != 0){
+    this.mobile_header = new kindred.component.MobileHeader({}, $('#mobile-header'));
+  }
+  
+
+  
 
 
   this.create_home_page();

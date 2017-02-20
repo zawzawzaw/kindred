@@ -84,10 +84,9 @@
           <div id="desktop-header-right-container">
               
 
-            <div id="desktop-header-search-container" data-search-placeholder="search">
-
-              <form id="desktop-header-search-form" action="/search" method="get" class="input-group search-bar" role="search">
-                <input type="search" id="s" name="q" value="search" />
+            <div id="desktop-header-search-container">
+              <form id="desktop-header-search-form" action="/search" method="get" class="simple-form-check input-group search-bar" role="search">
+                <input type="search" id="s" class="required" name="q" placeholder="Search" />
               </form>
               <div id="desktop-header-search-button"></div>
             </div>
@@ -153,23 +152,26 @@
       <div class="row">
         <div class="col-xs-3">
 
-          <div id="mobile-header-menu-button"></div>
+          <div id="mobile-header-menu-button-container">
+            <div id="mobile-header-menu-button"></div>
+          </div>
+
 
         </div>
         <div class="col-xs-6">
 
           <div id="mobile-header-logo-container">
-            <a href="javascript:void(0);" id="mobile-header-logo">
-              <img src="">
-            </a>
+            <a href="javascript:void(0);" id="mobile-header-logo"></a>
           </div>
 
         </div>
         <div class="col-xs-3">
 
-          <div id="mobile-header-cart-menu-button">
-            <div class="mobile-cart-icon"></div>
-            <div class="mobile-cart-number">4</div>
+          <div id="mobile-header-cart-menu-button-container">
+            <div id="mobile-header-cart-menu-button">
+              <div class="mobile-cart-icon"></div>
+              <div class="mobile-cart-number">4</div>
+            </div>
           </div>
 
         </div>
@@ -197,9 +199,9 @@
           <div class="col-xs-12">
 
             <div id="mobile-header-search-content">
-              <form id="mobile-header-search-form" action="" method="">
-                <input type="search" name="q" value="">
-                <div id="mobile-header-search-button"></div>
+              <form id="mobile-header-search-form" action="" method="" class="simple-form-check">
+                <input type="search" name="q" value="" placeholder="Search">
+                <div id="mobile-header-search-button" class="form-check-force-submit"></div>
               </form>
 
             </div> <!-- mobile-header-search-content -->
@@ -240,12 +242,8 @@
             <div id="mobile-header-currency-content">
 
               <div id="mobile-header-currency-title">
-                <div id="mobile-header-currency-label">
-                  Currency:
-                </div>
-                <div id="mobile-header-currency-value">
-                  <span>SGD</span>Singapore Dollar
-                </div>
+                <div id="mobile-header-currency-label">Currency</div>
+                <div id="mobile-header-currency-value">Singapore Dollar<span>SGD</span></div>
               </div> <!-- mobile-header-currency-title -->
 
               <div id="mobile-header-currency-expandable">
@@ -281,9 +279,9 @@
 
           <ul>
             <li><a href="/pages/about">About</a></li>
-            <li class="subnav-expand-version">
-
+            <li>
               <a href="javascript:void(0);">Shop</a>
+              <div class="mobile-header-subnav-btn"></div>
               <ul>
                 <li><a href="/collections/all">Shop All</a></li>
                 <li><a href="/collections/teas">Teas</a></li>
@@ -292,9 +290,9 @@
               </ul>
             </li>
             <li><a href="/blogs/news">Blog</a></li>
-            
-            <li class="subnav-expand-version">
+            <li>
               <a href="javascript:void(0);">Contact</a>
+              <div class="mobile-header-subnav-btn"></div>
               <ul>
                 <li><a href="/pages/contact">Contact Us</a></li>
                 <li><a href="/pages/collaborations">Collaborations</a></li>
