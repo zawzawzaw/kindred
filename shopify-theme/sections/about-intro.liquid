@@ -18,6 +18,7 @@
         <div id="about-page-intro-title">
           {% if section.settings.title != blank %}
             <h2>{{ section.settings.title }}</h2>
+            <hr class="visible-sm visible-xs">
           {% endif %}
                   
         </div> <!-- about-page-intro-title -->
@@ -25,7 +26,7 @@
       </div>
     </div> <!-- row -->
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-5 col-sm-6">
 
         {% if section.settings.image-title != blank %}
           <div id="about-page-intro-image-title">
@@ -33,15 +34,17 @@
           </div>
         {% endif %}
 
-        <div id="about-page-intro-image">
+        <div id="about-page-intro-image" class="hidden-xs">
           <div class="manic-image-container">
-            <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+            <img src="" 
+              data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}"
+              data-image-tablet="{{ section.settings.content-image.src | img_url: '470x570', crop: 'center' }}">
           </div>
         </div> <!-- about-page-intro-image -->
 
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
+      <div class="col-md-1 col-sm-0"></div>
+      <div class="col-md-6 col-sm-6">
 
         <div id="about-page-intro-copy-title">
 

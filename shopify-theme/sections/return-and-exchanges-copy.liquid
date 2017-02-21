@@ -23,11 +23,13 @@
         
       </div>
       <div class="col-md-1"></div>
-      <div class="col-md-6">
+
+      <div class="col-md-6 hidden-sm hidden-xs">
 
         <div id="about-page-copy-image">
           <div class="manic-image-container">
-            <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+            <img src="" 
+              data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
           </div>
         </div> <!-- about-page-copy-image -->
 
@@ -52,7 +54,10 @@
 
         <div id="about-page-copy-image" class="short-version-02">
           <div class="manic-image-container">
-            <img src="" data-image-desktop="{{ section.settings.content-image-2.src | img_url: 'master' }}">
+            <img src="" 
+              data-image-desktop="{{ section.settings.content-image-2.src | img_url: 'master' }}"
+              data-image-mobile="{{ section.settings.content-image-2.src | img_url: '640x500', crop: 'center' }}"
+              data-image-tablet="{{ section.settings.content-image-2.src | img_url: '1152x570', crop: 'center' }}">
           </div>
         </div> <!-- about-page-copy-image -->
 

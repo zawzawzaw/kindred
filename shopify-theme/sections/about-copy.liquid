@@ -12,7 +12,20 @@
   <div class="container-fluid has-breakpoint">
     <div class="row">
 
-      <div class="col-md-5">
+      <div class="col-md-6 col-md-push-6">
+
+        <div id="about-page-copy-image">
+          <div class="manic-image-container">
+            <img src="" 
+              data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}"
+              data-image-mobile="{{ section.settings.content-image.src | img_url: '640x500', crop: 'center' }}"
+              data-image-tablet="{{ section.settings.content-image.src | img_url: '1152x570', crop: 'center' }}">
+          </div>
+        </div> <!-- about-page-copy-image -->
+
+      </div>
+
+      <div class="col-md-5 col-md-pull-6">
 
         <div id="about-page-copy-copy">
           <div class="default-copy">
@@ -22,16 +35,8 @@
         </div> <!-- about-page-copy-copy -->
         
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
+      <div class="col-md-1 col-md-pull-6"></div>
 
-        <div id="about-page-copy-image">
-          <div class="manic-image-container">
-            <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
-          </div>
-        </div> <!-- about-page-copy-image -->
-
-      </div>
     </div> <!-- row -->
   </div>
 </article>

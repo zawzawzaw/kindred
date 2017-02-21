@@ -30,6 +30,17 @@
   padding-bottom: 5px;
 }
 
+.format-form-input-font-mobile{
+  .body-font-mobile;
+  line-height: 20px;
+  color: @grey-05;
+  
+  padding-left: 16px;
+  padding-right: 0px;
+  padding-top: 6px;
+  padding-bottom: 5px;
+}
+
 
 
 
@@ -92,6 +103,7 @@
   }
   textarea{
     height: 190px;
+    resize: none;
   }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -253,6 +265,94 @@
     text-align: right;
   }
 
+
+
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {             // we will follow account details mobile forms
+
+    label {
+      span.asterisk{
+        font-size: 18px;
+        margin-left: 3px;
+      }
+    }
+
+    input[type=email], 
+    input[type=tel],
+    input[type=password], 
+    input[type=text],
+    textarea {
+
+      .format-form-input-font-mobile;
+
+      height: 30px;
+      margin-bottom: 15px;
+    }
+
+    textarea{
+      height: 190px;
+    }
+
+    .dropdown {
+      select {
+        .format-form-input-font-mobile;
+
+        height: 30px;
+        margin-bottom: 15px;
+      }
+      &:after{
+        font-size: 15px;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+      }
+
+    } // .dropdown
+
+    .checkbox{
+      padding-top: 7px;
+      margin-bottom: 15px - 1px;   // offset of 1 px
+
+      input[type="checkbox"] {
+        top: -2px;
+      }
+      input[type="checkbox"] + label{
+
+        span{
+          position: relative;
+          width: 18px;  
+          height: 18px;
+          top: -2px;
+          left: 0px;
+
+          &:after{
+            .tick-icon-small;
+            top: -5px;
+            left: 2px;
+          }
+        }
+        p{
+          .format-form-input-font-mobile;
+          padding: 0;
+        }
+      }
+
+    } // .checkbox
+
+
+    .cta-container{
+      padding-top: 25px - 8px;
+
+      .square-cta{
+        .large-square-cta-mobile;
+      }
+    }
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+
+  }
 
   
 } // .format-form

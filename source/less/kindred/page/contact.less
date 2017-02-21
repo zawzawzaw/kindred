@@ -59,7 +59,49 @@
 
 
 
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #contact-page-form-section{
+    padding-top: 0;
+    padding-bottom: 40px;
+  }
+  #contact-page-form-title{
+    padding-top: 31px + 15px;
+    margin-bottom: 25px + 3px;
 
+    p{
+      
+    }
+
+    h2 + p{
+      padding-top: 16px;
+    }
+
+  }
+
+  .contact-page-column-01{
+    padding-right: 0px;
+
+  }
+
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #contact-page-form-title{
+    padding-top: 31px;
+    margin-bottom: 25px;
+
+    h2{
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    p{
+      padding: 0;
+    }
+
+  }
+}
 
 
 
@@ -97,10 +139,45 @@
 
 }
 
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #contact-page-detail-section{
+    padding-top: 0;
+    padding-bottom: 50px;
+  }
+  #contact-page-detail-copy{
+    padding-top: 0;
+  }
+
+  #contact-page-detail-copy-title{
+    // padding-top: 17px;
+    padding-top: 23px;
+    padding-bottom: 23px;
+
+    h1{
+      .header-h1-style-mobile(1.5);
+      .josefin-sans-light;
+      //font-size: 22px;
+      //line-height: 30px;
+    }
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #contact-page-detail-section{
+    h1{
+      .header-h1-style-mobile;
+      // font-size: 22px;
+      // line-height: 30px;
+    }
+  }
+}
+
+
 #contact-page-detail-copy-item-container{
 
 }
-
 
 .contact-page-detail-copy-item{
   margin-bottom: 14px;
@@ -153,7 +230,40 @@
 
 
 
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
 
+  .contact-page-detail-copy-item{
+    // margin-bottom: 18px;
+    margin-bottom: 23px;
+    &:last-child{
+      margin-bottom: 0px;
+    }
+
+    h4{
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+    p{
+      a{
+        color: @grey-02 !important;
+      }
+      span{
+        font-size: 13px;
+      }
+    }
+  }
+
+  #contact-page-detail-copy-fineprint{
+    text-align: left;
+
+    padding-top: 50px;
+
+    small{
+      font-size: 12px - 1px;
+    }
+  }
+}
 
 
 
@@ -177,4 +287,53 @@
   background: @off-white;
 
   border: 2px solid #d7d7d7;
+}
+
+
+
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #contact-page-detail-map-container{
+    margin-left: -1 * @mobile-padding;
+    margin-right: -1 * @mobile-padding;        // negative margin is here because map has width:100%
+  }
+  #contact-page-detail-map{
+    height: 380px;
+    border: none;
+
+    // border-top: 2px solid #d7d7d7;
+    // border-bottom: 2px solid #d7d7d7;
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #contact-page-detail-map{
+    height: 250px;
+  }
+}
+
+
+
+
+
+
+
+
+#contact-page-detail-map-container-mobile{
+  border-bottom: 1px solid #d7d7d7;
+}
+
+#contact-page-detail-map-mobile{
+  height: 380px;
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #contact-page-detail-map-mobile{
+    height: 250px;
+  }
 }

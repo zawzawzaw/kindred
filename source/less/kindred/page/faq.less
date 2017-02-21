@@ -13,6 +13,34 @@
   h2{
     text-align: center;
   }
+  hr{
+    border-top: 1px solid @border-grey-03;
+  }
+}
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #page-faq-title-section{
+    padding-top: 32px + 16px;
+    padding-bottom: 30px + 3px;
+
+    h2 + hr{
+      margin-top: 17px + 11px;
+    }
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #page-faq-title-section{
+    padding-top: 32px;
+    padding-bottom: 30px;
+
+    h2 + hr{
+      margin-top: 17px;
+    }
+  }
 }
 
 
@@ -30,4 +58,13 @@
 }
 #page-faq-content{
   border-top: 1px solid @border-grey-03;
+}
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #page-faq-content-section{
+    padding-bottom: 50px;
+  }
 }

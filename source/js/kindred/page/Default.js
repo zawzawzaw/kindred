@@ -40,6 +40,10 @@ kindred.page.Default = function(options) {
   
   this.desktop_header_element = $('#desktop-header');
   this.desktop_footer_element = $('#desktop-footer');
+
+  this.mobile_header_element = $('#mobile-header');
+  this.mobile_footer_element = $('#mobile-footer');
+  
   this.main_content_element = $('#PageContainer .main-content');
   
 
@@ -74,6 +78,11 @@ kindred.page.Default = function(options) {
    * @type {manic.google.Map2}
    */
   this.contact_map = null;
+
+  /**
+   * @type {manic.google.Map2}
+   */
+  this.contact_map_mobile = null;
   
   /**
    * @type {kindred.component.Giftcard}
@@ -490,6 +499,14 @@ kindred.page.Default.prototype.create_contact_page = function() {
     this.contact_map = new manic.google.Map2({}, $('#contact-page-detail-map'));
   }
 
+  
+  if ($('#contact-page-detail-map-mobile').length != 0) {
+    this.contact_map_mobile = new manic.google.Map2({}, $('#contact-page-detail-map-mobile'));
+  }
+
+
+  
+
 
 };
 
@@ -592,6 +609,16 @@ kindred.page.Default.prototype.update_page_layout = function(){
       'min-height': target_min_height + 'px'
     });
 
+  } else {
+
+    // take a look a the height of the header and footer
+    
+    var target_min_height = this.window_height - this.mobile_header_element.outerHeight() - this.mobile_footer_element.outerHeight();
+
+    this.main_content_element.css({
+      'min-height': target_min_height + 'px'
+    });
+    
   }
 
   /*

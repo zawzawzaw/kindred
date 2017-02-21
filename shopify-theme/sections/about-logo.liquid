@@ -14,17 +14,18 @@
   <div class="container-fluid has-breakpoint">
     <div class="row">
 
-      <div class="col-md-5">
+      <div class="col-md-5 col-sm-5">
 
         <div id="about-page-logo-image">
           <div class="manic-image-container has-show-all">
-            <img src="" data-image-desktop="{{ section.settings.logo-image.src | img_url: 'master' }}">
+            <img src="" 
+              data-image="{{ section.settings.logo-image.src | img_url: 'master' }}">
           </div>
         </div> <!-- about-page-logo-image -->
 
       </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-6">
+      <div class="col-md-1 col-sm-1"></div>
+      <div class="col-md-6 col-sm-6">
 
         <div id="about-page-logo-copy">
           <div class="default-copy">

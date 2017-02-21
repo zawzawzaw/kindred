@@ -1,0 +1,42 @@
+<div id="contact-page-detail-map-container-mobile" class="visible-sm visible-xs">
+
+  {% if section.settings.maplat != blank and section.settings.maplng != blank %}
+
+    <div id="contact-page-detail-map-mobile" 
+      data-home-icon="{{ 'contact-pin.svg' | asset_url }}"
+      data-lat="{{ section.settings.maplat }}" 
+      data-lng="{{ section.settings.maplng }}">
+    </div>
+
+  {% else %}
+
+    <div id="contact-page-detail-map-mobile" 
+      data-home-icon="{{ 'contact-pin.svg' | asset_url }}"
+      data-lat="1.333848" 
+      data-lng="103.697271">
+    </div>
+  {% endif %}
+
+</div>
+
+
+
+{% schema %}
+  {
+
+    "name": "Contact Mobile Map",
+    "class": "contact-page-detail-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "maplat",
+        "label": "Map Latitude"
+      },
+      {
+        "type": "text",
+        "id": "maplng",
+        "label": "Map Longitude"
+      }
+    ]
+  }
+{% endschema %}
