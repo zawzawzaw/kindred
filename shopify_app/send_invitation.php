@@ -64,19 +64,19 @@ function sendEmail($data) {
   // $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
   // $mail->Port = 587;                                    // TCP port to connect to
 
-  $mail->setFrom('hello@kindredteas.com', 'Kindred Tea');
+  $mail->setFrom('hello@kindredteas.com', 'Kindred Teas');
   $mail->addAddress($data['to_email'], $data['to_name']);     // Add a recipient
-  $mail->addReplyTo('hello@kindredteas.com', 'Kindred Tea');
+  $mail->addReplyTo('hello@kindredteas.com', 'Kindred Teas');
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
-  $mail->Subject = 'Your friend '.$data['from_name'].' invites you to try Kindred Tea!';
+  $mail->Subject = 'Your friend '.$data['from_name'].' invites you to try Kindred Teas!';
   $mail->Body    = '<html>
 <head>
     <meta http-equiv="Content-Security-Policy" content="script-src \'none\'; style-src * \'unsafe-inline\'; default-src *;">
 </head>
 <body>
-    <title>Your friend '.$data['from_name'].' invites you to try Kindred Tea!</title>
+    <title>Your friend '.$data['from_name'].' invites you to try Kindred Teas!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="https://kindred-teas.myshopify.com/assets/notifications/styles.css">
@@ -133,21 +133,22 @@ function sendEmail($data) {
                                                 <tr>
                                                     <td>
                                                         <h2>Hello '.$data['to_name'].'! </h2>
-                                                        <p>Your friend '.$data['from_name'].' invited you to try Kindred Tea. By doing so both you and '.$data['from_name'].' will be rewarded with 10% discount code on your first purchase.</p>
+                                                        <p>Your friend '.$data['from_name'].', has invited you to try out Kindred Teas.</p>
+                                                        <p>Once you have made your first purchase with us using this email, both you and '.$data['from_name'].' will be rewarded with a 10% discount code to be used in your following transaction. The 10% discount code is valid for a one-time usage only.</p>
+                                                        <p>We look forward to seeing you!</p>
                                                         <table class="row actions">
-                                                            <tbody>
+                                                          <tr>              
+                                                            <td class="actions__cell">
+                                                              <table class="link secondary-action-cell">
                                                                 <tr>
-                                                                    <td class="actions__cell">
-                                                                        <table class="link secondary-action-cell">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td class="link__cell"><a href="https://kindredteas.com" class="link__text">Visit our store</a></td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
+                                                                  <td class="link__cell">
+                                                                    <a href="https://kindredteas.com" class="link__text">Visit our store </a> 
+                                                                    <span class="or" style="padding:0;margin:0;"> or </span><a href="https://kindredteas.com/account/login" class="link__text"> Create an account</a>
+                                                                  </td>
                                                                 </tr>
-                                                            </tbody>
+                                                              </table>                                                              
+                                                            </td>
+                                                          </tr>
                                                         </table>
                                                     </td>
                                                 </tr>

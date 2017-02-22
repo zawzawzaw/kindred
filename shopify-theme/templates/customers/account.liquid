@@ -517,7 +517,7 @@
                   <input type="text" name="to_name" class="to_name input-full" placeholder="Name" required>
                 </div>
                 <div class="col-md-7">
-                  <input type="email" name="to_email" class="to_email input-full" placeholder="Email Address" required pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                  <input type="email" name="to_email" onchange="this.value = this.value.toLowerCase();" onkeydown="this.value = this.value.toLowerCase();" class="to_email input-full" placeholder="Email Address" required pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                 </div>
               </div>
               <div class="row text-input-container">
@@ -525,7 +525,7 @@
                   <input type="text" name="to_name_2" class="input-full" placeholder="Name">
                 </div>
                 <div class="col-md-7">
-                  <input type="email" name="to_email_2" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                  <input type="email" name="to_email_2" onchange="this.value = this.value.toLowerCase();" onkeydown="this.value = this.value.toLowerCase();" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                 </div>
               </div>
               <div class="row text-input-container">
@@ -533,7 +533,7 @@
                   <input type="text" name="to_name_3" class="input-full" placeholder="Name">
                 </div>
                 <div class="col-md-7">
-                  <input type="email" name="to_email_3" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                  <input type="email" name="to_email_3" onchange="this.value = this.value.toLowerCase();" onkeydown="this.value = this.value.toLowerCase();" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                 </div>
               </div>
               <div class="row text-input-container">
@@ -541,7 +541,7 @@
                   <input type="text" name="to_name_4" class="input-full" placeholder="Name">
                 </div>
                 <div class="col-md-7">
-                  <input type="email" name="to_email_4" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                  <input type="email" name="to_email_4" onchange="this.value = this.value.toLowerCase();" onkeydown="this.value = this.value.toLowerCase();" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                 </div>
               </div>
               <div id="paste-clone"></div>
@@ -582,6 +582,7 @@
   }
 
   $(document).ready(function(e){
+
     $(".account-menu").on("click", function(e){
       e.preventDefault();      
 
@@ -620,12 +621,6 @@
 
       $('#to_count').val(no);
     });
-
-    function updateFields() {            
-      
-      
-      
-    }
 
     $("#paste-clone").on("click", ".delete", function(e){
       e.preventDefault();
