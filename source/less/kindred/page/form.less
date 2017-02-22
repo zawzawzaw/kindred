@@ -48,11 +48,17 @@
 
 .format-form(){
 
+  .form-vertical{
+    margin-bottom: 0;
+  }
+
   label {
     .format-form-label-font;
 
     display: block;
     margin-bottom: 6px;
+
+    
 
     span.asterisk{
       .header-h4-style;
@@ -112,7 +118,9 @@
    -webkit-box-shadow: 0 0 0px 1000px @off-white-03 inset !important;
   }
 
-
+  input[type=submit]{
+    margin-bottom: 0;
+  }
 
   input {
     // .round(0px);
@@ -122,6 +130,21 @@
   input[type=submit] {
     display: inline-block;
   }
+
+
+
+
+  .inline-form-row{
+    overflow: auto;         // to prevent the margin bottom of the inputs
+    margin-bottom: -5px;
+
+    label{
+      // padding-top: 13px;
+      padding-top: 12px;
+    }
+
+  } // .inline-form-row
+
 
 
 
@@ -263,6 +286,10 @@
   .cta-container {
     padding-top: 25px;
     text-align: right;
+
+    &.left-version{
+      text-align: left;
+    }
   }
 
 
@@ -271,6 +298,7 @@
   @media only screen and (max-width: 991px) {             // we will follow account details mobile forms
 
     label {
+
       span.asterisk{
         font-size: 18px;
         margin-left: 3px;
@@ -291,6 +319,15 @@
 
     textarea{
       height: 190px;
+    }
+
+
+
+    .inline-form-row{
+      margin-bottom: 0;
+      label{
+        padding-top: 0;
+      }
     }
 
     .dropdown {
@@ -343,15 +380,26 @@
     .cta-container{
       padding-top: 25px - 8px;
 
+      .square-cta-01{
+        margin-bottom: 7px;
+      }
+      .square-cta-01-xs{
+        margin-bottom: 0px;
+      }
       .square-cta{
         .large-square-cta-mobile;
       }
+
     }
   }
 
   // MOBILE
   @media only screen and (max-width: 767px) {
-
+    .cta-container{
+      .square-cta-01-xs{
+        margin-bottom: 7px;
+      }
+    }
   }
 
   

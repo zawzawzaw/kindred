@@ -6,23 +6,53 @@
 //
 
 #page-login-content-section {
-  padding-top: 77px;
-  padding-bottom: 180px;
-  #CustomerRegisterForm {
-    // padding-left: 110px;
-  }
-  #CustomerLoginForm, #RecoverPasswordForm, #CustomerRegisterForm, #page-login-content-reset-password-container{
-    margin-bottom: 0px;
+  padding-top: 68px;
+  //padding-bottom: 180px;
+  padding-bottom: 100px;
+
+  .format-form;
+
+
+  form{
     h1 {
       .header-h1-style;
       text-transform: none;
       font-size: 45px;
       line-height: 50px;
-      padding-bottom: 25px;
     }
     p {
-      padding-bottom: 30px;
+      padding-bottom: 33px;
     }
+    h1 + p{
+      padding-top: 29px;
+    }
+
+    .link-container {
+     padding-top: 17px;
+     padding-bottom: 18px;
+
+      a {
+        &#RecoverPassword {
+          .body-font;
+          color:@grey;  
+        }
+      }  
+    }
+
+
+
+  } // form
+
+
+  /*
+  
+  #CustomerRegisterForm {
+    // padding-left: 110px;
+  }
+
+  #CustomerLoginForm, #RecoverPasswordForm, #CustomerRegisterForm, #page-login-content-reset-password-container{
+    margin-bottom: 0px;
+    
     label {
       .header-h4-style;      
       font-size: 12px;
@@ -45,17 +75,6 @@
      -webkit-box-shadow: 0 0 0px 1000px @off-white-03 inset !important;
     }
 
-    .link-container {
-     padding-top: 15px;
-      a {
-        &#RecoverPassword {
-          .body-font;
-          color:@grey;  
-        }
-      }  
-    }
-    
-    
     .cta-container {
       padding-top: 60px;
       input[type="submit"] {        
@@ -68,28 +87,104 @@
         width: 53%;
       }
     }
-    
-
   }
   #RecoverPasswordForm {
     input[type=submit] {
       width: auto;
     }
   }
-  .vertical-seperator-line {
-    width: 1px;
-    height: 380px;
-    border-right: 1px solid @off-white;
-    margin: 0 auto;
-  }
   #CustomerRegisterForm {
     .cta-container {
       padding-top: 20px;
     }
   }
+  */
+  
+  .vertical-seperator-line {
+    width: 1px;
+    // height: 380px;
+    height: 401px;
+    border-right: 1px solid @off-white;
+    margin: 0 auto;
+
+    margin-top: 6px;
+
+  }
 }
 
 
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #page-login-content-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    form{
+      h1 {
+        .header-h1-style-mobile(1.5);
+        .josefin-sans-light;
+      }
+      p{
+        padding-bottom: 40px;
+      }
+      h1 + p{
+        padding-top: 16px;
+      }
+      .link-container{
+        padding-top: 4px;
+        padding-bottom: 13px;
+      }
+    }
+
+
+    .vertical-seperator-line {
+      width: 100%;
+      height: 0;
+
+      border-right: none;
+      border-top: 1px solid @off-white;
+
+      margin: 0;
+    }
+
+    #CustomerLoginForm{
+      padding-bottom: 40px;
+    }
+    #CustomerRegisterForm{
+      padding-top: 40px;
+    }
+
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #page-login-content-section {
+    padding-top: 23px;
+    form{
+      h1 {
+        .header-h1-style-mobile;
+      }
+      p{
+
+      }
+    }
+
+
+
+    .vertical-seperator-line {
+      
+    }
+
+    #CustomerLoginForm{
+    }
+    #CustomerRegisterForm{
+      padding-top: 23px;
+    }
+
+  }
+}
 
 
 
