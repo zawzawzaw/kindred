@@ -14,10 +14,16 @@
       the variable 'resetPassword' set to true, which is used to initialize timber.resetPasswordSuccess().
     {% endcomment %}
 
+
+
     <article id="default-page-banner-section">
       <div id="default-page-banner">
         <div class="manic-image-container">
-          <img src="" data-image-desktop="{{ 'login-banner.jpg' | asset_url }}" alt="">
+          <img src="" 
+            data-image-desktop="{{ 'login-banner.jpg' | asset_url }}" 
+            data-image-mobile="{{ 'login-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}" 
+            data-image-tablet="{{ 'login-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}" 
+            alt="">
         </div>
       </div>
     </article>
@@ -39,8 +45,10 @@
                 <h1>{{ 'customer.login.title' | t }}</h1>
 
                 <p>{{ 'customer.login.desc' | t }}</p>                
+                  
                 
-                <div class="row">
+                
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
                   </div>
@@ -50,12 +58,12 @@
                 </div>
 
                 {% if form.password_needed %}
-                <div class="row">
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}"" required>
+                    <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
                   </div>
                   
                   
@@ -70,9 +78,15 @@
                 </div>
                 {% endif %}
 
-                <div class="cta-container">                  
-                    <input id="sign-in" type="submit" class="btn btn--full square-cta" value="{{ 'customer.login.sign_in' | t }}">                  
-                    <button id="login-with-facebook" class="square-cta">{{ 'customer.login.sign_in_with_facebook' | t }}</button>                  
+                <div class="cta-container">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                      <input id="sign-in" type="submit" class="square-cta square-cta-01-xs full-width-version" value="{{ 'customer.login.sign_in' | t }}">
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <button id="login-with-facebook" class="square-cta square-cta-02-xs full-width-version">{{ 'customer.login.sign_in_with_facebook' | t }}</button>
+                    </div>
+                  </div>
                 </div>
                 
               {% endform %}
@@ -81,6 +95,7 @@
             {% comment %}
               JS shows/hides this form in timber.loginForms()
             {% endcomment %}
+
             <div id="RecoverPasswordForm" style="display: none;">
 
               <h1>{{ 'customer.recover_password.title' | t }}</h1>
@@ -97,7 +112,7 @@
                   {% assign resetPassword = true %}
                 {% endif %}
                 
-                <div class="row">
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
                   </div>
@@ -107,9 +122,13 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-8 col-md-offset-4">
-                    <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.recover_password.submit' | t }}">
-                    <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
+                  <div class="col-md-8">
+                    
+                    <div class="cta-container left-version">
+                      <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.recover_password.submit' | t }}">
+                      <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
+                    </div>
+
                   </div>
                 </div>
               {% endform %}
@@ -121,13 +140,24 @@
               during checkout, not on the default /login page.
             {% endcomment %}
             {% if shop.checkout.guest_login %}
-              <hr>
 
-              <h2>{{ 'customer.login.guest_title' | t }}</h2>
+              <div id="page-login-guest-login-container">
 
-              {% form 'guest_login' %}
-                <input type="submit" class="btn square-cta" value="{{ 'customer.login.guest_continue' | t }}">
-              {% endform %}
+                
+
+
+
+
+
+                {% form 'guest_login' %}
+                  <div class="default-copy">
+                    <p>If you want to continue without creating an account: <a href="javascript:void(0);" id="page-login-guest-login-btn">{{ 'customer.login.guest_title' | t }}</a></p>
+                  </div>
+                  
+                {% endform %}
+  
+              </div> <!-- page-login-guest-login-container -->
+
             {% endif %}
 
           </div>
@@ -144,7 +174,7 @@
 
                 <p>{{ 'customer.login.create_account_desc' | t }}</p>                
                 
-                <div class="row">
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
                   </div>
@@ -153,7 +183,7 @@
                   </div>
                 </div>
                 
-                <div class="row">
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
                   </div>
@@ -162,7 +192,7 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
                   </div>
@@ -173,18 +203,18 @@
                   </div>
                 </div>
 
-                <div class="row">
+                <div class="row inline-form-row">
                   <div class="col-md-4">
                     <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="password" value="" name="password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}"" required>
+                    <input type="password" value="" name="password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
                   </div>
                   
                   
                 </div>
 
-                <div class="cta-container">    
+                <div class="cta-container left-version">    
                   <input type="submit" class="btn square-cta" value="{{ 'customer.login.create_account_title' | t }}">                                
                 </div>
                 

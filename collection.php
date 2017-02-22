@@ -13,7 +13,7 @@
 <article id="default-page-banner-section">
   <div id="default-page-banner">
     <div class="manic-image-container">
-      <img src="" data-image-desktop="images/tea-store-banner.png">
+      <img src="" data-image-desktop="images/tea-store-banner.png" data-image-mobile="images/tea-store-banner.png">
     </div>
   </div>
 </article>
@@ -50,7 +50,7 @@
 
           <div class="product-item" data-id="rooibos-orange">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-rooibos-orange.png">
+              <img src="" data-image="images/product-rooibos-orange.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Rooibos Orange</a>
@@ -61,7 +61,7 @@
 
           <div class="product-item" data-id="chrysanthemum">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-chrysanthemum.png">
+              <img src="" data-image="images/product-chrysanthemum.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Chrysanthemum <br>Pu Erh Tuocha</a>
@@ -72,7 +72,7 @@
 
           <div class="product-item" data-id="roasted-oolong">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-roasted-oolong.png">
+              <img src="" data-image="images/product-roasted-oolong.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Roasted Oolong</a>
@@ -83,7 +83,7 @@
 
           <div class="product-item" data-id="genmaicha">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-genmaicha.png">
+              <img src="" data-image="images/product-genmaicha.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Genmaicha Matcha-iri</a>
@@ -94,7 +94,7 @@
 
           <div class="product-item" data-id="elder-and-cream">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-elder-and-cream.png">
+              <img src="" data-image="images/product-elder-and-cream.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Elder & Cream <br>Black Tea</a>
@@ -105,7 +105,7 @@
 
           <div class="product-item" data-id="chamomile">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-chamomile.png">
+              <img src="" data-image="images/product-chamomile.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Chamomile Rose <br>Silver Needle</a>
@@ -116,7 +116,7 @@
 
           <div class="product-item" data-id="endearment">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-endearment.png">
+              <img src="" data-image="images/product-endearment.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Endearment</a>
@@ -127,7 +127,7 @@
 
           <div class="product-item" data-id="mulberry-leaf">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-mulberry-leaf.png">
+              <img src="" data-image="images/product-mulberry-leaf.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Mulberry Leaf Tea</a>
@@ -138,7 +138,7 @@
 
           <div class="product-item" data-id="maple-vanilla">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-maple-vanilla.png">
+              <img src="" data-image="images/product-maple-vanilla.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Maple Vanille <br>Green Tea</a>
@@ -149,7 +149,7 @@
 
           <div class="product-item" data-id="blessings">
             <a href="product.php" class="manic-image-container has-show-all">
-              <img src="" data-image-desktop="images/product-blessings.png">
+              <img src="" data-image="images/product-blessings.png">
             </a>
             <div class="product-item-detail">
               <a href="product.php" class="product-item-name">Blessings</a>

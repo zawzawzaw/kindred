@@ -32,7 +32,12 @@ kindred.component.Giftcard = function(options, element) {
   
 
 
-  this.copy_container = $('#product-page-detail-copy');       // cheating :P
+  
+
+  
+
+
+  this.copy_container = $('#product-page-detail-copy');       // cheating :P                /// IMPORTANT AS HELL
 
 
   this.current_design = '';
@@ -47,8 +52,8 @@ kindred.component.Giftcard = function(options, element) {
 
   this.price_dropdown = this.copy_container.find('#productSelect-option-0');
 
-  console.log('this.price_dropdown: ');
-  console.log(this.price_dropdown);
+  this.name_chars_left = this.copy_container.find('#giftcard-name-char-left');
+  this.message_words_left = this.copy_container.find('#giftcard-message-words-left');
 
 
 
@@ -76,15 +81,27 @@ kindred.component.Giftcard = function(options, element) {
   this.name_txt.on('change', function(event){
     this.update_text_layout();
   }.bind(this));
+
+  
   this.name_txt.keyup(function(event) {
+
+    this.trim_name_txt();
     this.update_text_layout();
+
   }.bind(this));
+
+
+
+
 
   this.message_txt.on('change', function(event){
     this.update_text_layout();
-  }.bind(this));
+  }.bind(this));  
   this.message_txt.keyup(function(event) {
+
+    this.trim_message_txt();    // important         // http://jsfiddle.net/7DT5z/9/
     this.update_text_layout();
+
   }.bind(this));
 
   this.price_dropdown.on('change', function(event){
@@ -92,14 +109,11 @@ kindred.component.Giftcard = function(options, element) {
   }.bind(this))
 
 
+  this.trim_name_txt();
+  this.trim_message_txt();
+
   this.update_design_layout();
   this.update_text_layout();
-
-
-
-  
-  
-
 
   
 
@@ -119,18 +133,16 @@ kindred.component.Giftcard.DEFAULT = {
 };
 
 /**
- * CLASSNAME Event Constant
  * @const
  * @type {string}
  */
-kindred.component.Giftcard.EVENT_01 = '';
+kindred.component.Giftcard.MAX_NAME_CHAR = 50;
 
 /**
- * CLASSNAME Event Constant
  * @const
  * @type {string}
  */
-kindred.component.Giftcard.EVENT_02 = '';
+kindred.component.Giftcard.MAX_MESSAGE_WORDS = 100;
 
 
 //    ____  ____  _____     ___  _____ _____
@@ -204,8 +216,44 @@ kindred.component.Giftcard.prototype.update_text_layout = function() {
 
     
 };
-kindred.component.Giftcard.prototype.public_method_03 = function() {};
-kindred.component.Giftcard.prototype.public_method_04 = function() {};
+
+
+
+
+
+
+kindred.component.Giftcard.prototype.trim_name_txt = function() {
+  
+  var value = '' + this.name_txt.val();
+  var words = value.length;
+  if (words > kindred.component.Giftcard.MAX_NAME_CHAR) {
+    
+    var trimmed = value.substr(0, kindred.component.Giftcard.MAX_NAME_CHAR);
+    this.name_txt.val(trimmed + " ");
+
+  } else {
+
+    var words_left = kindred.component.Giftcard.MAX_NAME_CHAR - words;
+    this.name_chars_left.html('(' + words_left + ' characters left)');
+
+  }
+};
+
+kindred.component.Giftcard.prototype.trim_message_txt = function() {
+  var value = '' + this.message_txt.val();
+  var words = value.match(/\S+/g).length;
+  if (words > kindred.component.Giftcard.MAX_MESSAGE_WORDS) {
+    // Split the string on first 50 words and rejoin on spaces
+    var trimmed = value.split(/\s+/, kindred.component.Giftcard.MAX_MESSAGE_WORDS).join(" ");
+    // Add a space at the end to keep new typing making new words
+    this.message_txt.val(trimmed + " ");
+  } else {
+
+    var words_left = kindred.component.Giftcard.MAX_MESSAGE_WORDS - words;
+    this.message_words_left.html('(' + words_left + ' words left)');
+  }
+};
+
 kindred.component.Giftcard.prototype.public_method_05 = function() {};
 kindred.component.Giftcard.prototype.public_method_06 = function() {};
 

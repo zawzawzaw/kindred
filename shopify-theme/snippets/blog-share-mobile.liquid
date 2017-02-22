@@ -1,0 +1,20 @@
+<div class="blog-social-container-mobile visible-sm visible-xs">
+  {% assign share_message = "Check out Kindred's " | append: article.title %}
+  {% assign share_message_escaped = share_message | url_param_escape %}
+
+  {% assign share_image = article | img_url: 'master' %}
+  {% assign share_image_escaped = share_image | url_param_escape %}
+
+  {% assign share_url = shop.url | append: article.url %}
+  {% assign share_url_escaped = share_url | url_param_escape %}
+
+  {% assign social_facebook_share_url = 'http://www.facebook.com/sharer.php?u=' | append: share_url_escaped %}
+  {% assign social_twitter_share_url = 'https://twitter.com/share?url=' | append: share_url_escaped | append: '&amp;text=' | append: share_message_escaped %}
+  {% assign social_pinterest_share_url = '//pinterest.com/pin/create%2Fbutton/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
+  <h4>Share</h4>
+  <ul>
+    <li><a href="{{ social_pinterest_share_url }}" target="_blank" class="fa fa-pinterest"></a></li>
+    <li><a href="{{ social_facebook_share_url }}" target="_blank" class="fa fa-facebook"></a></li>
+    <li><a href="{{ social_twitter_share_url }}" target="_blank" class="fa fa-twitter"></a></li>
+  </ul>
+</div>

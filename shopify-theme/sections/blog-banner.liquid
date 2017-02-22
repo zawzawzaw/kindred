@@ -10,7 +10,10 @@
 <article id="blog-page-banner-section">
   <div id="blog-page-banner">
     <div class="manic-image-container">
-      <img src="" data-image-desktop="{{ section.settings.banner-image.src | img_url: 'master' }}">
+      <img src="" 
+        data-image-desktop="{{ section.settings.banner-image.src | img_url: 'master' }}"
+        data-image-mobile="{{ section.settings.banner-image.src | img_url: '640x500', crop: 'center' }}"
+        data-image-tablet="{{ section.settings.banner-image.src | img_url: '1152x570', crop: 'center' }}">
     </div>
     <h1>The Brew Journal</h1>
   </div>

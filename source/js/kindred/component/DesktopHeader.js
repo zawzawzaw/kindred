@@ -264,6 +264,9 @@ kindred.component.DesktopHeader.prototype.close_currency = function() {
 //
 
 
+/**
+ * @param {String} str_param
+ */
 kindred.component.DesktopHeader.prototype.set_currency = function(str_param) {
 
   this.currency_select.val(str_param).trigger('change');

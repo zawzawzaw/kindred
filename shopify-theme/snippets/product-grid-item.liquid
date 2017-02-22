@@ -67,9 +67,18 @@
   <a href="{{ product.url | within: collection }}" class="manic-image-container {{ image_container_classes }}" data-vertical-align="bottom">
 
     {% if is_regular_image == true %}
-      <img src="" data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" alt="{{ product.featured_image.alt | escape }}">
+      <!-- display fullsize tea image, cause it blurs on high res phones -->
+      <img src="" 
+        data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" 
+        data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}"
+        data-image-tablet="{{ product.featured_image.src | img_url: 'master' }}" 
+        alt="{{ product.featured_image.alt | escape }}">
     {% else %}
-      <img src="" data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" alt="{{ product.featured_image.alt | escape }}">
+      <img src="" 
+        data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" 
+        data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}" 
+        data-image-tablet="{{ product.featured_image.src | img_url: '420x' }}" 
+        alt="{{ product.featured_image.alt | escape }}">
     {% endif %}
   </a>
   <div class="product-item-detail">

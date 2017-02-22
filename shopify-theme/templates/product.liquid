@@ -46,10 +46,19 @@
               <div class="manic-image-container" data-vertical-align="bottom">
                 
                 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+
                 {% if product.images.size >= 2 %}
-                  <img src="" data-image-desktop="{{ product.images[1]  | product_img_url: 'master' }}" alt="{{ product.images[1].alt | escape }}">
+                  <img src="" 
+                    data-image-desktop="{{ product.images[1]  | product_img_url: 'master' }}" 
+                    data-image-mobile="{{ product.images[1]  | product_img_url: '640x500', crop: 'center' }}" 
+                    data-image-tablet="{{ product.images[1]  | product_img_url: '1152x570', crop: 'center' }}" 
+                    alt="{{ product.images[1].alt | escape }}">
                 {% else %}
-                  <img src="" data-image-desktop="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" >
+                  <img src="" 
+                    data-image-desktop="{{ featured_image | img_url: 'master' }}" 
+                    data-image-mobile="{{ featured_image | img_url: '640x500', crop: 'center' }}" 
+                    data-image-tablet="{{ featured_image | img_url: '1152x570', crop: 'center' }}" 
+                    alt="{{ featured_image.alt | escape }}" >
                   <!-- <img src="" data-image-desktop="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" > -->
                 {% endif %}
 
@@ -94,84 +103,15 @@
                     </p> <!-- product-price -->
                     
                     <div class="product-description" itemprop="description">
-                      <div class="default-copy">
-                        {{ product.description }}
+                      <div class="row">
+                        <div class="col-md-12 col-sm-10 col-xs-12">
+                          <div class="default-copy">
+                            {{ product.description }}
+                          </div>
+                        </div>
                       </div>
                     </div>
-
-                    {% if product.id == 8748908297 or product.id == 8747743433 %}
-                      <div class="product-custom-properties-container">
-                        {% if product.id == 8748908297 %}
-
-                          <!-- teapot-one-tea-tin -->
-
-                          <div class="custom-wrapper">
-                            <label>Tea Tin</label>
-                            <div class="custom-wrapper-wrapper">
-                              <select name="properties[Tea Tin]" required>
-                                <option value="">Please select</option>
-                                <option>Rooibos Orange</option>
-                                <option>Chrysanthemum Pu Erh Tuocha</option>
-                                <option>Roasted Oolong</option>
-                                <option>Genmaicha Matcha-iri</option>
-                                <option>Elder &amp; Cream Black Tea</option>
-                                <option>Chamomile Rose Silver Needle</option>
-                                <option>Endearment</option>
-                                <option>Mulberry Leaf Tea</option>
-                                <option>Maple Vanille Green Tea</option>
-                                <option>Blessings</option>
-                              </select>
-                            </div>
-                          </div>
-
-                        {% elsif product.id == 8747743433 %}
-
-                          <!-- teapot-two-tea-tins -->
-
-                          <div class="custom-wrapper">
-                            <label>First Tin</label>
-                            <div class="custom-wrapper-wrapper">
-                              <select name="properties[Tea Tin 1]" required>
-                                <option value="">Please select</option>
-                                <option>Rooibos Orange</option>
-                                <option>Chrysanthemum Pu Erh Tuocha</option>
-                                <option>Roasted Oolong</option>
-                                <option>Genmaicha Matcha-iri</option>
-                                <option>Elder &amp; Cream Black Tea</option>
-                                <option>Chamomile Rose Silver Needle</option>
-                                <option>Endearment</option>
-                                <option>Mulberry Leaf Tea</option>
-                                <option>Maple Vanille Green Tea</option>
-                                <option>Blessings</option>
-                              </select>
-                            </div>
-                          </div>
-
-                          <div class="custom-wrapper">
-                            <label>Second Tin</label>
-                            <div class="custom-wrapper-wrapper">
-                              <select name="properties[Tea Tin 2]" required>
-                                <option value="">Please select</option>
-                                <option>Rooibos Orange</option>
-                                <option>Chrysanthemum Pu Erh Tuocha</option>
-                                <option>Roasted Oolong</option>
-                                <option>Genmaicha Matcha-iri</option>
-                                <option>Elder &amp; Cream Black Tea</option>
-                                <option>Chamomile Rose Silver Needle</option>
-                                <option>Endearment</option>
-                                <option>Mulberry Leaf Tea</option>
-                                <option>Maple Vanille Green Tea</option>
-                                <option>Blessings</option>
-                              </select>
-                            </div>
-                          </div>
-                          
-                        {% endif %}
-                      </div> <!-- product-custom-properties-container -->
-
-                    {% endif %}
-
-
+                    
                     <div class="product-variant-container">
 
                       {% comment %}
@@ -215,7 +155,7 @@
 
                     {% if product.metafields.description.p01_origin != blank and product.metafields.description.p02_teatype != blank %}
                       <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-5 col-xs-6">
 
                           {% if product.metafields.description.p01_origin != blank %}
                             <div class="product-detail inline-version">
@@ -225,7 +165,7 @@
                           {% endif %}
 
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-sm-5 col-xs-6">
 
                           {% if product.metafields.description.p02_teatype != blank %}
                             <div class="product-detail inline-version">
@@ -239,9 +179,25 @@
                     {% endif %}
 
                     
+                    {% if product.metafields.description.p11_multiple_ingredients != blank %}
+
+                      <!-- multiple ingredients visible only on small or extra small devices -->
+                      <div class="product-detail">
+                        <label>ingredients</label>
+                      </div>
+
+                      {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
+                      {% for ingredient_array_item in ingredient_array %}
+                        <div class="product-detail multiple-version visible-sm visible-xs">
+                          <p>{{ ingredient_array_item }}</p>
+                        </div>
+                      {% endfor %}
+
+                      
+                    {% endif %}
 
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-6 col-sm-5 col-xs-6">
                         {% if product.metafields.description.p03_ingredients != blank %}
                           <div class="product-detail">
                             <label>ingredients</label>
@@ -267,7 +223,7 @@
                         
                         {% if product.metafields.description.p12_brewingcustom != blank %}
                           <div class="product-detail">
-                            <label>brewing instructions</label>
+                            <label><span class="hidden-xs">brewing</span> instructions</label>
                             <p>{{ product.metafields.description.p12_brewingcustom }}</p>
                           </div>
                         {% endif %}
@@ -283,7 +239,8 @@
 
                         {% if product.metafields.description.p15_characteristicstyle != blank %}
                           <div class="product-detail">
-                            <label>Characteristic Style</label>
+                            
+                            <label>Characteristic <span class="hidden-xs">Style</span></label>
                             <p>{{ product.metafields.description.p15_characteristicstyle }}</p>
                           </div>
                         {% endif %}
@@ -291,13 +248,13 @@
 
 
                         {% if product.metafields.description.p11_multiple_ingredients != blank %}
-                          <div class="product-detail">
+                          <div class="product-detail visible-md visible-lg">
                             <label>ingredients</label>
                           </div>
 
                           {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
                           {% for ingredient_array_item in ingredient_array %}
-                            <div class="product-detail multiple-version">
+                            <div class="product-detail multiple-version visible-md visible-lg">
                               <p>{{ ingredient_array_item }}</p>
                             </div>
                           {% endfor %}
@@ -307,7 +264,7 @@
                         
 
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-6 col-sm-5 col-xs-6">
 
 
                         {% if product.metafields.description.p04_tastingnotes != blank and product.metafields.description.p11_multiple_ingredients != blank %}
@@ -319,7 +276,7 @@
 
                         {% if product.metafields.description.p05_brewingtemperature != blank || product.metafields.description.p06_brewingvolume != blank || product.metafields.description.p07_brewingtearatio != blank || product.metafields.description.p08_brewingtime != blank %}
                           <div class="product-detail">
-                            <label>brewing instructions</label>
+                            <label><span class="hidden-xs">brewing</span> instructions</label>
                             <ul>
                               {% if product.metafields.description.p05_brewingtemperature != blank %}
                                 <li><span class="product-detail-icon product-detail-icon-thermometer"></span>{{ product.metafields.description.p05_brewingtemperature }}</li>

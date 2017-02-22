@@ -84,10 +84,9 @@
           <div id="desktop-header-right-container">
               
 
-            <div id="desktop-header-search-container" data-search-placeholder="search">
-
-              <form id="desktop-header-search-form" action="/search" method="get" class="input-group search-bar" role="search">
-                <input type="search" id="s" name="q" value="search" />
+            <div id="desktop-header-search-container">
+              <form id="desktop-header-search-form" action="/search" method="get" class="simple-form-check input-group search-bar" role="search">
+                <input type="search" id="s" class="required" name="q" placeholder="Search" />
               </form>
               <div id="desktop-header-search-button"></div>
             </div>
@@ -136,6 +135,203 @@
 
     </div>
   </header>
+
+  <!--
+     __  __  ___  ____ ___ _     _____   _   _ _____    _    ____  _____ ____
+    |  \/  |/ _ \| __ )_ _| |   | ____| | | | | ____|  / \  |  _ \| ____|  _ \
+    | |\/| | | | |  _ \| || |   |  _|   | |_| |  _|   / _ \ | | | |  _| | |_) |
+    | |  | | |_| | |_) | || |___| |___  |  _  | |___ / ___ \| |_| | |___|  _ <
+    |_|  |_|\___/|____/___|_____|_____| |_| |_|_____/_/   \_\____/|_____|_| \_\
+
+  -->
+
+  <div id="mobile-header-spacer"></div>
+  <header id="mobile-header">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+
+          <div id="mobile-header-menu-button-container">
+            <div id="mobile-header-menu-button"></div>
+          </div>
+
+
+        </div>
+        <div class="col-xs-6">
+
+          <div id="mobile-header-logo-container">
+            <a href="javascript:void(0);" id="mobile-header-logo"></a>
+          </div>
+
+        </div>
+        <div class="col-xs-3">
+
+          <div id="mobile-header-cart-menu-button-container">
+            <div id="mobile-header-cart-menu-button">
+              <div class="mobile-cart-icon"></div>
+              <div class="mobile-cart-number">4</div>
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- row -->
+    </div> <!-- container-fluid -->
+
+
+  </header> <!-- mobile-header -->
+
+  <!--
+     _______  ______   _    _   _ ____  _____ ____
+    | ____\ \/ /  _ \ / \  | \ | |  _ \| ____|  _ \
+    |  _|  \  /| |_) / _ \ |  \| | | | |  _| | | | |
+    | |___ /  \|  __/ ___ \| |\  | |_| | |___| |_| |
+    |_____/_/\_\_| /_/   \_\_| \_|____/|_____|____/
+
+  -->
+
+  <header id="mobile-header-expanded">
+
+
+    <article id="mobile-header-search-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-header-search-content">
+              <form id="mobile-header-search-form" action="" method="" class="simple-form-check">
+                <input type="search" name="q" value="" placeholder="Search">
+                <div id="mobile-header-search-button" class="form-check-force-submit"></div>
+              </form>
+
+            </div> <!-- mobile-header-search-content -->
+
+          </div> <!-- col-xs-12 -->
+        </div>
+      </div> <!-- container-fluid -->
+
+    </article> <!-- #mobile-header-search-container -->
+
+
+
+    <article id="mobile-header-login-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-header-login-content">
+              <ul>
+                <li><a href="">Login</a></li>
+                <li><a href="">Join</a></li>
+              </ul>
+            </div> <!-- mobile-header-login-content -->
+
+          </div> <!-- col-xs-12 -->
+        </div>
+      </div> <!-- container-fluid -->
+
+    </article> <!-- #mobile-header-login-container -->
+
+
+
+    <article id="mobile-header-currency-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-header-currency-content">
+
+              <div id="mobile-header-currency-title">
+                <div id="mobile-header-currency-label">Currency</div>
+                <div id="mobile-header-currency-value">Singapore Dollar<span>SGD</span></div>
+              </div> <!-- mobile-header-currency-title -->
+
+              <div id="mobile-header-currency-expandable">
+
+                <div class="mobile-menu-currency-item" data-value="AUD">Australian Dollar<span>AUD</span></div>
+                <div class="mobile-menu-currency-item" data-value="GBP">Pound Sterling<span>GBP</span></div>
+                <div class="mobile-menu-currency-item" data-value="CNY">Yuan Renminbi<span>CNY</span></div>
+                <div class="mobile-menu-currency-item" data-value="EUR">Euro<span>EUR</span></div>
+                <div class="mobile-menu-currency-item" data-value="HKD">Hong Kong Dollar<span>HKD</span></div>
+                <div class="mobile-menu-currency-item" data-value="JPY">Japanese Yen<span>JPY</span></div>
+                <div class="mobile-menu-currency-item" data-value="MYR">Malaysian Ringgit<span>MYR</span></div>
+                <div class="mobile-menu-currency-item selected" data-value="SGD">Singapore Dollar<span>SGD</span></div>
+                <div class="mobile-menu-currency-item" data-value="USD">US Dollar<span>USD</span></div>
+
+              </div> <!-- mobile-header-currency-expandable -->
+
+            </div> <!-- mobile-header-currency-content -->
+
+
+          </div> <!-- col-xs-12 -->
+        </div>
+      </div> <!-- container-fluid -->
+
+
+    </article> <!-- #mobile-header-login-container -->
+
+
+
+    <article id="mobile-header-menu-container">
+
+      <div id="mobile-header-menu">
+        <nav>
+
+          <ul>
+            <li><a href="/pages/about">About</a></li>
+            <li>
+              <a href="javascript:void(0);">Shop</a>
+              <div class="mobile-header-subnav-btn"></div>
+              <ul>
+                <li><a href="/collections/all">Shop All</a></li>
+                <li><a href="/collections/teas">Teas</a></li>
+                <li><a href="/collections/teaware">Teaware</a></li>
+                <li><a href="/collections/gifts">Gifts</a></li>
+              </ul>
+            </li>
+            <li><a href="/blogs/news">Blog</a></li>
+            <li>
+              <a href="javascript:void(0);">Contact</a>
+              <div class="mobile-header-subnav-btn"></div>
+              <ul>
+                <li><a href="/pages/contact">Contact Us</a></li>
+                <li><a href="/pages/collaborations">Collaborations</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </nav> <!-- nav -->
+      </div> <!-- mobile-header-menu -->
+    </article> <!-- #mobile-header-menu-container -->
+
+    <article id="mobile-header-social-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div id="mobile-header-social-content">
+              <ul>
+                <li><a href="javascript:void(0);" class="fa fa-facebook" title="Kindred on Facebook" target="_blank"></a></li>
+                <li><a href="javascript:void(0);" class="fa fa-twitter" title="Kindred on Twitter" target="_blank"></a></li>
+                <li><a href="javascript:void(0);" class="fa fa-instagram" title="Kindred on Instagram" target="_blank"></a></li>
+                <li><a href="javascript:void(0);" class="fa fa-pinterest" title="Kindred on Pinterest" target="_blank"></a></li>
+              </ul>
+            </div> <!-- mobile-header-social -->
+
+
+          </div> <!-- col-xs-12 -->
+        </div>
+      </div> <!-- container-fluid -->
+
+    </article> <!-- #mobile-header-social-container -->
+
+
+  </header> <!-- mobile-header-expanded -->
+
+
+
+
+  
   
   <div id="PageContainer" class="is-moved-by-drawer">
     <div class="main-content">

@@ -30,6 +30,17 @@
   padding-bottom: 5px;
 }
 
+.format-form-input-font-mobile{
+  .body-font-mobile;
+  line-height: 20px;
+  color: @grey-05;
+  
+  padding-left: 16px;
+  padding-right: 0px;
+  padding-top: 6px;
+  padding-bottom: 5px;
+}
+
 
 
 
@@ -37,11 +48,34 @@
 
 .format-form(){
 
+  .form-vertical{
+    margin-bottom: 0;
+  }
+
+  .form-column-01{
+    padding-right: 20px;
+  }
+  .form-column-02{
+    padding-left: 20px;
+  }
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {
+    .form-column-01{
+      padding-right: 0px;
+    }
+    .form-column-02{
+      padding-left: 0px;
+    }
+  }
+
+
   label {
     .format-form-label-font;
 
     display: block;
     margin-bottom: 6px;
+
+    
 
     span.asterisk{
       .header-h4-style;
@@ -51,6 +85,13 @@
       color: @off-black;
       position: relative;
       top: 2px;
+    }
+
+    small{
+      .display-inline-block;
+      position: relative;
+      top: 0px;
+      margin-left: 3px;
     }
   }
 
@@ -81,10 +122,16 @@
     height: 35px;
     .format-form-input-font;
 
-    margin-bottom: 25px;   
+    margin-bottom: 25px;
+
+    &.white-version{
+      background-color: @white;
+    }
+
   }
   textarea{
     height: 190px;
+    resize: none;
   }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
@@ -93,7 +140,9 @@
    -webkit-box-shadow: 0 0 0px 1000px @off-white-03 inset !important;
   }
 
-
+  input[type=submit]{
+    margin-bottom: 0;
+  }
 
   input {
     // .round(0px);
@@ -103,6 +152,21 @@
   input[type=submit] {
     display: inline-block;
   }
+
+
+
+
+  .inline-form-row{
+    overflow: auto;         // to prevent the margin bottom of the inputs
+    margin-bottom: -5px;
+
+    label{
+      // padding-top: 13px;
+      padding-top: 12px;
+    }
+
+  } // .inline-form-row
+
 
 
 
@@ -151,6 +215,13 @@
       pointer-events: none;
       background-color: @brown;
     }
+
+    &.white-version{
+      select{
+        background-color: @white;
+      }
+    }
+
   } // .dropdown
 
 
@@ -237,6 +308,15 @@
     }
 
 
+    &.white-version{
+      input[type="checkbox"] + label{
+        span{
+          background: @white;
+        }
+      }
+    }
+
+
   } // .checkbox
 
 
@@ -244,8 +324,224 @@
   .cta-container {
     padding-top: 25px;
     text-align: right;
+
+    &.left-version{
+      text-align: left;
+    }
   }
 
 
+
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {             // we will follow account details mobile forms
+
+    label {
+
+      span.asterisk{
+        font-size: 18px;
+        margin-left: 3px;
+      }
+    }
+
+    input[type=email], 
+    input[type=tel],
+    input[type=password], 
+    input[type=text],
+    textarea {
+
+      .format-form-input-font-mobile;
+
+      height: 30px;
+      margin-bottom: 15px;
+    }
+
+    textarea{
+      height: 190px;
+    }
+
+
+
+    .inline-form-row{
+      margin-bottom: 0;
+      label{
+        padding-top: 0;
+      }
+    }
+
+    .dropdown {
+      select {
+        .format-form-input-font-mobile;
+
+        height: 30px;
+        margin-bottom: 15px;
+      }
+      &:after{
+        font-size: 15px;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+      }
+
+    } // .dropdown
+
+    .checkbox{
+      padding-top: 7px;
+      margin-bottom: 15px - 1px;   // offset of 1 px
+
+      input[type="checkbox"] {
+        top: -2px;
+      }
+      input[type="checkbox"] + label{
+
+        span{
+          position: relative;
+          width: 18px;  
+          height: 18px;
+          top: -2px;
+          left: 0px;
+
+          &:after{
+            .tick-icon-small;
+            top: -5px;
+            left: 2px;
+          }
+        }
+        p{
+          .format-form-input-font-mobile;
+          padding: 0;
+        }
+      }
+
+    } // .checkbox
+
+
+    .cta-container{
+      padding-top: 25px - 8px;
+
+      .square-cta-01{
+        margin-bottom: 7px;
+      }
+      .square-cta-01-xs{
+        margin-bottom: 0px;
+      }
+      .square-cta{
+        .large-square-cta-mobile;
+      }
+
+    }
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+    .cta-container{
+      .square-cta-01-xs{
+        margin-bottom: 7px;
+      }
+    }
+  }
+
   
 } // .format-form
+
+
+
+
+
+
+
+
+
+
+
+
+//    _____ ___ __  __ ____  _____ ____    _____ ____  ____   ___  ____  ____
+//   |_   _|_ _|  \/  | __ )| ____|  _ \  | ____|  _ \|  _ \ / _ \|  _ \/ ___|
+//     | |  | || |\/| |  _ \|  _| | |_) | |  _| | |_) | |_) | | | | |_) \___ \
+//     | |  | || |  | | |_) | |___|  _ <  | |___|  _ <|  _ <| |_| |  _ < ___) |
+//     |_| |___|_|  |_|____/|_____|_| \_\ |_____|_| \_\_| \_\\___/|_| \_\____/
+//
+
+
+.note,
+.errors {
+  .round(0);
+}
+
+.note {
+  color: @grey;
+  border-color: @grey;
+  background: @off-white-02;
+}
+
+.form-success {
+  // color: @brown;
+  color: darken(@brown, 10%);
+  border-color: @brown;
+  background: @light-brown-02;
+}
+
+
+.form-error,
+.errors {
+  color: @off-black;
+  border-color: @off-black;
+  background: @off-white-02;
+  ul {
+    margin-left: 0;
+  }
+}
+
+
+//    ___ __  __  ____ _   _ ____
+//   |_ _|  \/  |/ ___| | | |  _ \
+//    | || |\/| | |  _| | | | |_) |
+//    | || |  | | |_| | |_| |  _ <
+//   |___|_|  |_|\____|\___/|_| \_\
+//
+
+
+
+@upload-box-height: 202px;
+@upload-box-height-02: 202px - 20px;
+
+#imgur-upload-container{
+  background: @off-white-03;
+  height: @upload-box-height;
+
+  padding: 10px;
+  margin-bottom: 25px;
+
+  #ContactFormImage{
+    display: none;
+  }
+  .error-element{
+    margin-top: -10px;
+    margin-bottom: -10px;
+  }
+
+  .dropzone{
+    // border: 2px dashed @border-grey-02;
+    border: 2px dashed @white;
+    margin: 0;
+    height: @upload-box-height-02;
+
+    p{
+      line-height: @upload-box-height-02;
+      color: @grey-05;
+    }
+  }
+  .dropzone + .status{
+    padding: 0;
+    margin: 0;
+  }
+  .manic-image-container{
+    background: darken(@off-white-03, 5%);
+    height: @upload-box-height-02;
+  }
+
+  &.loaded-version{
+    .dropzone{
+      display: none;
+    }
+  }
+}

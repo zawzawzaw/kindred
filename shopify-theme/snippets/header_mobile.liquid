@@ -1,0 +1,253 @@
+<!--
+   __  __  ___  ____ ___ _     _____   _   _ _____    _    ____  _____ ____
+  |  \/  |/ _ \| __ )_ _| |   | ____| | | | | ____|  / \  |  _ \| ____|  _ \
+  | |\/| | | | |  _ \| || |   |  _|   | |_| |  _|   / _ \ | | | |  _| | |_) |
+  | |  | | |_| | |_) | || |___| |___  |  _  | |___ / ___ \| |_| | |___|  _ <
+  |_|  |_|\___/|____/___|_____|_____| |_| |_|_____/_/   \_\____/|_____|_| \_\
+
+-->
+
+<div id="mobile-header-spacer"></div>
+<header id="mobile-header">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-3">
+
+        <div id="mobile-header-menu-button-container">
+          <div id="mobile-header-menu-button"></div>
+        </div>
+
+
+      </div>
+      <div class="col-xs-6">
+
+        <div id="mobile-header-logo-container">
+          <a href="javascript:void(0);" id="mobile-header-logo"></a>
+        </div>
+
+      </div>
+      <div class="col-xs-3">
+
+        <div id="mobile-header-cart-menu-button-container">
+          <div id="mobile-header-cart-menu-button" class="js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+            <div class="mobile-cart-icon"></div>
+            <div class="mobile-cart-number"><span id="CartCount">{{ cart.item_count }}</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div> <!-- row -->
+  </div> <!-- container-fluid -->
+
+
+</header> <!-- mobile-header -->
+
+<!--
+   _______  ______   _    _   _ ____  _____ ____
+  | ____\ \/ /  _ \ / \  | \ | |  _ \| ____|  _ \
+  |  _|  \  /| |_) / _ \ |  \| | | | |  _| | | | |
+  | |___ /  \|  __/ ___ \| |\  | |_| | |___| |_| |
+  |_____/_/\_\_| /_/   \_\_| \_|____/|_____|____/
+
+-->
+
+<header id="mobile-header-expanded">
+
+
+  <article id="mobile-header-search-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div id="mobile-header-search-content">
+            <form id="mobile-header-search-form" action="/search" method="get" class="simple-form-check" role="search">
+
+              {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+              <input type="search" name="q" value="{{ search.terms | escape }}" class="input-group-field" aria-label="{{ 'general.search.placeholder' | t }}" placeholder="Search">
+
+              <div id="mobile-header-search-button" class="form-check-force-submit"></div>
+            </form>
+
+          </div> <!-- mobile-header-search-content -->
+
+        </div> <!-- col-xs-12 -->
+      </div>
+    </div> <!-- container-fluid -->
+
+  </article> <!-- #mobile-header-search-container -->
+
+
+
+  <article id="mobile-header-login-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div id="mobile-header-login-content">
+            <ul>
+
+              {% if shop.customer_accounts_enabled %}
+                {% if customer %}
+                  {% if customer.first_name != blank %}
+                    {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+                    <li><a href="/account">{{ customer.first_name }}</a></li>
+                  {% else %}
+                    <li><a href="/account">{{ 'layout.customer.account' | t }}</a></li>
+                  {% endif %}
+
+                  <li>{{ 'layout.customer.log_out' | t | customer_logout_link }}</li>
+
+                {% else %}
+
+                  <li>{{ 'layout.customer.log_in' | t | customer_login_link }}</li>
+
+                {% endif %}
+              {% endif %}
+
+            </ul>
+          </div> <!-- mobile-header-login-content -->
+
+        </div> <!-- col-xs-12 -->
+      </div>
+    </div> <!-- container-fluid -->
+
+  </article> <!-- #mobile-header-login-container -->
+
+
+
+  <article id="mobile-header-currency-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div id="mobile-header-currency-content">
+
+            <div id="mobile-header-currency-title">
+              <div id="mobile-header-currency-label">Currency</div>
+              <div id="mobile-header-currency-value"><span class="selected-currency">{{ shop.currency }}</span></div>
+
+            </div> <!-- mobile-header-currency-title -->
+
+            <div id="mobile-header-currency-expandable">
+
+              {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+              {% assign name_codes = 'US Dollar,Euro,Pound Sterling,Canadian Dollar,Argentine Peso,Australian Dollar,Barbados Dollar,Bangladeshi Taka,Bahamian Dollar,Bahraini Dinar,Brazilian Real,Boliviano,Brunei Dollar,Bulgarian Lev,Israeli New Shekel,Myanmar Kyat,Cayman Islands Dollar,Chilean Peso,Yuan Renminbi,Colombian Peso,Costa Rican Colon,Croatian Kuna,Czech Koruna,Danish Krone,Dominican Peso,East Caribbean Dollar,Egyptian Pound,CFP Franc,Fiji Dollar,Ghanaian Cedi,Guatemala Quetzal,Guyana Dollar,Georgian Lari,Hong Kong Dollar,Hungarian Forint,Iceland Krona,Indian Rupee,Indonesian Rupiah,Israeli New Shekel,Jamaican Dollar,Japanese Yen,Jordanian Dinar,Kazakhstan Tenge,Kenyan Shilling,Kuwaiti Dinar,Latvian Lats,Lithuanian Litas,Mexican Nuevo Peso,Malaysian Ringgit,Mauritius Rupee,Moldovan Leu,Moroccan Dirham,Mongolian Tugrik,Mozambique Metical,Netherlands Antillean Guilder,New Zealand Dollar,Nigerian Naira,Norwegian Krone,Omani Rial,Pakistan Rupee,Paraguay Guarani,Peruvian Nuevo Sol,Philippine Peso,Polish Zloty,Qatari Rial,Romanian New Leu,Russian Ruble,Saudi Riyal,Dinar,Seychelles Rupee,Singapore Dollar,Syrian Pound,South African Rand,Korean Won,Sri Lanka Rupee,Swedish Krona,Swiss Franc,Taiwan Dollar,Thai Baht,Tanzanian Shilling,Trinidad and Tobago Dollar,Turkish Lira,Ukraine Hryvnia,Arab Emirates Dirham,Uruguayan Peso,Venezuelan Bolivar,Vietnamese Dong,Zambian Kwacha' | split: ',' %}
+              {% assign supported_codes = settings.supported_currencies | split: ' ' %}
+
+              {%- for code in supported_codes -%}
+                {%- for code_item in codes -%}
+                  {%- if code_item == code -%}
+                    {% if code == shop.currency %}
+                      <div class="mobile-menu-currency-item selected" data-value="{{ code }}">{{ name_codes[forloop.index0] }}<span>{{ code }}</span></div>
+                    {% else %}
+                      <div class="mobile-menu-currency-item" data-value="{{ code }}">{{ name_codes[forloop.index0] }}<span>{{ code }}</span></div>
+                    {% endif %}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+
+            </div> <!-- mobile-header-currency-expandable -->
+
+          </div> <!-- mobile-header-currency-content -->
+
+
+        </div> <!-- col-xs-12 -->
+      </div>
+    </div> <!-- container-fluid -->
+
+
+  </article> <!-- #mobile-header-login-container -->
+
+
+
+  <article id="mobile-header-menu-container">
+
+    <div id="mobile-header-menu">
+      <nav>
+
+        <ul>
+          {% for link in linklists.main-menu-mobile.links %}
+            {% comment %}
+              Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+              More info on dropdowns:
+                - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+            {% endcomment %}
+            {% assign child_list_handle = link.title | handleize %}
+            {% if linklists[child_list_handle].links != blank %}
+              <li class="{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+
+                <div class="mobile-header-subnav-btn"></div>
+
+                <a href="{{ link.url }}">
+                  {{ link.title }}
+                </a>
+                <ul>
+                  {% for childlink in linklists[child_list_handle].links %}
+                    <li{% if childlink.active %} class="site-nav--active"{% endif %}>
+                      <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            {% else %}
+              <li {% if link.active %}class="site-nav--active"{% endif %}>
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        <!--
+        <ul>
+          <li><a href="/pages/about">About</a></li>
+          <li>
+            <a href="javascript:void(0);">Shop</a>
+            <div class="mobile-header-subnav-btn"></div>
+            <ul>
+              <li><a href="/collections/all">Shop All</a></li>
+              <li><a href="/collections/teas">Teas</a></li>
+              <li><a href="/collections/teaware">Teaware</a></li>
+              <li><a href="/collections/gifts">Gifts</a></li>
+            </ul>
+          </li>
+          <li><a href="/blogs/news">Blog</a></li>
+          <li>
+            <a href="javascript:void(0);">Contact</a>
+            <div class="mobile-header-subnav-btn"></div>
+            <ul>
+              <li><a href="/pages/contact">Contact Us</a></li>
+              <li><a href="/pages/collaborations">Collaborations</a></li>
+            </ul>
+          </li>
+        </ul>
+        -->
+
+      </nav> <!-- nav -->
+    </div> <!-- mobile-header-menu -->
+  </article> <!-- #mobile-header-menu-container -->
+
+  <article id="mobile-header-social-container">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div id="mobile-header-social-content">
+            <ul>
+              <li><a href="javascript:void(0);" class="fa fa-facebook" title="Kindred on Facebook" target="_blank"></a></li>
+              <li><a href="javascript:void(0);" class="fa fa-twitter" title="Kindred on Twitter" target="_blank"></a></li>
+              <li><a href="javascript:void(0);" class="fa fa-instagram" title="Kindred on Instagram" target="_blank"></a></li>
+              <li><a href="javascript:void(0);" class="fa fa-pinterest" title="Kindred on Pinterest" target="_blank"></a></li>
+            </ul>
+          </div> <!-- mobile-header-social -->
+
+
+        </div> <!-- col-xs-12 -->
+      </div>
+    </div> <!-- container-fluid -->
+
+  </article> <!-- #mobile-header-social-container -->
+
+
+</header> <!-- mobile-header-expanded -->

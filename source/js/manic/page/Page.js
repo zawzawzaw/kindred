@@ -210,8 +210,8 @@ manic.page.Page.prototype.init = function(){
   this.hide_preloader();
 
   this.update_page_layout();
-
   this.options['on_init_complete']();
+  
 
   console.log('manic.page.Page: init');
 };
@@ -291,8 +291,8 @@ manic.page.Page.prototype.initial_scroll_to_target = function() {
   if (this.window_hash != '') {
     str_array = this.window_hash.split('/');
 
-    console.log('str_array2: ');
-    console.log(str_array);
+    // console.log('str_array2: ');
+    // console.log(str_array);
 
     if(str_array.length == 1){
       this.scroll_to_target(str_array[0]);
@@ -377,8 +377,8 @@ manic.page.Page.prototype.scroll_to_target = function(str_param, str_param_2, st
 
     if (str_param == scroll_target_str) {
 
-      console.log('manic.page.Page: scroll_to_target: ');
-      console.log(scroll_target);
+      // console.log('manic.page.Page: scroll_to_target: ');
+      // console.log(scroll_target);
       this.controller.scrollTo(scroll_target[0]);
     }
   }
@@ -420,8 +420,11 @@ manic.page.Page.prototype.create_hammer = function(){
 */
 
 manic.page.Page.prototype.create_image_container = function() {
+
+  // console.log('create_image_container');
   
-  var arr = $('.manic-image-container').not('.not-default-version').not('.instantiated-version');
+  // var arr = $('.manic-image-container').not('.not-default-version').not('.instantiated-version');
+  var arr = $('.manic-image-container').not('.manic-image-container.not-default-version').not('.manic-image-container.instantiated-version');
   var image_container = null;
   var item = null;
 
@@ -712,7 +715,7 @@ manic.page.Page.prototype.on_expand_container_expand = function(event) {
     }
   } else {
 
-    console.log('expand_container.group_value: ' + expand_container.group_value);
+    // console.log('expand_container.group_value: ' + expand_container.group_value);
 
     if(expand_container.group_value != 'none') {
 
@@ -722,7 +725,7 @@ manic.page.Page.prototype.on_expand_container_expand = function(event) {
 
         expand_container_02 = this.expand_container_array[i];
 
-        console.log(expand_container_02.group_value);
+        // console.log(expand_container_02.group_value);
 
         if(expand_container_02.group_value == expand_container.group_value && expand_container_02 !== expand_container){
           expand_container_02.collapse();
@@ -860,7 +863,7 @@ manic.page.Page.prototype.check_actual_device = function() {
 
 manic.page.Page.prototype.check_device = function() {
 
-  console.log('manic.page.Page: check_device');
+  // console.log('manic.page.Page: check_device');
 
   manic.IS_MOBILE       = this.window_width <= 992;
   
@@ -1016,8 +1019,8 @@ manic.page.Page.prototype.on_window_hash_change = function(event) {
 
     str_array = this.window_hash.split('/');
 
-    console.log('str_array: ');
-    console.log(str_array);
+    // console.log('str_array: ');
+    // console.log(str_array);
 
     if(str_array.length == 1){
       this.scroll_to_target(str_array[0]);

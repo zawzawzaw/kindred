@@ -1,0 +1,208 @@
+<!--
+   _   _ _____    _    ____  _____ ____
+  | | | | ____|  / \  |  _ \| ____|  _ \
+  | |_| |  _|   / _ \ | | | |  _| | |_) |
+  |  _  | |___ / ___ \| |_| | |___|  _ <
+  |_| |_|_____/_/   \_\____/|_____|_| \_\
+
+-->
+
+<div id="desktop-header-spacer"></div>
+<header id="desktop-header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-7">
+
+        <div id="desktop-header-left-container">
+          <div id="desktop-header-logo-container">
+            <a href="https://kindredteas.com/" id="desktop-header-logo"></a>
+          </div>
+
+
+          
+          <div id="desktop-header-menu">
+            <nav>
+              <ul>
+                {% for link in linklists.main-menu.links %}
+                  {% comment %}
+                    Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+                    More info on dropdowns:
+                      - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+                  {% endcomment %}
+                  {% assign child_list_handle = link.title | handleize %}
+                  {% if linklists[child_list_handle].links != blank %}
+                    <li class="{% if link.active %} site-nav--active{% endif %}" aria-haspopup="true">
+                      <a href="{{ link.url }}">
+                        {{ link.title }}
+                      </a>
+                      <ul>
+                        {% for childlink in linklists[child_list_handle].links %}
+                          <li{% if childlink.active %} class="site-nav--active"{% endif %}>
+                            <a href="{{ childlink.url }}">{{ childlink.title | escape }}</a>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </li>
+                  {% else %}
+                    <li {% if link.active %}class="site-nav--active"{% endif %}>
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+              
+              <!-- 
+              <ul>
+                <li>
+                  <a href="">About</a>
+                  <ul>
+                    <li><a href="">About Kindred</a></li>
+                    <li><a href="">Collaboration</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="https://kindredteas.com/collections/tea-store">Our Teas</a>
+                  <ul>
+                    <li><a href="https://kindredteas.com/collections/tea-store">Tea Store</a></li>
+                    <li><a href="https://kindredteas.com/collections/teaware">Teaware</a></li>
+                    <li><a href="https://kindredteas.com/collections/gifts">Gifts</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="">Support</a>
+                  <ul>
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Shipping Info</a></li>
+                    <li><a href="">Returns & Exhanges</a></li>
+                  </ul>
+                </li>
+                <li><a href="">Contact Us</a></li>
+              </ul>
+              -->
+            </nav>
+          </div>
+        </div>
+
+      </div> <!-- col-md-7 -->
+      <div class="col-md-5">
+
+        <div id="desktop-header-right-container">
+
+
+          <div id="desktop-header-search-container" data-search-placeholder="{{ 'general.search.placeholder' | t }}">
+            <form id="desktop-header-search-form" action="/search" method="get" class="input-group search-bar" role="search">
+              {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+              <input type="search" name="q" value="{{ search.terms | escape }}" class="input-group-field" aria-label="{{ 'general.search.placeholder' | t }}">
+            </form>
+            <div id="desktop-header-search-button"></div>
+          </div>
+          
+          <div id="desktop-menu-currency-container">
+
+            {% assign codes = 'USD,EUR,GBP,CAD,ARS,AUD,BBD,BDT,BSD,BHD,BRL,BOB,BND,BGN,ILS,MMK,KYD,CLP,CNY,COP,CRC,HRK,CZK,DKK,DOP,XCD,EGP,XPF,FJD,GHS,GTQ,GYD,GEL,HKD,HUF,ISK,INR,IDR,NIS,JMD,JPY,JOD,KZT,KES,KWD,LVL,LTL,MXN,MYR,MUR,MDL,MAD,MNT,MZN,ANG,NZD,NGN,NOK,OMR,PKR,PYG,PEN,PHP,PLN,QAR,RON,RUB,SAR,RSD,SCR,SGD,SYP,ZAR,KRW,LKR,SEK,CHF,TWD,THB,TZS,TTD,TRY,UAH,AED,UYU,VEB,VND,ZMK' | split: ',' %}
+            {% assign name_codes = 'US Dollar,Euro,Pound Sterling,Canadian Dollar,Argentine Peso,Australian Dollar,Barbados Dollar,Bangladeshi Taka,Bahamian Dollar,Bahraini Dinar,Brazilian Real,Boliviano,Brunei Dollar,Bulgarian Lev,Israeli New Shekel,Myanmar Kyat,Cayman Islands Dollar,Chilean Peso,Yuan Renminbi,Colombian Peso,Costa Rican Colon,Croatian Kuna,Czech Koruna,Danish Krone,Dominican Peso,East Caribbean Dollar,Egyptian Pound,CFP Franc,Fiji Dollar,Ghanaian Cedi,Guatemala Quetzal,Guyana Dollar,Georgian Lari,Hong Kong Dollar,Hungarian Forint,Iceland Krona,Indian Rupee,Indonesian Rupiah,Israeli New Shekel,Jamaican Dollar,Japanese Yen,Jordanian Dinar,Kazakhstan Tenge,Kenyan Shilling,Kuwaiti Dinar,Latvian Lats,Lithuanian Litas,Mexican Nuevo Peso,Malaysian Ringgit,Mauritius Rupee,Moldovan Leu,Moroccan Dirham,Mongolian Tugrik,Mozambique Metical,Netherlands Antillean Guilder,New Zealand Dollar,Nigerian Naira,Norwegian Krone,Omani Rial,Pakistan Rupee,Paraguay Guarani,Peruvian Nuevo Sol,Philippine Peso,Polish Zloty,Qatari Rial,Romanian New Leu,Russian Ruble,Saudi Riyal,Dinar,Seychelles Rupee,Singapore Dollar,Syrian Pound,South African Rand,Korean Won,Sri Lanka Rupee,Swedish Krona,Swiss Franc,Taiwan Dollar,Thai Baht,Tanzanian Shilling,Trinidad and Tobago Dollar,Turkish Lira,Ukraine Hryvnia,Arab Emirates Dirham,Uruguayan Peso,Venezuelan Bolivar,Vietnamese Dong,Zambian Kwacha' | split: ',' %}
+            {% assign supported_codes = settings.supported_currencies | split: ' ' %}
+
+
+            <p id="desktop-menu-currency-btn"><span class="selected-currency">{{ shop.currency }}</span> currency</p>
+            
+            <div id="desktop-menu-currency-item-container-container">
+              <div id="desktop-menu-currency-item-container">
+                {%- for code in supported_codes -%}
+                  {%- for code_item in codes -%}
+                    {%- if code_item == code -%}
+                      {% if code == shop.currency %}
+                        <div class="desktop-menu-currency-item selected" data-value="{{ code }}"><span>{{ code }}</span>{{ name_codes[forloop.index0] }}</div>
+                      {% else %}
+                        <div class="desktop-menu-currency-item" data-value="{{ code }}"><span>{{ code }}</span>{{ name_codes[forloop.index0] }}</div>
+                      {% endif %}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endfor -%}
+              </div>
+            </div>
+
+            
+            <label class="currency-picker__wrapper">
+              <!-- <span class="currency-picker__label">Pick a currency</span> -->
+
+              <select class="currency-picker" name="currencies" style="display: inline; width: auto; vertical-align: inherit;">
+              {%- for code in supported_codes -%}
+                {%- for code_item in codes -%}
+                  {%- if code_item == code -%}
+                    {% if code == shop.currency %}
+                      <option value="{{ code }}" selected="selected">{{ name_codes[forloop.index0] }}</option>
+                    {% else %}
+                      <option value="{{ code }}">{{ name_codes[forloop.index0] }}</option>
+                    {% endif %}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+              </select>
+            </label>
+
+          </div> <!-- desktop-menu-currency-container -->
+
+
+          <div id="desktop-menu-account-login-container">
+            <span class="account-icon"></span>
+
+            {% comment %}
+              If customer accounts are enabled, provide login and create account links
+            {% endcomment %}
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+
+                
+                {% if customer.first_name != blank %}
+                  {% capture first_name %}{{ customer.first_name }}{% endcapture %}
+                  <!-- <a href="/account">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a> -->
+                  <a href="/account">{{ customer.first_name }}</a>
+
+                {% else %}
+                  <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                {% endif %}
+
+                <span class="seperator">|</span>
+
+                {{ 'layout.customer.log_out' | t | customer_logout_link }}
+
+              {% else %}
+
+                {{ 'layout.customer.log_in' | t | customer_login_link }}
+                <!-- <span class="seperator">|</span> -->
+                <!-- {{ 'layout.customer.create_account' | t | customer_register_link }} -->
+
+              {% endif %}
+            {% endif %}
+            
+          </div> <!-- desktop-menu-account-login-container -->
+
+
+
+          <div id="desktop-menu-cart-container">
+            <a href="/cart" class="js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
+
+              <span class="cart-icon"></span>
+              <!-- <span class="cart-text">{{ cart.total_price | money }} ({{ cart.item_count }})</span> -->
+              <span class="cart-text"><span id="CartCost">{{ cart.total_price | money }}</span> (<span id="CartCount">{{ cart.item_count }}</span>)</span>
+            </a>
+          </div>
+
+        </div> <!-- desktop-header-right-container -->
+
+      </div> <!-- col-md-5 -->
+    </div> <!-- row -->
+
+  </div>
+</header>
+
+<!--
+   _   _ _____    _    ____  _____ ____    _____ _   _ ____
+  | | | | ____|  / \  |  _ \| ____|  _ \  | ____| \ | |  _ \
+  | |_| |  _|   / _ \ | | | |  _| | |_) | |  _| |  \| | | | |
+  |  _  | |___ / ___ \| |_| | |___|  _ <  | |___| |\  | |_| |
+  |_| |_|_____/_/   \_\____/|_____|_| \_\ |_____|_| \_|____/
+
+-->

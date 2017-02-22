@@ -170,6 +170,26 @@
 }
 
 
+.body-font-mobile(@multiplier: 1){
+  .open-sans-regular;
+  font-size: 12px * @multiplier;
+  line-height: 21px * @multiplier;
+}
+.body-font-bold-mobile(@multiplier: 1){
+  .open-sans-semibold;
+  font-size: 12px * @multiplier;
+  line-height: 21px * @multiplier;
+}
+.body-font-mobile-size(@multiplier: 1){
+  font-size: 12px * @multiplier;
+  line-height: 21px * @multiplier;
+}
+.body-font-small-mobile{
+  font-size: 8px;
+  letter-spacing: 0.08em;
+}
+
+
 
 
 
@@ -259,6 +279,22 @@
   letter-spacing: 0.02em;
 }
 
+.header-h4-style-mobile(@multiplier: 1){            // not yet finished
+  .josefin-sans-semibold; // brandon medium
+  // font-size: 17px * @multiplier;
+  font-size: 15px * @multiplier;
+  line-height: 30px * @multiplier;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.header-h5-style-mobile(@multiplier: 1){
+  .josefin-sans-semibold;
+  font-size: 12px * @multiplier;
+  line-height: 21px * @multiplier;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
 
 
 

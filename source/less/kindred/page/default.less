@@ -64,6 +64,32 @@
     }
   }
 
+  ol{
+    counter-reset: ol-counter;
+
+    li{
+      position: relative;
+      padding-left: 16px;
+
+      margin-bottom: 25px;
+
+      &:before{
+        .body-font-bold;
+        color: @off-black;
+        content: counter(ol-counter);
+        counter-increment: ol-counter;
+        display: block;
+
+        .display-inline-block;
+        position: absolute;
+        top: 0px;
+        // left: 3px + 4px;
+        /// left: 11px;
+        left: 0px;
+      }
+    }
+  }
+
 
 
 
@@ -115,11 +141,17 @@
   ul + p {
     padding-top: 20px;
   }
+  ol + p {
+    padding-top: 20px;
+  }
 
   p + .default-table{
     margin-top: 40px;
   }
   ul + .default-table{
+    margin-top: 40px;
+  }
+  ol + .default-table{
     margin-top: 40px;
   }
 
@@ -154,11 +186,121 @@
 
   }
 
-
-
-
 }
 
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .default-copy{
+    
+    .first-letter{
+      .header-h1-style-mobile;
+
+      font-size: 37px;
+      line-height: 21px * 2;
+
+      left: -1px;
+      top: 2px;
+    }
+
+    p{
+      a{
+        color: @brown !important;
+      }
+    }
+
+    ul{
+      li{
+        &:before{
+          line-height: 21px;
+        }
+      }
+    }
+
+    ol{
+      li{
+        &:before{
+          .body-font-bold-mobile;
+        }
+      }
+    }
+    
+
+    .default-table{
+      &:first-child{
+        margin-top: 20px;
+      }
+      &:last-child{
+        margin-bottom: 20px;
+      }
+    }
+
+    h1{
+      .header-h1-style-mobile;
+    }
+    h4{
+      a{
+        color: @grey !important;
+      }
+    }
+    p + p {
+      padding-top: 21px;
+    }
+    p.same-paragraph + p{
+      padding-top: 0px;
+    }
+
+    p + ul {
+      padding-top: 16px;
+    }
+    ul + p {
+      padding-top: 16px;
+    }
+    ol + p {
+      padding-top: 16px;
+    }
+
+    p + .default-table{
+      margin-top: 20px;
+    }
+    ul + .default-table{
+      margin-top: 20px;
+    }
+    ol + .default-table{
+      margin-top: 20px;
+    }
+
+
+    h1 + p{
+      padding-top: 13px;
+    }
+    h2 + p{
+      padding-top: 13px;
+    }
+    p + h4 {
+      padding-top: 21px;
+    }
+
+
+
+    .cta-container{
+      padding-top: 20px;
+      .square-cta + .square-cta{
+        margin-left: 0px;
+        margin-top: 20px;
+      }
+
+      .square-cta{
+        .large-square-cta-mobile;
+      }
+
+    }
+
+
+  } // .default-copy
+}
 
 
 
@@ -188,6 +330,30 @@
     // height: 1000px;
   }
 }
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #default-page-banner{
+
+    .manic-image-container{
+      height: 380px;
+    }
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #default-page-banner{
+    .manic-image-container{
+      height: 250px;
+    }
+  }
+}
+
+
+
+
 
 
 /*
@@ -256,6 +422,24 @@
 }
 
 
+@media only screen and (max-width: 991px) {
+  #page-default-full-section{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+
+
+// // MOBILE
+// @media only screen and (max-width: 767px) {
+//   #page-default-full-section{
+//     padding-top: 40px;
+//     padding-bottom: 40px;
+//   }
+// }
+
+
 
 
 //    ____  ____   ___  ____  _   _  ____ _____   ___ _____ _____ __  __
@@ -303,13 +487,14 @@
       line-height: 25px;                  // there is a fixed height, if you modify this, modify height too
       letter-spacing: 0.08em;
       // white-space: nowrap;
-      color: #252525;
+      color: @off-black;
 
       display: block;
 
       // width: 200px;
       width: 170px;
-      height: 25px * 2px;
+      // height: 25px * 2px;
+      min-height: 25px * 2px;         // this is really important
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 10px;
@@ -331,6 +516,92 @@
   } // .product-item-detail
 
 } // .product-item
+
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+
+  .product-item{
+    .manic-image-container{
+      height: 350px;
+
+      &.square-version{
+        height: 270px;
+        margin-top: 21px;
+      }
+
+      &:focus,
+      &:hover{
+        img{
+          .opacity_important(1);
+        }
+      }
+    }
+
+    .product-item-detail{
+      padding-top: 21px;
+      padding-bottom: 30px;
+
+      .product-item-name{
+
+        font-size: 12px;
+        line-height: 15px;
+        color: @off-black !important;   // no hover over color
+
+        width: auto;
+        min-height: 15px * 2;
+
+        margin-bottom: 5px;
+
+      }
+      .product-item-category{
+        // margin-bottom: 15px;
+        margin-bottom: 3px;
+      }
+      .product-item-price{
+
+      }
+    } // .product-item-detail
+  } // .product-item
+
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  .product-item{
+    .manic-image-container{
+      // height: 300px;
+      height: 290px;
+
+      &.square-version{
+        height: 200px;
+        margin-top: 21px - 12px;
+      }
+
+    }
+    .product-item-detail{
+      padding-top: 21px;
+      padding-bottom: 26px;
+    }
+
+  } // .product-item
+}
+
+@media only screen and (max-width: 320px) {
+  .product-item{
+    .manic-image-container{
+      &.square-version{
+        height: 150px;
+        margin-top: 21px;
+      }
+    }
+    .product-item-detail{
+      padding-bottom: 14px;
+    }
+
+  } // .product-item
+}
 
 
 
@@ -502,6 +773,35 @@
 
 
 
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .manic-expand-container{
+    .manic-expand-container-title{
+      &:before{
+        height: 21px;
+      }
+      &:after{
+        height: 19px;
+      }
+    }
+    .manic-expand-container-content{
+
+      &:before{
+        height: 0px;
+      }
+      &:after{
+        height: 34px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
 // ADDITIONAL PADDING
 
 .manic-expand-container{
@@ -515,6 +815,68 @@
   }
 }
 
+
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .manic-expand-container{
+    // padding-left: 20px;
+
+    &.tablet-open-version,
+    &.tablet-fixed-open-version,
+    &.mobile-open-version,
+    &.mobile-fixed-open-version{
+
+      .manic-expand-container-title{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .manic-expand-container-content{
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      
+      .manic-expand-container-btn{
+        display: none;
+      }
+
+    }
+    
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  .manic-expand-container{
+
+    .manic-expand-container-title{
+      padding-left: 0px + 2px;
+      padding-right: 30px;
+    }
+    .manic-expand-container-content{
+      padding-left: 0px + 2px;
+      padding-left: 30px;
+    }
+
+    &.tablet-open-version,
+    &.tablet-fixed-open-version,
+    &.mobile-open-version,
+    &.mobile-fixed-open-version{
+
+      .manic-expand-container-title{
+        padding-left: 0px + 2px;
+        padding-right: 0px + 2px;
+      }
+      .manic-expand-container-content{
+        padding-left: 0px + 2px;
+        padding-right: 0px + 2px;
+      }
+
+    }
+
+  }
+}
 
 
 
@@ -581,4 +943,69 @@
     }
   }
 
+}
+
+
+// looks okay on tablet portrait
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+
+  .default-table{
+    width: 100% !important;
+    min-width: 0;
+
+    font-size: 12px;
+    line-height: 17px;
+
+    tbody{
+      border-left: 1px solid @border-grey-03;
+      border-right: 1px solid @border-grey-03;
+    }
+
+    
+
+    th{
+      font-size: 12px;
+      line-height: 17px;
+
+
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    td{
+      font-size: 12px;
+      line-height: 17px;
+      p{
+        font-size: 12px;
+        line-height: 17px;
+      }
+
+      padding-top: 10px;
+      padding-bottom: 10px;
+
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+
+    thead{
+      tr{
+        th:first-child{
+          padding-left: 8px;
+        }
+      }
+    }
+    tbody{
+      tr{
+        td:first-child{
+          padding-left: 8px;
+        }
+      }
+    }
+
+
+  }
 }

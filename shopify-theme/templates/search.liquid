@@ -14,7 +14,10 @@
 <article id="default-page-banner-section">
   <div id="default-page-banner">
     <div class="manic-image-container">
-      <img src="" data-image-desktop="{{ 'about-banner.jpg' | asset_url }}">
+      <img src="" 
+        data-image-desktop="{{ 'about-banner.jpg' | asset_url }}"
+        data-image-mobile="{{ 'about-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}"
+        data-image-tablet="{{ 'about-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}">
     </div>
   </div>
 </article>
@@ -126,7 +129,9 @@
                     <div class="col-md-2">
                       <div class="terms-page-content-item-image">
                         <div class="manic-image-container has-show-all">
-                          <img src="" data-image-desktop="{{ item.featured_image.src | img_url: 'medium' }}">
+                          <img src="" 
+                            data-image-mobile="{{ item.featured_image.src | img_url: '200x' }}"
+                            data-image-desktop="{{ item.featured_image.src | img_url: 'medium' }}">
                         </div>
                       </div>
                     </div>

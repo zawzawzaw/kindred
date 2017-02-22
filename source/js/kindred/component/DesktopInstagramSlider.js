@@ -131,6 +131,14 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
 
 
   if (this.item_container.length != 0) {
+
+    this.item_container.on('init', function(event, slick, breakpoint){
+      this.dispatchEvent(new goog.events.Event(kindred.component.DesktopInstagramSlider.ON_INSTAGRAM_FEED_GENERATED));
+    }.bind(this));
+    this.item_container.on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+      this.update_layout();
+    }.bind(this));
+    
     this.item_container.slick({
       'speed': 350,
       'dots': false,
@@ -175,10 +183,7 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
 
     
     
-
-    this.item_container.on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
-      this.update_layout();
-    }.bind(this));
+    
 
     /*
     this.item_container.on('init', function(event, slick){

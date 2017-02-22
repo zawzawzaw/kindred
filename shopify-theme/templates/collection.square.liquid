@@ -13,10 +13,29 @@
   <article id="default-page-banner-section">
     <div id="default-page-banner">
       <div class="manic-image-container">
-        <img src="" data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" alt="{{ collection.image.alt }}">
+        <img src="" 
+          data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" 
+          data-image-mobile="{{ collection.image.src | collection_img_url: '640x500', crop: 'center' }}"
+          data-image-tablet="{{ collection.image.src | collection_img_url: '1152x570', crop: 'center' }}"
+          alt="{{ collection.image.alt }}">
       </div>
     </div>
   </article>
+
+{% else %}
+
+  <article id="default-page-banner-section">
+    <div id="default-page-banner">
+      <div class="manic-image-container">
+        <img src="" 
+          data-image-desktop="{{ 'collection-banner.jpg' | asset_url }}" 
+          data-image-mobile="{{ 'collection-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}" 
+          data-image-tablet="{{ 'collection-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}"
+          alt="Collection Page Banner">
+      </div>
+    </div>
+  </article>
+
 {% endif %}
 
 

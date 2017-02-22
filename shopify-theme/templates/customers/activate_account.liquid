@@ -2,7 +2,11 @@
 <article id="default-page-banner-section">
   <div id="default-page-banner">
     <div class="manic-image-container">
-      <img src="" data-image-desktop="{{ 'login-banner.jpg' | asset_url }}" alt="">
+      <img src="" 
+        data-image-desktop="{{ 'login-banner.jpg' | asset_url }}" 
+        data-image-mobile="{{ 'login-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}" 
+        data-image-tablet="{{ 'login-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}" 
+        alt="">
     </div>
   </div>
 </article>

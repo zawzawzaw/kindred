@@ -23,6 +23,9 @@
   h2{
     text-align: center;
   }
+  hr{
+    border-top: 1px solid @border-grey-03;
+  }
 }
 
 
@@ -87,6 +90,100 @@
 }
 
 
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+
+  #about-page-intro-section{
+    padding-top: 32px + 16px;
+    padding-bottom: 50px;
+  }
+  #about-page-intro-title{
+    margin-bottom: 30px + 3px;
+
+    h2 + hr{
+      margin-top: 17px + 11px;
+    }
+  }
+
+
+  #about-page-intro-image-title{
+    margin-bottom: 23px;
+
+    h1{
+      font-size: 28px;
+      line-height: 30px;
+
+      .special-i{
+        &:after{
+          width: 6px;
+          height: 6px;
+        }
+      }
+    }
+  }
+  #about-page-intro-copy-title{
+    margin-bottom: 23px;
+
+    .copy-title-item{
+      margin-bottom: 16px;
+
+      h3{
+        font-size: 20px;
+        line-height: 28px;
+      }
+    }
+  }
+
+
+  #about-page-intro-image{
+
+    padding-top: 88px;
+    padding-right: 20px;
+    
+    .manic-image-container{
+      height: 380px;
+
+    }
+  } // #about-page-intro-image
+
+
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+
+  #about-page-intro-section{
+    padding-top: 32px;
+  }
+  #about-page-intro-title{
+    margin-bottom: 30px;
+
+    h2{
+      margin-left: -10px;
+      margin-right: -10px;
+
+      font-size: 26px - 1px;    // to help let it fit
+    }
+
+    h2 + hr{
+      margin-top: 17px;
+    }
+  }
+
+
+
+  #about-page-intro-image{
+    padding-right: 0px;
+  }
+
+}
+
+
+
+
+
+
 //    _     ___   ____  ___
 //   | |   / _ \ / ___|/ _ \
 //   | |  | | | | |  _| | | |
@@ -115,6 +212,39 @@
 }
 
 
+// on tablet portrait, 
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+
+  #about-page-logo-section{
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  #about-page-logo-image{
+
+    .manic-image-container{
+      height: 180px;
+    }
+  }
+  #about-page-logo-copy{
+    display: block;
+    height: auto !important;
+
+    padding-top: 23px + 10px;
+
+    .default-copy{
+      display: block;
+    }
+
+  }
+}
+
+
+
+
 //     ____ ___  ______   __
 //    / ___/ _ \|  _ \ \ / /
 //   | |  | | | | |_) \ V /
@@ -126,12 +256,22 @@
   background: @white;
   padding-top: 100px;
   padding-bottom: 100px;
+
+  &.grey-bg-version{
+    background: @off-white-02;
+    // padding-top: 100px;
+    // padding-bottom: 100px;
+  }
 }
 #about-page-copy-copy{
 
   width: 100%;
   height: 625px;
   display: table;
+
+  &.short-version-02{
+    height: 450px;
+  }
 
   .default-copy{
     display: table-cell;
@@ -145,6 +285,12 @@
   .manic-image-container{
     height: 625px;
   }
+
+  &.short-version-02{
+    .manic-image-container{
+      height: 450px;
+    }
+  }
 }
 
 
@@ -154,6 +300,54 @@
   #about-page-copy-copy,
   #about-page-copy-image .manic-image-container{
     height: 450px;
+  }
+}
+
+//    __  __  ___  ____ ___ _     _____
+//   |  \/  |/ _ \| __ )_ _| |   | ____|
+//   | |\/| | | | |  _ \| || |   |  _|
+//   | |  | | |_| | |_) | || |___| |___
+//   |_|  |_|\___/|____/___|_____|_____|
+//
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #about-page-copy-section{
+    padding-top: 0px;
+    padding-bottom: 50px;
+  }
+  #about-page-copy-copy{
+    height: auto !important;
+
+    padding-top: 23px;
+
+    .default-copy{
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+  #about-page-copy-image{
+    // padding: 20px 40px;
+    margin-left: -40px;
+    margin-right: -40px;
+
+    .manic-image-container{
+      height: 380px !important;
+    }
+  }
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #about-page-copy-image{
+    padding: 0px;
+    // margin-bottom: 50px;
+    margin-left: -1 * @mobile-padding;
+    margin-right: -1 * @mobile-padding;
+
+    .manic-image-container{
+      height: 250px !important;
+    }
   }
 }
 

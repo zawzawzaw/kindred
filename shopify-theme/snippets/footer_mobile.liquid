@@ -1,0 +1,84 @@
+<!--
+   __  __  ___  ____ ___ _     _____   _____ ___   ___ _____ _____ ____
+  |  \/  |/ _ \| __ )_ _| |   | ____| |  ___/ _ \ / _ \_   _| ____|  _ \
+  | |\/| | | | |  _ \| || |   |  _|   | |_ | | | | | | || | |  _| | |_) |
+  | |  | | |_| | |_) | || |___| |___  |  _|| |_| | |_| || | | |___|  _ <
+  |_|  |_|\___/|____/___|_____|_____| |_|   \___/ \___/ |_| |_____|_| \_\
+
+-->
+
+
+<footer id="mobile-footer" class="visible-sm visible-xs">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-sm-6 col-xs-12">
+
+        <div id="mobile-footer-newsletter-form-container">
+          <h4>join mailing list</h4>
+
+          {% if settings.newsletter_form_action != blank %}
+
+            <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+              <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+              <input type="hidden" name="b_cb98e62f512d0d125cec95dd3_9ea7cd6c41" tabindex="-1" value="">
+              <button type="submit" name="subscribe" id="subscribe"></button>
+            </form>
+
+          {% else %}
+            {% form 'customer' %}
+              {{ form.errors | default_errors }}
+              {% if form.posted_successfully? %}
+                <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+              {% else %}
+
+                <!-- ??? -->
+                <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" name="contact[email]" id="Email" aria-label="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+                  <button type="submit" name="subscribe" id="subscribe"></button>
+                </form>
+
+              {% endif %}
+            {% endform %}
+          {% endif %}
+
+
+          <hr class="hidden-sm">
+          
+        </div> <!-- mobile-footer-newsletter-form-container -->
+
+      </div> <!-- col -->
+      <div class="col-sm-6 col-xs-12">
+
+        <div id="mobile-footer-social-container">
+          <h4>Follow us</h4>
+          <ul>
+            
+            {% if settings.social_facebook_link != blank %}
+              <li><a href="{{ settings.social_facebook_link }}" class="fa fa-facebook" title="{{ shop.name }} on Facebook" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_twitter_link != blank %}
+              <li><a href="{{ settings.social_twitter_link }}" class="fa fa-twitter" title="{{ shop.name }} on Twitter" target="_blank"></a></li>
+            {% endif %}
+
+            {% if settings.social_instagram_link != blank %}
+              <li><a href="{{ settings.social_instagram_link }}" class="fa fa-instagram" title="{{ shop.name }} on Instagram" target="_blank"></a></li>
+            {% endif %}
+            
+            {% if settings.social_pinterest_link != blank %}
+              <li><a href="{{ settings.social_pinterest_link }}" class="fa fa-pinterest" title="{{ shop.name }} on Pinterest" target="_blank"></a></li>
+            {% endif %}
+
+          </ul>
+        </div> <!-- mobile-footer-social-container -->
+
+        <div id="mobile-footer-copywrite">
+          <small>&copy; 2017 kindred teas. All rights reserved</small>
+        </div> <!-- mobile-footer-copywrite -->
+
+      </div> <!-- col -->
+
+    </div> <!-- row -->
+  </div>
+</footer>

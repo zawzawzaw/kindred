@@ -11,7 +11,11 @@
   <article id="default-page-banner-section">
     <div id="default-page-banner">
       <div class="manic-image-container">
-        <img src="" data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" alt="{{ collection.image.alt }}">
+        <img src="" 
+          data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" 
+          data-image-mobile="{{ collection.image.src | collection_img_url: '640x500', crop: 'center' }}"
+          data-image-tablet="{{ collection.image.src | collection_img_url: '1152x570', crop: 'center' }}"
+          alt="{{ collection.image.alt }}">
       </div>
     </div>
   </article>
@@ -21,7 +25,11 @@
   <article id="default-page-banner-section">
     <div id="default-page-banner">
       <div class="manic-image-container">
-        <img src="" data-image-desktop="{{ 'collection-banner.jpg' | asset_url }}" alt="Collection Page Banner">
+        <img src="" 
+          data-image-desktop="{{ 'collection-banner.jpg' | asset_url }}" 
+          data-image-mobile="{{ 'collection-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}" 
+          data-image-tablet="{{ 'collection-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}"
+          alt="Collection Page Banner">
       </div>
     </div>
   </article>
@@ -62,8 +70,21 @@
       <div class="col-md-12">
 
         <div id="product-item-container">
+
           
           {% for product in collection.products %}
+
+            {% assign is_product_tea = false %}
+            {% for c in product.collections %}
+              {% if c.handle == 'teas' %}
+                {% assign is_product_tea = true %}
+              {% endif %}
+            {% endfor %}
+
+            {% if is_product_tea == false %}
+              {% assign image_container_classes = ' square-version' %}
+            {% endif %}
+            
             {% include 'product-grid-item' %}
           {% endfor %}
 

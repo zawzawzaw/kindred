@@ -139,10 +139,29 @@
   {% assign all_related_items = all_related_items | trim %}
 
 
+  {% capture all_related_items_mobile %}
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+         {% unless same_vendor and current_product.vendor != product.vendor %}
+           {% unless same_type and current_product.type != product.type %}
+
+              {% if collection.template_suffix == 'square' %}
+                {% assign image_container_classes = ' square-version' %}
+              {% endif %}
+
+             {% include 'product-grid-item' %}
+           {% endunless %}
+        {% endunless %}
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+  {% assign all_related_items_mobile = all_related_items_mobile | trim %}
+
+
   {% unless related_items == blank %}
 
 
-  <article id="product-page-also-like-section">
+  <article id="product-page-also-like-section" class="visible-md visible-lg">
     <div class="container-fluid has-breakpoint">
       <div class="row">
         <div class="col-md-12">
@@ -154,12 +173,36 @@
           <div id="all-related-product-item-container">
             {{ all_related_items }}
           </div>
+          
 
           <div id="product-item-container" class="{{ extra_product_item_container_class }}">
 
             {{ related_items }}
 
           </div> <!-- product-item-container -->
+
+        </div>
+      </div>
+    </div>
+  </article>
+
+
+  <article id="product-page-also-like-section-mobile" class="visible-sm visible-xs">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div id="product-page-also-like-title-mobile">
+            <h2>{{ heading }}</h2>
+          </div>
+
+          <div id="all-related-product-item-mobile-container">
+            {{ all_related_items_mobile }}
+          </div>
+
+          <div id="product-item-container" class="{{ extra_product_item_container_class }}">
+            
+          </div>
 
         </div>
       </div>

@@ -31,7 +31,7 @@
       <span class="item-06"></span>
     </div>
     
-    <article id="page-cart-header-section">
+    <article id="page-cart-header-section" class="visible-md visible-lg">
       <div class="container-fluid has-breakpoint">
         <div class="row">
 
@@ -66,6 +66,35 @@
     </article>
 
     <!--
+       _   _ _____    _    ____  _____ ____    __  __  ___  ____ ___ _     _____
+      | | | | ____|  / \  |  _ \| ____|  _ \  |  \/  |/ _ \| __ )_ _| |   | ____|
+      | |_| |  _|   / _ \ | | | |  _| | |_) | | |\/| | | | |  _ \| || |   |  _|
+      |  _  | |___ / ___ \| |_| | |___|  _ <  | |  | | |_| | |_) | || |___| |___
+      |_| |_|_____/_/   \_\____/|_____|_| \_\ |_|  |_|\___/|____/___|_____|_____|
+
+    -->
+
+    <article id="page-cart-header-section-mobile" class="visible-sm visible-xs">
+      <div id="page-cart-header-breadcrumb-mobile">
+        <ul>
+          <li class="selected">1.</li>
+          <li>2.</li>
+          <li>3.</li>
+          <li>4.</li>
+        </ul>
+      </div> <!-- page-cart-header-breadcrumb-mobile -->
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12">
+            <h1>{{ 'cart.general.title' | t }}</h1>
+          </div>
+        </div>
+      </div>
+    </article> <!-- page-cart-header-section-mobile -->
+
+
+    <!--
         ____ ___  _   _ _____ _____ _   _ _____
        / ___/ _ \| \ | |_   _| ____| \ | |_   _|
       | |  | | | |  \| | | | |  _| |  \| | | |
@@ -82,7 +111,7 @@
 
             <div id="page-cart-content">
               <table class="cart-table full table--responsive">
-                <thead class="cart__row cart__header-labels">
+                <thead class="cart__row cart__header-labels" >
                   <th colspan="2" class="text-center">{{ 'cart.label.product' | t }}</th>
                   <th class="text-center">{{ 'cart.label.unitprice' | t }}</th>
                   <th class="text-center">{{ 'cart.label.quantity' | t }}</th>
@@ -91,8 +120,16 @@
                 </thead>
                 <tbody>
                   {% for item in cart.items %}
+
+                    <tr class="cart__image table__section visible-sm visible-xs">
+                      <td>
+                        <a href="{{ item.url | within: collections.all }}" class="manic-image-container has-show-all cart__product__image">
+                          <img src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                        </a>
+                      </td>
+                    </tr>
                     <tr class="cart__row table__section">
-                      <td data-label="{{ 'customer.order.product' | t }}">
+                      <td data-label="{{ 'customer.order.product' | t }}" class="hidden-sm hidden-xs">
 
                         <a href="{{ item.url | within: collections.all }}" class="manic-image-container has-show-all cart__product__image">
                           {% comment %}
@@ -105,9 +142,8 @@
                       </td>
                       <td>
                         <p>
-                          <a href="{{ item.url }}">
-                            {{ item.product.title }}
-                          </a>
+                          <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove visible-sm-inline-block visible-xs-inline-block" title="{{ 'cart.general.remove' | t }}"></a>
+                          <a href="{{ item.url }}" class="cart__product__title">{{ item.product.title }}</a>
                         </p>
 
                         {% unless item.variant.title contains 'Default' %}
@@ -148,7 +184,7 @@
 
                         
                       </td>
-                      <td data-label="{{ 'cart.label.price' | t }}" class="text-center">
+                      <td data-label="{{ 'cart.label.price' | t }}" class="text-center hidden-sm hidden-xs">
                         <p>{{ item.price | money }}</p>
                       </td>
                       <td data-label="{{ 'cart.label.quantity' | t }}">
@@ -167,10 +203,13 @@
                           <p class="cart-item__discount">{{ discount.title }}</p>
                         {% endfor %}
                       </td>
-                      <td class="text-right">
+
+                      <td class="text-right hidden-sm hidden-xs">
                         <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove" title="{{ 'cart.general.remove' | t }}"></a>
                       </td>
+
                     </tr>
+
                   {% endfor %}
                 </tbody>
               </table>
@@ -220,19 +259,29 @@
                     </div>
                   {% endif %}
                   
+                  <!-- 
                   <p>*{{ 'cart.general.shipping_at_checkout' | t }}</p>
                   <p>*{{ shop.name }} process all orders in {{ shop.currency }}. While the content of your cart is currently displayed in <span class="selected-currency"></span>, you will check out using {{ shop.currency }} at the most current exchange rate.</p>
+                  -->
                   
                 </div> <!-- col-md-4 -->
                 <div class="col-md-6">
 
                   <div id="page-cart-checkout-container">
 
+
+                    
+
                     <div class="row">
-                      <div class="col-md-7">
+
+                      <div class="col-sm-5 col-xs-3 visible-sm visible-xs">
+                        <p>{{ cart.item_count }} Items</p>
+                      </div>
+
+                      <div class="col-md-7 col-sm-3 col-xs-4">
                         <label><span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span></label>
                       </div>
-                      <div class="col-md-5">
+                      <div class="col-md-5 col-sm-4 col-xs-5">
                         <p><span class="cart__subtotal">{{ cart.total_price | money }}</span></p>
                       </div>
                     </div>
@@ -241,6 +290,7 @@
                       {% assign savings = cart.total_discounts | money %}
 
                       <div class="row">
+
                         <div class="col-md-7">
                           <label></label>
                         </div>

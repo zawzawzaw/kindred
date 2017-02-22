@@ -35,12 +35,15 @@
                   <!-- <h4>january 5, 2017</h4> -->
                   {% capture author %}{{ article.author }}{% endcapture %}
                   {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
-                  <h4>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</h4>
+                  <h4>{{ date }}</h4>
                 </div> <!-- blog-page-article-title -->
 
                 <div class="blog-page-article-banner">
                   <div class="manic-image-container">
-                    <img src="" data-image-desktop="{{ article | img_url: 'master' }}">
+                    <img src="" 
+                      data-image-desktop="{{ article | img_url: 'master' }}"
+                      data-image-mobile="{{ article | img_url: '640x500', crop: 'center' }}"
+                      data-image-tablet="{{ article | img_url: '1152x570', crop: 'center' }}">
                   </div>
                 </div> <!-- blog-page-article-banner -->
 
@@ -58,7 +61,6 @@
 
                       {% include 'blog-share' %}
                     </div>
-
 
                   </div>
 

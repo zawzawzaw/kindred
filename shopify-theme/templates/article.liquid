@@ -33,7 +33,10 @@
 
               <div class="blog-page-article-banner">
                 <div class="manic-image-container">
-                  <img src="" data-image-desktop="{{ article | img_url: 'master' }}">
+                  <img src="" 
+                    data-image-desktop="{{ article | img_url: 'master' }}"
+                    data-image-mobile="{{ article | img_url: '640x500', crop: 'center' }}"
+                    data-image-tablet="{{ article | img_url: '1152x570', crop: 'center' }}">
                 </div>
               </div> <!-- blog-page-article-banner -->
 
@@ -62,6 +65,9 @@
                       {% include 'blog-share' %}
 
                     </div> <!-- cta-container -->
+
+                    {% include 'blog-share-mobile' %}
+
                   {% endif %}
 
 

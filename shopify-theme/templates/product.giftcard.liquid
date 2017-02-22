@@ -33,7 +33,7 @@
 
               <div class="product-page-giftcard-design" data-value="Design 01">
                 <div class="manic-image-container has-show-all">
-                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-01.jpg' | asset_url }}">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-01.jpg' | asset_url }}">
                 </div>
                 <div class="product-page-giftcard-design-text">
                   <h4><span class="value">$10</span> Giftcard</h4>
@@ -43,7 +43,7 @@
               </div>
               <div class="product-page-giftcard-design" data-value="Design 02">
                 <div class="manic-image-container has-show-all">
-                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-02.jpg' | asset_url }}">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-02.jpg' | asset_url }}">
                 </div>
                 <div class="product-page-giftcard-design-text">
                   <h4><span class="value">$10</span> Giftcard</h4>
@@ -53,7 +53,7 @@
               </div>
               <div class="product-page-giftcard-design" data-value="Design 03">
                 <div class="manic-image-container has-show-all">
-                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-03.jpg' | asset_url }}">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-03.jpg' | asset_url }}">
                 </div>
                 <div class="product-page-giftcard-design-text">
                   <h4><span class="value">$10</span> Giftcard</h4>
@@ -63,7 +63,7 @@
               </div>
               <div class="product-page-giftcard-design" data-value="Design 04">
                 <div class="manic-image-container has-show-all">
-                  <img src="" data-image-desktop="{{ 'temp-product-giftcard-design-04.jpg' | asset_url }}">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-04.jpg' | asset_url }}">
                 </div>
                 <div class="product-page-giftcard-design-text">
                   <h4><span class="value">$10</span> Giftcard</h4>
@@ -118,36 +118,16 @@
                     </p> <!-- product-price -->
                     
                     <div class="product-description" itemprop="description">
-                      <div class="default-copy">
-                        {{ product.description }}
-                      </div>
-                    </div>
-
-                    <div class="product-giftcard-custom-fields">
-                      <div class="form-group">
-                        <label for="select-giftcard-design">Design</label>
-                        <div class="giftcart-select-wrapper">
-                          <div class="select-wrapper">
-                            <select id="select-giftcard-design" name="properties[Giftcard Design]">
-                              <option>Design 01</option>
-                              <option>Design 02</option>
-                              <option>Design 03</option>
-                              <option>Design 04</option>
-                            </select>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-10 col-xs-12">
+                          <div class="default-copy">
+                            {{ product.description }}
                           </div>
                         </div>
-
                       </div>
-                      <div class="form-group">
-                        <label for="input-giftcard-name">Recipient's Name</label>
-                        <input id="input-giftcard-name" type="text" name="properties[Giftcard Name]" value="Recipient's Name" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="input-giftcard-message">Message</label>
-                        <textarea id="input-giftcard-message" name="properties[Giftcard Message]" required>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</textarea>
-                      </div>
-                      
                     </div>
+
+                    
 
 
                     <div class="product-variant-container">
@@ -185,7 +165,31 @@
                       
                     </div>
 
+                    <div class="product-giftcard-custom-fields">
+                      <div class="form-group">
+                        <label for="select-giftcard-design">Design</label>
+                        <div class="giftcart-select-wrapper">
+                          <div class="select-wrapper">
+                            <select id="select-giftcard-design" name="properties[Giftcard Design]">
+                              <option>Design 01</option>
+                              <option>Design 02</option>
+                              <option>Design 03</option>
+                              <option>Design 04</option>
+                            </select>
+                          </div>
+                        </div>
 
+                      </div>
+                      <div class="form-group">
+                        <label for="input-giftcard-name">Recipient's Name <span id="giftcard-name-char-left" class="character-counter">(50 characters left)</span></label>
+                        <input id="input-giftcard-name" type="text" name="properties[Giftcard Name]" value="Recipient's Name" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="input-giftcard-message">Message <span id="giftcard-message-words-left" class="character-counter">(100 words left)</span></label>
+                        <textarea id="input-giftcard-message" name="properties[Giftcard Message]" required>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</textarea>
+                      </div>
+                      
+                    </div>
 
 
 

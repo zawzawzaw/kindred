@@ -160,6 +160,7 @@
   <script type="text/javascript" src="source/libs/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
   <script type="text/javascript" src="source/libs/hammer/hammer.min.js"></script>
+  <script type="text/javascript" src="source/libs/imgur-js/imgur.min.js"></script>
     
   <link rel="stylesheet" type="text/css" href="source/libs/intltelinput/css/intlTelInput.css">
   <script type="text/javascript" src="source/libs/intltelinput/js/utils.js"></script>

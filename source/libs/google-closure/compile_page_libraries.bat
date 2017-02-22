@@ -15,5 +15,6 @@ java -jar "compiler.jar" ^
   --js=..\slick-carousel\slick\slick.min.js ^
   --js=..\imagesloaded\imagesloaded.pkgd.min.js ^
   --js=..\hammer\hammer.min.js ^
+  --js=..\imgur-js\imgur.min.js ^
   --compilation_level WHITESPACE_ONLY ^
   --js_output_file=..\..\..\shopify-theme\assets\page-libraries.min.js
