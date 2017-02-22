@@ -52,6 +52,23 @@
     margin-bottom: 0;
   }
 
+  .form-column-01{
+    padding-right: 20px;
+  }
+  .form-column-02{
+    padding-left: 20px;
+  }
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {
+    .form-column-01{
+      padding-right: 0px;
+    }
+    .form-column-02{
+      padding-left: 0px;
+    }
+  }
+
+
   label {
     .format-form-label-font;
 
@@ -105,7 +122,12 @@
     height: 35px;
     .format-form-input-font;
 
-    margin-bottom: 25px;   
+    margin-bottom: 25px;
+
+    &.white-version{
+      background-color: @white;
+    }
+
   }
   textarea{
     height: 190px;
@@ -193,6 +215,13 @@
       pointer-events: none;
       background-color: @brown;
     }
+
+    &.white-version{
+      select{
+        background-color: @white;
+      }
+    }
+
   } // .dropdown
 
 
@@ -274,6 +303,15 @@
       span{
         &:after{
           .opacity(1);
+        }
+      }
+    }
+
+
+    &.white-version{
+      input[type="checkbox"] + label{
+        span{
+          background: @white;
         }
       }
     }
