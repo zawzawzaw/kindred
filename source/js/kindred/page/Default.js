@@ -15,6 +15,7 @@ goog.require('kindred.component.DesktopHeader');
 goog.require('kindred.component.MobileHeader');
 goog.require('kindred.component.MailingListPopup');
 goog.require('kindred.component.Giftcard');
+goog.require('kindred.component.AccountContent');
 
 
 /**
@@ -63,8 +64,16 @@ kindred.page.Default = function(options) {
   this.mobile_header = null;
 
 
+    
+  /**
+   * @type {kindred.component.AccountContent}
+   */
+  this.account_content = null;
   
-  
+  // needed before init, because of reasons :D
+  if ($('#page-account-main-container').length != 0) {
+    this.account_content = new kindred.component.AccountContent({}, $('#page-account-main-container'));
+  }
   
 
 
@@ -163,11 +172,11 @@ kindred.page.Default.prototype.init = function() {
     this.mailing_list_popup = new kindred.component.MailingListPopup({}, $('#mailing-list-pop-up-container'));
 
   }
+
+
+
   
-
-
   
-
   console.log('kindred.page.Default: init');
 };
 
@@ -681,3 +690,42 @@ kindred.page.Default.prototype.sample_method_calls = function() {
   // sample event
   this.dispatchEvent(new goog.events.Event(kindred.page.Default.EVENT_01));
 };
+
+
+
+
+
+//    _   _    _    ____  _   _ _____  _    ____ ____
+//   | | | |  / \  / ___|| | | |_   _|/ \  / ___/ ___|
+//   | |_| | / _ \ \___ \| |_| | | | / _ \| |  _\___ \
+//   |  _  |/ ___ \ ___) |  _  | | |/ ___ \ |_| |___) |
+//   |_| |_/_/   \_\____/|_| |_| |_/_/   \_\____|____/
+//
+
+
+/**
+ * @override
+ * @inheritDoc
+ */
+kindred.page.Default.prototype.scroll_to_target = function(str_param, str_param_2, str_param_3) {
+  kindred.page.Default.superClass_.scroll_to_target.call(this, str_param, str_param_2, str_param_3);
+
+
+  if (this.account_content != null){
+
+    this.account_content.set_tab(str_param);
+  }
+}
+
+/**
+ * @override
+ * @inheritDoc
+ */
+kindred.page.Default.prototype.on_scroll_to_no_target = function() {
+  kindred.page.Default.superClass_.on_scroll_to_no_target.call(this);
+
+  if (this.account_content != null){
+    this.account_content.set_tab(null);
+  }
+}
+

@@ -1,4 +1,11 @@
 
+
+
+#page-account-container-container-container{
+  .format-form();
+}
+
+
 //    _   _ _____    _    ____  _____ ____
 //   | | | | ____|  / \  |  _ \| ____|  _ \
 //   | |_| |  _|   / _ \ | | | |  _| | |_) |
@@ -75,14 +82,24 @@
 
 
 
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #page-account-header-section{
+    h1{
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+  }
+}
 
-
-//    _   _ _____    _    ____  _____ ____    __  __  ___  ____ ___ _     _____
-//   | | | | ____|  / \  |  _ \| ____|  _ \  |  \/  |/ _ \| __ )_ _| |   | ____|
-//   | |_| |  _|   / _ \ | | | |  _| | |_) | | |\/| | | | |  _ \| || |   |  _|
-//   |  _  | |___ / ___ \| |_| | |___|  _ <  | |  | | |_| | |_) | || |___| |___
-//   |_| |_|_____/_/   \_\____/|_____|_| \_\ |_|  |_|\___/|____/___|_____|_____|
-//
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #page-account-header-section{
+    h1{
+      
+    }
+  }
+}
 
 
 
@@ -272,10 +289,18 @@
     background: @light-brown-03;
   }
 
-
-  .account-address-container {
+  #current-address-container-container{
+    padding-bottom: 53px;
+  }
+  #new-address-container{
     padding-top: 43px;
     padding-bottom: 100px;
+  }
+
+
+  .account-address-container {
+    // padding-top: 43px;
+    // padding-bottom: 100px;
 
     // padding-bottom: 53px;
  
@@ -365,7 +390,7 @@
       // }
       
 
-      .format-form();
+      // .format-form();
 
 
       /*
@@ -533,11 +558,11 @@
 }
 
 
-//
-//
-//
-//
-//
+//     ___  ____  ____  _____ ____    _   _ ___ ____ _____ ___  ______   __
+//    / _ \|  _ \|  _ \| ____|  _ \  | | | |_ _/ ___|_   _/ _ \|  _ \ \ / /
+//   | | | | |_) | | | |  _| | |_) | | |_| || |\___ \ | || | | | |_) \ V /
+//   | |_| |  _ <| |_| | |___|  _ <  |  _  || | ___) || || |_| |  _ < | |
+//    \___/|_| \_\____/|_____|_| \_\ |_| |_|___|____/ |_| \___/|_| \_\|_|
 //
 
 #page-account-order-history-section {
@@ -573,11 +598,14 @@
   }
 }
 
-//
-//
-//
-//
-//
+
+
+
+//    _____ ____  ___ _____ _   _ ____    ____  _____ _____ _____ ____      _    _
+//   |  ___|  _ \|_ _| ____| \ | |  _ \  |  _ \| ____|  ___| ____|  _ \    / \  | |
+//   | |_  | |_) || ||  _| |  \| | | | | | |_) |  _| | |_  |  _| | |_) |  / _ \ | |
+//   |  _| |  _ < | || |___| |\  | |_| | |  _ <| |___|  _| | |___|  _ <  / ___ \| |___
+//   |_|   |_| \_\___|_____|_| \_|____/  |_| \_\_____|_|   |_____|_| \_\/_/   \_\_____|
 //
 
 #page-account-friend-referral-section {
@@ -600,6 +628,8 @@
   }
 
   .friend-referral-content {
+
+    /*
     form {
       label {
         .header-h4-style;
@@ -708,7 +738,8 @@
         }  
       }
       
-    }
+    } // form
+    */
 
 
   } // .friend-referral-content

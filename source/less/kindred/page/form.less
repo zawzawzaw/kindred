@@ -331,6 +331,12 @@
   }
 
 
+  .form-hr{
+    margin-bottom: 25px;
+    border-top: 1px solid #cccccc;
+  }
+
+
 
   // TABLET PORTRAIT & SMALL DESKTOP
   @media only screen and (max-width: 991px) {             // we will follow account details mobile forms
@@ -353,6 +359,12 @@
 
       height: 30px;
       margin-bottom: 15px;
+
+
+      &.white-version{
+        background-color: @off-white-03;
+      }
+
     }
 
     textarea{
@@ -380,6 +392,12 @@
         line-height: 30px;
         width: 30px;
         height: 30px;
+      }
+
+      &.white-version{
+        select{
+          background-color: @off-white-03;
+        }
       }
 
     } // .dropdown
@@ -412,6 +430,14 @@
         }
       }
 
+      &.white-version{
+        input[type="checkbox"] + label{
+          span{
+            background-color: @off-white-03;
+          }
+        }
+      }
+
     } // .checkbox
 
 
@@ -429,6 +455,12 @@
       }
 
     }
+
+    .form-hr{
+      margin-top: 12px;
+      margin-bottom: 15px + 12px;
+    }
+
   }
 
   // MOBILE
@@ -438,6 +470,9 @@
         margin-bottom: 7px;
       }
     }
+
+
+
   }
 
   

@@ -1,231 +1,222 @@
 <!-- /templates/customers/login.liquid -->
 
-<!-- <div class="grid">
-
-  <div class="grid__item large--one-third push--large--one-third text-center">
-
+<article id="default-page-banner-section">
+  <div id="default-page-banner">
+    <div class="manic-image-container">
+      <img src="" 
+        data-image-desktop="{{ 'login-banner.jpg' | asset_url }}" 
+        data-image-mobile="{{ 'login-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}" 
+        data-image-tablet="{{ 'login-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}" 
+        alt="">
     </div>
-
-</div> -->
-
-    {% comment %}
-      If a user has successfully requested a new password, the form.posted_successfully? variable
-      is set to true within the 'recover_customer_password' form only. Within that form you'll see
-      the variable 'resetPassword' set to true, which is used to initialize timber.resetPasswordSuccess().
-    {% endcomment %}
+  </div>
+</article>
 
 
 
-    <article id="default-page-banner-section">
-      <div id="default-page-banner">
-        <div class="manic-image-container">
-          <img src="" 
-            data-image-desktop="{{ 'login-banner.jpg' | asset_url }}" 
-            data-image-mobile="{{ 'login-banner.jpg' | asset_img_url: '640x500', crop: 'center' }}" 
-            data-image-tablet="{{ 'login-banner.jpg' | asset_img_url: '1152x570', crop: 'center' }}" 
-            alt="">
+<article id="page-login-content-section">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+      <div class="col-md-5">
+
+        <div class="note form-success" id="ResetSuccess" style="display:none;">
+          {{ 'customer.recover_password.success' | t }}
         </div>
-      </div>
-    </article>
 
-    <article id="page-login-content-section">
-      <div class="container-fluid has-breakpoint">
-        <div class="row">
-          <div class="col-md-5">
+        <div id="CustomerLoginForm" class="form-vertical">
+          {% form 'customer_login' %}
 
-            <div class="note form-success" id="ResetSuccess" style="display:none;">
-              {{ 'customer.recover_password.success' | t }}
-            </div>
+            {{ form.errors | default_errors }}
 
-            <div id="CustomerLoginForm" class="form-vertical">
-              {% form 'customer_login' %}
+            <h1>{{ 'customer.login.title' | t }}</h1>
 
-                {{ form.errors | default_errors }}
-
-                <h1>{{ 'customer.login.title' | t }}</h1>
-
-                <p>{{ 'customer.login.desc' | t }}</p>                
-                  
-                
-                
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" required email>
-                  </div>
-                </div>
-
-                {% if form.password_needed %}
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
-                  </div>
-                  
-                  
-                </div>
-                {% endif %}
-
-                <!-- <p><a href="/">{{ 'customer.login.cancel' | t }}</a></p> -->
-                <!-- <p>{{ 'layout.customer.create_account' | t | customer_register_link }}</p> -->
-                {% if form.password_needed %}
-                <div class="link-container">
-                  <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
-                </div>
-                {% endif %}
-
-                <div class="cta-container">
-                  <div class="row">
-                    <div class="col-md-6 col-sm-6">
-                      <input id="sign-in" type="submit" class="square-cta square-cta-01-xs full-width-version" value="{{ 'customer.login.sign_in' | t }}">
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                      <button id="login-with-facebook" class="square-cta square-cta-02-xs full-width-version">{{ 'customer.login.sign_in_with_facebook' | t }}</button>
-                    </div>
-                  </div>
-                </div>
-                
-              {% endform %}
-            </div>
-
-            {% comment %}
-              JS shows/hides this form in timber.loginForms()
-            {% endcomment %}
-
-            <div id="RecoverPasswordForm" style="display: none;">
-
-              <h1>{{ 'customer.recover_password.title' | t }}</h1>
-              <p>{{ 'customer.recover_password.subtext' | t }}</p>
+            <p>{{ 'customer.login.desc' | t }}</p>                
               
-              {% form 'recover_customer_password' %}
-
-                {{ form.errors | default_errors }}
-
-                {% comment %}
-                  Assign variable to be used after timber.init() is run in theme.liquid
-                {% endcomment %}
-                {% if form.posted_successfully? %}
-                  {% assign resetPassword = true %}
-                {% endif %}
-                
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-8">
-                    
-                    <div class="cta-container left-version">
-                      <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.recover_password.submit' | t }}">
-                      <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
-                    </div>
-
-                  </div>
-                </div>
-              {% endform %}
-
+            
+            
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" required email>
+              </div>
             </div>
 
-            {% comment %}
-              If accounts are set as optional, the following will be shown as an option
-              during checkout, not on the default /login page.
-            {% endcomment %}
-            {% if shop.checkout.guest_login %}
-
-              <div id="page-login-guest-login-container">
-
-                
-
-
-
-
-
-                {% form 'guest_login' %}
-                  <div class="default-copy">
-                    <p>If you want to continue without creating an account: <a href="javascript:void(0);" id="page-login-guest-login-btn">{{ 'customer.login.guest_title' | t }}</a></p>
-                  </div>
-                  
-                {% endform %}
-  
-              </div> <!-- page-login-guest-login-container -->
-
+            {% if form.password_needed %}
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
+              </div>
+              
+              
+            </div>
             {% endif %}
 
-          </div>
-          <div class="col-md-2">
-            <div class="vertical-seperator-line"></div>
-          </div>
-          <div class="col-md-5">
-            <div id="CustomerRegisterForm" class="form-vertical">
-              {% form 'create_customer' %}
-
-                {{ form.errors | default_errors }}
-
-                <h1>{{ 'customer.login.create_account_title' | t }}</h1>
-
-                <p>{{ 'customer.login.create_account_desc' | t }}</p>                
-                
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="text" name="customer[first_name]" id="FirstName" class="input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus required>
-                  </div>
-                </div>
-                
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="text" name="customer[last_name]" id="LastName" class="input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" required>
-                  </div>
-                </div>
-
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required email>
-
-                    <!-- <input type="hidden" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" value="p@ssword"> -->
-                  </div>
-                </div>
-
-                <div class="row inline-form-row">
-                  <div class="col-md-4">
-                    <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input type="password" value="" name="password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
-                  </div>
-                  
-                  
-                </div>
-
-                <div class="cta-container left-version">    
-                  <input type="submit" class="btn square-cta" value="{{ 'customer.login.create_account_title' | t }}">                                
-                </div>
-                
-              {% endform %}
+            <!-- <p><a href="/">{{ 'customer.login.cancel' | t }}</a></p> -->
+            <!-- <p>{{ 'layout.customer.create_account' | t | customer_register_link }}</p> -->
+            {% if form.password_needed %}
+            <div class="link-container">
+              <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
             </div>
-          </div>
+            {% endif %}
+
+            <div class="cta-container">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <input id="sign-in" type="submit" class="square-cta square-cta-01-xs full-width-version" value="{{ 'customer.login.sign_in' | t }}">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <button id="login-with-facebook" class="square-cta square-cta-02-xs full-width-version">{{ 'customer.login.sign_in_with_facebook' | t }}</button>
+                </div>
+              </div>
+            </div>
+            
+          {% endform %}
+        </div>
+
+        {% comment %}
+          JS shows/hides this form in timber.loginForms()
+        {% endcomment %}
+
+        <div id="RecoverPasswordForm" style="display: none;">
+
+          <h1>{{ 'customer.recover_password.title' | t }}</h1>
+          <p>{{ 'customer.recover_password.subtext' | t }}</p>
+          
+          {% form 'recover_customer_password' %}
+
+            {{ form.errors | default_errors }}
+
+            {% comment %}
+              Assign variable to be used after timber.init() is run in theme.liquid
+            {% endcomment %}
+            {% if form.posted_successfully? %}
+              {% assign resetPassword = true %}
+            {% endif %}
+            
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="RecoverEmail">{{ 'customer.recover_password.email' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="email" value="" name="email" id="RecoverEmail" class="input-full" placeholder="{{ 'customer.recover_password.email' | t }}" autocorrect="off" autocapitalize="off">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-8">
+                
+                <div class="cta-container left-version">
+                  <input type="submit" class="btn btn--full square-cta" value="{{ 'customer.recover_password.submit' | t }}">
+                  <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
+                </div>
+
+              </div>
+            </div>
+          {% endform %}
+
+        </div>
+
+        {% comment %}
+          If accounts are set as optional, the following will be shown as an option
+          during checkout, not on the default /login page.
+        {% endcomment %}
+        {% if shop.checkout.guest_login %}
+
+          <div id="page-login-guest-login-container">
+
+            
+
+
+
+
+
+            {% form 'guest_login' %}
+              <div class="default-copy">
+                <p>If you want to continue without creating an account: <a href="javascript:void(0);" id="page-login-guest-login-btn">{{ 'customer.login.guest_title' | t }}</a></p>
+              </div>
+              
+            {% endform %}
+
+          </div> <!-- page-login-guest-login-container -->
+
+        {% endif %}
+
+      </div>
+      <div class="col-md-2">
+        <div class="vertical-seperator-line"></div>
+      </div>
+      <div class="col-md-5">
+        <div id="CustomerRegisterForm" class="form-vertical">
+          {% form 'create_customer' %}
+
+            {{ form.errors | default_errors }}
+
+            <h1>{{ 'customer.login.create_account_title' | t }}</h1>
+
+            <p>{{ 'customer.login.create_account_desc' | t }}</p>                
+            
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" name="customer[first_name]" id="FirstName" class="input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus required>
+              </div>
+            </div>
+            
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="text" name="customer[last_name]" id="LastName" class="input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" required>
+              </div>
+            </div>
+
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required email>
+
+                <!-- <input type="hidden" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" value="p@ssword"> -->
+              </div>
+            </div>
+
+            <div class="row inline-form-row">
+              <div class="col-md-4">
+                <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
+              </div>
+              <div class="col-md-8">
+                <input type="password" value="" name="password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
+              </div>
+              
+              
+            </div>
+
+            <div class="cta-container left-version">    
+              <input type="submit" class="btn square-cta" value="{{ 'customer.login.create_account_title' | t }}">                                
+            </div>
+            
+          {% endform %}
         </div>
       </div>
-    </article>
-    
-    <script>
+    </div>
+  </div>
+</article>
+
+
+
+<script type="text/javascript">
+  
+  jQuery(document).ready(function($) {
+
     $('#login-with-facebook').on("click", function(e){
       e.preventDefault();      
 
@@ -265,24 +256,34 @@
             }
         }
     };
-
+    
     var email = getUrlParameter('email');
     var password = getUrlParameter('password');
 
+    console.log('email')
     console.log(email);
     console.log(password);
+    
+    if ( email != null && 
+        email != undefined && 
+        password != null && 
+        password != undefined &&
+        email !== "" && 
+        password !== "") {
 
-    if(email!=="" && password!=="") {
       $("#CustomerEmail").val(email);
       $("#CustomerPassword").val(password);
 
       $("#sign-in").trigger("click");
     }
+    
 
     function scrollToElement(ele) {
         $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
     }
 
     scrollToElement($("#page-login-content-section"));
-    </script>
+    
+  });
 
+</script>
