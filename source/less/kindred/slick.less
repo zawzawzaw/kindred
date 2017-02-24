@@ -1,0 +1,174 @@
+.format-desktop-slick{
+
+  .slick-prev,
+  .slick-next{
+    z-index: 200;
+    width: 36px;
+    height: 36px;
+    .transition-in(0.3s);
+
+    &:before{
+      content: "";
+
+    }
+    &:after{
+      top: 0;
+      
+      background: transparent !important;
+      text-indent: 0;
+      .fa;
+      font-size: 34px;
+      line-height: 36px;
+      color: @white;
+
+      .transition-in(0.3s);
+    }
+
+    &:focus,
+    &:hover{
+      &:after{
+        color: @brown;
+      }
+    }
+
+    &.slick-disabled{
+      pointer-events: none;
+      .opacity_important(0.5);
+
+      &:after{
+        color: @white; 
+      }
+    }
+  }
+
+
+  .fa-angle-left:before {
+    
+  }
+  .fa-angle-right:before {
+    content: "\f105";
+  }
+
+  .slick-prev{
+    left: 18px;
+    right: auto;
+
+    &:after{
+      content: "\f104"; // .fa-angle-left
+      left: 7px;
+    }
+  }
+  .slick-next{
+    left: auto;
+    right: 18px;
+
+    &:after{
+      content: "\f105"; // .fa-angle-right
+      right: 7px;
+
+    }
+  }
+
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {
+    .slick-prev,
+    .slick-next{
+      display: none;
+    }
+  }
+
+  // MOBILE
+  @media only screen and (max-width: 767px) {
+
+  }
+
+} // .format-desktop-slick
+
+
+
+
+
+
+
+
+
+
+.format-mobile-slick{
+
+  .slick-prev,
+  .slick-next{
+    z-index: 200;
+    width: 36px;
+    height: 36px;
+
+    display: none;
+
+    .transition-in(0.3s);
+
+    &:before{
+      content: "";
+
+    }
+    &:after{
+      top: 0;
+      
+      background: transparent !important;
+      text-indent: 0;
+      .fa;
+      // font-size: 34px;
+      /// font-size: 25px;
+      font-size: 23px;
+      line-height: 36px;
+      
+      color: @grey;
+
+      .transition-in(0.3s);
+    }
+
+    &.slick-disabled{
+      pointer-events: none;
+      .opacity_important(0.5);
+
+      &:after{
+        color: @grey; 
+      }
+    }
+  }
+
+
+  .fa-angle-left:before {
+    
+  }
+  .fa-angle-right:before {
+    content: "\f105";
+  }
+
+  .slick-prev{
+    left: -6px;
+    right: auto;
+
+    &:after{
+      content: "\f104"; // .fa-angle-left
+      left: 7px;
+    }
+  }
+  .slick-next{
+    left: auto;
+    right: -6px;
+
+    &:after{
+      content: "\f105"; // .fa-angle-right
+      right: 7px;
+
+    }
+  }
+
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {
+    .slick-prev,
+    .slick-next{
+      display: block;
+    }
+  }
+
+} // .format-mobile-slick

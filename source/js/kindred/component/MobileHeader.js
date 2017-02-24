@@ -22,6 +22,7 @@ kindred.component.MobileHeader = function(options, element) {
   this.is_open = false;
 
   this.html = $('html');
+  this.body = $('body');
 
 
   this.expand_container = $('#mobile-header-expanded');
@@ -120,11 +121,31 @@ kindred.component.MobileHeader.prototype.create_menu_btn = function() {
     if (this.is_open == true) { 
       this.close_menu();
     } else {
+
+
       this.open_menu();
+
+      // close ajax shopping cart if you are opening the menu
+      this.close_timber_shoping_cart();
+
+
     }
 
   }.bind(this));
+
+
+  // close mobile menu on open of ajax shoping cart
+
+  this.body.on('on-timber-on-open', function(event){
+    if (this.is_open == true) { 
+      this.close_menu();
+    }
+  }.bind(this));
+  
+
 };
+
+
 
 
 kindred.component.MobileHeader.prototype.create_search = function() {
@@ -248,6 +269,17 @@ kindred.component.MobileHeader.prototype.private_method_06 = function() {};
 //   |_|    \___/|____/|_____|___\____|
 //
 
+
+
+kindred.component.MobileHeader.prototype.close_timber_shoping_cart = function(){
+  
+  if (goog.isDefAndNotNull(timber) &&
+      goog.isDefAndNotNull(timber.RightDrawer) &&
+      goog.isDefAndNotNull(timber.RightDrawer.close)) {
+    timber.RightDrawer.close();
+  }
+  
+};
 
 kindred.component.MobileHeader.prototype.open_menu = function() {
 

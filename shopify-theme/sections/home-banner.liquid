@@ -94,8 +94,10 @@
 
     <div class="home-page-banner-item-mobile">
       <div class="banner-image-bg">
-        <div class="manic-image-container">
-          <img src="" data-image-mobile="{{ section.settings.content-image.src | img_url: 'master' }}" data-image-tablet="{{ section.settings.content-image.src | img_url: 'master' }}">
+        <div class="manic-image-container" data-vertical-align="bottom">
+          <img src="" 
+            data-image-mobile="{{ section.settings.content-image.src | img_url: '480x768', crop: 'center' }}"
+            data-image-tablet="{{ section.settings.content-image.src | img_url: '1152x1452', crop: 'center' }}">
         </div>
       </div>
       <div class="text-overlay top-version">
@@ -115,23 +117,26 @@
 
       <div class="home-page-banner-item-mobile">
         <div class="banner-image-bg">
-          <div class="manic-image-container">
+          <div class="manic-image-container" data-vertical-align="bottom">
             {% if block.settings.image != blank %}
-              <img src="" data-image-mobile="{{ block.settings.image | img_url: '620x630', crop: 'center' }}" data-image-tablet="{{ block.settings.image | img_url: 'master' }}">
+              <img src="" 
+                data-image-mobile="{{ block.settings.image | img_url: '480x768', crop: 'center' }}"
+                data-image-tablet="{{ block.settings.image | img_url: '1152x1452', crop: 'center' }}">
             {% else %}
               <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}" data-image-tablet="{{ 'product-no-image.jpg' | asset_url }}">
             {% endif %}
           </div>
         </div>
-        <div class="banner-image-overlay">
-          <div class="manic-image-container has-show-all">
-            {% if block.settings.image != blank %}
+
+
+        {% if block.settings.overlayimage != blank %}
+          <div class="banner-image-overlay">
+            <div class="manic-image-container has-show-all">
               <img src="" data-image-mobile="{{ block.settings.overlayimage | img_url: 'master' }}">
-            {% else %}
-              <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}">
-            {% endif %}
+            </div>
           </div>
-        </div>
+        {% endif %}
+
         <div class="text-overlay">
           {% if block.settings.text != blank %}
             <h1>{{ block.settings.text }}</h1>

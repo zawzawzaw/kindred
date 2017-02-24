@@ -259,9 +259,11 @@ if(count($invited_email) > 0) {
   $invited_emails = implode(", ", $invited_email);
 
   // echo "The following emails were already invited: ".$invited_emails.".";
-  header("Location: https://kindredteas.com/account?success=true&emails=".$invited_emails."#page-account-friend-referral-section");
+  // header("Location: https://kindredteas.com/account?success=true&emails=".$invited_emails."#page-account-friend-referral-section");
+  header("Location: https://kindredteas.com/account?success=true&emails=".$invited_emails."#friend-referral");
 }else {
   // echo "Successfully invited.";
-  header("Location: https://kindredteas.com/account?success=true#page-account-friend-referral-section");
+  // header("Location: https://kindredteas.com/account?success=true#page-account-friend-referral-section");
+  header("Location: https://kindredteas.com/account?success=true#friend-referral");
 }
 ?>

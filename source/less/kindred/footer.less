@@ -10,6 +10,11 @@
   min-height: 170px;
   padding-bottom: 20px;
 }
+body.is-mobile-header{
+  #desktop-footer{
+    display: none;
+  }
+}
 
 
 #desktop-footer-left-container{
@@ -131,6 +136,17 @@
     } // ul
   } // nav
 }
+
+
+
+body.is-ie{
+  #desktop-footer-menu nav ul{
+    font-size: inherit;
+  }
+}
+
+
+
 
 
 
@@ -413,11 +429,17 @@
 //
 
 #mobile-footer{
+  display: none;                // not visible by default
   padding-top: 14px;
   padding-bottom: 17px;
 
   // background: @light-brown;
   background: @grey;
+}
+body.is-mobile-header{
+  #mobile-footer{
+    display: block;
+  }
 }
 
 

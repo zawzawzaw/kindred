@@ -178,23 +178,6 @@
                       </div> <!-- row -->
                     {% endif %}
 
-                    
-                    {% if product.metafields.description.p11_multiple_ingredients != blank %}
-
-                      <!-- multiple ingredients visible only on small or extra small devices -->
-                      <div class="product-detail">
-                        <label>ingredients</label>
-                      </div>
-
-                      {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
-                      {% for ingredient_array_item in ingredient_array %}
-                        <div class="product-detail multiple-version visible-sm visible-xs">
-                          <p>{{ ingredient_array_item }}</p>
-                        </div>
-                      {% endfor %}
-
-                      
-                    {% endif %}
 
                     <div class="row">
                       <div class="col-md-6 col-sm-5 col-xs-6">
@@ -248,13 +231,16 @@
 
 
                         {% if product.metafields.description.p11_multiple_ingredients != blank %}
+
+                          <!-- 
                           <div class="product-detail visible-md visible-lg">
                             <label>ingredients</label>
                           </div>
+                          -->
 
                           {% assign ingredient_array = product.metafields.description.p11_multiple_ingredients | split: '||||' %}
                           {% for ingredient_array_item in ingredient_array %}
-                            <div class="product-detail multiple-version visible-md visible-lg">
+                            <div class="product-detail multiple-version">
                               <p>{{ ingredient_array_item }}</p>
                             </div>
                           {% endfor %}

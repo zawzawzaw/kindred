@@ -781,7 +781,13 @@ manic.page.Page.prototype.update_page_layout = function(){
   
   
 
+  this.update_manic_image_containers();
+  
 
+
+};
+
+manic.page.Page.prototype.update_manic_image_containers = function(){
   /**
    * @type {manic.ui.ImageContainer}
    */
@@ -791,12 +797,10 @@ manic.page.Page.prototype.update_page_layout = function(){
     item = this.manic_image_array[i];
     item.update_layout();
   }
-
-  
-
-
-
 };
+
+
+
 
 /*
 manic.page.Page.prototype.show_mobile_header = function(){
@@ -828,13 +832,16 @@ manic.page.Page.prototype.show_desktop_header = function(){
 
 
 manic.page.Page.prototype.check_browser = function() {
-  if(goog.userAgent.WINDOWS) { this.body.addClass('is-windows') }
-  if(goog.userAgent.MAC) { this.body.addClass('is-mac') }
+  if(goog.userAgent.WINDOWS) { this.body.addClass('is-windows'); }
+  if(goog.userAgent.MAC) { this.body.addClass('is-mac'); }
 
-  if (goog.userAgent.product.FIREFOX) { this.body.addClass('is-firefox') }
-  if (goog.userAgent.product.CHROME) { this.body.addClass('is-chrome') }
-  if (goog.userAgent.product.SAFARI) { this.body.addClass('is-safari') }
-  if (goog.userAgent.product.IE) { this.body.addClass('is-ie') }
+  if(goog.userAgent.IPHONE) { this.body.addClass('is-iphone'); }
+  if(goog.userAgent.IPAD) { this.body.addClass('is-ipad'); }
+
+  if (goog.userAgent.product.FIREFOX) { this.body.addClass('is-firefox'); }
+  if (goog.userAgent.product.CHROME) { this.body.addClass('is-chrome'); }
+  if (goog.userAgent.product.SAFARI) { this.body.addClass('is-safari'); }
+  if (goog.userAgent.product.IE) { this.body.addClass('is-ie'); }
 
   
 };

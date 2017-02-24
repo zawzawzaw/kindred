@@ -26,7 +26,7 @@
   margin-bottom: 30px;
 
   h3{
-
+    text-transform: capitalize;
   }
 }
 
@@ -50,6 +50,7 @@
 
     h3{
       .header-h4-style;
+      text-transform: uppercase;
       font-size: 13px;
       line-height: 21px;
       color: @white;
@@ -380,7 +381,8 @@
       width: 33.33%;
       border-right: 1px solid @white;
 
-      background: @grey;
+      // background: @grey;
+      background: @grey-05;
 
       padding-top: 10px;
       padding-bottom: 10px;
@@ -487,6 +489,7 @@
 
   h3{
     color: @brown;
+    text-transform: capitalize;
   }
 }
 .account-information-details-content{
@@ -513,6 +516,7 @@
 
     h3{
       .header-h4-style;
+      text-transform: uppercase;
       font-size: 13px;
       line-height: 21px;
       color: @white;
@@ -635,7 +639,8 @@
 }
 
 #page-account-order-history-table-section{
-  padding-top: 60px;
+  // padding-top: 60px;
+  padding-top: 93px;
   padding-bottom: 100px;
 }
 
@@ -655,9 +660,12 @@
   margin-left: -40px;
   margin-right: -40px;
 
+
   .default-table{
     border-left: none !important;
     border-right: none !important;
+
+    margin-bottom: 0;
 
     thead{
       tr{
@@ -713,6 +721,15 @@
 
     .default-table{
 
+      th{
+        font-size: 12px - 2px;        // to make label 'fulfillment status' fit
+        line-height: 17px;
+      }
+      td{
+        font-size: 12px - 1px;        // to make the date fit
+        line-height: 17px;
+      }
+
       thead{
         tr{
           th:first-child{
@@ -752,7 +769,8 @@
   display: none;
 }
 #page-account-friend-referal-form-section{
-  padding-top: 60px;
+  // padding-top: 60px;
+  padding-top: 94px;
   padding-bottom: 100px;
 }
 #page-account-friend-referal-form{

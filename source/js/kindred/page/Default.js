@@ -77,6 +77,13 @@ kindred.page.Default = function(options) {
   
 
 
+  // 
+  this.home_banner_mobile_full_height = $('#home-page-banner-mobile .banner-image-bg .manic-image-container, #home-page-banner-mobile .home-page-banner-item-mobile');
+
+  
+  
+
+
   /**
    * @type {kindred.component.MailingListPopup}
    */
@@ -196,6 +203,8 @@ kindred.page.Default.prototype.init = function() {
 kindred.page.Default.prototype.create_home_page = function() {
 
 
+
+
   if ($('#home-page-banner').length != 0) {
 
     // update on slick init/resize
@@ -209,7 +218,8 @@ kindred.page.Default.prototype.create_home_page = function() {
     $('#home-page-banner').slick({
       'speed': 350,
       'dots': false,
-      'arrows': false,
+      // 'arrows': false,
+      'arrows': true,
       'infinite': false,
       'slidesToShow': 1,
       'slidesToScroll': 1,
@@ -429,7 +439,8 @@ kindred.page.Default.prototype.create_product_page = function() {
       $('#product-page-also-like-section-mobile #product-item-container').slick({
         'speed': 350,
         'dots': false,
-        'arrows': false,
+        // 'arrows': false,
+        'arrows': true,
         'infinite': false,
         'slidesToShow': 2,
         'slidesToScroll': 2,
@@ -606,7 +617,10 @@ kindred.page.Default.prototype.update_page_layout = function(){
 
   // set min height of main content
   
-  if (manic.IS_MOBILE == false) {
+
+  // manic.IS_MOBILE_HEADER
+
+  if (manic.IS_MOBILE_HEADER == false) {
     // only if desktop
     
     var target_min_height = this.window_height - this.desktop_header_element.outerHeight() - this.desktop_footer_element.outerHeight();
@@ -614,9 +628,11 @@ kindred.page.Default.prototype.update_page_layout = function(){
     // console.log('this.desktop_header_element.height(): ' + this.desktop_header_element.outerHeight());
     // console.log('this.desktop_footer_element.height():' + this.desktop_footer_element.outerHeight());
     
+
     this.main_content_element.css({
       'min-height': target_min_height + 'px'
     });
+
 
   } else {
 
@@ -627,7 +643,22 @@ kindred.page.Default.prototype.update_page_layout = function(){
     this.main_content_element.css({
       'min-height': target_min_height + 'px'
     });
+
+
+
+
+    // home banner full height of mobile phone
     
+    if (this.home_banner_mobile_full_height.length != 0 ) {
+      target_min_height = this.window_height - this.mobile_header_element.outerHeight();
+
+      this.home_banner_mobile_full_height.css({
+        'min-height': target_min_height + 'px'
+      });
+
+      this.update_manic_image_containers();
+    }
+
   }
 
   /*

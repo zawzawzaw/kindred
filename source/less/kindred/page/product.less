@@ -532,7 +532,7 @@
 
     &.multiple-version{
       p{
-        font-size: 12px;
+        // font-size: 12px;
         // line-height: 18px;
 
         span{
@@ -557,6 +557,26 @@
         margin-right: -10px;
       }
     }
+
+    &.multiple-version{
+      margin-bottom: 10px;
+
+      p{
+        font-size: 12px;
+        line-height: 15px;
+        margin-right: -10px;
+        letter-spacing: -0.02em;
+
+        span{
+          .body-font-bold-mobile;
+          font-size: 12px;
+          line-height: 15px;
+          // margin-bottom: 3px;
+          margin-bottom: 0px;
+        }
+      }
+    }
+
   } // .product-detail
 }
 
@@ -864,6 +884,9 @@
   #product-item-container{
     text-align: center;
 
+    
+
+
     .product-item{
       margin-left: 5%;
       margin-right: 5%;
@@ -876,6 +899,9 @@
         margin-right: 3%;
       }
     }
+
+
+
   }
 
 }
@@ -947,6 +973,9 @@
   padding-top: 35px;
   padding-bottom: 30px - 12px;
 
+  .format-mobile-slick();
+  
+
   #product-item-container{
     text-align: center;
   }
@@ -985,6 +1014,8 @@
 
 #all-related-product-item-mobile-container{
   display: none;
+
+
 }
 
 
@@ -1200,7 +1231,8 @@
   textarea{
     .open-sans-regular;
     font-size: 14px;;
-    color: @grey-02;
+    // color: @grey-02;
+    color: @grey-05;
 
 
     display: block;
@@ -1263,10 +1295,12 @@
 
       outline: none !important;
 
-      color: @grey-02;
       .open-sans-regular;
       // font-size: 15px;;
-      font-size: 14px;;
+      font-size: 14px;
+
+      color: @grey-02;        // i guess it's okay for this one to be the same as the other product select things
+      // color: @grey-05;
 
 
       .display-inline-block;

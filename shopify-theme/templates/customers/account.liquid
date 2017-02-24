@@ -97,50 +97,58 @@
 
                 <div class="visible-md visible-lg">
                   <div class="row">
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Name</h4>
-                        <p>{{ customer.name }}</p>
+
+                    <div class="col-md-6">
+                      <div class="form-column-01">
+                        <div class="row">
+
+                          <div class="col-md-5">
+                            <div class="account-information-details-item">
+                              <h4>Name</h4>
+                              <p>{{ customer.name }}</p>
+                            </div>
+                          </div>
+                          <div class="col-md-7">
+                            <div class="account-information-details-item">
+                              <h4>Email</h4>
+                              <p>{{ customer.email }}</p>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Email</h4>
-                        <p>{{ customer.email }}</p>
-                      </div>
-                    </div>
 
-                    {% if customer.default_address != nil %}
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Address</h4>
-                        <p>
-                          {{ customer.default_address.address1 }}
+                    <div class="col-md-6">
+                      <div class="form-column-02">
 
-                          {% if customer.default_address.address2 != "" %}
-                            {{ customer.default_address.address2 }}<br>
-                          {% endif %}
+                        {% if customer.default_address != nil %}
+                        
+                          <div class="account-information-details-item">
+                            <h4>Address</h4>
+                            <p>
+                              {{ customer.default_address.address1 }}
 
-                          {% if customer.default_address.city != "" %}
-                            {{ customer.default_address.city }}
-                          {% endif %}
+                              {% if customer.default_address.address2 != "" %}
+                                {{ customer.default_address.address2 }}<br>
+                              {% endif %}
 
-                          {% if customer.default_address.province_code != "" %}
-                            {{ customer.default_address.province_code | upcase }}
-                          {% endif %}
+                              {% if customer.default_address.city != "" %}
+                                {{ customer.default_address.city }}
+                              {% endif %}
 
-                          {% if customer.default_address.zip != "" %}
-                            {{ customer.default_address.zip | upcase }}
-                          {% endif %} 
-                        </p>
-                      </div>
-                    </div>
-                    {% endif %}
+                              {% if customer.default_address.province_code != "" %}
+                                {{ customer.default_address.province_code | upcase }}
+                              {% endif %}
 
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Phone Number</h4>
-                        <p>{{ customer.default_address.phone }}</p>
+                              {% if customer.default_address.zip != "" %}
+                                {{ customer.default_address.zip | upcase }}
+                              {% endif %} 
+                            </p>
+                          </div>
+                        
+                        {% endif %}
+
                       </div>
                     </div>
 
@@ -148,21 +156,46 @@
 
                   <div class="row">
 
-                    {% if customer.default_address.country != "" %}
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Country</h4>
-                        <p>{{ customer.default_address.country }}</p>
-                      </div>
-                    </div>
-                    {% endif %}
+                    <div class="col-md-6">
+                      <div class="form-column-01">
 
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Password</h4>
-                        <p><a href="/account/login#recover">Change Password</a></p>
+                        <div class="row">
+
+                          {% if customer.default_address.country != "" %}
+
+                            <div class="col-md-5">
+                              <div class="account-information-details-item">
+                                <h4>Country</h4>
+                                <p>{{ customer.default_address.country }}</p>
+                              </div>
+                            </div>
+
+                          {% endif %}
+
+                          <div class="col-md-7">
+                            <div class="account-information-details-item">
+                              <h4>Password</h4>
+                              <p><a href="/account/login#recover">Change Password</a></p>
+                            </div>
+                          </div>
+
+                        </div>
+
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-column-02">
+
+                        <div class="account-information-details-item">
+                          <h4>Phone Number</h4>
+                          <p>{{ customer.default_address.phone }}</p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    
+
                   </div> <!-- row -->
                 </div> <!-- visible-md -->
 
@@ -210,7 +243,25 @@
                   {% if customer.default_address != nil %}
                   <div class="account-information-details-item">
                     <h4>Address</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                    <p>
+                      {{ customer.default_address.address1 }}
+
+                      {% if customer.default_address.address2 != "" %}
+                        {{ customer.default_address.address2 }}<br>
+                      {% endif %}
+
+                      {% if customer.default_address.city != "" %}
+                        {{ customer.default_address.city }}
+                      {% endif %}
+
+                      {% if customer.default_address.province_code != "" %}
+                        {{ customer.default_address.province_code | upcase }}
+                      {% endif %}
+
+                      {% if customer.default_address.zip != "" %}
+                        {{ customer.default_address.zip | upcase }}
+                      {% endif %} 
+                    </p>
                   </div>
                   {% endif %}
                   
@@ -238,39 +289,53 @@
 
                   {% for address in customer.addresses %}
 
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>
-                          Address 
-                          {% if address == customer.default_address %}
-                            <span class="default-span">({{ 'customer.addresses.default' | t }})</span>
-                          {% endif %}
-                        </h4>
+                  {% assign address_modulo = forloop.index0 | modulo: 2 %}
+                  {% assign address_extra_class = 'form-column-02' %}
 
-                        <p>
-                          {{ address.company }}
-                          {{ address.street }}
-                          {{ address.city | capitalize }}
-                          {% if address.province_code %}
-                            {{ address.province_code | upcase }} 
-                          {% endif %}
-                          {{ address.zip | upcase }}
-                          {{ address.country }}
-                          {{ address.phone }}
-                        </p>
+                  {% if address_modulo == 0 %}
+                    {% assign address_extra_class = 'form-column-01' %}
+                  {% endif %}
+
+                    <div class="col-md-6">
+                      <div class="{{ address_extra_class }}">
+                        <div class="account-information-details-item">
+                          <h4>
+                            <!-- Address  -->
+                            {{ address.first_name }} {{ address.last_name }}
 
 
-                        <div class="account-information-details-item-cta-container">
-                          <ul>
-                            <li>{{ 'customer.addresses.edit' | t | edit_customer_address_link: address.id }}</li>
-                            <li>{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}</li>
-                          </ul>
-                        </div>
+                            
+
+                            {% if address == customer.default_address %}
+                              <span class="default-span">({{ 'customer.addresses.default' | t }})</span>
+                            {% endif %}
+                          </h4>
+
+                          <p>
+                            {{ address.company }}
+                            {{ address.street }}
+                            {{ address.city | capitalize }}
+                            {% if address.province_code %}
+                              {{ address.province_code | upcase }} 
+                            {% endif %}
+                            {{ address.zip | upcase }}
+                            {{ address.country }}
+                            {{ address.phone }}
+                          </p>
+
+
+                          <div class="account-information-details-item-cta-container">
+                            <ul>
+                              <li>{{ 'customer.addresses.edit' | t | edit_customer_address_link: address.id }}</li>
+                              <li>{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}</li>
+                            </ul>
+                          </div>
 
 
 
 
-                      </div> <!-- account-information-details-item -->
+                        </div> <!-- account-information-details-item -->
+                      </div>
                     </div>
 
 
@@ -518,12 +583,14 @@
                 <div class="row" id="AddressProvinceContainerNew">
                   <div class="col-md-6"></div>
                   <div class="col-md-6">
-                    <div class="form-column-01">
+
+                    <div class="form-column-02">
                       <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
                       <div class="dropdown white-version">
                         <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
                       </div>
                     </div>
+
                   </div>
                 </div> <!-- row -->
 
@@ -660,7 +727,7 @@
 
                 {% paginate customer.orders by 20 %}
 
-                  <div id="page-account-order-history-table" class="visible-md visible-lg">
+                  <div id="page-account-order-history-table" class="visible-sm visible-md visible-lg">
 
                     <table class="default-table">
                       <thead>
@@ -687,7 +754,7 @@
 
                   </div> <!-- page-account-order-history-table -->
 
-                  <div id="page-account-order-history-table-mobile" class="visible-sm visible-xs">
+                  <div id="page-account-order-history-table-mobile" class="visible-xs">
                     <table class="default-table">
                       <thead>
                         <tr>
@@ -936,7 +1003,8 @@
   
   function InvalidMsg(textbox) {
     if(textbox.validity.patternMismatch){
-      textbox.setCustomValidity('You cannot send invitation to yourself.');
+      // textbox.setCustomValidity('You cannot send invitation to yourself.');    // copy change from fion
+      textbox.setCustomValidity('You cannot send an invitation to yourself.');
     } else {
       textbox.setCustomValidity('');
     }
