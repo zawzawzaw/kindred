@@ -15,9 +15,9 @@ require 'PHPMailer/PHPMailerAutoload.php';
 
 $inputs = file_get_contents('php://input');
 
-$myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
-fwrite($myfile, $inputs);
-fclose($myfile);
+// $myfile = fopen("newfile.txt", "w") or die("Unable to open file!");
+// fwrite($myfile, $inputs);
+// fclose($myfile);
 
 $inputs = json_decode($inputs);
 
@@ -42,9 +42,9 @@ function findEmail($email) {
 function sendEmail($subject, $message, $email, $name) {
   $mail = new PHPMailer;
 
-  $mail->setFrom('hello@kindredteas.com', 'Kindred Tea');
+  $mail->setFrom('hello@kindredteas.com', 'Kindred Teas');
   $mail->addAddress($email, $name);     // Add a recipient
-  $mail->addReplyTo('hello@kindredteas.com', 'Kindred Tea');
+  $mail->addReplyTo('hello@kindredteas.com', 'Kindred Teas');
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
@@ -92,7 +92,7 @@ if(count($data) > 0) {
     <meta http-equiv="Content-Security-Policy" content="script-src \'none\'; style-src * \'unsafe-inline\'; default-src *;">
 </head>
 <body>
-    <title>Your gift card is now available! </title>
+    <title>Reward for successful friend referral at Kindred Teas</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="https://kindred-teas.myshopify.com/assets/notifications/styles.css">
@@ -149,22 +149,22 @@ if(count($data) > 0) {
                                                 <tr>
                                                     <td>
                                                         <h2>Hello '.$data['referrer_name'].'!</h2>
-                                                        <p>Your friend '.$data['friend_name'].' has joined us and bought an item after your invitation. Thanks for your invitation and here is the discount coupon as a reward.</p>
-                                                        <p>10% Discount code: '.$data['discount_code'].'</p>
+                                                        <p>Your friend, '.$data['friend_name'].', has made his/her first purchase with us at Kindred Teas.</p>
+                                                        <p>To thank you for your invitation, we have sent you a 10% discount code to be used for your next purchase. This code can only be used one.</p>
+                                                        <p>10% discount code: '.$data['discount_code'].'</p>
                                                         <table class="row actions">
-                                                            <tbody>
+                                                          <tr>              
+                                                            <td class="actions__cell">
+                                                              <table class="link secondary-action-cell">
                                                                 <tr>
-                                                                    <td class="actions__cell">
-                                                                        <table class="link secondary-action-cell">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td class="link__cell"><a href="https://kindredteas.com" class="link__text">Visit our store</a></td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
+                                                                  <td class="link__cell">
+                                                                    <a href="https://kindredteas.com" class="link__text">Visit our store </a> 
+                                                                    <span class="or" style="padding:0;margin:0;"> or </span><a href="https://kindredteas.com/account/login" class="link__text"> Create an account</a>
+                                                                  </td>
                                                                 </tr>
-                                                            </tbody>
+                                                              </table>                                                              
+                                                            </td>
+                                                          </tr>
                                                         </table>
                                                     </td>
                                                 </tr>
@@ -263,22 +263,21 @@ if(count($data) > 0) {
                                                 <tr>
                                                     <td>
                                                         <h2>Hello '.$data['friend_name'].'!</h2>
-                                                        <p>Thank you for your first purchase. As you were referred by your friend '.$data['referrer_name'].', we are also giving discount code for you as a reward.</p>
-                                                        <p>10% Discount code: '.$data['discount_code'].'</p>
+                                                        <p>Thank you for making your first purchase at Kindred Teas via '.$data['referrer_name'].'\'s referral.</p><p>To reward you for your patronage, here is a 10% discount code to be used for your next transaction with us.</p><p>We hope to see you soon!</p>
+                                                        <p>10% discount code: '.$data['discount_code'].'</p>
                                                         <table class="row actions">
-                                                            <tbody>
+                                                          <tr>              
+                                                            <td class="actions__cell">
+                                                              <table class="link secondary-action-cell">
                                                                 <tr>
-                                                                    <td class="actions__cell">
-                                                                        <table class="link secondary-action-cell">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td class="link__cell"><a href="https://kindredteas.com" class="link__text">Visit our store</a></td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
+                                                                  <td class="link__cell">
+                                                                    <a href="https://kindredteas.com" class="link__text">Visit our store </a> 
+                                                                    <span class="or" style="padding:0;margin:0;"> or </span><a href="https://kindredteas.com/account/login" class="link__text"> Create an account</a>
+                                                                  </td>
                                                                 </tr>
-                                                            </tbody>
+                                                              </table>                                                              
+                                                            </td>
+                                                          </tr>
                                                         </table>
                                                     </td>
                                                 </tr>
@@ -315,7 +314,7 @@ if(count($data) > 0) {
     </table>
 </body>
 </html>';
-  $subject = 'Reward for successful friend referral at Kindred Tea';
+  $subject = 'Reward for successful friend referral at Kindred Teas';
 
   sendEmail($subject, $message, $data['referrer_email'], $data['referrer_name']);
   sendEmail($subject, $message_2, $data['friend_email'], $data['friend_name']);

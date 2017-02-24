@@ -23,7 +23,7 @@ if(!empty($code) && isset($_SESSION['birthday'])) $birthday = $_SESSION['birthda
 $access_token = "";
 
 function retrieveStoredAccessToken() {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -103,7 +103,7 @@ function curlGet($url, $headr) {
 }
 
 function saveAccessToken($access_token, $expiry_date) {
-  $servername = "localhost:3306";
+  $servername = "localhost";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -138,7 +138,7 @@ if(empty($access_token)) {
     $_SESSION['last_name'] = $last_name;
     $_SESSION['gender'] = $gender;
     $_SESSION['birthday'] = $birthday;
-    header("Location: http://clients.manic.com.sg/kindred/shopify_app");
+    header("Location: http://www.manic.com.sg/kindred/shopify_app");
   }
 
   $url = 'https://'.$shop_name.'.myshopify.com/admin/oauth/access_token';
@@ -196,24 +196,24 @@ if(count($rest_arr['customers']) > 0) {
 
   $metafields = array();  
 
-  $metafield = [
+  $metafield = array(
     'key' => 'salutation',
     'value' => $salutation,
     'value_type' => 'string',
     'namespace' => 'global'
-  ];
+  );
 
-  $metafield_2 = [
+  $metafield_2 = array(
     'key' => 'birthday',
     'value' => $birthday,
     'value_type' => 'string',
     'namespace' => 'global'
-  ];
+  );
 
   $metafields[] = $metafield;
   $metafields[] = $metafield_2;
 
-  $data = [
+  $data = array(
     'first_name' => $first_name,
     'last_name' => $last_name,
     'email' => $email,
@@ -222,7 +222,7 @@ if(count($rest_arr['customers']) > 0) {
     "password_confirmation" => "FB_PASS!",
     "send_email_welcome" => true,
     "metafields" => $metafields
-  ];
+  );
 
   $payload = array( "customer"=> $data );
 
