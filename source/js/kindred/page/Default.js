@@ -362,7 +362,10 @@ kindred.page.Default.prototype.create_product_page = function() {
 
   if ($('#product-page-also-like-section #all-related-product-item-container').length != 0 && $('#product-page-also-like-section #product-item-container').length != 0) {
     
-    var arr = $('#product-page-also-like-section #all-related-product-item-container').find('.product-item');
+
+    // product-item-column
+
+    var arr = $('#product-page-also-like-section #all-related-product-item-container').find('.product-item-column');
     var item = null;
     var item_array = [];
     for (var i = 0, l=arr.length; i < l; i++) {
@@ -376,13 +379,13 @@ kindred.page.Default.prototype.create_product_page = function() {
     
 
     // get first 3
-    for (var i = 0, l=3; i < l; i++) {
+    for (var i = 0, l=4; i < l; i++) {
       item = item_array[i];
       fragment.append(item);
     }
 
-    $('#product-page-also-like-section #product-item-container').empty();
-    $('#product-page-also-like-section #product-item-container').append(fragment);
+    $('#product-page-also-like-section #product-item-container .row').empty();
+    $('#product-page-also-like-section #product-item-container .row').append(fragment);
     
     
 
@@ -402,8 +405,9 @@ kindred.page.Default.prototype.create_product_page = function() {
   // mobile related items
   if ($('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').length != 0 && $('#product-page-also-like-section-mobile #product-item-container').length != 0) {
     
-    var arr = $('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').find('.product-item');
 
+    /*
+    var arr = $('#product-page-also-like-section-mobile #all-related-product-item-mobile-container').find('.product-item-column');
 
     var item = null;
     var item_array = [];
@@ -412,7 +416,7 @@ kindred.page.Default.prototype.create_product_page = function() {
       item_array[i] = item;
     }
 
-    item_array = manic.util.ArrayUtil.shuffle(item_array);
+    // item_array = manic.util.ArrayUtil.shuffle(item_array);
 
     var mobile_fragment = $(document.createDocumentFragment());
 
@@ -451,6 +455,7 @@ kindred.page.Default.prototype.create_product_page = function() {
     }
 
     this.create_image_container();
+    */
 
   }
 

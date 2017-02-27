@@ -14,12 +14,9 @@
 
 {% endcomment %}
 
-{% comment %}
-  Set the default grid_item_width if no variable is set
-{% endcomment %}
-{% unless grid_item_width %}
-  {% assign grid_item_width = 'large--one-third medium--one-half' %}
-{% endunless %}
+
+
+
 
 {% comment %}
   Check if the product is on sale and set a variable to be used below.
@@ -39,79 +36,91 @@
 
 
 
-{% comment %}
-  if image container classes is not assigned, it is a regular image
-{% endcomment %}
-{% assign is_regular_image = false %}
 
-{% unless image_container_classes %}
-  {% assign image_container_classes = ' has-show-all' %}
-  {% assign is_regular_image = true %}
+
+{% unless is_product_tea %}
+  {% assign is_product_tea = false %}
 {% endunless %}
 
-<div class="product-item">
 
-  {% comment %}
-    Link to your product with the 'within: collection' filter for the link to be aware of the collection.
-    This allows you to create collection-based navigation on the product page.
+{% assign product_item_grid_class = '' %}
+{% assign product_item_extra_class = '' %}
 
-    Results of using 'within: collection':
-    - Instead of a URL with /products/product-handle
-      you would get /collections/collection-handle/products/product-handle
 
-    For more info on navigation within a collection
-      - http://docs.shopify.com/support/your-store/collections/how-to-navigate-within-a-collection
+{% if is_product_tea == true %}
 
-  {% endcomment %}
-      
-  <a href="{{ product.url | within: collection }}" class="manic-image-container {{ image_container_classes }}" data-vertical-align="bottom">
 
-    {% if is_regular_image == true %}
+  {% assign product_item_grid_class = 'product-item-column col-md-3 col-tablet-landscape-md-3 col-sm-4 col-xs-6' %}
+  {% assign product_item_extra_class = '' %}
+
+{% else %}
+  {% assign product_item_grid_class = 'product-item-column col-md-4 col-tablet-landscape-md-4 col-sm-6 col-xs-12' %}
+  {% assign product_item_extra_class = ' product-item-square-version' %}
+
+{% endif %}
+
+<div class="{{ product_item_grid_class }}">
+
+  <div class="product-item {{ product_item_extra_class }}">
+
+    {% if is_product_tea == true %}
+
       <!-- display fullsize tea image, cause it blurs on high res phones -->
-      <img src="" 
-        data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" 
-        data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}"
-        data-image-tablet="{{ product.featured_image.src | img_url: 'master' }}" 
-        alt="{{ product.featured_image.alt | escape }}">
+
+      <a href="{{ product.url | within: collection }}" class="manic-image-container has-show-all" data-vertical-align="bottom">
+        <img src="" 
+          data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" 
+          data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}" 
+          data-image-tablet="{{ product.featured_image.src | img_url: '420x' }}" 
+          alt="{{ product.featured_image.alt | escape }}">
+      </a>
+      
     {% else %}
-      <img src="" 
-        data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" 
-        data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}" 
-        data-image-tablet="{{ product.featured_image.src | img_url: '420x' }}" 
-        alt="{{ product.featured_image.alt | escape }}">
+
+      <a href="{{ product.url | within: collection }}" class="manic-image-container square-version" data-vertical-align="bottom">
+        <img src="" 
+          data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" 
+          data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}"
+          data-image-tablet="{{ product.featured_image.src | img_url: 'master' }}" 
+          alt="{{ product.featured_image.alt | escape }}">
+      </a>
+      
     {% endif %}
-  </a>
-  <div class="product-item-detail">
-    <a href="{{ product.url | within: collection }}" class="product-item-name">{{ product.title }}</a>
-    <p class="product-item-category">{{ product.type }}</p>
-    <p class="product-item-price">
-      {% comment %}
-        You can show a leading 'from' or 'up to' by checking 'product.price_varies'
-        if your variants have different prices.
-      {% endcomment %}
-      {% if on_sale %}
-        {% if product.price_varies %}
-          {% assign sale_price = product.price | money %}
-          {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+
+    
+    <div class="product-item-detail">
+      <a href="{{ product.url | within: collection }}" class="product-item-name">{{ product.title }}</a>
+      <p class="product-item-category">{{ product.type }}</p>
+      <p class="product-item-price">
+        {% comment %}
+          You can show a leading 'from' or 'up to' by checking 'product.price_varies'
+          if your variants have different prices.
+        {% endcomment %}
+        {% if on_sale %}
+          {% if product.price_varies %}
+            {% assign sale_price = product.price | money %}
+            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+          {% else %}
+            <strong>{{ 'products.product.on_sale' | t }}</strong>
+            {{ product.price | money }}
+          {% endif %}
         {% else %}
-          <strong>{{ 'products.product.on_sale' | t }}</strong>
-          {{ product.price | money }}
+          {% if product.price_varies %}
+            {% assign price = product.price | money %}
+            {{ 'products.general.from_text_html' | t: price: price }}
+          {% else %}
+            {{ product.price | money }}
+          {% endif %}
         {% endif %}
-      {% else %}
-        {% if product.price_varies %}
-          {% assign price = product.price | money %}
-          {{ 'products.general.from_text_html' | t: price: price }}
-        {% else %}
-          {{ product.price | money }}
+        {% if sold_out %}
+          <br><strong>{{ 'products.product.sold_out' | t }}</strong>
         {% endif %}
-      {% endif %}
-      {% if sold_out %}
-        <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-      {% endif %}
-      {% if on_sale %}
-        <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-        <br><s>{{ product.compare_at_price | money }}</s>
-      {% endif %}
-    </p>
-  </div>
+        {% if on_sale %}
+          <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+          <br><s>{{ product.compare_at_price | money }}</s>
+        {% endif %}
+      </p>
+    </div>
+  </div> <!-- product-item -->
+
 </div>
