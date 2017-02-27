@@ -506,9 +506,13 @@
 }
 
 .note {
-  color: @grey;
-  border-color: @grey;
-  background: @off-white-02;
+  // color: @grey;
+  // border-color: @grey;
+  // background: @off-white-02;
+  
+  color: darken(@brown, 10%);         // edit, make all errors & notes pink
+  border-color: @brown;
+  background: @light-brown-02;
 }
 
 .form-success {
@@ -521,9 +525,14 @@
 
 .form-error,
 .errors {
-  color: @off-black;
-  border-color: @off-black;
-  background: @off-white-02;
+  // color: @off-black;
+  // border-color: @off-black;
+  // background: @off-white-02;
+  
+  color: darken(@brown, 10%);
+  border-color: @brown;
+  background: @light-brown-02;
+  
   ul {
     margin-left: 0;
   }

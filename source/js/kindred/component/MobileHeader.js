@@ -314,7 +314,8 @@ kindred.component.MobileHeader.prototype.close_menu = function() {
     //   'display': 'block'
     // });
 
-    // this.close_currency();
+    this.close_currency();          // important !!! 
+
   }
 
 };

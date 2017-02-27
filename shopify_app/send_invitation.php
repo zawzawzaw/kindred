@@ -70,7 +70,9 @@ function sendEmail($data) {
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
-  $mail->Subject = 'Your friend '.$data['from_name'].' invites you to try Kindred Teas!';
+  // $mail->Subject = 'Your friend '.$data['from_name'].' invites you to try Kindred Teas!';
+  $mail->Subject = 'Your friend, '.$data['from_name'].', has invited you to join us';
+
   $mail->Body    = '<html>
 <head>
     <meta http-equiv="Content-Security-Policy" content="script-src \'none\'; style-src * \'unsafe-inline\'; default-src *;">

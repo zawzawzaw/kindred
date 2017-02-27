@@ -185,7 +185,8 @@ if ($inputs->payment_gateway_names && $inputs->payment_gateway_names[0] == "Bank
   $customer_name = $inputs->billing_address->first_name . ' ' . $inputs->billing_address->last_name;
   $customer_email = $inputs->email;
   
-  $subject = 'Kindred Teas Bank Deposit Payment Details';
+  // $subject = 'Kindred Teas Bank Deposit Payment Details';
+  $subject = 'Bank Deposit Payment Details';
   $message = get_bank_deposit_email($inputs);
 
 

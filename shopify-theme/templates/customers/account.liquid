@@ -393,35 +393,55 @@
 
                               </div>
                             </div>
-                            
+
+
                             <div class="row">
                               <div class="col-md-6">
-
                                 <div class="form-column-01">
+
+                                  <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
+                                  <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-column-02">
+
                                   <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
                                   <input type="text" id="AddressCity_{{ form.id }}" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+
                                 </div>
+                              </div>
+                            </div> <!-- row -->
 
-                              </div>        
+                            <div class="row">
                               <div class="col-md-6">
+                                <div class="form-column-01">
 
-                                <div class="form-column-02">
                                   <label for="AddressCountry_{{ form.id }}">{{ 'customer.addresses.country' | t }}</label>
                                   <div class="dropdown"> 
                                     <select id="AddressCountry_{{ form.id }}" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
                                   </div>
-                                </div>
 
-                              </div>                  
-                            </div>                        
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-column-02">
+
+                                  <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
+                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
+
+                                </div>
+                              </div>
+                            </div> <!-- row -->
+
                               
 
                             <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
                               <div class="row">
-                                <div class="col-md-6"></div>
                                 <div class="col-md-6">
 
-                                  <div class="form-column-02">
+                                  <div class="form-column-01">
                                     <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}</label>
                                     <div class="dropdown">
                                       <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
@@ -429,25 +449,6 @@
                                   </div>
 
                                 </div>
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-md-6">
-
-                                <div class="form-column-01">
-                                  <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
-                                  <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
-                                </div>
-
-                              </div>
-                              <div class="col-md-6">
-
-                                <div class="form-column-02">
-                                  <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
-                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
-                                </div>
-                                
                               </div>
                             </div>
 
@@ -566,22 +567,44 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-column-01">
-                      <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
-                      <input type="text" id="AddressCityNew" required class="input-full white-version" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+
+                      <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+                      <input type="text" id="AddressZipNew" required class="input-full white-version" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                      
                     </div>
                   </div>
-                  <div class="col-md-6" style="max-height: 70px;">
+                  <div class="col-md-6">
                     <div class="form-column-02">
+                      
+                      <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
+                      <input type="text" id="AddressCityNew" required class="input-full white-version" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+
+                    </div>
+                  </div>
+                </div> <!-- row -->
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-column-01">
+
                       <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
                       <div class="dropdown white-version">
                         <select id="AddressCountryNew" required class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
                       </div>
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-column-02">
+                      
+                      <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
+                      <input type="tel" id="AddressPhoneNew" required class="input-full white-version" name="address[phone]" value="{{ form.phone }}">
+                      
                     </div>
                   </div>
                 </div> <!-- row -->
 
                 <div class="row" id="AddressProvinceContainerNew">
-                  <div class="col-md-6"></div>
                   <div class="col-md-6">
 
                     <div class="form-column-02">
@@ -591,21 +614,6 @@
                       </div>
                     </div>
 
-                  </div>
-                </div> <!-- row -->
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-column-01">
-                      <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
-                      <input type="text" id="AddressZipNew" required class="input-full white-version" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-column-02">
-                      <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
-                      <input type="tel" id="AddressPhoneNew" required class="input-full white-version" name="address[phone]" value="{{ form.phone }}">
-                    </div>
                   </div>
                 </div> <!-- row -->
 
@@ -623,11 +631,6 @@
                 <div class="cta-container">
                   <input type="submit" class="square-cta btn" value="{{ 'customer.addresses.add' | t }}">
                 </div>
-
-                <div class="row">
-                  
-                </div> <!-- row -->
-
 
               {% endform %}
             </div> <!-- page-account-information-address-form -->

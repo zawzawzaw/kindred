@@ -148,7 +148,8 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
       'slidesToScroll': 1,
       'pauseOnHover': false,
       'autoplay': true,
-      'autoplaySpeed': 1000,
+      // 'autoplaySpeed': 1000,
+      'autoplaySpeed': 4000,
       'responsive': [
         {
           'breakpoint': 1380,
