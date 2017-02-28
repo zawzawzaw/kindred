@@ -21,11 +21,13 @@
 .format-form-input-font{
   .body-font;
   line-height: 25px;
-  color: @grey-05;
+  // color: @grey-05;
+  color: @grey;
 
   // padding: 0;
   padding-left: 16px;
-  padding-right: 0px;
+  // padding-right: 0px;
+  padding-right: 16px;
   padding-top: 6px;
   padding-bottom: 5px;
 }
@@ -33,10 +35,12 @@
 .format-form-input-font-mobile{
   .body-font-mobile;
   line-height: 20px;
-  color: @grey-05;
+  // color: @grey-05;
+  color: @grey;
   
   padding-left: 16px;
-  padding-right: 0px;
+  // padding-right: 0px;            // might have some effect
+  padding-right: 16px;
   padding-top: 6px;
   padding-bottom: 5px;
 }
@@ -128,7 +132,33 @@
       background-color: @white;
     }
 
+    &::-webkit-input-placeholder{
+      .opacity(1);
+      color: @grey-05;
+    }
+    &:-moz-placeholder{
+      .opacity(1);
+      color: @grey-05;
+    }
+    &::-moz-placeholder{
+      .opacity(1);
+      color: @grey-05;
+    }
+    &:-ms-input-placeholder{
+      .opacity(1);
+      color: @grey-05;
+    }
+
+    &.has-placeholder{
+      .opacity(1);
+      color: @grey-05;
+    }
+
   }
+
+
+
+
   textarea{
     height: 190px;
     resize: none;
@@ -339,7 +369,11 @@
 
 
   // TABLET PORTRAIT & SMALL DESKTOP
-  @media only screen and (max-width: 991px) {             // we will follow account details mobile forms
+  // @media only screen and (max-width: 991px) {             // we will follow account details mobile forms
+
+  // TABLET LANDSCAPE & LAPTOPS
+  @media only screen and (max-width: 1199px) {      // needs to be available immediately to tablet forms
+
 
     label {
 
@@ -361,8 +395,21 @@
       margin-bottom: 15px;
       display: block;               // for iOS devices
 
-      &.white-version{
-        background-color: @off-white-03;
+
+      &::-webkit-input-placeholder{
+        color: @grey-05;
+      }
+      &:-moz-placeholder{
+        color: @grey-05;
+      }
+      &::-moz-placeholder{
+        color: @grey-05;
+      }
+      &:-ms-input-placeholder{
+        color: @grey-05;
+      }
+      &.has-placeholder{
+        color: @grey-05;
       }
 
     }
@@ -397,11 +444,7 @@
         height: 30px;
       }
 
-      &.white-version{
-        select{
-          background-color: @off-white-03;
-        }
-      }
+      
 
     } // .dropdown
 
@@ -433,13 +476,7 @@
         }
       }
 
-      &.white-version{
-        input[type="checkbox"] + label{
-          span{
-            background-color: @off-white-03;
-          }
-        }
-      }
+      
 
     } // .checkbox
 
@@ -466,8 +503,45 @@
 
   }
 
+  // TABLET PORTRAIT & SMALL DESKTOP
+  @media only screen and (max-width: 991px) {
+    input[type=email], 
+    input[type=tel],
+    input[type=password], 
+    input[type=text],
+    textarea {
+      &.white-version{
+        background-color: @off-white-03;
+      }
+    }
+    .dropdown {
+      &.white-version{
+        select{
+          background-color: @off-white-03;
+        }
+      }
+    }
+    .checkbox{
+      &.white-version{
+        input[type="checkbox"] + label{
+          span{
+            background-color: @off-white-03;
+          }
+        }
+      }
+    }
+  }
+
   // MOBILE
   @media only screen and (max-width: 767px) {
+
+    // label{
+    //   small{
+    //     letter-spacing: 0em;
+    //     font-size: 9px;
+    //   }
+    // }
+    
     .cta-container{
       .square-cta-01-xs{
         margin-bottom: 7px;

@@ -38,7 +38,7 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-tablet-landscape-md-7 col-sm-12 col-xs-12">
 
           <div id="product-page-detail-image-container">
             <div id="product-page-detail-image">
@@ -68,7 +68,7 @@
           </div> <!-- product-page-detail-image-container -->
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-tablet-landscape-md-5 col-sm-12 col-xs-12">
 
           <div id="product-page-detail-copy-container">
             <div id="product-page-detail-copy">
@@ -210,7 +210,7 @@
                     
                     {% if product.metafields.description.p01_origin != blank and product.metafields.description.p02_teatype != blank %}
                       <div class="row">
-                        <div class="col-md-6 col-sm-5 col-xs-6">
+                        <div class="col-md-6 col-xs-6">
 
                           {% if product.metafields.description.p01_origin != blank %}
                             <div class="product-detail inline-version">
@@ -220,7 +220,7 @@
                           {% endif %}
 
                         </div>
-                        <div class="col-md-6 col-sm-5 col-xs-6">
+                        <div class="col-md-6 col-xs-6">
 
                           {% if product.metafields.description.p02_teatype != blank %}
                             <div class="product-detail inline-version">
@@ -236,7 +236,7 @@
                     
 
                     <div class="row">
-                      <div class="col-md-6 col-sm-5 col-xs-6">
+                      <div class="col-md-6 col-xs-6">
                         {% if product.metafields.description.p03_ingredients != blank %}
                           <div class="product-detail">
                             <label>ingredients</label>
@@ -302,75 +302,10 @@
                         
 
                       </div>
-                      <div class="col-md-6 col-sm-5 col-xs-6">
+                      <div class="col-md-6 col-xs-6">
 
-
-                        {% if product.metafields.description.p04_tastingnotes != blank and product.metafields.description.p11_multiple_ingredients != blank %}
-                          <div class="product-detail">
-                            <label>tasting notes</label>
-                            <p>{{ product.metafields.description.p04_tastingnotes }}</p>
-                          </div>
-                        {% endif %}
-
-                        {% if product.metafields.description.p05_brewingtemperature != blank || product.metafields.description.p06_brewingvolume != blank || product.metafields.description.p07_brewingtearatio != blank || product.metafields.description.p08_brewingtime != blank %}
-                          <div class="product-detail">
-                            <label><span class="hidden-xs">brewing</span> instructions</label>
-                            <ul>
-                              {% if product.metafields.description.p05_brewingtemperature != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-thermometer"></span>{{ product.metafields.description.p05_brewingtemperature }}</li>
-                              {% endif %}
-
-                              {% if product.metafields.description.p06_brewingvolume != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-teapot"></span>{{ product.metafields.description.p06_brewingvolume }}</li>
-                              {% endif %}
-
-                              {% if product.metafields.description.p07_brewingtearatio != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-leaf"></span>{{ product.metafields.description.p07_brewingtearatio }}</li>
-                              {% endif %}
-
-                              {% if product.metafields.description.p08_brewingtime != blank %}
-                                <li><span class="product-detail-icon product-detail-icon-clock"></span>{{ product.metafields.description.p08_brewingtime }}</li>
-                              {% endif %}
-
-                            </ul>
-                          </div>
-                        {% endif %}
-
+                        {% include 'product-detail-right-column' %}
                         
-
-
-                        {% if product.metafields.description.p14_material != blank %}
-                          <div class="product-detail">
-                            <label>Material</label>
-                            <p>{{ product.metafields.description.p14_material }}</p>
-                          </div>
-                        {% endif %}
-
-
-                        <div class="product-detail">
-                          <label>Share</label>
-                          {% assign share_message = "Try out Kindred's " | append: product.title %}
-                          {% assign share_message_escaped = share_message | url_param_escape %}
-
-                          {% assign share_image = featured_image | img_url: 'master' %}
-                          {% assign share_image_escaped = share_image | url_param_escape %}
-
-                          {% assign share_url = shop.url | append: product.url %}
-                          {% assign share_url_escaped = share_url | url_param_escape %}
-
-                          {% assign social_facebook_share_url = 'http://www.facebook.com/sharer.php?u=' | append: share_url_escaped %}
-                          {% assign social_twitter_share_url = 'https://twitter.com/share?url=' | append: share_url_escaped | append: '&amp;text=' | append: share_message_escaped %}
-                          {% assign social_pinterest_share_url = '//pinterest.com/pin/create%2Fbutton/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
-
-                          <div class="product-detail-social-container">
-                            <ul>
-                              <li><a href="{{ social_pinterest_share_url }}" target="_blank" class="fa fa-pinterest"></a></li>
-                              <li><a href="{{ social_facebook_share_url }}" target="_blank" class="fa fa-facebook"></a></li>
-                              <li><a href="{{ social_twitter_share_url }}" target="_blank" class="fa fa-twitter"></a></li>
-                            </ul>
-                          </div>
-                        </div>
-
                       </div>
                     </div> <!-- row -->
 

@@ -582,10 +582,16 @@
 
 // TABLET PORTRAIT & SMALL DESKTOP
 @media only screen and (max-width: 991px) {
+
+// TABLET LANDSCAPE & LAPTOPS
+// @media only screen and (max-width: 1199px) {
+
+
+
   #page-cart-content-section .cart-table td[data-label="Quantity"]{
 
-    padding-top: 4px;
-    padding-bottom: 3px;
+    padding-top: 14px;
+    padding-bottom: 13px;
 
     &:before{
 
@@ -603,6 +609,11 @@
 
       .display-inline-block;
       padding-top: 0px;
+
+
+      position: relative;
+      top: -7px;
+
     }
   } // just for the quantity label
 
@@ -644,6 +655,15 @@
 }
 // MOBILE
 @media only screen and (max-width: 767px) {
+  #page-cart-content-section .cart-table td[data-label="Quantity"]{
+    padding-top: 4px;
+    padding-bottom: 3px;
+
+    &:before{
+      position: relative;
+      top: 0;
+    }
+  }
 
 }
 
@@ -675,6 +695,12 @@
 }
 
 
+
+
+#page-cart-footer-seperator{
+  border-top: 1px solid @border-grey-03;
+  margin-bottom: 45px; 
+}
 
 #page-cart-update-container{
   border-top: 1px solid @border-grey-03;
@@ -743,6 +769,13 @@
 @media only screen and (max-width: 991px) {
   #page-cart-footer-section{
   }
+
+  #page-cart-footer-seperator{
+    margin-bottom: 13px;
+  }
+
+
+
   #page-cart-update-container{
 
     margin-bottom: 13px;
@@ -798,8 +831,19 @@
     line-height: 30px;
     text-align: right;
     padding-right: 66px;
+    
+    &.normal-version{
+
+      .body-font-bold;
+      padding-right: 0;
+      padding-right: 15px;
+    }
 
   }
+
+
+
+
   .cart__subtotal{
     white-space: nowrap;
   }
@@ -837,6 +881,10 @@
       text-transform: uppercase;
 
       padding-right: 0;
+      &.normal-version{
+        padding-right: 0;
+      }
+
       white-space: nowrap;
 
       .cart__subtotal{
@@ -1195,7 +1243,11 @@
 
 
 // TABLET PORTRAIT & SMALL DESKTOP
-@media only screen and (max-width: 991px) {
+// @media only screen and (max-width: 991px) {
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {                  // visible on tablet landscape
+
 // @media only screen and (max-width: 767px) {
   #CartDrawer{
     max-width: 100%;

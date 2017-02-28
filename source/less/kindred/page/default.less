@@ -16,7 +16,8 @@
 
   .first-letter{
     .header-h1-style;
-    font-size: 50px;
+    // font-size: 50px;
+    font-size: 46px;
     line-height: 25px * 2;
 
     text-transform: uppercase;
@@ -198,11 +199,13 @@
     .first-letter{
       .header-h1-style-mobile;
 
-      font-size: 37px;
+      // font-size: 37px;
+      font-size: 38px;
       line-height: 21px * 2;
 
       left: -1px;
-      top: 2px;
+      // top: 2px;
+      top: 1px;
     }
 
     p{
@@ -450,32 +453,205 @@
 //
 
 
-
-
-
 .product-item{
   text-align: center;
-  height: 650px;                  // i need to make them align somehow...
-
-  
 
   .manic-image-container{
-    height: 400px;
-
     &:focus,
     &:hover{
       img{
         .opacity_important(0.7);
       }
     }
-    
+  }
+}
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .product-item{
+    .manic-image-container{
+      &:focus,
+      &:hover{
+        img{
+          .opacity_important(1);                // REMOVE HOVER EFFECT
+        }
+      }
+    }
+  }
+}
 
-    &.square-version{
+
+
+
+
+
+.product-item-single-row{
+  height: 650px;
+  overflow: hidden;
+}
+.product-item{
+  height: 650px;
+  .manic-image-container{
+    height: 400px;
+  }
+} // .product-item
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+  .product-item-single-row{
+    height: 625px;
+  }
+  .product-item{
+    height: 625px;
+    .manic-image-container{
+      height: 375px;
+    }
+  }
+}
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .product-item-single-row{
+    height: 500px;
+  }
+  .product-item{
+    height: 500px;
+
+    .manic-image-container{
+      height: 350px;
+    }
+  } // .product-item
+}
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  .product-item-single-row{
+    height: 430px;
+  }
+  .product-item{
+    height: 430px;
+
+    .manic-image-container{
+      height: 290px;
+    }
+  } // .product-item
+}
+
+@media only screen and (max-width: 320px) {
+  .product-item-single-row{
+    height: 400px;
+  }
+  .product-item{
+    height: 400px;
+
+    .manic-image-container{
+      height: 270px;
+    }
+  } // .product-item
+}
+
+
+
+
+
+
+
+
+.product-item-square-single-row{
+  height: 580px;
+  overflow: hidden;
+}
+.product-item.product-item-square-version{
+  height: 580px;
+  .manic-image-container{
+    height: 320px;
+  }
+}
+
+// just a middle ground?
+@media only screen and (max-width: 1280px) {
+  .product-item-square-single-row{
+    height: 540px;
+  }
+  .product-item.product-item-square-version{
+    height: 540px;
+
+    .manic-image-container{
       height: 280px;
     }
-
   }
+}
 
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+  .product-item-square-single-row{
+    height: 490px;
+  }
+  .product-item.product-item-square-version{
+    height: 490px;
+
+    .manic-image-container{
+      height: 230px;
+    }
+  }
+}
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {             // 2 PER ROW
+  .product-item-square-single-row{
+    height: 390px;
+  }
+  .product-item.product-item-square-version{
+    height: 390px;
+
+    .manic-image-container{
+      height: 250px;
+      margin-top: 21px;
+    }
+  }
+}
+// MOBILE
+@media only screen and (max-width: 767px) {                // 1 PER ROW
+  .product-item-square-single-row{
+    height: 400px;
+  }
+  .product-item.product-item-square-version{
+    height: 400px;
+    .manic-image-container{
+      height: 270px;
+      margin-top: 21px - 12px;
+    }
+  }
+}
+@media only screen and (max-width: 320px) {
+  .product-item-square-single-row{
+    height: 350px;
+  }
+  .product-item.product-item-square-version{
+    height: 350px;
+    
+    .manic-image-container{
+      height: 220px;
+      margin-top: 21px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+//    ____  _____ _____  _    ___ _
+//   |  _ \| ____|_   _|/ \  |_ _| |
+//   | | | |  _|   | | / _ \  | || |
+//   | |_| | |___  | |/ ___ \ | || |___
+//   |____/|_____| |_/_/   \_\___|_____|
+//
+
+
+
+.product-item{
   .product-item-detail{
     // padding-top: 40px;
     // padding-bottom: 90px;
@@ -517,31 +693,11 @@
     }
 
   } // .product-item-detail
-
-} // .product-item
-
-
+}
 
 // TABLET PORTRAIT & SMALL DESKTOP
 @media only screen and (max-width: 991px) {
-
   .product-item{
-    .manic-image-container{
-      height: 350px;
-
-      &.square-version{
-        height: 270px;
-        margin-top: 21px;
-      }
-
-      &:focus,
-      &:hover{
-        img{
-          .opacity_important(1);
-        }
-      }
-    }
-
     .product-item-detail{
       padding-top: 21px;
       padding-bottom: 30px;
@@ -565,51 +721,28 @@
       .product-item-price{
 
       }
-    } // .product-item-detail
-  } // .product-item
-
+    }
+  }
 }
 
 // MOBILE
 @media only screen and (max-width: 767px) {
   .product-item{
-    .manic-image-container{
-      // height: 300px;
-      height: 290px;
-
-      &.square-version{
-        height: 200px;
-        margin-top: 21px - 12px;
-      }
-
-    }
     .product-item-detail{
       padding-top: 21px;
       padding-bottom: 26px;
     }
-
-  } // .product-item
+  }
 }
 
+// MOBILE (SMALL)
 @media only screen and (max-width: 320px) {
   .product-item{
-    .manic-image-container{
-      &.square-version{
-        height: 150px;
-        margin-top: 21px;
-      }
-    }
     .product-item-detail{
       padding-bottom: 14px;
     }
-
-  } // .product-item
+  }
 }
-
-
-
-
-
 
 
 //    _______  ______   _    _   _ ____ ___ _   _  ____

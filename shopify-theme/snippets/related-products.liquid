@@ -198,18 +198,37 @@
           
 
           <div id="product-item-container">
-            <div class="row">
-              {{ related_items }}
-            </div>
+
+            {% if is_current_product_tea == true %}
+              <div class="product-item-single-row">
+                <div class="row">
+                  {{ related_items }}
+                </div>
+              </div>
+
+            {% else %}
+              <div class="product-item-square-single-row">
+                <div class="row">
+                  {{ related_items }}
+                </div>
+              </div>
+
+            {% endif %}
+
           </div> <!-- product-item-container -->
+
+          
 
         </div>
       </div>
     </div>
   </article>
 
-
-  <article id="product-page-also-like-section-mobile" class="visible-sm visible-xs">
+  
+  {% comment %}
+    will have 'tea-version' class if current product is tea
+  {% endcomment %}  
+  <article id="product-page-also-like-section-mobile" class="visible-sm visible-xs {% if is_current_product_tea == true %}tea-version{% endif %}">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12">
@@ -219,14 +238,11 @@
           </div>
 
           <div id="all-related-product-item-mobile-container">
-            
+            {{ all_related_items_mobile }}
           </div>
 
-          <div id="product-item-container">
-            <div class="row">
-              {{ all_related_items_mobile }}
-            </div>
-          </div>
+          <div id="product-item-mobile-slider" class="{% if is_current_product_tea == true %}tea-version{% endif %}"></div>
+          
 
         </div>
       </div>

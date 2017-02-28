@@ -50,6 +50,11 @@ kindred.component.Giftcard = function(options, element) {
   this.name_txt = this.copy_container.find('#input-giftcard-name');
   this.message_txt = this.copy_container.find('#input-giftcard-message');
 
+
+  this.name_txt_placeholder = this.name_txt.attr('placeholder');
+  this.message_txt_placeholder = this.message_txt.attr('placeholder');
+
+
   this.price_dropdown = this.copy_container.find('#productSelect-option-0');
 
   this.name_chars_left = this.copy_container.find('#giftcard-name-char-left');
@@ -206,6 +211,14 @@ kindred.component.Giftcard.prototype.update_text_layout = function() {
   this.current_message = this.message_txt.val();
   this.current_price = this.price_dropdown.val()
 
+
+  if (this.current_name == '') {
+    this.current_name = this.name_txt_placeholder;
+  }
+  if (this.current_message == '') {
+    this.current_message = this.message_txt_placeholder;
+  }
+  
   
 
   // update the text in the overlays
