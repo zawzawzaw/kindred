@@ -611,6 +611,15 @@
 // (account-information-details-container)
 #account-information-details-container-address-container{
 
+  .account-information-details-content{
+    .form-column-01{
+      .account-information-details-item{
+        // adjust the left side to have more padding
+        padding-right: 40px;
+      }
+    }
+  }
+
   &.edit-version{
 
     > .account-information-details-title{
@@ -630,7 +639,18 @@
 }
 
 
-
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #account-information-details-container-address-container{
+    .account-information-details-content{
+      .form-column-01{
+        .account-information-details-item{
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
 
 
 

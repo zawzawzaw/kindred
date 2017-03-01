@@ -65,15 +65,22 @@ kindred.page.Default = function(options) {
   this.mobile_header = null;
 
 
-    
+  this.is_account_page = false;
+
   /**
    * @type {kindred.component.AccountContent}
    */
   this.account_content = null;
   
   // needed before init, because of reasons :D
-  if ($('#page-account-main-container').length != 0) {
-    this.account_content = new kindred.component.AccountContent({}, $('#page-account-main-container'));
+  
+  if ($('#page-account-page-indicator').length != 0){
+    this.is_account_page = true;
+
+    // only instanciate the account content on the account page...
+    if ($('#page-account-main-container').length != 0) {
+      this.account_content = new kindred.component.AccountContent({}, $('#page-account-main-container'));
+    }
   }
   
   this.home_banner_mobile_full_height = $('#home-page-banner-mobile .banner-image-bg .manic-image-container, #home-page-banner-mobile .home-page-banner-item-mobile');

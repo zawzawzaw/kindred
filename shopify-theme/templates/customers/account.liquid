@@ -1,5 +1,11 @@
 <!-- /templates/customers/account.liquid -->
 
+
+{% comment %} Only the account page will have this div {% endcomment %}
+<div id="page-account-page-indicator"></div>
+
+
+
 <div id="page-account-main-container">
 
   <!--
@@ -977,6 +983,11 @@
                       <label for="">{{ 'customer.friend_referral.message' | t }}</label>
                       <textarea name="message" id="message" required cols="30" rows="10"></textarea>
 
+                      <div class="cta-container visible-md visible-lg">
+                        <input type="submit" id="send-message" class="square-cta" value="Send Message">
+                      </div>
+                      
+
                     </div>
                   </div>
                 </div>
@@ -993,7 +1004,7 @@
                           <div class="col-md-6 visible-md visible-lg">
                             <a href="#" id="add-more-name" class="square-cta full-width-version">Add more names</a>
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-6 visible-sm visible-xs">
                             <input type="submit" id="send-message" class="square-cta square-cta-02-xs full-width-version" value="Send Message">
                           </div>
                         </div>

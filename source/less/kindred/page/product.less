@@ -340,6 +340,10 @@
     text-align: right;
     // padding-top: 25px;
     padding-top: 24px;
+
+    &.left-version{
+      text-align: left;
+    }
   }
 
 } // #product-page-detail-copy-content
@@ -1163,6 +1167,12 @@
       .opacity(1);
       visibility: visible;
     }
+
+    &.visible-version{
+      .opacity_important(1);
+      visibility: visible !important;
+    }
+
   }
 }
 
@@ -1517,3 +1527,85 @@
 }
 
 
+//     ____ ___ _____ _____ ____    _    ____  ____    ____  _____ ____  _____ _____ __  __   ____   _    ____ _____
+//    / ___|_ _|  ___|_   _/ ___|  / \  |  _ \|  _ \  |  _ \| ____|  _ \| ____| ____|  \/  | |  _ \ / \  / ___| ____|
+//   | |  _ | || |_    | || |     / _ \ | |_) | | | | | |_) |  _| | | | |  _| |  _| | |\/| | | |_) / _ \| |  _|  _|
+//   | |_| || ||  _|   | || |___ / ___ \|  _ <| |_| | |  _ <| |___| |_| | |___| |___| |  | | |  __/ ___ \ |_| | |___
+//    \____|___|_|     |_| \____/_/   \_\_| \_\____/  |_| \_\_____|____/|_____|_____|_|  |_| |_| /_/   \_\____|_____|
+//
+
+
+#product-page-detail-copy-content{
+  .giftcard__code{
+    position: relative;
+    bottom: auto;
+    text-align: left;
+
+    padding-top: 4px;
+    padding-bottom: 20px;
+  }
+}
+
+
+#product-page-detail-qr-code-container{
+  text-align: left;
+  #QrCode img{
+    margin: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.main-content.giftcard-redeem-version{
+  #product-page-giftcard-design-container{
+    
+  }
+  #product-page-detail-copy{
+    
+  }
+}
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+  .main-content.giftcard-redeem-version{
+    #product-page-giftcard-design-container{
+      height: 800px;
+
+      .product-page-giftcard-design{
+        top: 0;
+        bottom: 0;
+      }
+    }
+    #product-page-detail-copy{
+      height: 800px;
+    }
+  }  
+}
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .main-content.giftcard-redeem-version{
+    #product-page-giftcard-design-container{
+      
+      .product-page-giftcard-design{
+        top: 20px;
+        bottom: 20px;
+      }
+    }
+    #product-page-detail-copy{
+
+    }
+  }  
+}
