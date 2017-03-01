@@ -70,6 +70,28 @@
 
 
 
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+  #product-page-detail-copy{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  #product-page-detail-image-container{
+    margin-left: -10px;
+    margin-right: -10px;
+
+  }
+  #product-page-detail-copy-container{
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+
+
+
+
+
 
 //    __  __ _   _ _   _____ ___ ____  _     _____   ___ _   _  ____ ____  _____ ____ ___ _____ _   _ _____
 //   |  \/  | | | | | |_   _|_ _|  _ \| |   | ____| |_ _| \ | |/ ___|  _ \| ____|  _ \_ _| ____| \ | |_   _|
@@ -156,9 +178,11 @@
       margin-right: -1 * @mobile-padding;
     }
     #product-page-detail-image{
-      height: 380px !important;
+      // height: 380px !important;
+      height: 550px !important;
       .manic-image-container{
-        height: 380px !important;
+        // height: 380px !important;
+        height: 550px !important;
       }
     }
 
@@ -192,9 +216,9 @@
 
     }
     #product-page-detail-image{
-      height: 250px !important;
+      height: 280px !important;
       .manic-image-container{
-        height: 250px !important;     // override the multiple ingredient declarations
+        height: 280px !important;     // override the multiple ingredient declarations
       }
     }
     #product-page-detail-copy-container{
@@ -206,6 +230,20 @@
     #product-page-detail-copy-content{
 
     }
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #product-page-detail-section,
+  #product-page-detail-section.multiple-ingredient-version{
+
+    #product-page-detail-image{
+      height: 250px !important;
+      .manic-image-container{
+        height: 250px !important;     // override the multiple ingredient declarations
+      }
+    }
+
   }
 }
 
@@ -304,7 +342,18 @@
     padding-top: 24px;
   }
 
-} // #product-page-detail-copy-content{
+} // #product-page-detail-copy-content
+
+
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+  #product-page-detail-copy-content{
+    .cta-container{
+      padding-top: 25px;
+    }
+  }
+}
 
 
 
@@ -461,6 +510,7 @@
       top: -2px;
     }
   }
+
   &.multiple-version{
     p{
       span{
@@ -532,8 +582,9 @@
 
     &.multiple-version{
       p{
-        font-size: 12px;
+        // font-size: 12px;
         // line-height: 18px;
+        padding-right: 60px;
 
         span{
           margin-bottom: 0px;
@@ -557,6 +608,30 @@
         margin-right: -10px;
       }
     }
+
+    &.multiple-version{
+      margin-bottom: 10px;
+
+      p{
+        padding-right: 0px;
+      }
+
+      // p{
+      //   font-size: 12px;
+      //   line-height: 15px;
+      //   margin-right: -10px;
+      //   letter-spacing: -0.02em;
+      //
+      // span{
+      //     .body-font-bold-mobile;
+      //     font-size: 12px;
+      //     line-height: 15px;
+      //     // margin-bottom: 3px;
+      //     margin-bottom: 0px;
+      //   }
+      // }
+    }
+
   } // .product-detail
 }
 
@@ -684,7 +759,11 @@
 }
 
 
-@media only screen and (max-width: 991px) {
+// @media only screen and (max-width: 991px) {
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {                  // i need this in tablet landscape already...
+
   .product-quantity-container{
     label{
       .header-h5-style-mobile;
@@ -799,7 +878,11 @@
 }
 
 // TABLET PORTRAIT & SMALL DESKTOP
-@media only screen and (max-width: 991px) {
+// @media only screen and (max-width: 991px) {
+ 
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+
   #product-page-detail-copy-content{
 
     .custom-wrapper,
@@ -864,6 +947,9 @@
   #product-item-container{
     text-align: center;
 
+    
+
+
     .product-item{
       margin-left: 5%;
       margin-right: 5%;
@@ -876,6 +962,9 @@
         margin-right: 3%;
       }
     }
+
+
+
   }
 
 }
@@ -887,6 +976,11 @@
 
 
 
+
+
+
+
+/*
 @media only screen and (max-width: 1180px) {
 
   #product-page-also-like-section #product-item-container .product-item{
@@ -920,6 +1014,11 @@
     margin-right: 0%;
   }
 }
+*/
+
+
+
+
 
 
 #product-page-also-like-title{
@@ -947,9 +1046,8 @@
   padding-top: 35px;
   padding-bottom: 30px - 12px;
 
-  #product-item-container{
-    text-align: center;
-  }
+  .format-mobile-slick();
+  
 }
 
 #product-page-also-like-title-mobile{
@@ -983,9 +1081,54 @@
 
 
 
+
 #all-related-product-item-mobile-container{
   display: none;
 }
+
+
+#product-item-mobile-slider{
+  margin-left: -15px;
+  margin-right: -15px;
+
+  .product-item.product-item-square-version{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  &.tea-version{
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+
+} // #product-item-mobile-slider
+
+
+
+// MOBILE
+@media only screen and (max-width: 767px) {
+  #product-item-mobile-slider{
+    // margin-left: -15px;
+    // margin-right: -15px;
+    
+    &.tea-version{
+      // margin-left: 0px;
+      // margin-right: 0px;
+    }
+
+  } // #product-item-mobile-slider
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1200,7 +1343,8 @@
   textarea{
     .open-sans-regular;
     font-size: 14px;;
-    color: @grey-02;
+    // color: @grey-02;
+    color: @grey-05;
 
 
     display: block;
@@ -1263,10 +1407,12 @@
 
       outline: none !important;
 
-      color: @grey-02;
       .open-sans-regular;
       // font-size: 15px;;
-      font-size: 14px;;
+      font-size: 14px;
+
+      color: @grey-02;        // i guess it's okay for this one to be the same as the other product select things
+      // color: @grey-05;
 
 
       .display-inline-block;
@@ -1291,7 +1437,11 @@
 
 
 // TABLET PORTRAIT & SMALL DESKTOP
-@media only screen and (max-width: 991px) {
+// @media only screen and (max-width: 991px) {
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {      // needs to be available immediately to tablet forms
+
   .product-giftcard-custom-fields{
     padding-bottom: 1px;  // so it will have a different block as the hr below it
     margin-bottom: -4px;  // weird huh
@@ -1357,8 +1507,13 @@
 }
 
 // TABLET PORTRAIT & SMALL DESKTOP
-@media only screen and (max-width: 991px) {
+// @media only screen and (max-width: 991px) {
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {      // needs to be available immediately to tablet forms
   .character-counter{
     .body-font-small-mobile;
   }
 }
+
+

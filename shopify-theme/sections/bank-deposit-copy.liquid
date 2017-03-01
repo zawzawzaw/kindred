@@ -1,0 +1,66 @@
+<!--
+    ____ ___  ______   __
+   / ___/ _ \|  _ \ \ / /
+  | |  | | | | |_) \ V /
+  | |__| |_| |  __/ | |
+   \____\___/|_|    |_|
+
+-->
+
+
+
+<article id="about-page-copy-section" class="grey-bg-version">
+  <div class="container-fluid has-breakpoint">
+    <div class="row">
+
+      <div class="col-md-5">
+
+        <div id="about-page-copy-copy">
+          <div class="default-copy">
+            <h1>{{ section.settings.title }}</h1>
+            {{ section.settings.contentcopy }}
+
+
+          </div>
+        </div> <!-- about-page-copy-copy -->
+        
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+
+        <div id="about-page-copy-image" class="hidden-sm hidden-xs">
+          <div class="manic-image-container">
+            <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
+          </div>
+        </div> <!-- about-page-copy-image -->
+
+      </div>
+    </div> <!-- row -->
+  </div>
+</article>
+
+
+{% schema %}
+  {
+
+    "name": "Bank Deposit Copy",
+    "class": "about-page-copy-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Content Copy"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image",
+        "label": "Content Image"
+      }
+    ]
+  }
+{% endschema %}

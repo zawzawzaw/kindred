@@ -70,7 +70,9 @@ function sendEmail($data) {
 
   $mail->isHTML(true);                                  // Set email format to HTML
 
-  $mail->Subject = 'Your friend '.$data['from_name'].' invites you to try Kindred Teas!';
+  // $mail->Subject = 'Your friend '.$data['from_name'].' invites you to try Kindred Teas!';
+  $mail->Subject = 'Your friend, '.$data['from_name'].', has invited you to join us';
+
   $mail->Body    = '<html>
 <head>
     <meta http-equiv="Content-Security-Policy" content="script-src \'none\'; style-src * \'unsafe-inline\'; default-src *;">
@@ -259,9 +261,11 @@ if(count($invited_email) > 0) {
   $invited_emails = implode(", ", $invited_email);
 
   // echo "The following emails were already invited: ".$invited_emails.".";
-  header("Location: https://kindredteas.com/account?success=true&emails=".$invited_emails."#page-account-friend-referral-section");
+  // header("Location: https://kindredteas.com/account?success=true&emails=".$invited_emails."#page-account-friend-referral-section");
+  header("Location: https://kindredteas.com/account?success=true&emails=".$invited_emails."#friend-referral");
 }else {
   // echo "Successfully invited.";
-  header("Location: https://kindredteas.com/account?success=true#page-account-friend-referral-section");
+  // header("Location: https://kindredteas.com/account?success=true#page-account-friend-referral-section");
+  header("Location: https://kindredteas.com/account?success=true#friend-referral");
 }
 ?>

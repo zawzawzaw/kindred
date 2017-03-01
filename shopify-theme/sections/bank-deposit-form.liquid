@@ -1,0 +1,133 @@
+
+<article id="contact-page-form-section">
+  <div class="container-fluid has-breakpoint">
+
+    <div class="row">
+      <div class="col-md-2 col-tablet-landscape-md-1 col-sm-0 col-xs-0"></div>
+      <div class="col-md-8 col-tablet-landscape-md-10 col-sm-12 col-xs-12">
+
+        <div id="contact-page-form-title">
+          <h2>{{ section.settings.title }}</h2>
+          {{ section.settings.contentcopy }}
+        </div> <!-- contact-page-form-title -->
+
+      </div>
+    </div>
+    
+
+    <div class="row">
+      <div class="col-md-2 col-tablet-landscape-md-1 col-sm-0 col-xs-0"></div>
+      <div class="col-md-8 col-tablet-landscape-md-10 col-sm-12 col-xs-12">
+
+        <div id="contact-page-form-container">
+          <div id="contact-page-form" class="simple-form-check add-element-version">
+
+            {% form 'contact' %}
+
+              {% if form.posted_successfully? %}
+
+                <!-- <p class="note form-success">{{ 'contact.form.post_success' | t }}</p> -->
+
+                <p class="note form-success">
+                  {{ section.settings.successcopy }}
+                </p>
+              {% endif %}
+
+              {{ form.errors | default_errors }}
+
+
+              <input type="hidden" id="ContactFormSubject" name="contact[subject]" value="Bank Deposit Detail Form">
+              <input type="hidden" id="ContactFormMessage" name="contact[body]" value="This is the bank deposit details of the customer">
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="contact-page-column-01">
+
+                    {% assign name_attr = 'contact.form.name' | t | handle %}
+                    <label for="ContactFormName">{{ 'contact.form.name' | t }}<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormName" class="required input-full" name="contact[{{ name_attr }}]" placeholder="How should we address you" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+                    <label for="ContactFormEmail">{{ 'contact.form.email' | t }}<span class="asterisk">*</span></label>
+                    <input type="email" id="ContactFormEmail" class="input-full required only-email" name="contact[email]" placeholder="Please enter your email address" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+
+                    
+
+                    {% assign name_attr = 'contact.form.phone' | t | handle %}
+                    <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+                    <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="Please include country code" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+                    <label for="ContactFormOrderNo">Order No.<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormOrderNo" class="required" name="contact[orderno]" placeholder="Write your order no. here">
+
+                    <label for="ContactFormOrderAmount">Amount<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormOrderAmount" class="required" name="contact[orderamount]" placeholder="Please enter deposit amount">
+
+                    
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="contact-page-column-02">
+
+                    
+
+                    <label for="ContactFormTransactionNo">Transaction / Reference No.<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormTransactionNo" class="required" name="contact[transactionno]" placeholder="Write your transaction/reference no. here">
+
+                    <label for="ContactFormIbankingName">iBanking Name <small>(Where applicable)</small></label>
+                    <input type="text" id="ContactFormIbankingName" name="contact[ibankingname]" placeholder="Please enter iBanking name">
+
+                    <label for="ContactFormImage">Upload Receipt Snapshot <small>(Where applicable)</small></label>
+                    <div id="imgur-upload-container">
+                      <input type="text" id="ContactFormImage" name="contact[image]">
+                      <div class="dropzone"></div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              
+
+              <div class="cta-container">
+                <button type="submit" class="square-cta form-check-force-submit">Submit</button>
+              </div>
+
+
+
+
+            {% endform %}
+                    
+          </div>
+        </div> <!-- #contact-page-form-container -->
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+{% schema %}
+  {
+
+    "name": "Bank Deposit Form",
+    "class": "contact-page-form-section-container",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "textarea",
+        "id": "contentcopy",
+        "label": "Content Copy"
+      },
+      {
+        "type": "textarea",
+        "id": "successcopy",
+        "label": "Success Copy"
+      }
+    ]
+  }
+{% endschema %}

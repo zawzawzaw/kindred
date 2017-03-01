@@ -314,7 +314,9 @@ if(count($data) > 0) {
     </table>
 </body>
 </html>';
-  $subject = 'Reward for successful friend referral at Kindred Teas';
+
+  // $subject = 'Reward for successful friend referral at Kindred Teas';
+  $subject = 'Reward for successful Friend Referral';
 
   sendEmail($subject, $message, $data['referrer_email'], $data['referrer_name']);
   sendEmail($subject, $message_2, $data['friend_email'], $data['friend_name']);

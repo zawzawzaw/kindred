@@ -15,12 +15,15 @@
       <div class="col-md-10">
 
         <div id="page-faq-content">
+
+          {% comment %}<div class="manic-expand-container tablet-open-version tablet-fixed-open-version mobile-open-version mobile-fixed-open-version" data-group="faq">{% endcomment %}
           
 
           {% for block in section.blocks limit: section.blocks.size %}
 
-            <div class="manic-expand-container tablet-open-version tablet-fixed-open-version mobile-open-version mobile-fixed-open-version" data-group="faq">
-              <div class="scroll-target" data-value="faq-01"></div>
+            <div class="manic-expand-container" data-group="faq">
+              <div class="scroll-target" data-value="faq-{{ forloop.index0 }}"></div>
+              
               <div class="manic-expand-container-title">
 
                 {% if block.settings.title != blank %}

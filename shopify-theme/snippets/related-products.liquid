@@ -6,7 +6,7 @@
   and number of rows.
 {% endcomment %}
 
-{% assign number_of_related_products_per_row = 3 %}
+{% assign number_of_related_products_per_row = 4 %}
 {% assign number_of_rows = 1 %}
 
 {% comment %}
@@ -82,11 +82,25 @@
       {% assign grid_item_width = 'large--one-quarter medium--one-third small--one-half' %}
   {% endcase %}
 
+
+
+
+
+
+   {% assign is_current_product_tea = false %}
+   {% for ccc in current_product.collections %}
+     {% if ccc.handle == 'teas' %}
+       {% assign is_current_product_tea = true %}
+     {% endif %}
+   {% endfor %}
+
+   
   
-  {% assign extra_product_item_container_class = '' %}
-  {% if collection.template_suffix == 'square' %}
-    {% assign extra_product_item_container_class = 'square-version' %}
-  {% endif %}
+
+
+
+
+  
 
   {% capture related_items %}
 
@@ -95,10 +109,12 @@
          {% unless same_vendor and current_product.vendor != product.vendor %}
            {% unless same_type and current_product.type != product.type %}
 
-
-              {% if collection.template_suffix == 'square' %}
-                {% assign image_container_classes = ' square-version' %}
-              {% endif %}
+             {% assign is_product_tea = false %}
+             {% for c in product.collections %}
+               {% if c.handle == 'teas' %}
+                 {% assign is_product_tea = true %}
+               {% endif %}
+             {% endfor %}
 
              {% include 'product-grid-item' %}
              {% assign counter = counter | plus: 1 %}
@@ -126,11 +142,14 @@
          {% unless same_vendor and current_product.vendor != product.vendor %}
            {% unless same_type and current_product.type != product.type %}
 
-              {% if collection.template_suffix == 'square' %}
-                {% assign image_container_classes = ' square-version' %}
-              {% endif %}
+              {% assign is_product_tea = false %}
+              {% for c in product.collections %}
+                {% if c.handle == 'teas' %}
+                  {% assign is_product_tea = true %}
+                {% endif %}
+              {% endfor %}
 
-             {% include 'product-grid-item' %}
+              {% include 'product-grid-item' %}
            {% endunless %}
         {% endunless %}
       {% endunless %}
@@ -145,11 +164,14 @@
          {% unless same_vendor and current_product.vendor != product.vendor %}
            {% unless same_type and current_product.type != product.type %}
 
-              {% if collection.template_suffix == 'square' %}
-                {% assign image_container_classes = ' square-version' %}
-              {% endif %}
+              {% assign is_product_tea = false %}
+              {% for c in product.collections %}
+                {% if c.handle == 'teas' %}
+                  {% assign is_product_tea = true %}
+                {% endif %}
+              {% endfor %}
 
-             {% include 'product-grid-item' %}
+              {% include 'product-grid-item' %}
            {% endunless %}
         {% endunless %}
       {% endunless %}
@@ -175,19 +197,38 @@
           </div>
           
 
-          <div id="product-item-container" class="{{ extra_product_item_container_class }}">
+          <div id="product-item-container">
 
-            {{ related_items }}
+            {% if is_current_product_tea == true %}
+              <div class="product-item-single-row">
+                <div class="row">
+                  {{ related_items }}
+                </div>
+              </div>
+
+            {% else %}
+              <div class="product-item-square-single-row">
+                <div class="row">
+                  {{ related_items }}
+                </div>
+              </div>
+
+            {% endif %}
 
           </div> <!-- product-item-container -->
+
+          
 
         </div>
       </div>
     </div>
   </article>
 
-
-  <article id="product-page-also-like-section-mobile" class="visible-sm visible-xs">
+  
+  {% comment %}
+    will have 'tea-version' class if current product is tea
+  {% endcomment %}  
+  <article id="product-page-also-like-section-mobile" class="visible-sm visible-xs {% if is_current_product_tea == true %}tea-version{% endif %}">
     <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12">
@@ -200,9 +241,8 @@
             {{ all_related_items_mobile }}
           </div>
 
-          <div id="product-item-container" class="{{ extra_product_item_container_class }}">
-            
-          </div>
+          <div id="product-item-mobile-slider" class="{% if is_current_product_tea == true %}tea-version{% endif %}"></div>
+          
 
         </div>
       </div>

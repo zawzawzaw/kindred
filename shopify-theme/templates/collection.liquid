@@ -52,8 +52,8 @@
   <div class="container-fluid has-breakpoint">
 
     <div class="row">
-      <div class="col-md-3 col-sm-2"></div>
-      <div class="col-md-6 col-sm-8">
+      <div class="col-md-3 col-tablet-landscape-md-1 col-sm-2"></div>
+      <div class="col-md-6 col-tablet-landscape-md-10 col-sm-8">
         
         <div id="collection-page-product-title">
           {% if collection.description != blank %}
@@ -69,9 +69,24 @@
     <div class="row">
       <div class="col-md-12">
 
-        <div id="product-item-container">
+        {% capture all_tea_products %}
+          {% for product in collection.products %}
 
-          
+            {% assign is_product_tea = false %}
+            {% for c in product.collections %}
+              {% if c.handle == 'teas' %}
+                {% assign is_product_tea = true %}
+              {% endif %}
+            {% endfor %}
+
+            {% if is_product_tea == true %}
+              {% include 'product-grid-item' %}
+            {% endif %}
+
+          {% endfor %}
+        {% endcapture %}
+
+        {% capture other_products %}
           {% for product in collection.products %}
 
             {% assign is_product_tea = false %}
@@ -82,13 +97,27 @@
             {% endfor %}
 
             {% if is_product_tea == false %}
-              {% assign image_container_classes = ' square-version' %}
+              {% include 'product-grid-item' %}
             {% endif %}
-            
-            {% include 'product-grid-item' %}
+
           {% endfor %}
+        {% endcapture %}
+        
 
+        <div id="product-item-container">
 
+          <div class="product-item-tea-row">
+            <div class="row">
+              {{ all_tea_products }}
+            </div> <!-- row -->
+          </div> <!-- product-item-tea-row -->
+
+          <div class="product-item-row">
+            <div class="row">
+              {{ other_products }}
+            </div>
+          </div> <!-- product-item-row -->
+          
         </div> <!-- product-item-container -->
 
 

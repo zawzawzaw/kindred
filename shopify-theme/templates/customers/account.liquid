@@ -97,50 +97,36 @@
 
                 <div class="visible-md visible-lg">
                   <div class="row">
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Name</h4>
-                        <p>{{ customer.name }}</p>
+
+                    <div class="col-md-6">
+                      <div class="form-column-01">
+                        <div class="row">
+
+                          <div class="col-md-5">
+                            <div class="account-information-details-item">
+                              <h4>Name</h4>
+                              <p>{{ customer.name }}</p>
+                            </div>
+                          </div>
+                          <div class="col-md-7">
+                            <div class="account-information-details-item">
+                              <h4>Email</h4>
+                              <p>{{ customer.email }}</p>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Email</h4>
-                        <p>{{ customer.email }}</p>
-                      </div>
-                    </div>
 
-                    {% if customer.default_address != nil %}
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Address</h4>
-                        <p>
-                          {{ customer.default_address.address1 }}
+                    <div class="col-md-6">
+                      <div class="form-column-02">
 
-                          {% if customer.default_address.address2 != "" %}
-                            {{ customer.default_address.address2 }}<br>
-                          {% endif %}
+                        <div class="account-information-details-item">
+                          <h4>Password</h4>
+                          <p><a href="/account/login#recover">Change Password</a></p>
+                        </div>
 
-                          {% if customer.default_address.city != "" %}
-                            {{ customer.default_address.city }}
-                          {% endif %}
-
-                          {% if customer.default_address.province_code != "" %}
-                            {{ customer.default_address.province_code | upcase }}
-                          {% endif %}
-
-                          {% if customer.default_address.zip != "" %}
-                            {{ customer.default_address.zip | upcase }}
-                          {% endif %} 
-                        </p>
-                      </div>
-                    </div>
-                    {% endif %}
-
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Phone Number</h4>
-                        <p>{{ customer.default_address.phone }}</p>
                       </div>
                     </div>
 
@@ -148,23 +134,86 @@
 
                   <div class="row">
 
-                    {% if customer.default_address.country != "" %}
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Country</h4>
-                        <p>{{ customer.default_address.country }}</p>
-                      </div>
-                    </div>
-                    {% endif %}
+                    <div class="col-md-6">
+                      <div class="form-column-01">
 
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>Password</h4>
-                        <p><a href="/account/login#recover">Change Password</a></p>
+                        <div class="row">
+
+
+                          <div class="col-md-5">
+                            <div class="account-information-details-item">
+                              <h4>Phone Number</h4>
+                              <p>{{ customer.default_address.phone }}</p>
+                            </div>
+                          </div>
+
+
+                          {% if customer.default_address.country != "" %}
+
+                            <div class="col-md-7">
+                              <div class="account-information-details-item">
+                                <h4>Country</h4>
+                                <p>{{ customer.default_address.country }}</p>
+                              </div>
+                            </div>
+
+                          {% endif %}
+
+                        </div>
+
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-column-02">
+
+                        
+
+
+
+
+                        {% if customer.default_address != nil %}
+                        
+                          <div class="account-information-details-item">
+                            <h4>Address</h4>
+                            <p>
+                              {{ customer.default_address.address1 }}
+
+                              {% if customer.default_address.address2 != "" %}
+                                {{ customer.default_address.address2 }}<br>
+                              {% endif %}
+
+                              {% if customer.default_address.city != "" %}
+                                {{ customer.default_address.city }}
+                              {% endif %}
+
+                              {% if customer.default_address.province_code != "" %}
+                                {{ customer.default_address.province_code | upcase }}
+                              {% endif %}
+
+                              {% if customer.default_address.zip != "" %}
+                                {{ customer.default_address.zip | upcase }}
+                              {% endif %} 
+                            </p>
+                          </div>
+                        
+                        {% endif %}
+
+                      </div>
+                    </div>
+
+                    
+
                   </div> <!-- row -->
                 </div> <!-- visible-md -->
+
+
+
+
+
+
+
+
+
 
                 <div class="visible-sm visible-xs">
 
@@ -177,7 +226,7 @@
                     </div>
 
                     {% if customer.default_address.country != "" %}
-                    <div class="col-xs-3">
+                    <div class="col-xs-6">
                       <div class="account-information-details-item">
                         <h4>Country</h4>
                         <p>{{ customer.default_address.country }}</p>
@@ -190,14 +239,15 @@
                   <div class="row">
                     <div class="col-xs-6">
                       <div class="account-information-details-item">
-                        <h4>Password</h4>
-                        <p><a href="/account/login#recover">Change Password</a></p>
+                        <h4>Phone Number</h4>
+                        <p>{{ customer.default_address.phone }}</p>
                       </div>
+
                     </div>
                     <div class="col-xs-6">
                       <div class="account-information-details-item">
-                        <h4>Phone Number</h4>
-                        <p>{{ customer.default_address.phone }}</p>
+                        <h4>Password</h4>
+                        <p><a href="/account/login#recover">Change Password</a></p>
                       </div>
                     </div>
                   </div> <!-- row -->
@@ -210,7 +260,25 @@
                   {% if customer.default_address != nil %}
                   <div class="account-information-details-item">
                     <h4>Address</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                    <p>
+                      {{ customer.default_address.address1 }}
+
+                      {% if customer.default_address.address2 != "" %}
+                        {{ customer.default_address.address2 }}<br>
+                      {% endif %}
+
+                      {% if customer.default_address.city != "" %}
+                        {{ customer.default_address.city }}
+                      {% endif %}
+
+                      {% if customer.default_address.province_code != "" %}
+                        {{ customer.default_address.province_code | upcase }}
+                      {% endif %}
+
+                      {% if customer.default_address.zip != "" %}
+                        {{ customer.default_address.zip | upcase }}
+                      {% endif %} 
+                    </p>
                   </div>
                   {% endif %}
                   
@@ -238,39 +306,53 @@
 
                   {% for address in customer.addresses %}
 
-                    <div class="col-md-3">
-                      <div class="account-information-details-item">
-                        <h4>
-                          Address 
-                          {% if address == customer.default_address %}
-                            <span class="default-span">({{ 'customer.addresses.default' | t }})</span>
-                          {% endif %}
-                        </h4>
+                  {% assign address_modulo = forloop.index0 | modulo: 2 %}
+                  {% assign address_extra_class = 'form-column-02' %}
 
-                        <p>
-                          {{ address.company }}
-                          {{ address.street }}
-                          {{ address.city | capitalize }}
-                          {% if address.province_code %}
-                            {{ address.province_code | upcase }} 
-                          {% endif %}
-                          {{ address.zip | upcase }}
-                          {{ address.country }}
-                          {{ address.phone }}
-                        </p>
+                  {% if address_modulo == 0 %}
+                    {% assign address_extra_class = 'form-column-01' %}
+                  {% endif %}
+
+                    <div class="col-md-6">
+                      <div class="{{ address_extra_class }}">
+                        <div class="account-information-details-item">
+                          <h4>
+                            <!-- Address  -->
+                            {{ address.first_name }} {{ address.last_name }}
 
 
-                        <div class="account-information-details-item-cta-container">
-                          <ul>
-                            <li>{{ 'customer.addresses.edit' | t | edit_customer_address_link: address.id }}</li>
-                            <li>{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}</li>
-                          </ul>
-                        </div>
+                            
+
+                            {% if address == customer.default_address %}
+                              <span class="default-span">({{ 'customer.addresses.default' | t }})</span>
+                            {% endif %}
+                          </h4>
+
+                          <p>
+                            {{ address.company }}
+                            {{ address.street }}
+                            {{ address.city | capitalize }}
+                            {% if address.province_code %}
+                              {{ address.province_code | upcase }} 
+                            {% endif %}
+                            {{ address.zip | upcase }}
+                            {{ address.country }}
+                            {{ address.phone }}
+                          </p>
+
+
+                          <div class="account-information-details-item-cta-container">
+                            <ul>
+                              <li>{{ 'customer.addresses.edit' | t | edit_customer_address_link: address.id }}</li>
+                              <li>{{ 'customer.addresses.delete' | t | delete_customer_address_link: address.id }}</li>
+                            </ul>
+                          </div>
 
 
 
 
-                      </div> <!-- account-information-details-item -->
+                        </div> <!-- account-information-details-item -->
+                      </div>
                     </div>
 
 
@@ -328,35 +410,55 @@
 
                               </div>
                             </div>
-                            
+
+
                             <div class="row">
                               <div class="col-md-6">
-
                                 <div class="form-column-01">
+
+                                  <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
+                                  <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-column-02">
+
                                   <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
                                   <input type="text" id="AddressCity_{{ form.id }}" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+
                                 </div>
+                              </div>
+                            </div> <!-- row -->
 
-                              </div>        
+                            <div class="row">
                               <div class="col-md-6">
+                                <div class="form-column-01">
 
-                                <div class="form-column-02">
                                   <label for="AddressCountry_{{ form.id }}">{{ 'customer.addresses.country' | t }}</label>
                                   <div class="dropdown"> 
                                     <select id="AddressCountry_{{ form.id }}" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
                                   </div>
-                                </div>
 
-                              </div>                  
-                            </div>                        
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-column-02">
+
+                                  <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
+                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
+
+                                </div>
+                              </div>
+                            </div> <!-- row -->
+
                               
 
                             <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
                               <div class="row">
-                                <div class="col-md-6"></div>
                                 <div class="col-md-6">
 
-                                  <div class="form-column-02">
+                                  <div class="form-column-01">
                                     <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}</label>
                                     <div class="dropdown">
                                       <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
@@ -364,25 +466,6 @@
                                   </div>
 
                                 </div>
-                              </div>
-                            </div>
-
-                            <div class="row">
-                              <div class="col-md-6">
-
-                                <div class="form-column-01">
-                                  <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
-                                  <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
-                                </div>
-
-                              </div>
-                              <div class="col-md-6">
-
-                                <div class="form-column-02">
-                                  <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
-                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
-                                </div>
-                                
                               </div>
                             </div>
 
@@ -501,28 +584,18 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-column-01">
+
+                      <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
+                      <input type="text" id="AddressZipNew" required class="input-full white-version" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                      
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-column-02">
+                      
                       <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
                       <input type="text" id="AddressCityNew" required class="input-full white-version" name="address[city]" value="{{ form.city }}" autocapitalize="words">
-                    </div>
-                  </div>
-                  <div class="col-md-6" style="max-height: 70px;">
-                    <div class="form-column-02">
-                      <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
-                      <div class="dropdown white-version">
-                        <select id="AddressCountryNew" required class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
-                      </div>
-                    </div>
-                  </div>
-                </div> <!-- row -->
 
-                <div class="row" id="AddressProvinceContainerNew">
-                  <div class="col-md-6"></div>
-                  <div class="col-md-6">
-                    <div class="form-column-01">
-                      <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
-                      <div class="dropdown white-version">
-                        <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
-                      </div>
                     </div>
                   </div>
                 </div> <!-- row -->
@@ -530,15 +603,34 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-column-01">
-                      <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
-                      <input type="text" id="AddressZipNew" required class="input-full white-version" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+
+                      <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+                      <div class="dropdown white-version">
+                        <select id="AddressCountryNew" required class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                      </div>
+                      
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-column-02">
+                      
                       <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
                       <input type="tel" id="AddressPhoneNew" required class="input-full white-version" name="address[phone]" value="{{ form.phone }}">
+                      
                     </div>
+                  </div>
+                </div> <!-- row -->
+
+                <div class="row" id="AddressProvinceContainerNew">
+                  <div class="col-md-6">
+
+                    <div class="form-column-02">
+                      <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
+                      <div class="dropdown white-version">
+                        <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
+                      </div>
+                    </div>
+
                   </div>
                 </div> <!-- row -->
 
@@ -556,11 +648,6 @@
                 <div class="cta-container">
                   <input type="submit" class="square-cta btn" value="{{ 'customer.addresses.add' | t }}">
                 </div>
-
-                <div class="row">
-                  
-                </div> <!-- row -->
-
 
               {% endform %}
             </div> <!-- page-account-information-address-form -->
@@ -660,7 +747,7 @@
 
                 {% paginate customer.orders by 20 %}
 
-                  <div id="page-account-order-history-table" class="visible-md visible-lg">
+                  <div id="page-account-order-history-table" class="visible-sm visible-md visible-lg">
 
                     <table class="default-table">
                       <thead>
@@ -687,17 +774,15 @@
 
                   </div> <!-- page-account-order-history-table -->
 
-                  <div id="page-account-order-history-table-mobile" class="visible-sm visible-xs">
+                  <div id="page-account-order-history-table-mobile" class="visible-xs">
                     <table class="default-table">
                       <thead>
                         <tr>
                           <th>
-                            {{ 'customer.orders.date' | t }} <br>
                             {{ 'customer.orders.order_number' | t }}
                           </th>
                           <th>
-                            {{ 'customer.orders.payment_status' | t }} <br>
-                            {{ 'customer.orders.fulfillment_status' | t }}
+                            {{ 'customer.orders.date' | t }}
                           </th>                    
                           <th>
                             {{ 'customer.orders.total' | t }}
@@ -708,15 +793,16 @@
                         {% for order in customer.orders %}
                           <tr>                      
                             <td>
-                              {{ order.created_at | date: format: 'month_day_year' }} <br>
                               {{ order.name | link_to: order.customer_url }}
                             </td>
                             <td>
-                              {{ order.financial_status_label }} <br>
-                              {{ order.fulfillment_status_label }}
+                              {{ order.created_at | date: format: 'month_day_year' }} <br>
                             </td>
                             <td>
                               {{ order.total_price | money }}
+
+                              <a href="{{ order.customer_url }}" class="arrow-cta"></a>
+
                             </td>
                           </tr>
                         {% endfor %}
@@ -801,7 +887,7 @@
                       <label for="">{{ 'customer.friend_referral.name' | t }}</label>
 
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                           <div class="dropdown">
                             <select name="salutation" id="salutation" required>
                               <option value="">Please select</option>
@@ -812,7 +898,7 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                           <input type="text" name="from_name" class="input-full" required>
                         </div>
                       </div>
@@ -821,10 +907,10 @@
 
                       <div class="page-account-friend-referal-field-item">
                         <div class="row">
-                          <div class="col-md-5">
+                          <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="text" name="to_name" class="to_name input-full" placeholder="Name" required>
                           </div>
-                          <div class="col-md-7">
+                          <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="email" name="to_email" class="to_email input-full" placeholder="Email Address" required pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                           </div>
                         </div>
@@ -834,10 +920,10 @@
 
                       <div class="page-account-friend-referal-field-item">
                         <div class="row">
-                          <div class="col-md-5">
+                          <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="text" name="to_name_2" class="input-full" placeholder="Name">
                           </div>
-                          <div class="col-md-7">
+                          <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="email" name="to_email_2" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                           </div>
                         </div>
@@ -846,10 +932,10 @@
 
                       <div class="page-account-friend-referal-field-item">
                         <div class="row">
-                          <div class="col-md-5">
+                          <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="text" name="to_name_3" class="input-full" placeholder="Name">
                           </div>
-                          <div class="col-md-7">
+                          <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="email" name="to_email_3" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                           </div>
                         </div>
@@ -858,10 +944,10 @@
 
                       <div class="page-account-friend-referal-field-item">
                         <div class="row">
-                          <div class="col-md-5">
+                          <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="text" name="to_name_4" class="input-full" placeholder="Name">
                           </div>
-                          <div class="col-md-7">
+                          <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                             <input type="email" name="to_email_4" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
                           </div>
                         </div>
@@ -879,7 +965,16 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-column-02">
-                    <label for="">{{ 'customer.friend_referral.message' | t }}</label>
+
+                      <div class="visible-sm visible-xs">
+                        <div class="cta-container" style="padding-top:0!important;">
+                          <a href="#" id="add-more-name-mobile" class="square-cta">Add more names</a>
+                        </div>
+                        <div class="space40 visible-sm visible-xs"></div>
+
+                      </div>
+
+                      <label for="">{{ 'customer.friend_referral.message' | t }}</label>
                       <textarea name="message" id="message" required cols="30" rows="10"></textarea>
 
                     </div>
@@ -895,8 +990,8 @@
 
                       <div class="cta-container">
                         <div class="row">
-                          <div class="col-md-6">
-                            <a href="#" id="add-more-name" class="square-cta square-cta-01-xs full-width-version">Add more names</a>
+                          <div class="col-md-6 visible-md visible-lg">
+                            <a href="#" id="add-more-name" class="square-cta full-width-version">Add more names</a>
                           </div>
                           <div class="col-md-6">
                             <input type="submit" id="send-message" class="square-cta square-cta-02-xs full-width-version" value="Send Message">
@@ -936,7 +1031,8 @@
   
   function InvalidMsg(textbox) {
     if(textbox.validity.patternMismatch){
-      textbox.setCustomValidity('You cannot send invitation to yourself.');
+      // textbox.setCustomValidity('You cannot send invitation to yourself.');    // copy change from fion
+      textbox.setCustomValidity('You cannot send an invitation to yourself.');
     } else {
       textbox.setCustomValidity('');
     }

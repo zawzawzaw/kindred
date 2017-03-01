@@ -72,11 +72,12 @@
 } // arrow-cta
 
 
+
+
 .is-mac{
   .arrow-cta{
     &:after{
       top: -1px;
-      
     }
   }
 }
@@ -168,6 +169,7 @@
     padding-right: 0;
     text-align: center;
     
+    white-space: nowrap;
   }
 
 } // .square-cta
@@ -188,11 +190,19 @@
 
   display: block;
   width: 100%;
-  padding-top: 11px;
-  padding-bottom: 10px;
+  padding-top: 11px !important;
+  padding-bottom: 10px !important;
 }
 
 
+
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {                  // i need this in tablet landscape already...
+  .square-cta{
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
 
 
 // TABLET PORTRAIT & SMALL DESKTOP
@@ -208,6 +218,8 @@
 
   }
 }
+
+
 
 // MOBILE
 @media only screen and (max-width: 767px) {

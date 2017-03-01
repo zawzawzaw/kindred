@@ -96,7 +96,7 @@ kindred.component.AccountContent.prototype.create_order_history = function() {
 kindred.component.AccountContent.prototype.create_friend_referral = function() {
 
 
-  $("#add-more-name").on("click", function(event){
+  $("#add-more-name, #add-more-name-mobile").on("click", function(event){
     event.preventDefault();
 
     var no = $(".page-account-friend-referal-field-item").length + 1;
@@ -134,9 +134,14 @@ kindred.component.AccountContent.prototype.create_friend_referral = function() {
 
   if(success) {
     if(emails) {          
-      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>The following email has already been invited!: ' + emails +'</li></ul></div>');
+      // $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>The following email has already been invited!: ' + emails +'</li></ul></div>');
+      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Your friends have been successfully invited!</li></ul></div>');
+      
     } else {
-      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Successfully invited.</li></ul></div>');
+      
+      // $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Successfully invited.</li></ul></div>');
+      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Your friend(s) are successfully invited!</li></ul></div>');
+      
     }
   }
 

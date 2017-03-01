@@ -338,11 +338,22 @@
 
 
 
+
+// TO FIX ON IE, REMOVE FONT-SIZE: 0
+
 .justify-inline-blocks{
   text-align: justify;
+  overflow: hidden;
+
+  zoom: 1;
+  // *display: inline;
+
   &:after{
     content: "";
     display: inline-block;
     width: 100%;
+
+    zoom: 1;
+    // *display: inline;
   }
 }
