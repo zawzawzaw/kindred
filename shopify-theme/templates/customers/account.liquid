@@ -25,10 +25,11 @@
     <div id="page-account-header-menu-mobile">
       <ul>
         <li class="selected" data-value="account-information">
-          <a href="#account-information">Info</a>
+          {% comment %}<a href="#account-information">Info</a>{% endcomment %}
+          <a href="#account-information">Account</a>
         </li>
         <li data-value="order-history">
-          <a href="#order-history">History</a>
+          <a href="#order-history">Orders</a>
         </li>
         <li data-value="friend-referral">
           <a href="#friend-referral">Referral</a>
@@ -42,7 +43,7 @@
 
 
 
-  <article id="page-account-header-section">
+  <article id="page-account-header-section" class="visible-md visible-lg">
     <div class="container-fluid has-breakpoint">    
       <div class="row">
         <div class="col-md-12">
@@ -86,6 +87,10 @@
 
 
   <div id="page-account-information-details-tab">
+
+    <div id="page-account-header-title" class="visible-sm visible-xs">
+      <h1>Account Info</h1>
+    </div>
 
     <article id="page-account-information-section">
       <div class="container-fluid has-breakpoint">
@@ -494,10 +499,10 @@
                                   <div class="cta-container">
                                     <div class="row">
                                       <div class="col-md-6">
-                                        <input type="submit" class="square-cta square-cta-01-xs full-width-version" value="{{ 'customer.addresses.update' | t }}">
+                                        <input type="submit" class="square-cta square-cta-01 full-width-version" value="{{ 'customer.addresses.update' | t }}">
                                       </div>
                                       <div class="col-md-6">
-                                        <a href="#" class="square-cta square-cta-02-xs full-width-version" onclick="Shopify.CustomerAddress.toggleForm({{ form.id }}); return false;">{{ 'customer.addresses.cancel' | t }}</a>
+                                        <a href="#" class="square-cta square-cta-02 full-width-version" onclick="Shopify.CustomerAddress.toggleForm({{ form.id }}); return false;">{{ 'customer.addresses.cancel' | t }}</a>
                                       </div>
                                     </div>
                                   </div>
@@ -630,7 +635,7 @@
                 <div class="row" id="AddressProvinceContainerNew">
                   <div class="col-md-6">
 
-                    <div class="form-column-02">
+                    <div class="form-column-01">
                       <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
                       <div class="dropdown white-version">
                         <select id="AddressProvinceNew" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
@@ -740,6 +745,10 @@
 
 
   <div id="page-account-order-history-tab">
+
+    <div id="page-account-header-title" class="visible-sm visible-xs">
+      <h1>Order History</h1>
+    </div>
 
     <article id="page-account-order-history-table-section">
       <div class="container-fluid has-breakpoint">
@@ -862,6 +871,10 @@
 
   <div id="page-account-friend-referal-tab">
 
+    <div id="page-account-header-title" class="visible-sm visible-xs">
+      <h1>Friend Referral</h1>
+    </div>
+
     <article id="page-account-friend-referal-form-section">
       <div class="container-fluid has-breakpoint">
         <div class="row">
@@ -870,6 +883,7 @@
 
             <div id="page-account-friend-referal-form">
 
+              <div id="page-account-friend-referal-form-customer-email" data-value="{{ customer.email }}"></div>
               <div id="page-account-friend-referal-form-status-message">
               </div>
 
@@ -893,7 +907,7 @@
                       <label for="">{{ 'customer.friend_referral.name' | t }}</label>
 
                       <div class="row">
-                        <div class="col-md-4 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
+                        <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                           <div class="dropdown">
                             <select name="salutation" id="salutation" required>
                               <option value="">Please select</option>
@@ -904,7 +918,7 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-8 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
+                        <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                           <input type="text" name="from_name" class="input-full" required>
                         </div>
                       </div>
@@ -917,7 +931,7 @@
                             <input type="text" name="to_name" class="to_name input-full" placeholder="Name" required>
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email" class="to_email input-full" placeholder="Email Address" required pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                            <input type="email" name="to_email" class="to_email input-full must-not-be-same-email" placeholder="Email Address" required>
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -930,7 +944,7 @@
                             <input type="text" name="to_name_2" class="input-full" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email_2" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                            <input type="email" name="to_email_2" class="input-full must-not-be-same-email" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -942,7 +956,7 @@
                             <input type="text" name="to_name_3" class="input-full" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email_3" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                            <input type="email" name="to_email_3" class="input-full must-not-be-same-email" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -954,7 +968,7 @@
                             <input type="text" name="to_name_4" class="input-full" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email_4" class="input-full" placeholder="Email Address" pattern="^((?!{{ customer.email }}).)*$" oninvalid="InvalidMsg(this);">
+                            <input type="email" name="to_email_4" class="input-full must-not-be-same-email" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -1039,7 +1053,7 @@
 
 
 <script type="text/javascript">
-  
+  /*
   function InvalidMsg(textbox) {
     if(textbox.validity.patternMismatch){
       // textbox.setCustomValidity('You cannot send invitation to yourself.');    // copy change from fion
@@ -1049,7 +1063,7 @@
     }
     return true;
   }
-    
+  
   // SCRIPTS WERE MOVED TO DEFAULT.JS
 
 </script>

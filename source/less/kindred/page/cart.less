@@ -409,7 +409,8 @@
       tbody{
         tr.cart__image{
           float: left;
-          width: 40%;
+          // width: 40%;
+          width: 30%;
           clear: both;
           position: relative;
 
@@ -421,7 +422,8 @@
         }
         tr.cart__row{
           float: right;
-          width: 60%;
+          // width: 60%;
+          width: 70%;
           clear: none;
           position: relative;
 
@@ -579,7 +581,6 @@
 
 
 
-
 // TABLET PORTRAIT & SMALL DESKTOP
 @media only screen and (max-width: 991px) {
 
@@ -619,6 +620,8 @@
 
 
   .cart-quantity-container{
+    text-align: right;
+
     .js-qty input, .ajaxcart__qty input{
       font-size: 12px;
       line-height: 21px;
@@ -663,6 +666,9 @@
       position: relative;
       top: 0;
     }
+  }
+  .cart-quantity-container{
+    text-align: center;
   }
 
 }

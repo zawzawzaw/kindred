@@ -258,19 +258,26 @@
     var email = getUrlParameter('email');
     var password = getUrlParameter('password');
 
+    console.log('email @ register')
     console.log(email);
     console.log(password);
 
-    if(email!=="" && password!=="") {
+    if ( email != null && 
+        email != undefined && 
+        password != null && 
+        password != undefined &&
+        email !== "" && 
+        password !== "") {
+
       $("#CustomerEmail").val(email);
       $("#CustomerPassword").val(password);
 
       $("#sign-in").trigger("click");
     }
 
-    function scrollToElement(ele) {
-        $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
-    }
-
-    scrollToElement($("#page-login-content-section"));
+    // function scrollToElement(ele) {
+    //     $(window).scrollTop(ele.offset().top).scrollLeft(ele.offset().left);
+    // }
+    // 
+    // scrollToElement($("#page-login-content-section"));
     </script>

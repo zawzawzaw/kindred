@@ -111,7 +111,7 @@ function sendEmail($data) {
                                                             <tbody>
                                                                 <tr>
                                                                     <td class="shop-name__cell">
-                                                                        <img src="https://cdn.shopify.com/s/files/1/1558/2721/email_settings/email-logo.png?138749194973076144" alt="Kindred Teas" width="100">
+                                                                        <img src="https://cdn.shopify.com/s/files/1/1558/2721/email_settings/email-logo.png?138749194973076144" alt="Kindred Teas" width="120">
                                                                     </td>
                                                                 </tr>
                                                             </tbody>

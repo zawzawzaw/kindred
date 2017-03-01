@@ -64,20 +64,6 @@
                       <p>{{ order.billing_address.name }}</p>
                     </div>
 
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="account-information-details-item">
-                      <h4>Payment Status</h4>
-                      <p>{{ order.financial_status_label }}</p>
-                    </div>
-
-                  </div>
-                </div> <!-- row -->
-
-                <div class="row">
-                  <div class="col-md-6">
-
                     <div class="account-information-details-item">
                       <h4>Address</h4>
                       <p>
@@ -94,8 +80,18 @@
                       </p>
                     </div>
 
+                    <div class="account-information-details-item">
+                      <h4>Phone Number</h4>
+                      <p>{{ order.billing_address.phone }}</p>
+                    </div>
+
                   </div>
                   <div class="col-md-6">
+
+                    <div class="account-information-details-item">
+                      <h4>Payment Status</h4>
+                      <p>{{ order.financial_status_label }}</p>
+                    </div>
 
                     <div class="account-information-details-item">
                       <h4>Payment Transaction</h4>
@@ -106,20 +102,6 @@
                       {% endfor %}
                     </div>
 
-                  </div>
-                </div> <!-- row -->
-
-                <div class="row">
-                  <div class="col-md-6">
-
-                    <div class="account-information-details-item">
-                      <h4>Phone Number</h4>
-                      <p>{{ order.billing_address.phone }}</p>
-                    </div>
-
-                  </div>
-                  <div class="col-md-6">
-
                     <div class="account-information-details-item">
                       <h4>Payment Date</h4>
                       <p>{{ 'customer.order.date' | t: date: order.created_at | date: "%B %d, %Y %I:%M%p" }}</p>
@@ -128,8 +110,12 @@
                   </div>
                 </div> <!-- row -->
 
+
               </div>
             </div>
+
+            <div></div>
+
           </div>
 
 
@@ -150,20 +136,6 @@
                       <p>{{ order.shipping_address.name }}</p>
                     </div>
 
-                  </div>
-                  <div class="col-md-6">
-
-                    <div class="account-information-details-item">
-                      <h4>{{ 'customer.order.fulfillment_status' | t }}</h4>
-                      <p>{{ order.fulfillment_status_label }}</p>
-                    </div>
-
-                  </div>
-                </div> <!-- row -->
-
-                <div class="row">
-                  <div class="col-md-6">
-
                     <div class="account-information-details-item">
                       <h4>Address</h4>
                       <p>
@@ -182,17 +154,26 @@
 
                   </div>
                   <div class="col-md-6">
-
+                    
                     <div class="account-information-details-item">
                       <h4>Phone Number</h4>
                       <p>{{ order.shipping_address.phone }}</p>
                     </div>
 
+                    <div class="account-information-details-item">
+                      <h4>{{ 'customer.order.fulfillment_status' | t }}</h4>
+                      <p>{{ order.fulfillment_status_label }}</p>
+                    </div>
+
                   </div>
                 </div> <!-- row -->
 
+
               </div>
             </div>
+
+            <div></div>
+
           </div> 
           
         </div>

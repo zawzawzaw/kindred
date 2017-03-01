@@ -23,6 +23,18 @@ kindred.component.AccountContent = function(options, element) {
   this.friend_referral_tab      = this.element.find('#page-account-friend-referal-tab');
 
     
+  this.customer_email = '';
+
+  if ($('#page-account-friend-referal-form-customer-email').length != 0 && 
+      goog.isDefAndNotNull($('#page-account-friend-referal-form-customer-email').attr('data-value')) ){
+
+    this.customer_email = '' + $('#page-account-friend-referal-form-customer-email').attr('data-value');
+  }
+  
+  
+  
+
+
 
 
 
@@ -129,6 +141,42 @@ kindred.component.AccountContent.prototype.create_friend_referral = function() {
  
 
 
+
+
+
+  $('#friend-referral-form').submit(function(event) {
+
+    var return_value = true;
+
+    if (this.customer_email != ''){
+
+      var arr = $('#friend-referral-form .must-not-be-same-email');
+      var item = null;
+
+      for (var i = 0, l=arr.length; i < l; i++) {
+        item = $(arr[i]);
+
+        if (item.val() == this.customer_email) {
+          return_value = false;
+          $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>You cannot send an invitation to yourself.</li></ul></div>');
+        }
+      }
+    }
+
+
+    return return_value;
+    
+  }.bind(this));
+
+
+
+
+  
+  
+
+ 
+
+
   var success = this.getParameterByName('success');
   var emails = this.getParameterByName('emails');
 
@@ -201,6 +249,11 @@ kindred.component.AccountContent.prototype.set_tab = function(str_param) {
   // select mobile menu
   $('#page-account-header-menu-mobile ul li').removeClass('selected');
   $('#page-account-header-menu-mobile ul li[data-value="' + this.current_tab + '"]').addClass('selected');
+
+
+
+  
+
 };
 
 kindred.component.AccountContent.prototype.public_method_02 = function() {};
