@@ -8,7 +8,8 @@
 //
 
 
-@product-page-detail-height: 900px;
+// @product-page-detail-height: 900px;
+@product-page-detail-height: 970px;
 @product-page-detail-x-offset: 60px;
 
 #product-page-detail-section{
@@ -20,6 +21,15 @@
     padding-right: 10px;
   }
 }
+
+// fix for black line
+// TABLET LANDSCAPE & LAPTOPS
+@media only screen and (max-width: 1199px) {
+  #product-page-detail-section{
+    margin-right: -1px;
+  }
+}
+
 #product-page-detail-image-container{
   margin-left: -10px;
   margin-right: -10px - @product-page-detail-x-offset;
