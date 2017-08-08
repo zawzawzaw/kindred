@@ -890,8 +890,8 @@
               <div class="page-account-form-title">
                 <h3>{{ 'customer.friend_referral.title' | t }}</h3>
               </div>
-
-              <form id="friend-referral-form" action="http://www.manic.com.sg/kindred/shopify_app/send_invitation.php" method="post">
+              
+              <form id="friend-referral-form" class="simple-form-check add-element-version" action="http://www.manic.com.sg/kindred/shopify_app/send_invitation.php" method="post">
 
                 <input type="hidden" name="to_count" id="to_count" value="4">   <!-- IMPORTANT !!! -->
 
@@ -902,14 +902,14 @@
                       
 
                       <!-- hidden -->
-                      <input type="hidden" name="from_email" value="{{ customer.email }}">
+                      <input type="hidden" name="from_email" value="{{ customer.email }}">                      
 
                       <label for="">{{ 'customer.friend_referral.name' | t }}</label>
 
                       <div class="row">
                         <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
                           <div class="dropdown">
-                            <select name="salutation" id="salutation" required>
+                            <select name="salutation" id="salutation" class="required">
                               <option value="">Please select</option>
                               <option value="Mr">Mr</option>
                               <option value="Ms">Ms</option>
@@ -919,19 +919,20 @@
                           </div>
                         </div>
                         <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                          <input type="text" name="from_name" class="input-full" required>
+                          <input type="text" name="from_name" id="from_name" class="input-full required">
                         </div>
                       </div>
+
                       <!-- label for all -->
                       <label for="">{{ 'customer.friend_referral.to' | t }}</label>
 
                       <div class="page-account-friend-referal-field-item">
                         <div class="row">
                           <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="text" name="to_name" class="to_name input-full" placeholder="Name" required>
+                            <input type="text" name="to_name" id="to_name" class="input-full required" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email" class="to_email input-full must-not-be-same-email" placeholder="Email Address" required>
+                            <input type="text" name="to_email" id="to_email" class="input-full required only-email must-not-be-same-email" autocorrect="off" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -944,7 +945,7 @@
                             <input type="text" name="to_name_2" class="input-full" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email_2" class="input-full must-not-be-same-email" placeholder="Email Address">
+                            <input type="text" name="to_email_2" class="input-full must-not-be-same-email" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -956,7 +957,7 @@
                             <input type="text" name="to_name_3" class="input-full" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email_3" class="input-full must-not-be-same-email" placeholder="Email Address">
+                            <input type="text" name="to_email_3" class="input-full must-not-be-same-email" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -968,7 +969,7 @@
                             <input type="text" name="to_name_4" class="input-full" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="email" name="to_email_4" class="input-full must-not-be-same-email" placeholder="Email Address">
+                            <input type="text" name="to_email_4" class="input-full must-not-be-same-email" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -995,7 +996,7 @@
                       </div>
 
                       <label for="">{{ 'customer.friend_referral.message' | t }}</label>
-                      <textarea name="message" id="message" required cols="30" rows="10"></textarea>
+                      <textarea name="message" id="message" cols="30" rows="10" class="required"></textarea>
 
                       <div class="cta-container visible-md visible-lg">
                         <input type="submit" id="send-message" class="square-cta" value="Send Message">
@@ -1064,6 +1065,6 @@
     return true;
   }
   
-  // SCRIPTS WERE MOVED TO DEFAULT.JS
+  // SCRIPTS WERE MOVED TO DEFAULT.JS*/
 
 </script>

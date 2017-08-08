@@ -171,6 +171,7 @@
                         <div class="giftcart-select-wrapper">
                           <div class="select-wrapper">
                             <select id="select-giftcard-design" name="properties[Giftcard Design]">
+                              <option value="Design 01" selected="selected">Please select</option>
                               <option>Design 01</option>
                               <option>Design 02</option>
                               <option>Design 03</option>
@@ -309,6 +310,9 @@
 
     
     $('.selector-wrapper .single-option-selector').wrap('<div class="single-option-selector-custom-wrapper giftcard-version"></div>');
+
+    var first_option_val = $(".selector-wrapper .single-option-selector option:first").val();
+    $('.selector-wrapper .single-option-selector').prepend('<option value="'+first_option_val+'" selected="selected">Please select</option>');
 
     // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
     {% if product.options.size == 1 and product.options.first != 'Title' %}

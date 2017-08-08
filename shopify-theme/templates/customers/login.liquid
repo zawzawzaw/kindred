@@ -23,7 +23,7 @@
           {{ 'customer.recover_password.success' | t }}
         </div>
 
-        <div id="CustomerLoginForm" class="form-vertical">
+        <div id="CustomerLoginForm" class="simple-form-check form-vertical add-element-version">
           {% form 'customer_login' %}
 
             {{ form.errors | default_errors }}
@@ -39,7 +39,7 @@
                 <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
               </div>
               <div class="col-md-8">
-                <input type="email" name="customer[email]" id="CustomerEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off" required email>
+                <input type="email" name="customer[email]" id="CustomerEmail" class="required only-email input-full{% if form.errors contains 'email' %} error{% endif %}" autocorrect="off" autocapitalize="off">
               </div>
             </div>
 
@@ -49,7 +49,7 @@
                 <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
               </div>
               <div class="col-md-8">
-                <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
+                <input type="password" value="" name="customer[password]" autocomplete="new-password" id="CustomerPassword" class="required input-full{% if form.errors contains 'password' %} error{% endif %}">
               </div>
               
               
@@ -111,8 +111,10 @@
             <div class="cta-container left-version">
               <div class="row">
                 <div class="col-md-6 col-sm-6">
-                  <input type="submit" class="square-cta full-width-version" value="{{ 'customer.recover_password.submit' | t }}">
-                  <!-- <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button> -->
+                  <input type="submit" class="square-cta full-width-version" value="{{ 'customer.recover_password.submit' | t }}">                  
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <button type="button" id="HideRecoverPasswordLink" class="text-link square-cta">{{ 'customer.recover_password.cancel' | t }}</button>
                 </div>
               </div>
             </div>
@@ -150,7 +152,7 @@
         <div class="vertical-seperator-line"></div>
       </div>
       <div class="col-md-5">
-        <div id="CustomerRegisterForm" class="form-vertical">
+        <div id="CustomerRegisterForm" class="simple-form-check form-vertical add-element-version">
           {% form 'create_customer' %}
 
             {{ form.errors | default_errors }}
@@ -164,7 +166,7 @@
                 <label for="FirstName">{{ 'customer.register.first_name' | t }}</label>
               </div>
               <div class="col-md-8">
-                <input type="text" name="customer[first_name]" id="FirstName" class="input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus required>
+                <input type="text" name="customer[first_name]" id="FirstName" class="required input-full" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
               </div>
             </div>
             
@@ -173,7 +175,7 @@
                 <label for="LastName">{{ 'customer.register.last_name' | t }}</label>
               </div>
               <div class="col-md-8">
-                <input type="text" name="customer[last_name]" id="LastName" class="input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words" required>
+                <input type="text" name="customer[last_name]" id="LastName" class="required input-full" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
               </div>
             </div>
 
@@ -182,7 +184,7 @@
                 <label for="CustomerEmail">{{ 'customer.login.email' | t }}</label>
               </div>
               <div class="col-md-8">
-                <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off" required email>
+                <input type="email" name="customer[email]" id="Email" class="required only-email input-full{% if form.errors contains 'email' %} error{% endif %}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
 
                 <!-- <input type="hidden" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" value="p@ssword"> -->
               </div>
@@ -193,7 +195,7 @@
                 <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
               </div>
               <div class="col-md-8">
-                <input type="password" value="" name="password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
+                <input type="password" name="password" id="CustomerPassword" class="required input-full{% if form.errors contains 'password' %} error{% endif %}">
               </div>
               
               

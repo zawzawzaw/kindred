@@ -197,7 +197,7 @@
                     <label for="CustomerPassword">{{ 'customer.login.password' | t }}</label>
                   </div>
                   <div class="col-md-8">
-                    <input type="password" value="" name="password" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
+                    <input type="password" value="" name="customer[password]" id="CustomerPassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" required>
                   </div>
                   
                   
@@ -207,7 +207,7 @@
                   <input type="submit" id="create_account" class="btn square-cta" value="{{ 'customer.login.create_account_title' | t }}">                                
                 </div>
                 
-              {% endform %}
+              {% endform %}              
             </div>
           </div>
         </div>
