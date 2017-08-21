@@ -1110,6 +1110,10 @@
   display: none;
 }
 
+#product-item-mobile-container {
+  display: none;
+}
+
 
 #product-item-mobile-slider{
   margin-left: -15px;
@@ -1167,9 +1171,12 @@
 //
 
 
-@giftcard-design-tablet-height: 550px;
+// @giftcard-design-tablet-height: 550px;
+@giftcard-design-tablet-height: 480px;
 // @giftcard-design-mobile-height: 400px;
-@giftcard-design-mobile-height: 420px;
+// @giftcard-design-mobile-height: 420px;
+// @giftcard-design-mobile-height: 480px;
+@giftcard-design-mobile-height: 280px;
 
 #product-page-giftcard-design-container{
   position: relative;
@@ -1177,7 +1184,15 @@
   height: @product-page-detail-height;
   // background: @grey;
   // 
-  background: @brown;
+  // background: @brown;
+  background: #cc9c92;
+  // background: @white;
+  line-height: @product-page-detail-height;
+  text-align: center;
+
+  img {
+    vertical-align: middle;
+  }
 
   .product-page-giftcard-design{
     .opacity(0);
@@ -1196,14 +1211,33 @@
   }
 }
 
+@media only screen and (max-width: 1280px) {
+  #product-page-giftcard-design-container{
+    img {
+      width: 70%;
+    }
+  }
+}
 
-
+@media only screen and (max-width: 1024px) {
+  #product-page-giftcard-design-container{
+    img {
+      width: 80%;
+    }
+  }
+}
 
 
 // TABLET PORTRAIT & SMALL DESKTOP
 @media only screen and (max-width: 991px) {
   #product-page-giftcard-design-container{
     height: @giftcard-design-tablet-height !important;
+    line-height: normal;
+
+    img {
+      margin: 0 auto;          
+      padding-top: 48px;
+    }
 
     .product-page-giftcard-design{
 
@@ -1216,13 +1250,40 @@
   #product-page-giftcard-design-container{
     height: @giftcard-design-mobile-height !important;
 
+    img {
+      margin: 0 auto;          
+      padding-top: 48px;
+    }
+
     .product-page-giftcard-design{
 
     }
   }
 }
 
+@media only screen and (max-width: 480px) {
+  #product-page-giftcard-design-container{
+    img {
+      padding-top: 41px;
+    }
+  }
+}
 
+@media only screen and (max-width:375px) {
+  #product-page-giftcard-design-container{
+    img {
+      padding-top: 51px;
+    }
+  }
+}
+
+@media only screen and (max-width:375px) {
+  #product-page-giftcard-design-container{
+    img {
+      padding-top: 61px;
+    }
+  }
+}
 
 
 

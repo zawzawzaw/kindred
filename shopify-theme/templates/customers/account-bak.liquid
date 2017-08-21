@@ -713,7 +713,7 @@
       var newEmailInputAttr = $(html).find('input.to_email').attr("name") + "_" + no;
 
       $(html).find('input.to_name').attr("name", newNameInputAttr).removeAttr("required").val("");
-      $(html).find('input.to_email').attr("name", newEmailInputAttr).removeAttr("required").val("");
+      $(html).find('input.to_email').attr("name", newEmailInputAttr).removeAttr("required").val("");      
 
       var anchor = '<a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a>';
 
@@ -774,7 +774,7 @@
 
       if(success) {
         if(emails) {          
-          $('.message').html('<div class="errors"><ul><li>The following email has already been invited!: ' + emails +'</li></ul></div>');
+          $('.message').html('<div class="errors"><ul><li>The following emails have already been invited: ' + emails +'</li></ul></div>');
         }else {
           $('.message').html('<div class="errors"><ul><li>Successfully invited.</li></ul></div>');
         }      

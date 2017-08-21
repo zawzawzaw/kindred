@@ -6,7 +6,7 @@
   and number of rows.
 {% endcomment %}
 
-{% assign number_of_related_products_per_row = 4 %}
+{% assign number_of_related_products_per_row = 3 %}
 {% assign number_of_rows = 1 %}
 
 {% comment %}
@@ -100,7 +100,8 @@
 
 
 
-  
+  {% assign counter = 0 %}
+  {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
 
   {% capture related_items %}
 
@@ -127,7 +128,38 @@
     {% endfor %}
   {% endcapture %}
 
-  {% assign related_items = related_items | trim %}
+  {% assign related_items_two = related_items | trim %}
+
+  
+  {% assign counter = 0 %}
+  {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+
+  {% capture related_items_mobile %}
+
+    {% for product in collection.products %}
+      {% unless product.handle == current_product.handle %}
+         {% unless same_vendor and current_product.vendor != product.vendor %}
+           {% unless same_type and current_product.type != product.type %}
+
+             {% assign is_product_tea = false %}
+             {% for c in product.collections %}
+               {% if c.handle == 'teas' %}
+                 {% assign is_product_tea = true %}
+               {% endif %}
+             {% endfor %}
+
+             {% include 'product-grid-item' %}
+             {% assign counter = counter | plus: 1 %}
+             {% if counter == break_at %}
+               {% break %}
+             {% endif %}
+           {% endunless %}
+        {% endunless %}
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% assign related_items_mobile = related_items_mobile | trim %}
 
 
 
@@ -202,14 +234,14 @@
             {% if is_current_product_tea == true %}
               <div class="product-item-single-row">
                 <div class="row">
-                  {{ related_items }}
+                  {{ related_items_two }}
                 </div>
               </div>
 
             {% else %}
               <div class="product-item-square-single-row">
                 <div class="row">
-                  {{ related_items }}
+                  {{ related_items_two }}
                 </div>
               </div>
 
@@ -239,6 +271,24 @@
 
           <div id="all-related-product-item-mobile-container">
             {{ all_related_items_mobile }}
+          </div>
+
+          <div id="product-item-mobile-container">
+            {% if is_current_product_tea == true %}
+              <div class="product-item-single-row">
+                <div class="row">
+                  {{ related_items_mobile }}
+                </div>
+              </div>
+
+            {% else %}
+              <div class="product-item-square-single-row">
+                <div class="row">
+                  {{ related_items_mobile }}
+                </div>
+              </div>
+
+            {% endif %}
           </div>
 
           <div id="product-item-mobile-slider" class="{% if is_current_product_tea == true %}tea-version{% endif %}"></div>

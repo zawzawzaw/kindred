@@ -137,7 +137,7 @@ manic.ui.FormCheck.STRING_REQUIRED_GROUP = ' required';
  * Form Check Constant
  * @type {string}
  */
-manic.ui.FormCheck.STRING_ONLY_EMAIL = ' must be a valid email address';
+manic.ui.FormCheck.STRING_ONLY_EMAIL = ' invalid email';
 
 /**
  * Form Check Constant
@@ -320,6 +320,8 @@ manic.ui.FormCheck.prototype.add_input_error = function(input_item,input_name,me
   if (this.is_add_element_version == true) {
     if (goog.isDefAndNotNull(input_item.data('error-element'))) {
 
+      console.log('add_input_error');
+
       // modify html, then add again
       var error_element = input_item.data('error-element');
       error_element.html(message);
@@ -368,6 +370,11 @@ manic.ui.FormCheck.prototype.add_input_error = function(input_item,input_name,me
   } else  {
     this.error_str += (input_name + message);
     this.error_str += "<br>";
+
+    if(input_item.hasClass('first-input-item')) {
+      input_item.focus();
+    }
+    
   }
 };
 

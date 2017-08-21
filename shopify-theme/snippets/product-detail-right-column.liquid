@@ -17,18 +17,24 @@
         <li><span class="product-detail-icon product-detail-icon-teapot"></span>{{ product.metafields.description.p06_brewingvolume }}</li>
       {% endif %}
 
-      {% if product.metafields.description.p07_brewingtearatio != blank %}
-        <li><span class="product-detail-icon product-detail-icon-leaf"></span>{{ product.metafields.description.p07_brewingtearatio }}</li>
-      {% endif %}
-
       {% if product.metafields.description.p08_brewingtime != blank %}
         <li><span class="product-detail-icon product-detail-icon-clock"></span>{{ product.metafields.description.p08_brewingtime }}</li>
       {% endif %}
+
+      {% if product.metafields.description.p07_brewingtearatio != blank %}
+        <li><span class="product-detail-icon product-detail-icon-leaf"></span>{{ product.metafields.description.p07_brewingtearatio }}</li>
+      {% endif %}      
 
     </ul>
   </div>
 {% endif %}
 
+{% comment %}{% if product.metafields.description.p16_capacity != blank %}
+  <div class="product-detail">
+    <label>capacity</label>
+    <p>{{ product.metafields.description.p16_capacity }}</p>
+  </div>
+{% endif %}{% endcomment %}
 
 {% if product.metafields.description.p14_material != blank %}
   <div class="product-detail">
@@ -37,6 +43,23 @@
   </div>
 {% endif %}
 
+{% if product.title == "Blessings" %}
+  {% if product.metafields.description.p09_netweightcustom != blank %}
+    <div class="product-detail">
+      <label>net weight</label>
+      <p>{{ product.metafields.description.p09_netweightcustom }}</p>
+    </div>
+  {% endif %}
+{% endif %}
+
+{% if product.title == "Endearment" %}
+  {% if product.metafields.description.p09_netweightcustom != blank %}
+    <div class="product-detail">
+      <label>net weight</label>
+      <p>{{ product.metafields.description.p09_netweightcustom }}</p>
+    </div>
+  {% endif %}
+{% endif %}
 
 <div class="product-detail">
   <label>Share</label>
@@ -51,7 +74,7 @@
 
   {% assign social_facebook_share_url = 'http://www.facebook.com/sharer.php?u=' | append: share_url_escaped %}
   {% assign social_twitter_share_url = 'https://twitter.com/share?url=' | append: share_url_escaped | append: '&amp;text=' | append: share_message_escaped %}
-  {% assign social_pinterest_share_url = '//pinterest.com/pin/create%2Fbutton/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
+  {% assign social_pinterest_share_url = '//pinterest.com/pin/create/button/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
 
   <div class="product-detail-social-container">
     <ul>

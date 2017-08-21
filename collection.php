@@ -12,8 +12,8 @@
 
 <article id="default-page-banner-section">
   <div id="default-page-banner">
-    <div class="manic-image-container">
-      <img src="" data-image-desktop="images/tea-store-banner.png" data-image-mobile="images/tea-store-banner.png">
+    <div class="manic-image-container"  data-vertical-align="top">
+      <img src="" data-image-desktop="images/tea-store-banner-02.png" data-image-mobile="images/tea-store-banner-02.png">
     </div>
   </div>
 </article>

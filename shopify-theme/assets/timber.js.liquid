@@ -323,6 +323,7 @@ timber.loginForms = function() {
   function hideRecoverPasswordForm() {
     timber.cache.$recoverPasswordForm.hide();
     timber.cache.$customerLoginForm.show();
+    $("#CustomerRegisterForm").show();
   }
 
   timber.cache.$recoverPasswordLink.on('click', function(evt) {

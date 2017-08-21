@@ -715,26 +715,25 @@ manic.page.Page.prototype.on_expand_container_expand = function(event) {
     }
   } else {
 
-    // console.log('expand_container.group_value: ' + expand_container.group_value);
+    // console.log('expand_container.group_value: ' + expand_container.group_value);    
 
-    if(expand_container.group_value != 'none') {
+  }
 
-      // collapse all other from the same group
+  if(expand_container.group_value != 'none') {
 
-      for (var i = 0, l=this.expand_container_array.length; i < l; i++) {
+    // collapse all other from the same group
 
-        expand_container_02 = this.expand_container_array[i];
+    for (var i = 0, l=this.expand_container_array.length; i < l; i++) {
 
-        // console.log(expand_container_02.group_value);
+      expand_container_02 = this.expand_container_array[i];
 
-        if(expand_container_02.group_value == expand_container.group_value && expand_container_02 !== expand_container){
-          expand_container_02.collapse();
-        }
+      // console.log(expand_container_02.group_value);
 
-      } // for
+      if(expand_container_02.group_value == expand_container.group_value && expand_container_02 !== expand_container){
+        expand_container_02.collapse();
+      }
 
-    }
-    
+    } // for
 
   }
 

@@ -113,6 +113,10 @@ kindred.page.Default = function(options) {
   this.mobile_related_product_slider = null;
 
 
+  // blog
+  this.currentPage = 1;
+  this.totalPage = $('#pagination').find(".page").length;
+
 };
 goog.inherits(kindred.page.Default, manic.page.Page);
 
@@ -174,6 +178,8 @@ kindred.page.Default.prototype.init = function() {
   this.create_contact_page();
 
   this.create_misc_page();
+  this.create_blog_page();
+  this.create_intl_tel_input();
 
 
 
@@ -261,7 +267,7 @@ kindred.page.Default.prototype.create_home_page = function() {
     $('#home-page-banner-mobile').slick({
       'speed': 350,
       'dots': false,
-      'arrows': false,
+      'arrows': true,
       'infinite': false,
       'slidesToShow': 1,
       'slidesToScroll': 1,
@@ -288,13 +294,18 @@ kindred.page.Default.prototype.create_home_page = function() {
       this.update_page_layout();
     }.bind(this));
 
+    // On before slide change
+    $('#home-page-shop-item-container').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+      this.create_image_container();
+    }.bind(this));
+
     $('#home-page-shop-item-container').slick({
       'speed': 350,
       'dots': false,
       'arrows': true,
-      'infinite': false,
-      'slidesToShow': 5,
-      'slidesToScroll': 5,
+      'infinite': true,
+      'slidesToShow': 4,
+      'slidesToScroll': 4,
       'pauseOnHover': true,
       // 'autoplay': true,
       'autoplay': false,
@@ -476,7 +487,14 @@ kindred.page.Default.prototype.create_contact_page = function() {
 
   }
 
-
+  if(manic.IS_MOBILE == true) {
+    if ($('#contact_form').length != 0) {
+      if($('.form-success').length != 0) {
+        $('.form-success')[0].scrollIntoView(true);
+        document.body.scrollTop -= 60; // scroll back because of menu
+      }
+    }
+  }  
 
   // create contact us detail map
 
@@ -513,6 +531,34 @@ kindred.page.Default.prototype.create_misc_page = function() {
     });
   }
 
+  // to force snap to error on login page
+  if ($('#CustomerLoginForm').length != 0) {
+    if($('.errors').length != 0) {
+      $('.errors')[0].scrollIntoView(true);
+      document.body.scrollTop -= 60; // scroll back because of menu
+    }
+  }
+
+  // to force snap to error on login page
+  if ($('#CustomerRegisterForm').length != 0) {
+    if($('.errors').length != 0) {
+      $('.errors')[0].scrollIntoView(true);
+      document.body.scrollTop -= 60; // scroll back because of menu
+    }
+  }  
+
+  // to force snap to error on login page
+  if ($('#contact_form').length != 0) {
+    if($('.errors').length != 0) {
+      $('.errors')[0].scrollIntoView(true);
+      document.body.scrollTop -= 60; // scroll back because of menu
+    }
+  }    
+
+};
+
+kindred.page.Default.prototype.create_blog_page = function() {
+
   // wrap article images in a row & manic-image-container 
   
   if ($('.blog-page-article.article-version').length != 0) {
@@ -528,9 +574,11 @@ kindred.page.Default.prototype.create_misc_page = function() {
 
   } // end if article-version
 
+  $('#mobile-blog-sidebar').gryphon_mobile_wp_sidebar({});
 
-
-
+  if ($('.blog-page-article').length != 0) {
+    $("#page-blog-load-more-btn").click(this.on_blog_load_more_click.bind(this));
+  }
 
 };
 
@@ -650,9 +698,31 @@ kindred.page.Default.prototype.update_page_layout = function(){
 /**
  * @param {object} event
  */
-kindred.page.Default.prototype.on_event_handler_01 = function(event) {
+kindred.page.Default.prototype.on_blog_load_more_click = function(event) {
 
   // desktop-header-spacer
+  // console.log("on_blog_load_more_click");
+
+  if(this.currentPage < this.totalPage) {
+    this.currentPage++;
+
+    var next_page_url = '/blogs/news?page='+this.currentPage;
+
+    $.get(next_page_url, function( data ) {
+      var article_html = $(data).find('#blog-page-article-container').html();
+
+      // console.log(article_html);
+
+      $('#blog-page-article-container').append(article_html);
+
+      this.create_image_container();  // instantiate them
+
+    }.bind(this));
+
+  } else {
+    $("#page-blog-load-more-btn").hide();
+  }
+
 };
 
 /**
@@ -725,3 +795,41 @@ kindred.page.Default.prototype.on_scroll_to_no_target = function() {
   }
 }
 
+kindred.page.Default.prototype.create_intl_tel_input = function() {
+
+  var arr = $('.kindred-intltelinput');
+  var item = null;
+
+  for (var i = 0, l=arr.length; i < l; i++) {
+    item = $(arr[i]);
+    item.intlTelInput({
+      initialCountry: 'sg',
+      nationalMode: false,
+      autoHideDialCode: false,
+      autoPlaceholder: false,
+      preferredCountries: []  
+    });
+
+    item.intlTelInput("setNumber", "+65");
+  }
+
+  var currentCountryCode  = "";
+  $(document).keydown(function(e) {
+    var aEl = $(document.activeElement);
+
+    if(aEl.attr('name') == "contact[phone-number]") {
+        var currentInputLength = aEl.val().length;       
+        var dialCode = aEl.intlTelInput("getSelectedCountryData").dialCode;         
+        
+        if(typeof dialCode !== "undefined") {
+            currentCountryCode = aEl.intlTelInput("getSelectedCountryData").dialCode;
+        }                      
+
+        var currentCountryCodeCount = currentCountryCode.toString().length + 3;
+
+        if ((e.keyCode === 8 || e.keyCode ===46) && currentInputLength < currentCountryCodeCount) 
+            return false;
+    }                
+  });
+
+};

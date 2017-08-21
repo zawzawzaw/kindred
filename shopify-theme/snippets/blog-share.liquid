@@ -10,7 +10,7 @@
 
   {% assign social_facebook_share_url = 'http://www.facebook.com/sharer.php?u=' | append: share_url_escaped %}
   {% assign social_twitter_share_url = 'https://twitter.com/share?url=' | append: share_url_escaped | append: '&amp;text=' | append: share_message_escaped %}
-  {% assign social_pinterest_share_url = '//pinterest.com/pin/create%2Fbutton/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
+  {% assign social_pinterest_share_url = '//pinterest.com/pin/create/button/?url=' | append: share_url_escaped | append: '&media=' | append: share_image_escaped | append: '&description=' | append: share_message_escaped %}
   <h4>Share</h4>
   <ul>
     <li><a href="{{ social_pinterest_share_url }}" target="_blank" class="fa fa-pinterest"></a></li>

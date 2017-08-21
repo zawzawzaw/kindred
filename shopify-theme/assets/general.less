@@ -1,0 +1,544 @@
+html{
+  background: @white;
+}
+
+html, body{
+  .body-font(1);
+  color: @grey;
+}
+
+
+
+// anti wordpress admin bar
+html{
+  margin-top: 0px !important;
+}
+
+
+body{
+
+  // background: @lightest-grey;
+}
+
+
+
+.general-text-declaration(@multiplier: 1){
+
+  h1 {
+    .header-h1-style(@multiplier);
+  }
+
+  h2 {
+    .header-h2-style(@multiplier);
+  }
+
+  h3 {
+    .header-h3-style(@multiplier);
+  }
+
+  h4 {
+    .header-h4-style(@multiplier);
+  }
+
+  h5 {
+    .header-h5-style(@multiplier);
+  }
+
+  h6 {
+    .header-h6-style(@multiplier);
+  }
+
+
+  p {
+    .body-font(@multiplier);
+  }
+  i{
+    .body-font-italic(@multiplier);
+  }
+  ul{
+    li{
+      .body-font(@multiplier);
+    }
+  }
+
+  strong{
+    .body-font-bold(@multiplier);
+  }
+  small{
+    .body-font-small(@multiplier);
+    display: block;
+    color: @grey-05;
+  }
+
+} // .general-text-declaration
+
+
+
+.general-text-declaration(1);
+
+/*
+@media only screen and (max-width: 991px) {
+  .general-text-declaration(0.8);
+}
+@media only screen and (max-width: 767px) {
+*/
+
+@media only screen and (max-width: 991px) {
+  .general-text-declaration(1);
+
+  // override
+  // 
+  h1 {
+    .header-h1-style-mobile(1.5);
+    .josefin-sans-light;                  // still use light in tablet landscape
+  }
+
+  h2 {
+    .header-h2-style-mobile(1.5);
+    .josefin-sans-light;                  // still use light in tablet landscape
+  }
+
+  h3 {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  h4 {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  h5 {
+  }
+
+  h6 {
+    font-size: 8.5px;
+    line-height: 12px;
+  }
+
+
+  p, i, ul li, strong{
+    .body-font-mobile-size;
+    
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    .header-h1-style-mobile;
+  }
+
+  h2 {
+    .header-h2-style-mobile;
+  }
+}
+
+
+
+
+
+body.chinese-version{
+  i{
+    font-style: normal !important;
+  }
+  h3{
+    font-style: normal !important;
+  }
+}
+
+
+
+// PC:  WebFont renders thicker
+// MAC: WebFont renders thinner
+
+.is-mac{
+  *{
+    // make font a bit thicker
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+
+
+
+a{
+  text-decoration: none !important;
+  .transition-out(0.3s);
+  cursor: pointer;
+
+  &:hover,
+  &:focus{
+    .transition-in(0.3s);
+  }
+}
+
+
+// remove blue outline
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus{
+  outline: none;
+}
+
+
+
+hr{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border: 0;
+  border-top: 1px solid @border-grey;
+
+  &.longer-version{
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
+
+// remove dropshadow on iOS
+input,
+select,
+textarea{
+  -webkit-appearance: none;
+}
+
+
+
+
+
+
+
+//     ___ _____ _   _ _____ ____  ____  
+//    / _ \_   _| | | | ____|  _ \/ ___| 
+//   | | | || | | |_| |  _| | |_) \___ \ 
+//   | |_| || | |  _  | |___|  _ < ___) |
+//    \___/ |_| |_| |_|_____|_| \_\____/ 
+//                                       
+
+
+#page-wrapper{
+  position: relative;
+  z-index: 20;
+
+  &.hidden-version{
+    height: 0;
+    overflow: hidden;
+  }
+}
+
+#page-wrapper-content{
+  overflow-x: hidden;
+}
+
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  #page-wrapper-content{
+    overflow-x: hidden;
+  }
+
+}
+
+
+
+
+
+@target_black_bg: 28px;
+@target_white_bg: 80px;
+
+.scroll-target{
+  position: relative;
+  top: 0px;
+
+  // top: -108px;
+}
+
+
+
+
+
+.scroll-target{
+  top: -@desktop-header-height;
+}
+
+
+/*
+// TABLET PORTRAIT & SMALL DESKTOP
+@media only screen and (max-width: 991px) {
+  .scroll-target{
+    top: -@mobile-header-height - 1px;
+  }
+}
+*/
+body.is-mobile-header{
+  .scroll-target{
+    top: -@mobile-header-height - 1px;
+  }
+}
+
+
+
+
+
+
+.manic-image-container{
+  display: block;
+  .opacity(0.0);
+  // .transition-in(0.4s);
+
+  // default height (to be overriden)
+  height: 300px;
+
+  img{
+    max-width: none !important;       // override timber defaults
+  }
+
+  &.image-loaded-version{
+    // .opacity(1);
+    .fade-in;
+  }
+}
+
+html.actual-mobile{
+  .manic-image-container{
+
+    // to avoid incorrect image width and height calculations
+    .transition-none;
+  }
+}
+
+
+
+
+
+
+
+.clear {
+  clear: both;
+}
+
+.valign-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  .valign-table-cell {
+    display: table-cell;
+    vertical-align: middle;     
+  }
+}
+
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+.hcenter {
+  text-align: center;
+}
+
+.hright {
+  text-align: right;
+}
+
+
+.table {
+  display: table;
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+}
+
+
+.no-wrap{
+  white-space: nowrap;
+
+  
+}
+
+.is-tablet{
+  .no-wrap.wrap-tablet-version{
+    white-space: normal;
+  }
+}
+
+.tighter-spacing{
+  letter-spacing: -0.03em;
+}
+.even-tighter-spacing{
+  letter-spacing: -0.1em !important;
+}
+
+
+
+
+//    _____ _   _ _     _     ____   ____ ____  _____ _____ _   _
+//   |  ___| | | | |   | |   / ___| / ___|  _ \| ____| ____| \ | |
+//   | |_  | | | | |   | |   \___ \| |   | |_) |  _| |  _| |  \| |
+//   |  _| | |_| | |___| |___ ___) | |___|  _ <| |___| |___| |\  |
+//   |_|    \___/|_____|_____|____/ \____|_| \_\_____|_____|_| \_|
+//
+
+
+html.fullscreen-component-open{
+  overflow: hidden;
+
+  body.is-tablet.is-tablet-landscape{
+    #mobile-header{
+      display: none !important;
+    }
+  }
+
+
+  
+}
+body.fullscreen-component-open{
+  overflow: hidden;
+}
+
+
+
+// if mobile
+html.fullscreen-component-open.is-html-mobile{
+  overflow: scroll;
+
+  body.fullscreen-component-open{
+    overflow: visible;
+
+    #page-wrapper{
+      display: none;
+    }
+
+    #packages-popup-container{
+      z-index: 1000;
+    }
+
+  }
+
+}
+
+
+
+
+#challenge {
+  .main-content {
+    display: table;
+    width: 100%;
+    .shopify-challenge__container {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .shopify-challenge__button {
+      .square-cta;
+      display: block!important;
+      margin-top: 30px;
+    }
+  }
+}
+
+
+//    ___ _   _ _____ _       _____ _____ _       ___ _   _ ____  _   _ _____
+//   |_ _| \ | |_   _| |     |_   _| ____| |     |_ _| \ | |  _ \| | | |_   _|
+//    | ||  \| | | | | |       | | |  _| | |      | ||  \| | |_) | | | | | |
+//    | || |\  | | | | |___    | | | |___| |___   | || |\  |  __/| |_| | | |
+//   |___|_| \_| |_| |_____|   |_| |_____|_____| |___|_| \_|_|    \___/  |_|
+//
+
+
+.kindred-intltelinput-container{
+  margin-bottom: 25px;
+
+  .intl-tel-input{
+    width: 100%;
+    display: block;
+
+    &.allow-dropdown input,
+    &.allow-dropdown input[type=tel],
+    &.allow-dropdown input[type=text],
+    &.separate-dial-code input,
+    &.separate-dial-code input[type=tel],
+    &.separate-dial-code input[type=text]{
+      padding-left: 78px + 16px!important;
+
+      // TABLET LANDSCAPE
+      @media only screen and (max-width: 1024px) and (min-width: 992px) {
+        padding-left: 78px + 13px!important;
+      }
+      // TABLET PORTRAIT
+      @media only screen and (max-width: 991px) {
+        padding-left: 78px + 11px!important;
+      }
+    }    
+
+    .flag-container{
+      // border-right: 12px solid @off-white-1;
+      // z-index: 300;
+      padding: 0px;
+    }
+    .selected-flag{
+      padding-right: 50px;
+      padding-left: 16px;
+      width: 55px!important;
+      outline: none;
+      background: none!important;
+      border-right: 12px solid @white;
+
+      // TABLET LANDSCAPE
+      @media only screen and (max-width: 1024px) and (min-width: 992px) {
+        padding-left: 13px;
+      }
+      // TABLET PORTRAIT
+      @media only screen and (max-width: 991px) {
+        padding-left: 11px;
+      }
+    }
+    .country-list {
+      z-index: 400;
+    }
+    .selected-flag .iti-flag {
+      left: 10px;
+    }
+    .selected-flag .iti-arrow{
+      border: none;
+
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      width: 10px;
+      height: 20px;
+      margin-top: 1px;   // dunno why // lol no idea also
+
+      &:after{
+        .fa;
+        content: "\f107";
+        font-size: 16px;
+        line-height: 20px;        
+        text-align: center;
+        color: @off-black;
+
+        /*
+        
+        */
+
+        pointer-events: none;
+      }
+
+    }
+  }
+
+  &.align-right-dropdown {
+    .intl-tel-input{
+      .country-list {
+        @media only screen and (max-width: 1680px) {
+          right: 13px;
+        }   
+      } 
+    }
+  }
+
+
+}

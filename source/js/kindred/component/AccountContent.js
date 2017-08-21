@@ -114,11 +114,16 @@ kindred.component.AccountContent.prototype.create_friend_referral = function() {
     var no = $(".page-account-friend-referal-field-item").length + 1;
     var html = $(".page-account-friend-referal-field-item:first").clone()
 
+    html.find('.error-element').html("");
+
     var newNameInputAttr = $(html).find('input.to_name').attr("name") + "_" + no;
     var newEmailInputAttr = $(html).find('input.to_email').attr("name") + "_" + no;
 
     $(html).find('input.to_name').attr("name", newNameInputAttr).removeAttr("required").val("");
     $(html).find('input.to_email').attr("name", newEmailInputAttr).removeAttr("required").val("");
+
+    $(html).find('input.to_name').attr("placeholder", "Name");
+    $(html).find('input.to_email').attr("placeholder", "Email Address");
 
     // var anchor = '<a href="#" class="delete"><i class="fa fa-times" aria-hidden="true"></i></a>';
     // $(html).find('input.to_email').after($(anchor));      
@@ -182,13 +187,13 @@ kindred.component.AccountContent.prototype.create_friend_referral = function() {
 
   if(success) {
     if(emails) {          
-      // $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>The following email has already been invited!: ' + emails +'</li></ul></div>');
-      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Your friends have been successfully invited!</li></ul></div>');
+      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>The following emails have already been invited: ' + emails +'</li></ul></div>');
+      // $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Your friends have been successfully invited!</li></ul></div>');
       
     } else {
       
       // $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Successfully invited.</li></ul></div>');
-      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Your friend(s) are successfully invited!</li></ul></div>');
+      $('#page-account-friend-referal-form-status-message').html('<div class="errors"><ul><li>Your friends have been successfully invited!</li></ul></div>');
       
     }
   }

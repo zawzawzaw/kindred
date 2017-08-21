@@ -97,7 +97,7 @@ kindred.component.MobileRelatedProductsSlider.SLIDER_UPDATE = 'slider_update';
 kindred.component.MobileRelatedProductsSlider.prototype.create_product_item_array = function() {
 
   // remove from product-item-column
-  var arr = this.element.find('#all-related-product-item-mobile-container').find('.product-item');
+  var arr = this.element.find('#product-item-mobile-container').find('.product-item');
 
   var item = null;
 
@@ -230,10 +230,17 @@ kindred.component.MobileRelatedProductsSlider.prototype.create_tea_slider = func
       */
       
       {
-        'breakpoint': 767,
+        'breakpoint': 769,
         'settings':{
           'slidesToShow': 2,
           'slidesToScroll': 2
+        }
+      },
+      {
+        'breakpoint': 480,
+        'settings':{
+          'slidesToShow': 1,
+          'slidesToScroll': 1
         }
       }
     ]

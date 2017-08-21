@@ -1,0 +1,28 @@
+{% if blog.all_tags.size > 0 %}
+  <div id="trigger-sticky-sidebar"></div>
+  <div id="mobile-blog-sidebar" class="visible-xs visible-sm">
+    <div id="mobile-blog-button-container">
+      <div class="mobile-blog-button" id="gryphon-blog-tag-button">Tags</div>    
+    </div>
+
+    <div id="mobile-blog-tag-container" style="">
+      {% if article.tags.size > 0 %}
+        <ul>
+          {% for tag in article.tags %}
+            <li><a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a></li>{% comment %}{% unless forloop.last %}, {% endunless %}{% endcomment %}
+          {% endfor %}
+        </ul>
+      {% else %}
+        <ul>
+          {% for tag in blog.all_tags %}
+            {% if current_tags contains tag %}
+            <li><div class="current-tag">{{ tag }}</div></li>
+            {% else %}
+            <li>{{ tag | link_to_tag: tag }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

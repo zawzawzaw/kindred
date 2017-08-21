@@ -187,7 +187,7 @@
 
 
   .inline-form-row{
-    overflow: auto;         // to prevent the margin bottom of the inputs
+    overflow: visible;         // to prevent the margin bottom of the inputs
     margin-bottom: -5px;
 
     label{
@@ -609,6 +609,15 @@
   
   ul {
     margin-left: 0;
+    li {
+      a {
+        text-decoration: underline!important;
+      }
+    }
+  }
+
+  a {
+    color: darken(@brown, 10%)!important;
   }
 }
 

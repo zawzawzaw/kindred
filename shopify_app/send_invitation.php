@@ -18,7 +18,7 @@ if (in_array($http_origin, $allowed_domains))
 require 'PHPMailer/PHPMailerAutoload.php';
 
 function saveReferrals($data) {
-  $servername = "localhost";
+  $servername = "localhost:3306";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -101,9 +101,9 @@ function sendEmail($data) {
                     <table class="header row">
                         <tbody>
                             <tr>
-                                <td class="header__cell">
+                                <td class="header__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif">
                                     <center>
-                                        <table class="container">
+                                        <table class="container" style="border-collapse: collapse; border-spacing: 0; margin: 0 auto; text-align: left; width: 560px">
                                             <tbody>
                                                 <tr>
                                                     <td>
@@ -128,35 +128,45 @@ function sendEmail($data) {
                     <table class="row content">
                         <tbody>
                             <tr>
-                                <td class="content__cell">
-                                    <center>
-                                        <table class="container">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <h2>Hello '.$data['to_name'].'! </h2>
-                                                        <p>Your friend '.$data['from_name'].', has invited you to try out Kindred Teas.</p>
-                                                        <p>Once you have made your first purchase with us using this email, both you and '.$data['from_name'].' will be rewarded with a 10% discount code to be used in your following transaction. The 10% discount code is valid for a one-time usage only.</p>
-                                                        <p>We look forward to seeing you!</p>
-                                                        <table class="row actions">
-                                                          <tr>              
-                                                            <td class="actions__cell">
-                                                              <table class="link secondary-action-cell">
-                                                                <tr>
-                                                                  <td class="link__cell">
-                                                                    <a href="https://kindredteas.com" class="link__text">Visit our store </a> 
-                                                                    <span class="or" style="padding:0;margin:0;"> or </span><a href="https://kindredteas.com/account/login" class="link__text"> Create an account</a>
-                                                                  </td>
-                                                                </tr>
-                                                              </table>                                                              
-                                                            </td>
-                                                          </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </center>
+                                <td class="content__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif">
+                                  <center>
+                                    <table class="container" style="border-collapse: collapse; border-spacing: 0; margin: 0 auto; text-align: left; width: 560px">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-bottom: 10px;">
+                                                    <h2 style="font-weight:normal;font-size:24px;margin:0 0 10px;">Sharing is caring!</h2>
+                                                    <p style="color:#777;line-height:150%;font-size:16px;margin:0;">Your friend, '.$data['from_name'].', thinks you\'d love Kindred Teas as much as he / she does! We have created a selection of specially crafted teas that we hope you will enjoy just as much as we have enjoyed searching for them. </p>
+                                                    <p style="color:#777;line-height:150%;font-size:16px;margin:0;">We look forward to seeing you!</p>
+                                                </td>
+                                            </tr>
+                                            <tr>                                                                                                    
+                                                <td>
+                                                    <table class="row actions">
+                                                      <tr>              
+                                                        <td class="actions__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif">
+                                                            <table class="button main-action-cell" style="border-collapse: collapse; border-spacing: 0; float: left; margin-right: 15px">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="button__cell" style="background: #cca79b; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; text-align: center" align="center" bgcolor="#cca79b"><a href="https://kindredteas.com/account/login" class="button__text" style="color: #fff; display: block; font-size: 16px; padding: 20px 25px; text-decoration: none">Create an account</a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                          
+                                                            <table class="link secondary-action-cell" style="border-collapse: collapse; border-spacing: 0; margin-top: 19px">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td class="link__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"><a href="https://kindredteas.com" class="link__text" style="color: #cca79b; font-size: 16px; text-decoration: none;"><span class="or" style="color: #999; display: inline-block; font-size: 16px; margin-right: 10px">or</span> <span style="color: #cca79b!important; font-size: 16px; text-decoration: none">Visit our store</span></a></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </td>
+                                                      </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </center>
                                 </td>
                             </tr>
                         </tbody>
@@ -164,13 +174,13 @@ function sendEmail($data) {
                     <table class="row footer">
                         <tbody>
                             <tr>
-                                <td class="footer__cell">
+                                <td class="footer__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif">
                                     <center>
-                                        <table class="container">
+                                        <table class="container" style="border-collapse: collapse; border-spacing: 0; margin: 0 auto; text-align: left; width: 560px">
                                             <tbody>
                                                 <tr>
                                                     <td>
-                                                        <p class="disclaimer__subtext">If you have any questions, reply to this email or contact us at <a href="mailto:hello@kindredteas.com">hello@kindredteas.com</a></p>
+                                                        <p class="disclaimer__subtext">If you have any questions, reply to this email or contact us at <a href="mailto:hello@kindredteas.com" style="color: #cca79b!important; font-size: 16px; text-decoration: none">hello@kindredteas.com</a></p>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -199,16 +209,18 @@ function sendEmail($data) {
 }
 
 function checkIfAlreadyInvited($referrer_email, $friend_email) {
-  $servername = "localhost";
+  $servername = "localhost:3306";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
 
-  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password); 
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $stmt = $conn->prepare("SELECT * FROM friend_referral WHERE friend_email = ? AND reward_sent = 1");
+
+  $stmt = $conn->prepare("SELECT * FROM friend_referral WHERE friend_email = ? AND referrer_email = ?");
   $stmt->bindParam(1, $friend_email);
+  $stmt->bindParam(2, $referrer_email);
   $stmt->execute();
 
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -221,14 +233,16 @@ $data = array();
 $to_count = $_POST['to_count'];
 $data['salutation'] = $_POST['salutation'];
 $data['from_name'] = $_POST['from_name'];
-$data['from_email'] = $_POST['from_email'];
+$data['from_email'] = strtolower($_POST['from_email']);
 $data['to_name'] = $_POST['to_name'];
-$data['to_email'] = $_POST['to_email'];
-$data['message'] = $_POST['message'];
+$data['to_email'] = strtolower($_POST['to_email']);
+$data['message'] = 'some message';
 
 // to check if to_email already has an account
 
 $result = checkIfAlreadyInvited($data['from_email'], $data['to_email']);
+
+// print_r($result);
 
 $invited_email = array();
 
@@ -241,13 +255,13 @@ if(count($result) == 0) {
 
 for($i=2; $i <= $to_count; $i++) {
   
-  if(!empty($_POST['to_name_'.$i]) && !empty($_POST['to_email_'.$i])) {
+  if(!empty($_POST['to_name_'.$i]) && !empty($_POST['to_email_'.$i]) && $_POST['to_name_'.$i] != "Name" && $_POST['to_email_'.$i] != "email address") {
     $data['to_name'] = $_POST['to_name_'.$i];
-    $data['to_email'] = $_POST['to_email_'.$i];
+    $data['to_email'] = strtolower($_POST['to_email_'.$i]);
 
     $result = checkIfAlreadyInvited($data['from_email'], $data['to_email']);
 
-    if(count($result) == 0) {
+    if(count($result) == 0) {      
       saveReferrals($data);
       sendEmail($data);
     }else {

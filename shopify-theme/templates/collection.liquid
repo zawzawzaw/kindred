@@ -10,12 +10,17 @@
 {% if collection.image %}
   <article id="default-page-banner-section">
     <div id="default-page-banner">
-      <div class="manic-image-container">
+      {% if collection.title == "Gifts" %}
+      <div class="temp-fix-2 manic-image-container" data-vertical-align="top">
+      {% else %}
+      <div class="manic-image-container" data-vertical-align="top" data-offset-height="-40">
+      {% endif %}
         <img src="" 
           data-image-desktop="{{ collection.image.src | collection_img_url: 'master' }}" 
-          data-image-mobile="{{ collection.image.src | collection_img_url: '640x500', crop: 'center' }}"
+          data-image-mobile="{{ collection.image.src | collection_img_url: '1152x570', crop: 'center' }}"
           data-image-tablet="{{ collection.image.src | collection_img_url: '1152x570', crop: 'center' }}"
           alt="{{ collection.image.alt }}">
+      }
       </div>
     </div>
   </article>

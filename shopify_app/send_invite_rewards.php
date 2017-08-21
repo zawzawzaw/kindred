@@ -21,8 +21,8 @@ $inputs = file_get_contents('php://input');
 
 $inputs = json_decode($inputs);
 
-function findEmail($email) {
-  $servername = "localhost";
+function findEmail($email, $sent) {
+  $servername = "localhost:3306";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -30,8 +30,9 @@ function findEmail($email) {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-  $stmt = $conn->prepare("SELECT * FROM friend_referral WHERE friend_email = ? AND reward_sent = 0");
+  $stmt = $conn->prepare("SELECT * FROM friend_referral WHERE friend_email = ? AND reward_sent = ?");
   $stmt->bindParam(1, $email);
+  $stmt->bindParam(2, $sent);
   $stmt->execute();
 
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,7 +63,7 @@ function sendEmail($subject, $message, $email, $name) {
 }
 
 function updateStatus($data) {
-  $servername = "localhost";
+  $servername = "localhost:3306";
   $username = "kindred_dbadmin";
   $password = "e8oQy#54";
   $dbname = "kindred";
@@ -82,10 +83,43 @@ function updateStatus($data) {
   $conn = null;
 }
 
-$data = findEmail($inputs->email);
-if(count($data) > 0) {
+function notifyAdmin($data) {
+  //extract data from the post
+  //set POST variables
+  $url = 'https://www.manic.com.sg/kindred/shopify_app/cron.php';
+  $fields = array(
+    'referrer_email' => urlencode($data['referrer_email']),
+    'friend_email' => urlencode($data['friend_email'])
+  );
+
+  //url-ify the data for the POST
+  foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+  rtrim($fields_string, '&');
+
+  //open connection
+  $ch = curl_init();
+
+  //set the url, number of POST vars, POST data
+  curl_setopt($ch,CURLOPT_URL, $url);
+  curl_setopt($ch,CURLOPT_POST, count($fields));
+  curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+  //execute post
+  $result = curl_exec($ch);
+
+  //close connection
+  curl_close($ch);
+}
+
+$data = findEmail($inputs->email, 1);
+// print_r(count($data));
+
+if(count($data) <= 0) {
+
+  $data = findEmail($inputs->email, 0);
   
-  $data = end($data);
+  $data = reset($data);
+  // print_r($data); exit();
 
   $message = '<html>
 <head>
@@ -152,20 +186,28 @@ if(count($data) > 0) {
                                                         <p>Your friend, '.$data['friend_name'].', has made his/her first purchase with us at Kindred Teas.</p>
                                                         <p>To thank you for your invitation, we have sent you a 10% discount code to be used for your next purchase. This code can only be used one.</p>
                                                         <p>10% discount code: '.$data['discount_code'].'</p>
+
                                                         <table class="row actions">
                                                           <tr>              
-                                                            <td class="actions__cell">
-                                                              <table class="link secondary-action-cell">
-                                                                <tr>
-                                                                  <td class="link__cell">
-                                                                    <a href="https://kindredteas.com" class="link__text">Visit our store </a> 
-                                                                    <span class="or" style="padding:0;margin:0;"> or </span><a href="https://kindredteas.com/account/login" class="link__text"> Create an account</a>
-                                                                  </td>
-                                                                </tr>
-                                                              </table>                                                              
+                                                            <td class="actions__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif">
+                                                                <table class="button main-action-cell" style="border-collapse: collapse; border-spacing: 0; float: left; margin-right: 15px">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="button__cell" style="background: #cca79b; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; text-align: center" align="center" bgcolor="#cca79b"><a href="https://kindredteas.com/account/login" class="button__text" style="color: #fff; display: block; font-size: 16px; padding: 20px 25px; text-decoration: none">Create an account</a></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                              
+                                                                <table class="link secondary-action-cell" style="border-collapse: collapse; border-spacing: 0; margin-top: 19px">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="link__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"><a href="https://kindredteas.com" class="link__text" style="color: #cca79b; font-size: 16px; text-decoration: none;"><span class="or" style="color: #999; display: inline-block; font-size: 16px; margin-right: 10px">or</span> <span style="color: #cca79b!important; font-size: 16px; text-decoration: none">Visit our store</span></a></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </td>
                                                           </tr>
-                                                        </table>
+                                                        </table>                                                        
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -267,15 +309,22 @@ if(count($data) > 0) {
                                                         <p>10% discount code: '.$data['discount_code'].'</p>
                                                         <table class="row actions">
                                                           <tr>              
-                                                            <td class="actions__cell">
-                                                              <table class="link secondary-action-cell">
-                                                                <tr>
-                                                                  <td class="link__cell">
-                                                                    <a href="https://kindredteas.com" class="link__text">Visit our store </a> 
-                                                                    <span class="or" style="padding:0;margin:0;"> or </span><a href="https://kindredteas.com/account/login" class="link__text"> Create an account</a>
-                                                                  </td>
-                                                                </tr>
-                                                              </table>                                                              
+                                                            <td class="actions__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif">
+                                                                <table class="button main-action-cell" style="border-collapse: collapse; border-spacing: 0; float: left; margin-right: 15px">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="button__cell" style="background: #cca79b; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; text-align: center" align="center" bgcolor="#cca79b"><a href="https://kindredteas.com/account/login" class="button__text" style="color: #fff; display: block; font-size: 16px; padding: 20px 25px; text-decoration: none">Create an account</a></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                              
+                                                                <table class="link secondary-action-cell" style="border-collapse: collapse; border-spacing: 0; margin-top: 19px">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="link__cell" style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"><a href="https://kindredteas.com" class="link__text" style="color: #cca79b; font-size: 16px; text-decoration: none;"><span class="or" style="color: #999; display: inline-block; font-size: 16px; margin-right: 10px">or</span> <span style="color: #cca79b!important; font-size: 16px; text-decoration: none">Visit our store</span></a></td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </td>
                                                           </tr>
                                                         </table>
@@ -318,9 +367,10 @@ if(count($data) > 0) {
   // $subject = 'Reward for successful friend referral at Kindred Teas';
   $subject = 'Reward for successful Friend Referral';
 
-  sendEmail($subject, $message, $data['referrer_email'], $data['referrer_name']);
-  sendEmail($subject, $message_2, $data['friend_email'], $data['friend_name']);
-  updateStatus($data);
+  // sendEmail($subject, $message, $data['referrer_email'], $data['referrer_name']);
+  // sendEmail($subject, $message_2, $data['friend_email'], $data['friend_name']);
+  // updateStatus($data);
+  // notifyAdmin($data);
 }
 
 header("HTTP/1.1 200 OK");

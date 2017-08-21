@@ -36,8 +36,8 @@
               {{ form.errors | default_errors }}
 
 
-              <input type="hidden" id="ContactFormSubject" name="contact[subject]" value="Bank Deposit Detail Form">
-              <input type="hidden" id="ContactFormMessage" name="contact[body]" value="This is the bank deposit details of the customer">
+              {% comment %}<input type="hidden" id="ContactFormSubject" name="contact[subject]" value="Bank Deposit Detail Form">{% endcomment %}
+              {% comment %}<input type="hidden" id="ContactFormMessage" name="contact[body]" value="This is the bank deposit details of the customer">{% endcomment %}
 
               <div class="row">
                 <div class="col-md-6">
@@ -45,22 +45,26 @@
 
                     {% assign name_attr = 'contact.form.name' | t | handle %}
                     <label for="ContactFormName">{{ 'contact.form.name' | t }}<span class="asterisk">*</span></label>
-                    <input type="text" id="ContactFormName" class="required input-full" name="contact[{{ name_attr }}]" placeholder="How should we address you" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                    <input type="text" id="ContactFormName" class="required first-input-item input-full" name="contact[{{ name_attr }}]" placeholder="How should we address you" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
 
                     <label for="ContactFormEmail">{{ 'contact.form.email' | t }}<span class="asterisk">*</span></label>
-                    <input type="email" id="ContactFormEmail" class="input-full required only-email" name="contact[email]" placeholder="Please enter your email address" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+                    <input type="text" id="ContactFormEmail" class="input-full required only-email" name="contact[email]" placeholder="Please enter your email address" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
 
                     
 
                     {% assign name_attr = 'contact.form.phone' | t | handle %}
                     <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
-                    <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="Please include country code" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                    <div class="kindred-intltelinput-container">
+                      <input type="text" id="ContactFormPhone" class="kindred-intltelinput input-full" name="contact[{{ name_attr }}]" placeholder="Please provide your contact no." value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                    </div>
 
+                    {% assign name_attr = 'contact.form.order_id' | t | handle %}
                     <label for="ContactFormOrderNo">Order No.<span class="asterisk">*</span></label>
-                    <input type="text" id="ContactFormOrderNo" class="required" name="contact[orderno]" placeholder="Write your order no. here">
+                    <input type="text" id="ContactFormOrderNo" class="required" name="contact[{{ name_attr }}]" placeholder="Write your order no. here">
 
+                    {% assign name_attr = 'contact.form.amount' | t | handle %}
                     <label for="ContactFormOrderAmount">Amount<span class="asterisk">*</span></label>
-                    <input type="text" id="ContactFormOrderAmount" class="required" name="contact[orderamount]" placeholder="Please enter deposit amount">
+                    <input type="text" id="ContactFormOrderAmount" class="required" name="contact[{{ name_attr }}]" placeholder="Please enter deposit amount">
 
                     
 
@@ -70,16 +74,18 @@
                   <div class="contact-page-column-02">
 
                     
+                    {% assign name_attr = 'contact.form.transaction_ref_no' | t | handle %}
+                    <label for="ContactFormTransactionNo">Transaction/Reference No.<span class="asterisk">*</span></label>
+                    <input type="text" id="ContactFormTransactionNo" class="required" name="contact[{{ name_attr }}]" placeholder="Write your transaction/reference no. here">
 
-                    <label for="ContactFormTransactionNo">Transaction / Reference No.<span class="asterisk">*</span></label>
-                    <input type="text" id="ContactFormTransactionNo" class="required" name="contact[transactionno]" placeholder="Write your transaction/reference no. here">
-
+                    {% assign name_attr = 'contact.form.ibanking_name' | t | handle %}
                     <label for="ContactFormIbankingName">iBanking Name <small>(Where applicable)</small></label>
-                    <input type="text" id="ContactFormIbankingName" name="contact[ibankingname]" placeholder="Please enter iBanking name">
+                    <input type="text" id="ContactFormIbankingName" name="contact[{{ name_attr }}]" placeholder="Please enter iBanking name">
 
+                    {% assign name_attr = 'contact.form.image' | t | handle %}
                     <label for="ContactFormImage">Upload Receipt Snapshot <small>(Where applicable)</small></label>
                     <div id="imgur-upload-container">
-                      <input type="text" id="ContactFormImage" name="contact[image]">
+                      <input type="text" id="ContactFormImage" name="contact[{{ name_attr }}]">
                       <div class="dropzone"></div>
                     </div>
 

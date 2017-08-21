@@ -424,5 +424,130 @@ html.fullscreen-component-open.is-html-mobile{
 
 
 
+#challenge {
+  .main-content {
+    display: table;
+    width: 100%;
+    .shopify-challenge__container {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .shopify-challenge__button {
+      .square-cta;
+      display: block!important;
+      margin-top: 30px;
+    }
+  }
+}
 
 
+//    ___ _   _ _____ _       _____ _____ _       ___ _   _ ____  _   _ _____
+//   |_ _| \ | |_   _| |     |_   _| ____| |     |_ _| \ | |  _ \| | | |_   _|
+//    | ||  \| | | | | |       | | |  _| | |      | ||  \| | |_) | | | | | |
+//    | || |\  | | | | |___    | | | |___| |___   | || |\  |  __/| |_| | | |
+//   |___|_| \_| |_| |_____|   |_| |_____|_____| |___|_| \_|_|    \___/  |_|
+//
+
+
+.kindred-intltelinput-container{
+  margin-bottom: 25px;
+
+  .intl-tel-input{
+    width: 100%;
+    display: block;
+
+    &.allow-dropdown input,
+    &.allow-dropdown input[type=tel],
+    &.allow-dropdown input[type=text],
+    &.separate-dial-code input,
+    &.separate-dial-code input[type=tel],
+    &.separate-dial-code input[type=text]{
+      padding-left: 78px + 16px!important;
+
+      // TABLET LANDSCAPE
+      @media only screen and (max-width: 1024px) and (min-width: 992px) {
+        padding-left: 78px + 13px!important;
+      }
+      // TABLET PORTRAIT
+      @media only screen and (max-width: 991px) {
+        padding-left: 78px + 11px!important;
+      }
+    }    
+
+    .flag-container{
+      // border-right: 12px solid @off-white-1;
+      // z-index: 300;
+      padding: 0px;
+    }
+    .selected-flag{
+      padding-right: 50px;
+      padding-left: 16px;
+      width: 55px!important;
+      outline: none;
+      background: none!important;
+      border-right: 12px solid @white;
+
+      // TABLET LANDSCAPE
+      @media only screen and (max-width: 1024px) and (min-width: 992px) {
+        padding-left: 13px;
+      }
+      // TABLET PORTRAIT
+      @media only screen and (max-width: 991px) {
+        padding-left: 11px;
+      }
+    }
+    .country-list {
+      z-index: 400;
+    }
+    .selected-flag .iti-flag {
+      left: 10px;
+    }
+    .selected-flag .iti-arrow{
+      border: none;
+
+      position: absolute;
+      top: 5px;
+      right: 8px;
+      width: 10px;
+      height: 20px;
+      margin-top: 1px;   // dunno why // lol no idea also
+
+      &:after{
+        .fa;
+        content: "\f107";
+        font-size: 16px;
+        line-height: 20px;        
+        text-align: center;
+        color: @off-black;
+
+        /*
+        
+        */
+
+        pointer-events: none;
+      }
+
+    }
+  }
+
+  &.align-right-dropdown {
+    .intl-tel-input{
+      .country-list {
+        @media only screen and (max-width: 1680px) {
+          right: 13px;
+        }   
+      } 
+    }
+  }
+
+
+}
+
+.giftcard__border {
+  background-color: @brown!important;
+  border-color: @brown!important;
+}
+
+.giftcard__content {
+  border-color: @brown!important;
+}

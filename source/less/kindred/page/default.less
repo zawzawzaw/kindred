@@ -332,6 +332,22 @@
     height: 550px;
     // height: 1000px;
   }
+  @media all and (min-width: 1490px) {
+    .manic-image-container{
+      height: 660px;
+    }
+    
+    .temp-fix {
+      img {
+        top: -40px!important;
+      }
+    }
+    .temp-fix-2 {
+      img {
+        top: -85px!important;
+      }
+    }
+  }
 }
 
 
@@ -1085,14 +1101,17 @@
     .header-h4-style;
     font-size: 13px;
     letter-spacing: 0.05em;
+    text-transform: uppercase;
 
-    color: @off-black;
+    // color: @off-black;
+    color: @white;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
 
-    background: @light-brown;
+    // background: @light-brown;
+    background: @brown;
     border: none;
 
     text-align: center;

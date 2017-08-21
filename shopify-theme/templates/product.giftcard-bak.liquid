@@ -1,0 +1,327 @@
+<!-- /templates/product.giftcard.liquid -->
+{% comment %}
+
+  GIFT CARD DOESN'T HAVE META FIELDS :D
+
+{% endcomment %}
+
+
+
+
+<div itemscope itemtype="http://schema.org/Product">
+
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {% assign current_variant = product.selected_or_first_available_variant %}
+
+
+  <article id="product-page-detail-section">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-tablet-landscape-md-7 col-sm-12 col-xs-12">
+
+          <div id="product-page-detail-image-container">
+
+
+            <div id="product-page-giftcard-design-container">
+
+
+              <div class="product-page-giftcard-design" data-value="Design 01">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-01.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10.00</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+              <div class="product-page-giftcard-design" data-value="Design 02">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-02.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10.00</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+              <div class="product-page-giftcard-design" data-value="Design 03">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-03.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10.00</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+              <div class="product-page-giftcard-design" data-value="Design 04">
+                <div class="manic-image-container has-show-all">
+                  <img src="" data-image="{{ 'temp-product-giftcard-design-04.jpg' | asset_url }}">
+                </div>
+                <div class="product-page-giftcard-design-text">
+                  <h4><span class="value">$10.00</span> Giftcard</h4>
+                  <h1>Recipient's Name</h1>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                </div>
+              </div>
+
+
+            </div> <!-- product-page-giftcard-design-container -->
+
+              
+
+          </div> <!-- product-page-detail-image-container -->
+
+        </div>
+        <div class="col-md-6 col-tablet-landscape-md-5 col-sm-12 col-xs-12">
+
+          <div id="product-page-detail-copy-container">
+            <div id="product-page-detail-copy">
+
+              <div id="product-page-detail-copy-content">
+
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+
+                  <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+                  <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+
+                  {% comment %}
+                    ID addToCartForm is a selector for the ajax cart plugin
+                  {% endcomment %}
+                  <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+
+
+
+
+                    <h1 class="product-name" itemprop="name">{{ product.title }}</h1>
+                    <p class="product-price">
+
+                      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+                      <span id="ProductPrice" itemprop="price" content="{{ current_variant.price | divided_by: 100.00 }}">
+                        {{ current_variant.price | money }}
+                      </span>
+
+                      {% if product.compare_at_price_max > product.price %}
+                        <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+                        <p id="ComparePrice">
+                          {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+                        </p>
+                      {% endif %}
+
+                    </p> <!-- product-price -->
+                    
+                    <div class="product-description" itemprop="description">
+                      <div class="row">
+                        <div class="col-md-12 col-sm-10 col-xs-12">
+                          <div class="default-copy">
+                            {{ product.description }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    
+
+
+                    <div class="product-variant-container">
+                      <label>Value</label>
+
+                      {% comment %}
+                        Add product variants as a dropdown.
+                          - By default, each variant (or combination of variants) will display as its own <option>
+                          - To separate these into multiple steps, which we suggest, use option_selection.js (see below)
+
+                        You can leverage jQuery to add a callback on page load and each time the select element changes:
+                          - Include option_selection.js (as seen at the bottom of this file)
+                          - This allows you to use JavaScript anytime the variant dropdown changes
+                          - This also separates out your variant options (ie. size, color, etc.) to separate select elements
+
+                        For more information on products with multiple options, visit:
+                          - http://docs.shopify.com/support/your-website/themes/can-i-make-my-theme-use-products-with-multiple-options#update-product-liquid
+                      {% endcomment %}
+                      <select name="id" id="productSelect" class="product-single__variants">
+                        {% for variant in product.variants %}
+                          {% if variant.available %}
+
+                            {% comment %}
+                              Note: if you use option_selection.js, your <select> tag will be overwritten, meaning what you have inside <option> will not reflect what you coded below.
+                            {% endcomment %}
+                            <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+                          {% else %}
+                            <option disabled="disabled">
+                              {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                            </option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                      
+                    </div>
+
+                    <div class="product-giftcard-custom-fields">
+                      <div class="form-group">
+                        <label for="select-giftcard-design">Design</label>
+                        <div class="giftcart-select-wrapper">
+                          <div class="select-wrapper">
+                            <select id="select-giftcard-design" name="properties[Giftcard Design]">
+                              <option value="Design 01" selected="selected">Please select</option>
+                              <option>Design 01</option>
+                              <option>Design 02</option>
+                              <option>Design 03</option>
+                              <option>Design 04</option>
+                            </select>
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="input-giftcard-name">Recipient's Name <span id="giftcard-name-char-left" class="character-counter">(50 characters left)</span></label>
+                        <input id="input-giftcard-name" type="text" name="properties[Giftcard Name]" placeholder="Recipient's Name" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="input-giftcard-message">Message <span id="giftcard-message-words-left" class="character-counter">(100 words left)</span></label>
+                        <textarea id="input-giftcard-message" name="properties[Giftcard Message]" placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo" required></textarea>
+                      </div>
+                      
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <hr>
+
+                    <div class="product-cta-container-space"></div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+
+                        <div class="product-quantity-container">
+                          <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+                          <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                        </div>
+
+                      </div>
+                      <div class="col-md-6">
+
+                        <div class="cta-container">
+                          <button type="submit" name="add" id="AddToCart" class="square-cta">
+                            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+                          </button>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+
+
+                    
+                  </form> <!-- AddToCartForm -->
+                </div> <!-- offer shema -->
+
+
+
+                
+
+
+              </div> <!-- product-page-detail-copy-content -->
+
+
+
+            </div> <!-- product-page-detail-copy -->
+          </div> <!-- product-page-detail-copy-container -->
+
+        </div>
+      </div>
+    </div>
+
+  </article>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include 'related-products' %}
+
+
+
+
+
+
+
+
+{% comment %}
+  To take advantage of a callback on the select dropdown, add option_selection.js
+  and customize the JS in timber.productPage as needed.
+
+  Currently, timber.productPage does the following:
+    - Hides your <select> tag from above
+    - Breaks out the product variants into separate product options, if more than one exists
+    - Generates a <select> tag for each product option
+    - Enables/disables elements based on variant availability
+
+  Callback notes:
+    - Keep the callback available to the global scope (window.selectCallback) so that advanced
+      addons can override it.
+      * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<script>
+  var selectCallback = function(variant, selector) {
+    timber.productPage({
+      money_format: "{{ shop.money_format }}",
+      variant: variant,
+      selector: selector
+    });
+  };
+
+  jQuery(function($) {
+    new Shopify.OptionSelectors('productSelect', {
+      product: {{ product | json }},
+      onVariantSelected: selectCallback,
+      enableHistoryState: true
+    });
+
+    
+    $('.selector-wrapper .single-option-selector').wrap('<div class="single-option-selector-custom-wrapper giftcard-version"></div>');
+
+    var first_option_val = $(".selector-wrapper .single-option-selector option:first").val();
+    $('.selector-wrapper .single-option-selector').prepend('<option value="'+first_option_val+'" selected="selected">Please select</option>');
+
+    // Add label if only one product option and it isn't 'Title'. Could be 'Size'.
+    {% if product.options.size == 1 and product.options.first != 'Title' %}
+      $('.selector-wrapper:eq(0)').prepend('<label for="productSelect-option-0">{{ product.options.first | escape }}</label>');
+    {% endif %}
+
+    // Hide selectors if we only have 1 variant and its title contains 'Default'.
+    {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+      $('.selector-wrapper').hide();
+    {% endif %}
+  });
+</script>

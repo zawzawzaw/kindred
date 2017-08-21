@@ -13,7 +13,10 @@
   <div id="home-page-banner">
 
     <div class="home-page-banner-item manic-padding-container">
-      <div class="manic-image-container manic-padding-image home-page-banner-image">
+      <div class="home-page-banner-desktop-image hidden-sm hidden-xs">
+        <img src="{{ section.settings.content-image.src | img_url: 'master' }}">
+      </div>
+      <div class="manic-image-container manic-padding-image home-page-banner-image visible-sm visible-xs">
         <img src="" data-image-desktop="{{ section.settings.content-image.src | img_url: 'master' }}">
       </div>
       <div class="text-overlay shop-all-version">
@@ -21,7 +24,7 @@
           <div class="row">
             <div class="col-md-2 col-sm-3"></div>
             <div class="col-md-8 col-sm-6">
-              <div class="manic-padding-text" data-y="320">
+              <div class="manic-padding-text" data-y="100">
 
                 {% if section.settings.shopallcopy != blank %}
                   <h1>{{ section.settings.shopallcopy }}</h1>
@@ -44,7 +47,14 @@
     {% for block in section.blocks limit: section.blocks.size %}
 
       <div class="home-page-banner-item manic-padding-container">
-        <div class="manic-image-container manic-padding-image home-page-banner-image">
+        <div class="home-page-banner-desktop-image hidden-sm hidden-xs">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: 'master' }}">
+          {% else %}
+            <img src="{{ 'product-no-image.jpg' | asset_url }}">
+          {% endif %}
+        </div>
+        <div class="manic-image-container manic-padding-image home-page-banner-image visible-sm visible-xs">
           {% if block.settings.image != blank %}
             <img src="" data-image-desktop="{{ block.settings.image | img_url: 'master' }}">
           {% else %}
@@ -58,7 +68,7 @@
 
                 <div class="home-page-banner-overlay-image">
                   <div class="manic-image-container has-show-all">
-                    {% if block.settings.image != blank %}
+                    {% if block.settings.overlayimage != blank %}
                       <img src="" data-image-desktop="{{ block.settings.overlayimage | img_url: 'master' }}">
                     {% else %}
                       <img src="" data-image-desktop="{{ 'product-no-image.jpg' | asset_url }}">
@@ -96,8 +106,8 @@
       <div class="banner-image-bg">
         <div class="manic-image-container" data-vertical-align="bottom">
           <img src="" 
-            data-image-mobile="{{ section.settings.content-image.src | img_url: '480x768', crop: 'center' }}"
-            data-image-tablet="{{ section.settings.content-image.src | img_url: '1152x1452', crop: 'center' }}">
+            data-image-mobile="{{ section.settings.content-image-mobile.src | img_url: '480x768', crop: 'center' }}"
+            data-image-tablet="{{ section.settings.content-image-tablet.src | img_url: '1152x1452', crop: 'center' }}">
         </div>
       </div>
       <div class="text-overlay top-version">
@@ -120,8 +130,8 @@
           <div class="manic-image-container" data-vertical-align="bottom">
             {% if block.settings.image != blank %}
               <img src="" 
-                data-image-mobile="{{ block.settings.image | img_url: '480x768', crop: 'center' }}"
-                data-image-tablet="{{ block.settings.image | img_url: '1152x1452', crop: 'center' }}">
+                data-image-mobile="{{ block.settings.image-mobile | img_url: '480x768', crop: 'center' }}"
+                data-image-tablet="{{ block.settings.image-tablet | img_url: '1152x1452', crop: 'center' }}">
             {% else %}
               <img src="" data-image-mobile="{{ 'product-no-image.jpg' | asset_url }}" data-image-tablet="{{ 'product-no-image.jpg' | asset_url }}">
             {% endif %}
@@ -168,8 +178,13 @@
           },
           {
             "type": "image_picker",
-            "id": "overlayimage",
-            "label": "Overlay Image"
+            "id": "image-mobile",
+            "label": "Image Mobile"
+          },
+          {
+            "type": "image_picker",
+            "id": "image-tablet",
+            "label": "Image Tablet"
           },
           {
             "type": "text",
@@ -204,6 +219,16 @@
         "type": "image_picker",
         "id": "content-image",
         "label": "Shop All Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image-tablet",
+        "label": "Shop All Image Tablet"
+      },
+      {
+        "type": "image_picker",
+        "id": "content-image-mobile",
+        "label": "Shop All Image Mobile"
       }
     ]
   }

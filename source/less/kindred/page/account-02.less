@@ -2,6 +2,31 @@
 
 #page-account-main-container{
   .format-form();
+  
+  
+
+  #friend-referral-title {
+    margin-bottom: 25px;
+  }
+  
+  // super ugly but whatever
+  @media all and (max-width: 991px) {
+    #friend-referral-form {
+      .col-md-7 {    
+        .error-element {
+          height: auto;
+          top: 0px;
+        }
+      }
+    }
+  }
+
+  h4.friend-referral {
+    .format-form-label-font;
+
+    display: block;
+    margin-bottom: 6px;
+  }
 }
 
 
@@ -28,6 +53,10 @@
   h3{
     text-transform: capitalize;
   }
+}
+
+#page-account-friend-referal-form-status-message {
+  margin-bottom: 30px;    
 }
 
 // TABLET PORTRAIT & SMALL DESKTOP
@@ -372,7 +401,8 @@
 
   // border-bottom: 1px solid @white;
 
-  background: fade(@off-black, 85%);
+  // background: fade(@off-black, 85%);
+  background: @off-black;
   
   
   ul{
@@ -387,7 +417,7 @@
       // background: @grey;
       // background: @grey-05;
 
-      padding-top: 10px;
+      padding-top: 12px;
       padding-bottom: 10px;
 
       &:last-child{
@@ -400,11 +430,11 @@
         line-height: 21px;
         letter-spacing: 0.075em;
 
-        color: @white !important;
+        color: @grey-04 !important;
         display: block;
         width: 100%;
 
-        .opacity(0.2);
+        .opacity(0.4);
 
       } // a
 
@@ -757,11 +787,14 @@
     .default-table{
 
       th{
-        font-size: 12px - 2px;        // to make label 'fulfillment status' fit
-        line-height: 17px;
+        // font-size: 12px - 2px;        // to make label 'fulfillment status' fit
+        // line-height: 17px;
+        font-size: 13px;
+        line-height: 21px;
       }
       td{
-        font-size: 12px - 1px;        // to make the date fit
+        // font-size: 12px - 1px;        // to make the date fit
+        font-size: 13px;        // to make the date fit
         line-height: 17px;
       }
 

@@ -235,15 +235,12 @@
                         <p>{{ customer.name }}</p>
                       </div>
                     </div>
-
-                    {% if customer.default_address.country != "" %}
                     <div class="col-xs-6">
                       <div class="account-information-details-item">
-                        <h4>Country</h4>
-                        <p>{{ customer.default_address.country }}</p>
+                        <h4>Password</h4>
+                        <p><a href="/account/login#recover">Change Password</a></p>
                       </div>
-                    </div>
-                    {% endif %}
+                    </div>                    
 
                   </div> <!-- row -->
 
@@ -257,41 +254,49 @@
                     </div>
                     <div class="col-xs-6">
                       <div class="account-information-details-item">
-                        <h4>Password</h4>
-                        <p><a href="/account/login#recover">Change Password</a></p>
+                        <h4>Email</h4>
+                        <p>{{ customer.email }}</p>
+                      </div>                
+                    </div>    
+                  </div> <!-- row -->
+                  
+                  <div class="row">
+                    {% if customer.default_address.country != "" %}
+                    <div class="col-xs-6">
+                      <div class="account-information-details-item">
+                        <h4>Country</h4>
+                        <p>{{ customer.default_address.country }}</p>
                       </div>
                     </div>
-                  </div> <!-- row -->
+                    {% endif %}
 
-                  <div class="account-information-details-item">
-                    <h4>Email</h4>
-                    <p>{{ customer.email }}</p>
+                    {% if customer.default_address != nil %}
+                    <div class="col-xs-6">
+                      <div class="account-information-details-item">
+                        <h4>Address</h4>
+                        <p>
+                          {{ customer.default_address.address1 }}
+
+                          {% if customer.default_address.address2 != "" %}
+                            {{ customer.default_address.address2 }}<br>
+                          {% endif %}
+
+                          {% if customer.default_address.city != "" %}
+                            {{ customer.default_address.city }}
+                          {% endif %}
+
+                          {% if customer.default_address.province_code != "" %}
+                            {{ customer.default_address.province_code | upcase }}
+                          {% endif %}
+
+                          {% if customer.default_address.zip != "" %}
+                            {{ customer.default_address.zip | upcase }}
+                          {% endif %} 
+                        </p>
+                      </div>
+                    </div>
+                    {% endif %}
                   </div>
-
-                  {% if customer.default_address != nil %}
-                  <div class="account-information-details-item">
-                    <h4>Address</h4>
-                    <p>
-                      {{ customer.default_address.address1 }}
-
-                      {% if customer.default_address.address2 != "" %}
-                        {{ customer.default_address.address2 }}<br>
-                      {% endif %}
-
-                      {% if customer.default_address.city != "" %}
-                        {{ customer.default_address.city }}
-                      {% endif %}
-
-                      {% if customer.default_address.province_code != "" %}
-                        {{ customer.default_address.province_code | upcase }}
-                      {% endif %}
-
-                      {% if customer.default_address.zip != "" %}
-                        {{ customer.default_address.zip | upcase }}
-                      {% endif %} 
-                    </p>
-                  </div>
-                  {% endif %}
                   
                   
 
@@ -369,7 +374,7 @@
 
 
 
-                    <div id="EditAddress_{{ address.id }}" class="edit-address-form form-vertical" {% unless form.errors %}style="display:none;"{% endunless %}>
+                    <div id="EditAddress_{{ address.id }}" class="edit-address-form form-vertical simple-form-check add-element-version" {% unless form.errors %}style="display:none;"{% endunless %}>
 
                       <div class="col-md-12">
                         {% form 'customer_address', address %}
@@ -385,7 +390,7 @@
 
                                 <div class="form-column-01">
                                   <label for="AddressFirstName_{{ form.id }}">{{ 'customer.addresses.first_name' | t }}</label>
-                                  <input type="text" id="AddressFirstName_{{ form.id }}" class="input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
+                                  <input type="text" id="AddressFirstName_{{ form.id }}" class="required input-full" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
                                 </div>
 
                               </div>
@@ -393,7 +398,7 @@
 
                                 <div class="form-column-02">
                                   <label for="AddressLastName_{{ form.id }}">{{ 'customer.addresses.last_name' | t }}</label>
-                                  <input type="text" id="AddressLastName_{{ form.id }}" class="input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
+                                  <input type="text" id="AddressLastName_{{ form.id }}" class="required input-full" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
                                 </div>
 
                               </div>
@@ -408,7 +413,7 @@
 
                                 <div class="form-column-01">
                                   <label for="AddressAddress1_{{ form.id }}">{{ 'customer.addresses.address1' | t }}</label>
-                                  <input type="text" id="AddressAddress1_{{ form.id }}" class="input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
+                                  <input type="text" id="AddressAddress1_{{ form.id }}" class="required input-full" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
                                 </div>
 
                               </div>
@@ -428,7 +433,7 @@
                                 <div class="form-column-01">
 
                                   <label for="AddressZip_{{ form.id }}">{{ 'customer.addresses.zip' | t }}</label>
-                                  <input type="text" id="AddressZip_{{ form.id }}" class="input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                                  <input type="text" id="AddressZip_{{ form.id }}" class="required input-full" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
 
                                 </div>
                               </div>
@@ -436,7 +441,7 @@
                                 <div class="form-column-02">
 
                                   <label for="AddressCity_{{ form.id }}">{{ 'customer.addresses.city' | t }}</label>
-                                  <input type="text" id="AddressCity_{{ form.id }}" class="input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+                                  <input type="text" id="AddressCity_{{ form.id }}" class="required input-full" name="address[city]" value="{{ form.city }}" autocapitalize="words">
 
                                 </div>
                               </div>
@@ -448,37 +453,25 @@
 
                                   <label for="AddressCountry_{{ form.id }}">{{ 'customer.addresses.country' | t }}</label>
                                   <div class="dropdown"> 
-                                    <select id="AddressCountry_{{ form.id }}" class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                                    <select id="AddressCountry_{{ form.id }}" class="required input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
                                   </div>
-
+                                  <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
+                                    <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}</label>
+                                    <div class="dropdown">
+                                      <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
+                                    </div>                              
+                                  </div>
                                 </div>
                               </div>
                               <div class="col-md-6">
                                 <div class="form-column-02">
 
                                   <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
-                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="input-full" name="address[phone]" value="{{ form.phone }}">
+                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="required input-full" name="address[phone]" value="{{ form.phone }}">
 
                                 </div>
                               </div>
                             </div> <!-- row -->
-
-                              
-
-                            <div id="AddressProvinceContainer_{{ form.id }}" style="display:none">
-                              <div class="row">
-                                <div class="col-md-6">
-
-                                  <div class="form-column-01">
-                                    <label for="AddressProvince_{{ form.id }}">{{ 'customer.addresses.province' | t }}</label>
-                                    <div class="dropdown">
-                                      <select id="AddressProvince_{{ form.id }}" class="input-full" name="address[province]" data-default="{{ form.province }}"></select>
-                                    </div>
-                                  </div>
-
-                                </div>
-                              </div>
-                            </div>
 
                             <div class="row">
                               <div class="col-md-12">
@@ -550,25 +543,25 @@
 
 
 
-            <div id="page-account-information-address-form">
+            <div id="page-account-information-address-form" class="simple-form-check add-element-version">
 
               <div class="page-account-form-title">
                 <h3>{{ 'customer.addresses.add_new' | t }}</h3>
               </div>
-
+              
               {% form 'customer_address', customer.new_address %}
 
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-column-01">
                       <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
-                      <input type="text" id="AddressFirstNameNew" class="input-full white-version" name="address[first_name]" value="{{ form.first_name }}" required autocapitalize="words">
+                      <input type="text" id="AddressFirstNameNew" class="required input-full white-version" name="address[first_name]" value="{{ form.first_name }}" autocapitalize="words">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-column-02">
                       <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
-                      <input type="text" id="AddressLastNameNew" class="input-full white-version" name="address[last_name]" value="{{ form.last_name }}" required autocapitalize="words">
+                      <input type="text" id="AddressLastNameNew" class="required input-full white-version" name="address[last_name]" value="{{ form.last_name }}" autocapitalize="words">
                     </div>
                   </div>
                 </div> <!-- row -->
@@ -581,7 +574,7 @@
                   <div class="col-md-6">
                     <div class="form-column-01">
                       <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
-                      <input type="text" id="AddressAddress1New" class="input-full white-version" name="address[address1]" value="{{ form.address1 }}" required autocapitalize="words">
+                      <input type="text" id="AddressAddress1New" class="required input-full white-version" name="address[address1]" value="{{ form.address1 }}" autocapitalize="words">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -597,7 +590,7 @@
                     <div class="form-column-01">
 
                       <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
-                      <input type="text" id="AddressZipNew" required class="input-full white-version" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+                      <input type="text" id="AddressZipNew"  class="required input-full white-version" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
                       
                     </div>
                   </div>
@@ -605,7 +598,7 @@
                     <div class="form-column-02">
                       
                       <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
-                      <input type="text" id="AddressCityNew" required class="input-full white-version" name="address[city]" value="{{ form.city }}" autocapitalize="words">
+                      <input type="text" id="AddressCityNew"  class="required input-full white-version" name="address[city]" value="{{ form.city }}" autocapitalize="words">
 
                     </div>
                   </div>
@@ -617,7 +610,7 @@
 
                       <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
                       <div class="dropdown white-version">
-                        <select id="AddressCountryNew" required class="input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
+                        <select id="AddressCountryNew" class="required input-full" name="address[country]" data-default="{{ form.country }}">{{ country_option_tags }}</select>
                       </div>
                       
                     </div>
@@ -626,7 +619,7 @@
                     <div class="form-column-02">
                       
                       <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
-                      <input type="tel" id="AddressPhoneNew" required class="input-full white-version" name="address[phone]" value="{{ form.phone }}">
+                      <input type="tel" id="AddressPhoneNew" class="required input-full white-version" name="address[phone]" value="{{ form.phone }}">
                       
                     </div>
                   </div>
@@ -694,6 +687,9 @@
 
             // $(".account-address-container").addClass("editing");
             $('#account-information-details-container-address-container').addClass('edit-version');   // new
+
+            editEl.scrollIntoView(true);
+            document.body.scrollTop -= 95;
 
             // $(editEl).parent().parent().parent().removeClass('col-md-6').addClass('col-md-12');
             // $(".address-content").hide();
@@ -816,7 +812,7 @@
                             <td>
                               {{ order.total_price | money }}
 
-                              <a href="{{ order.customer_url }}" class="arrow-cta"></a>
+                              {% comment %}<a href="{{ order.customer_url }}" class="arrow-cta"></a>{% endcomment %}
 
                             </td>
                           </tr>
@@ -883,12 +879,13 @@
 
             <div id="page-account-friend-referal-form">
 
-              <div id="page-account-friend-referal-form-customer-email" data-value="{{ customer.email }}"></div>
-              <div id="page-account-friend-referal-form-status-message">
-              </div>
+              <div id="page-account-friend-referal-form-customer-email" data-value="{{ customer.email }}"></div>              
 
               <div class="page-account-form-title">
                 <h3>{{ 'customer.friend_referral.title' | t }}</h3>
+              </div>
+
+              <div id="page-account-friend-referal-form-status-message">
               </div>
               
               <form id="friend-referral-form" class="simple-form-check add-element-version" action="http://www.manic.com.sg/kindred/shopify_app/send_invitation.php" method="post">
@@ -900,6 +897,10 @@
                   <div class="col-md-6">
                     <div class="form-column-01">
                       
+                      <div id="friend-referral-title" class="visible-xs visible-sm">
+                        <h4 class="friend-referral">Sharing is caring!</h4>
+                        <p>Would you like to share your love for Kindred Teas with your family and friends? Simply fill in their names and email addresses and we'll invite them on your behalf. Spread the love today!</p>
+                      </div>
 
                       <!-- hidden -->
                       <input type="hidden" name="from_email" value="{{ customer.email }}">                      
@@ -929,10 +930,10 @@
                       <div class="page-account-friend-referal-field-item">
                         <div class="row">
                           <div class="col-md-5 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="text" name="to_name" id="to_name" class="input-full required" placeholder="Name">
+                            <input type="text" name="to_name" id="to_name" class="to_name input-full required" placeholder="Name">
                           </div>
                           <div class="col-md-7 col-tablet-landscape-md-6 col-sm-12 col-xs-12">
-                            <input type="text" name="to_email" id="to_email" class="input-full required only-email must-not-be-same-email" autocorrect="off" placeholder="Email Address">
+                            <input type="text" name="to_email" id="to_email" class="to_email input-full required only-email must-not-be-same-email" autocorrect="off" placeholder="Email Address">
                           </div>
                         </div>
                         <div class="space20 visible-sm visible-xs"></div>
@@ -991,15 +992,19 @@
                         <div class="cta-container" style="padding-top:0!important;">
                           <a href="#" id="add-more-name-mobile" class="square-cta">Add more names</a>
                         </div>
-                        <div class="space40 visible-sm visible-xs"></div>
+                        {% comment %}<div class="space40 visible-sm visible-xs"></div>{% endcomment %}
 
                       </div>
 
-                      <label for="">{{ 'customer.friend_referral.message' | t }}</label>
-                      <textarea name="message" id="message" cols="30" rows="10" class="required"></textarea>
+                      {% comment %}<label for="">{{ 'customer.friend_referral.message' | t }}</label>
+                      <textarea name="message" id="message" cols="30" rows="10" class="required"></textarea>{% endcomment %}
+                      <div class="visible-md visible-lg">
+                        <h4 class="friend-referral">Sharing is caring!</h4>
+                        <p>Would you like to share your love for Kindred Teas with your family and friends? Simply fill in their names and email addresses and we'll invite them on your behalf. Spread the love today!</p>
+                      </div>
 
                       <div class="cta-container visible-md visible-lg">
-                        <input type="submit" id="send-message" class="square-cta" value="Send Message">
+                        <input type="submit" id="send-message" class="square-cta" value="Send Invitation">
                       </div>
                       
 
@@ -1020,7 +1025,7 @@
                             <a href="#" id="add-more-name" class="square-cta full-width-version">Add more names</a>
                           </div>
                           <div class="col-md-6 visible-sm visible-xs">
-                            <input type="submit" id="send-message" class="square-cta square-cta-02-xs full-width-version" value="Send Message">
+                            <input type="submit" id="send-message" class="square-cta square-cta-02-xs full-width-version" value="Send Invitation">
                           </div>
                         </div>
                       </div>
@@ -1066,5 +1071,4 @@
   }
   
   // SCRIPTS WERE MOVED TO DEFAULT.JS*/
-
 </script>

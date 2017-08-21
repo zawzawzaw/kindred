@@ -183,13 +183,13 @@ function get_bank_deposit_email($inputs){   // input is passed to this function
             <td style="font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif">
               
             <h2 style="font-size: 24px; font-weight: normal; margin: 0 0 10px">Hello '. $customer_name .'!</h2>
-            <p style="color: #777; font-size: 16px; line-height: 150%; margin: 0">Please click on the link below to complete your payment via bank deposit, internet banking or ATM transfers.</p>
+            <p style="color: #777; font-size: 16px; line-height: 150%; margin: 0">Please click on the link below to complete your payment via internet banking or ATM transfers.</p>
             <table class="row actions" style="border-collapse: collapse; border-spacing: 0; margin-top: 20px; width: 100%">
               <tr>
                 <td class="actions__cell" style="font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif">
                   <table class="button main-action-cell" style="border-collapse: collapse; border-spacing: 0; float: left; margin-right: 15px">
                     <tr>
-                      <td class="button__cell" style="background: #cca79b; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; text-align: center" align="center" bgcolor="#cca79b"><a href="https://kindredteas.com/pages/bank-deposit" class="button__text" style="color: #fff; display: block; font-size: 16px; padding: 20px 25px; text-decoration: none">Proceed for payment</a></td>
+                      <td class="button__cell" style="background: #cca79b; border-radius: 4px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; text-align: center" align="center" bgcolor="#cca79b"><a href="https://kindredteas.com/pages/bank-deposit" class="button__text" style="color: #fff; display: block; font-size: 16px; padding: 20px 25px; text-decoration: none">Proceed with payment</a></td>
                     </tr>
                   </table>
                   
@@ -278,13 +278,13 @@ function sendEmail($subject, $message, $email, $name) {
 
 // if bank deposit
 
-if ($inputs->payment_gateway_names && $inputs->payment_gateway_names[0] == "Bank Deposit") {
+if ($inputs->payment_gateway_names && $inputs->payment_gateway_names[0] == "Bank Transfer") {
 
   $customer_name = $inputs->billing_address->first_name . ' ' . $inputs->billing_address->last_name;
   $customer_email = $inputs->email;
   
-  // $subject = 'Kindred Teas Bank Deposit Payment Details';
-  $subject = 'Bank Deposit Payment Details';
+  // $subject = 'Kindred Teas Bank Transfer Payment Details';
+  $subject = 'Bank Transfer Payment Details';
   $message = get_bank_deposit_email($inputs);
 
 

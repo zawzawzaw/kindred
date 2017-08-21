@@ -9,29 +9,31 @@
       </div>
     </div>
     
-    {% if settings.newsletter_form_action != blank %}
-      <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-        <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter your email" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-        <input type="hidden" name="b_cb98e62f512d0d125cec95dd3_9ea7cd6c41" tabindex="-1" value="">
-        <button type="submit" name="subscribe" id="subscribe" class="square-cta">Submit</button>
-      </form>
+    <div id="mailing-list-form-container" class="simple-form-check add-element-version">
+      {% if settings.newsletter_form_action != blank %}
+        <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter your email" name="EMAIL" id="mail" class="required only-email input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+          <input type="hidden" name="b_cb98e62f512d0d125cec95dd3_9ea7cd6c41" tabindex="-1" value="">
+          <button type="submit" name="subscribe" id="subscribe" class="square-cta form-check-force-submit">Submit</button>
+        </form>
 
-    {% else %}
-      {% form 'customer' %}
-        {{ form.errors | default_errors }}
-        {% if form.posted_successfully? %}
-          <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
-        {% else %}
+      {% else %}
+        {% form 'customer' %}
+          {{ form.errors | default_errors }}
+          {% if form.posted_successfully? %}
+            <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {% else %}
 
-          <!-- ??? -->
-          <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
-            <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter your email" name="contact[email]" id="Email" aria-label="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
-            <button type="submit" name="subscribe" id="subscribe" class="square-cta">Submit</button>
-          </form>
+            <!-- ??? -->
+            <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
+              <input type="text" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="Enter your email" name="contact[email]" id="Email" aria-label="{{ 'general.newsletter_form.newsletter_email_placeholder' | t }}" autocorrect="off" autocapitalize="off">
+              <button type="submit" name="subscribe" id="subscribe" class="square-cta form-check-force-submit">Submit</button>
+            </form>
 
-        {% endif %}
-      {% endform %}
-    {% endif %}
+          {% endif %}
+        {% endform %}
+      {% endif %}
+    </div>
 
   </div> <!-- mailing-list-pop-up -->
 </div> <!-- mailing-list-pop-up-container -->
