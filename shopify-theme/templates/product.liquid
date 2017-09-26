@@ -42,26 +42,57 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6 col-tablet-landscape-md-7 col-sm-12 col-xs-12">
+          
+          {% if product.images.size > 2 %}
+          <div id="product-page-detail-image-container">
+            {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 
+            <div id="product-page-detail-slider">
+              {% for image in product.images %}
+                {% if forloop.last == false %}
+
+                  <div class="product-page-detail-image-item">
+                      
+                        <div id="product-page-detail-image">
+
+                          <div class="manic-image-container" data-vertical-align="center">
+                                                    
+                              <img src="" 
+                                data-image-desktop="{{ product.images[forloop.index0]  | product_img_url: 'master' }}" 
+                                data-image-mobile="{{ product.images[forloop.index0]  | product_img_url: 'master' }}" 
+                                data-image-tablet="{{ product.images[forloop.index0]  | product_img_url: '1152x570', crop: 'center' }}" 
+                                alt="{{ product.images[forloop.index0].alt | escape }}">
+
+                          </div>
+
+                        </div> <!-- product-page-detail-image -->
+                      
+                  </div>
+                  
+                {% endif %}
+              {% endfor %}
+            </div> <!-- product-page-detail-slider -->
+          </div> <!-- product-page-detail-image-container -->
+          {% else %}
           <div id="product-page-detail-image-container">
             <div id="product-page-detail-image">
 
-              <div class="manic-image-container" data-vertical-align="bottom">
+              <div class="manic-image-container" data-vertical-align="center">
                 
                 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
-
+                
                 {% if product.images.size >= 2 %}
                   <img src="" 
-                    data-image-desktop="{{ product.images[1]  | product_img_url: 'master' }}" 
-                    data-image-mobile="{{ product.images[1]  | product_img_url: '640x500', crop: 'center' }}" 
-                    data-image-tablet="{{ product.images[1]  | product_img_url: '1152x570', crop: 'center' }}" 
-                    alt="{{ product.images[1].alt | escape }}">
+                    data-image-desktop="{{ featured_image  | product_img_url: 'master' }}" 
+                    data-image-mobile="{{ featured_image  | product_img_url: 'master' }}" 
+                    data-image-tablet="{{ featured_image  | product_img_url: '1152x570', crop: 'center' }}" 
+                    alt="{{ featured_image.alt | escape }}">
                 {% else %}
                   <img src="" 
                     data-image-desktop="{{ featured_image | img_url: 'master' }}" 
-                    data-image-mobile="{{ featured_image | img_url: '640x500', crop: 'center' }}" 
+                    data-image-mobile="{{ featured_image | img_url: 'master' }}" 
                     data-image-tablet="{{ featured_image | img_url: '1152x570', crop: 'center' }}" 
-                    alt="{{ featured_image.alt | escape }}" >
+                    alt="{{ featured_image.alt | escape }}" class="feature" >
                   <!-- <img src="" data-image-desktop="{{ featured_image | img_url: 'large' }}" alt="{{ featured_image.alt | escape }}" > -->
                 {% endif %}
 
@@ -69,6 +100,7 @@
 
             </div> <!-- product-page-detail-image -->
           </div> <!-- product-page-detail-image-container -->
+          {% endif %}                   
 
         </div>
         <div class="col-md-6 col-tablet-landscape-md-5 col-sm-12 col-xs-12">

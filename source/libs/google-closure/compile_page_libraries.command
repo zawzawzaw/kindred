@@ -13,7 +13,7 @@ java -jar "compiler.jar" \
   --js=../scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js \
   --js=../scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js \
   --js=../slick-carousel/slick/slick.min.js \
-  --js=../intltelinput/js/intlTelInput.min.js \
+  --js=../intltelinput/js/intlTelInput.js \
   --js=../imagesloaded/imagesloaded.pkgd.min.js \
   --js=../hammer/hammer.min.js \
   --js=../imgur-js/imgur.min.js \

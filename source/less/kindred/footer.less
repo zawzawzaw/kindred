@@ -142,7 +142,14 @@ body.is-mobile-header{
 body.is-ie{
   #desktop-footer-menu nav ul{
     font-size: inherit;
-  }
+    padding-right: 12%;
+    @media all and (max-width: 1280px) {
+      padding-right: 10%;
+    }
+    @media all and (max-width: 1024px) {
+      padding-right: 9%;
+    }
+  }  
 }
 
 
@@ -160,7 +167,6 @@ body.is-ie{
     width: 185px;
   }
 }
-
 @media only screen and (max-width: 1280px) {
   #desktop-footer-menu nav ul{
     width: 170px * 3;
@@ -169,7 +175,6 @@ body.is-ie{
     width: 170px;
   }
 }
-
 @media only screen and (max-width: 1180px) {
   #desktop-footer-menu nav ul{
     width: 155px * 3;
@@ -178,7 +183,6 @@ body.is-ie{
     width: 155px;
   }
 }
-
 @media only screen and (max-width: 1080px) {
   #desktop-footer-menu nav ul{
     width: 140px * 3;
@@ -187,7 +191,6 @@ body.is-ie{
     width: 140px;
   }
 }
-
 @media only screen and (max-width: 980px) {
   #desktop-footer-menu nav ul{
     width: 125px * 3;
@@ -282,7 +285,7 @@ body.is-ie{
     color: #f4f3f1;
 
     position: absolute;
-    top: 0;
+    top: 4px;
     left: 0;
     width: 100%;
     height: 30px;

@@ -284,7 +284,7 @@
                   <td>
 
 
-                    <p class="visible-md visible-lg">{{ line_item.quantity }}</p>
+                    <p class="visible-md visible-lg" style="text-align: center;">{{ line_item.quantity }}</p>
                     <p class="visible-sm visible-xs">Quantity: {{ line_item.quantity }}</p>
 
 
@@ -332,10 +332,10 @@
 
                 <div class="row">
 
-                  <div class="col-md-7 col-sm-6 col-xs-7">
+                  <div class="col-md-4 col-md-offset-6 col-sm-6 col-xs-7">
                     <label class="text-left"><span class="cart__subtotal-title">{{ 'customer.order.subtotal' | t }}</span></label>
                   </div>
-                  <div class="col-md-5 col-sm-6 col-xs-5">
+                  <div class="col-md-2 col-sm-6 col-xs-5">
                     <p class="normal-version"><span class="cart__subtotal">{{ order.subtotal_price | money }}</span></p>
                   </div>
                 </div>
@@ -344,10 +344,10 @@
 
                   <div class="row">
 
-                    <div class="col-md-7 col-sm-6 col-xs-7">
+                    <div class="col-md-4 col-md-offset-6 col-sm-6 col-xs-7">
                       <label class="text-left"><span class="cart__subtotal-title">{{ discount.code }} {{ 'customer.order.discount' | t }}</span></label>
                     </div>
-                    <div class="col-md-5 col-sm-6 col-xs-5">
+                    <div class="col-md-2 col-sm-6 col-xs-5">
                       <p class="normal-version"><span class="cart__subtotal">-{{ discount.amount | money }}</span></p>
                     </div>
                   </div>
@@ -356,10 +356,10 @@
                 {% for shipping_method in order.shipping_methods %}
                   <div class="row">
 
-                    <div class="col-md-7 col-sm-6 col-xs-7">
-                      <label class="text-left"><span class="cart__subtotal-title">{{ 'customer.order.shipping' | t }} ({{ shipping_method.title }})</span></label>
+                    <div class="col-md-4 col-md-offset-6 col-sm-6 col-xs-7">
+                      <label class="text-left"><span class="cart__subtotal-title">{{ 'customer.order.shipping' | t }} <br> ({{ shipping_method.title }})</span></label>
                     </div>
-                    <div class="col-md-5 col-sm-6 col-xs-5">
+                    <div class="col-md-2 col-sm-6 col-xs-5">
                       <p class="normal-version"><span class="cart__subtotal">{{ shipping_method.price | money }}</span></p>
                     </div>
                   </div>
@@ -369,10 +369,10 @@
                 {% for tax_line in order.tax_lines %}
                   <div class="row">
 
-                    <div class="col-md-7 col-sm-6 col-xs-7">
+                    <div class="col-md-4 col-md-offset-6 col-sm-6 col-xs-7">
                       <label class="text-left"><span class="cart__subtotal-title">{{ 'customer.order.tax' | t }} ({{ tax_line.title }} {{ tax_line.rate | times: 100 }}%)</span></label>
                     </div>
-                    <div class="col-md-5 col-sm-6 col-xs-5">
+                    <div class="col-md-2 col-sm-6 col-xs-5">
                       <p class="normal-version"><span class="cart__subtotal">{{ tax_line.price | money }}</span></p>
                     </div>
                   </div>
@@ -381,10 +381,10 @@
 
                 <div class="row">
 
-                  <div class="col-md-7 col-sm-6 col-xs-7">
+                  <div class="col-md-4 col-md-offset-6 col-sm-6 col-xs-7">
                     <label class="text-left"><span class="cart__subtotal-title">{{ 'customer.order.grand_total' | t }}</span></label>
                   </div>
-                  <div class="col-md-5 col-sm-6 col-xs-5">
+                  <div class="col-md-2 col-sm-6 col-xs-5">
                     <p class="normal-version"><span class="cart__subtotal">{{ order.total_price | money }} {{ order.currency }}</span></p>
                   </div>
                 </div>

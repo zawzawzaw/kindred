@@ -44,7 +44,7 @@
     </div>
 
 
-    {% for block in section.blocks limit: section.blocks.size %}
+    {% comment %}{% for block in section.blocks limit: section.blocks.size %}
 
       <div class="home-page-banner-item manic-padding-container">
         <div class="home-page-banner-desktop-image hidden-sm hidden-xs">
@@ -89,7 +89,7 @@
         </div>
       </div>
 
-    {% endfor %}
+    {% endfor %}{% endcomment %}
 
   </div> <!-- home-page-banner -->
 </article>
@@ -106,8 +106,8 @@
       <div class="banner-image-bg">
         <div class="manic-image-container" data-vertical-align="bottom">
           <img src="" 
-            data-image-mobile="{{ section.settings.content-image-mobile.src | img_url: '480x768', crop: 'center' }}"
-            data-image-tablet="{{ section.settings.content-image-tablet.src | img_url: '1152x1452', crop: 'center' }}">
+            data-image-mobile="{{ section.settings.content-image-mobile.src | img_url: 'master' }}"
+            data-image-tablet="{{ section.settings.content-image-tablet.src | img_url: 'master' }}">
         </div>
       </div>
       <div class="text-overlay top-version">
@@ -123,7 +123,7 @@
       </div>
     </div>
 
-    {% for block in section.blocks limit: section.blocks.size %}
+    {% comment %}{% for block in section.blocks limit: section.blocks.size %}
 
       <div class="home-page-banner-item-mobile">
         <div class="banner-image-bg">
@@ -154,7 +154,7 @@
         </div>
       </div>
 
-    {% endfor %}
+    {% endfor %}{% endcomment %}
 
   </div> <!-- home-page-banner-mobile -->
 

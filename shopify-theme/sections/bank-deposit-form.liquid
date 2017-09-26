@@ -55,7 +55,7 @@
                     {% assign name_attr = 'contact.form.phone' | t | handle %}
                     <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
                     <div class="kindred-intltelinput-container">
-                      <input type="text" id="ContactFormPhone" class="kindred-intltelinput input-full" name="contact[{{ name_attr }}]" placeholder="Please provide your contact no." value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                      <input type="text" id="ContactFormPhone" class="kindred-intltelinput input-full" name="contact[{{ name_attr }}]" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
                     </div>
 
                     {% assign name_attr = 'contact.form.order_id' | t | handle %}

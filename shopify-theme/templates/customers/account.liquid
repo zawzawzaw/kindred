@@ -467,7 +467,10 @@
                                 <div class="form-column-02">
 
                                   <label for="AddressPhone_{{ form.id }}">{{ 'customer.addresses.phone' | t }}</label>
-                                  <input type="tel" id="AddressPhone_{{ form.id }}" class="required input-full" name="address[phone]" value="{{ form.phone }}">
+                                  <div class="kindred-intltelinput-container"> 
+                                    <input type="text" id="AddressPhone_{{ form.id }}" class="required kindred-intltelinput input-full" name="address[phone]" value="{{ form.phone }}">
+                                  </div>
+                                  
 
                                 </div>
                               </div>
@@ -486,13 +489,13 @@
 
 
                             <div class="row">
-                              <div class="col-md-6">
-                                <div class="form-column-01">
+                              <div class="col-md-6 col-md-offset-6">
+                                <div class="form-column-02">
 
                                   <div class="cta-container">
                                     <div class="row">
                                       <div class="col-md-6">
-                                        <input type="submit" class="square-cta square-cta-01 full-width-version" value="{{ 'customer.addresses.update' | t }}">
+                                        <input type="submit" class="square-cta square-cta-01 square-cta-01 square-cta-01-md full-width-version" value="{{ 'customer.addresses.update' | t }}">
                                       </div>
                                       <div class="col-md-6">
                                         <a href="#" class="square-cta square-cta-02 full-width-version" onclick="Shopify.CustomerAddress.toggleForm({{ form.id }}); return false;">{{ 'customer.addresses.cancel' | t }}</a>
@@ -619,7 +622,10 @@
                     <div class="form-column-02">
                       
                       <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
-                      <input type="tel" id="AddressPhoneNew" class="required input-full white-version" name="address[phone]" value="{{ form.phone }}">
+                      <div class="kindred-intltelinput-container color-version"> 
+                        <input type="text" id="AddressPhoneNew" class="required kindred-intltelinput input-full white-version" name="address[phone]" value="{{ form.phone }}">
+                      </div>
+                      
                       
                     </div>
                   </div>
@@ -650,7 +656,7 @@
                 </div> <!-- row -->
 
                 <div class="cta-container">
-                  <input type="submit" class="square-cta btn" value="{{ 'customer.addresses.add' | t }}">
+                  <input type="submit" class="square-cta btn non-full-width-version" value="{{ 'customer.addresses.add' | t }}">
                 </div>
 
               {% endform %}
@@ -1004,7 +1010,7 @@
                       </div>
 
                       <div class="cta-container visible-md visible-lg">
-                        <input type="submit" id="send-message" class="square-cta" value="Send Invitation">
+                        <input type="submit" id="send-message" class="square-cta non-full-width-version" value="Send Invitation">
                       </div>
                       
 

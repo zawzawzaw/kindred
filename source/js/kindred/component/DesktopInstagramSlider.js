@@ -28,7 +28,7 @@ kindred.component.DesktopInstagramSlider = function(options, element) {
   this.item_template = [
     '<a href="{{link}}" target="_blank" class="home-instagram-item">',
       '<div class="white-bg"></div>',
-      '<div class="manic-image-container" data-scale-mode="show_all">',
+      '<div class="manic-image-container">',
         '<img src="" data-image="{{image}}">',
       '</div>',
     '</a>'
@@ -143,13 +143,13 @@ kindred.component.DesktopInstagramSlider.prototype.create_slider = function() {
       'speed': 350,
       'dots': false,
       'arrows': false,
-      'infinite': false,
+      'infinite': true,
       'slidesToShow': 6,
       'slidesToScroll': 1,
       'pauseOnHover': false,
       'autoplay': true,
-      // 'autoplaySpeed': 1000,
-      'autoplaySpeed': 4000,
+      'autoplaySpeed': 1000,
+      // 'autoplaySpeed': 4000,
       'responsive': [
         {
           'breakpoint': 1380,

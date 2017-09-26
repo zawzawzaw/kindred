@@ -2,6 +2,7 @@
 {% comment %}
   Open graph tags
 {% endcomment %}
+<meta property="fb:app_id" content="253558885069667">
 {% if template == 'index' %}
   <meta property="og:type" content="website">
   <meta property="og:title" content="{{ page_title }}">
@@ -9,10 +10,11 @@
 {% elsif template contains 'product' %}
   <meta property="og:type" content="product">
   <meta property="og:title" content="{{ product.title | strip_html | escape }}">
-  {% for image in product.images reversed limit:3 %}
-    <meta property="og:image" content="http:{{ image | img_url: 'grande' }}">
-    <meta property="og:image:secure_url" content="https:{{ image | img_url: 'grande' }}">
-  {% endfor %}
+  <meta property="og:image" content="http:{{ product.images.last | img_url: 'master' }}">
+  <meta property="og:image:secure_url" content="https:{{ product.images.last | img_url: 'master' }}">
+  
+  {% comment %}{% for image in product.images reversed limit:3 %}  
+  {% endfor %}{% endcomment %}
   <meta property="og:description" content="{{ product.description | strip_html | escape }}">
   <meta property="og:price:amount" content="{{ product.price | money_without_currency | strip_html | escape }}">
   <meta property="og:price:currency" content="{{ shop.currency }}">

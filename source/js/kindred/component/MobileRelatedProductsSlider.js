@@ -230,7 +230,7 @@ kindred.component.MobileRelatedProductsSlider.prototype.create_tea_slider = func
       */
       
       {
-        'breakpoint': 769,
+        'breakpoint': 991,
         'settings':{
           'slidesToShow': 2,
           'slidesToScroll': 2

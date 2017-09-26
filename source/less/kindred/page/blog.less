@@ -16,6 +16,23 @@
   .manic-image-container{
     height: 550px;
   }
+  @media all and (min-width: 1490px) {
+    .manic-image-container{
+      // height: 660px;
+      height: 760px;
+    }
+    
+    // .temp-fix {
+    //   img {
+    //     top: -40px!important;
+    //   }
+    // }
+    // .temp-fix-2 {
+    //   img {
+    //     top: -85px!important;
+    //   }
+    // }
+  }
 
   h1{
     // font-size: 69px;
@@ -26,15 +43,28 @@
 
     position: absolute;
     display: block;
-    top: 140px;
+    top: 70px;
     left: 50%;
     width: 1000px;
     margin-left: -500px;
+    color: @white;
   }
 
 }
 
 
+// TABLET LANDSCAPE
+@media only screen and (max-width: 1024px) {
+  #blog-page-banner{
+    h1{
+      .header-h1-style-mobile(1.5);
+      .josefin-sans-light;
+
+      top: 40px;
+    }
+  }
+  
+}
 
 // TABLET PORTRAIT & SMALL DESKTOP
 @media only screen and (max-width: 991px) {
@@ -46,7 +76,8 @@
       .header-h1-style-mobile(1.5);
       .josefin-sans-light;
 
-      top: 90px;
+      // top: 90px;
+      top: 40px;
     }
   }
   
@@ -61,7 +92,8 @@
     h1{
       .header-h1-style-mobile;
 
-      top: 65px;
+      // top: 65px;
+      top: 15px;
     }
   }
 }

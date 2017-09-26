@@ -237,7 +237,7 @@ kindred.page.Default.prototype.create_home_page = function() {
     }.bind(this));
 
     $('#home-page-banner').slick({
-      'speed': 350,
+      'speed': 1500,
       'dots': false,
       // 'arrows': false,
       'arrows': true,
@@ -246,7 +246,7 @@ kindred.page.Default.prototype.create_home_page = function() {
       'slidesToScroll': 1,
       'pauseOnHover': false,
       'autoplay': true,
-      'autoplaySpeed': 4000
+      'autoplaySpeed': 8000
     });
 
     
@@ -257,24 +257,24 @@ kindred.page.Default.prototype.create_home_page = function() {
   if ($('#home-page-banner-mobile').length != 0) {
 
     // update on slick init/resize
-    $('#home-page-banner-mobile').on('init', function(event, slick){
-      this.create_image_container();
-    }.bind(this));
-    $('#home-page-banner-mobile').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
-      this.update_page_layout();
-    }.bind(this));
+    // $('#home-page-banner-mobile').on('init', function(event, slick){
+    //   this.create_image_container();
+    // }.bind(this));
+    // $('#home-page-banner-mobile').on('breakpoint init reInit setPosition', function(event, slick, breakpoint){
+    //   this.update_page_layout();
+    // }.bind(this));
 
-    $('#home-page-banner-mobile').slick({
-      'speed': 350,
-      'dots': false,
-      'arrows': true,
-      'infinite': false,
-      'slidesToShow': 1,
-      'slidesToScroll': 1,
-      'pauseOnHover': false,
-      'autoplay': true,
-      'autoplaySpeed': 4000
-    });
+    // $('#home-page-banner-mobile').slick({
+    //   'speed': 350,
+    //   'dots': false,
+    //   'arrows': true,
+    //   'infinite': false,
+    //   'slidesToShow': 1,
+    //   'slidesToScroll': 1,
+    //   'pauseOnHover': false,
+    //   'autoplay': true,
+    //   'autoplaySpeed': 4000
+    // });
 
     
     
@@ -445,6 +445,22 @@ kindred.page.Default.prototype.create_product_page = function() {
 
   if ($('#product-page-giftcard-design-container').length != 0) {
     this.giftcard = new kindred.component.Giftcard({}, $('#product-page-giftcard-design-container'));
+  }
+
+
+  if ($('#product-page-detail-slider').length != 0) {
+    $('#product-page-detail-slider').slick({
+      'speed': 350,
+      'dots': false,
+      // 'arrows': false,
+      'arrows': true,
+      'infinite': false,
+      'slidesToShow': 1,
+      'slidesToScroll': 1,
+      'pauseOnHover': false,
+      'autoplay': false,
+      'autoplaySpeed': 4000
+    });
   }
 
 
@@ -665,9 +681,9 @@ kindred.page.Default.prototype.update_page_layout = function(){
     if (this.home_banner_mobile_full_height.length != 0 ) {
       target_min_height = this.window_height - this.mobile_header_element.outerHeight();
 
-      this.home_banner_mobile_full_height.css({
-        'min-height': target_min_height + 'px'
-      });
+      // this.home_banner_mobile_full_height.css({
+      //   'min-height': target_min_height + 'px'
+      // });
 
       this.update_manic_image_containers();
     }
@@ -810,14 +826,21 @@ kindred.page.Default.prototype.create_intl_tel_input = function() {
       preferredCountries: []  
     });
 
-    item.intlTelInput("setNumber", "+65");
+    var number = item.val();
+    console.log(number.length)
+
+    if(number.length > 2) {
+      item.intlTelInput("setNumber", number);
+    } else {
+      item.intlTelInput("setNumber", "+65 ");
+    }    
   }
 
   var currentCountryCode  = "";
   $(document).keydown(function(e) {
     var aEl = $(document.activeElement);
 
-    if(aEl.attr('name') == "contact[phone-number]") {
+    if(aEl.attr('name') == "contact[phone-number]" || aEl.attr('name') == "address[phone]") {
         var currentInputLength = aEl.val().length;       
         var dialCode = aEl.intlTelInput("getSelectedCountryData").dialCode;         
         

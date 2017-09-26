@@ -240,6 +240,11 @@
   background: transparent url(@image_url) center center no-repeat;
   background-size: unit(@image_width, px) unit(@image_height, px);
   -webkit-background-size: unit(@image_width, px) unit(@image_height, px);      // i forgot what this was for
+
+  -webkit-transition-property: none;
+  -moz-transition-property: none;
+  -o-transition-property: none;
+  transition-property: none;
 }
 
 .set_background(@image_url: ""){

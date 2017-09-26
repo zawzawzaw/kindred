@@ -452,6 +452,14 @@ html.fullscreen-component-open.is-html-mobile{
 .kindred-intltelinput-container{
   margin-bottom: 25px;
 
+  &.color-version {
+    .intl-tel-input{
+      .selected-flag {
+        border-color: @light-brown-03!important;
+      }
+    }
+  }
+
   .intl-tel-input{
     width: 100%;
     display: block;
@@ -511,6 +519,10 @@ html.fullscreen-component-open.is-html-mobile{
       width: 10px;
       height: 20px;
       margin-top: 1px;   // dunno why // lol no idea also
+
+      @media only screen and (max-width: 1024px) {
+        top: 2px;
+      }
 
       &:after{
         .fa;

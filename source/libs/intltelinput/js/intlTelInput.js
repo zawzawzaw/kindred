@@ -298,7 +298,7 @@
                 }
                 // if empty and no nationalMode and no autoHideDialCode then insert the default dial code
                 if (!val && !this.options.nationalMode && !this.options.autoHideDialCode && !this.options.separateDialCode) {
-                    this.telInput.val("+" + this.selectedCountryData.dialCode);
+                    this.telInput.val("+" + this.selectedCountryData.dialCode + " ");
                 }
             }
             // NOTE: if initialCountry is set to auto, that will be handled separately
@@ -443,7 +443,7 @@
             this.telInput.on("focus" + this.ns, function(e) {
                 if (!that.telInput.val() && !that.telInput.prop("readonly") && that.selectedCountryData.dialCode) {
                     // insert the dial code
-                    that.telInput.val("+" + that.selectedCountryData.dialCode);
+                    that.telInput.val("+" + that.selectedCountryData.dialCode + " ");
                     // after auto-inserting a dial code, if the first key they hit is '+' then assume they are entering a new number, so remove the dial code. use keypress instead of keydown because keydown gets triggered for the shift key (required to hit the + key), and instead of keyup because that shows the new '+' before removing the old one
                     that.telInput.one("keypress.plus" + that.ns, function(e) {
                         if (e.which == keys.PLUS) {
@@ -626,10 +626,11 @@
         _updateValFromNumber: function(number, doFormat) {
             if (doFormat && window.intlTelInputUtils && this.selectedCountryData) {
                 var format = !this.options.separateDialCode && (this.options.nationalMode || number.charAt(0) != "+") ? intlTelInputUtils.numberFormat.NATIONAL : intlTelInputUtils.numberFormat.INTERNATIONAL;
-                number = intlTelInputUtils.formatNumber(number, this.selectedCountryData.iso2, format);
+                number = intlTelInputUtils.formatNumber(number, this.selectedCountryData.iso2, format);                
             }
             number = this._beforeSetNumber(number);
-            this.telInput.val(number);
+
+            this.telInput.val(number + " ");
         },
         // check if need to select a new flag based on the given number
         // Note: called from _setInitialState, keyup handler, setNumber
@@ -802,12 +803,15 @@
                 // there's a plus so we're dealing with a replacement (doesn't matter if nationalMode or not)
                 var prevDialCode = this._getDialCode(inputVal);
                 if (prevDialCode) {
+
+                    inputVal = inputVal.replace(/\s*$/,"");
+
                     // current number contains a valid dial code, so replace it
-                    newNumber = inputVal.replace(prevDialCode, newDialCode);
+                    newNumber = inputVal.replace(prevDialCode, newDialCode) + " ";
                 } else {
                     // current number contains an invalid dial code, so ditch it
                     // (no way to determine where the invalid dial code ends and the rest of the number begins)
-                    newNumber = newDialCode;
+                    newNumber = newDialCode + " ";
                 }
             } else if (this.options.nationalMode || this.options.separateDialCode) {
                 // don't do anything
@@ -816,10 +820,10 @@
                 // nationalMode is disabled
                 if (inputVal) {
                     // there is an existing value with no dial code: prefix the new dial code
-                    newNumber = newDialCode + inputVal;
+                    newNumber = newDialCode + " " + inputVal;
                 } else if (hasSelectedListItem || !this.options.autoHideDialCode) {
                     // no existing value and either they've just selected a list item, or autoHideDialCode is disabled: insert new dial code
-                    newNumber = newDialCode;
+                    newNumber = newDialCode + " ";
                 } else {
                     return;
                 }
@@ -855,7 +859,7 @@
         },
         // get the input val, adding the dial code if separateDialCode is enabled
         _getFullNumber: function() {
-            var prefix = this.options.separateDialCode ? "+" + this.selectedCountryData.dialCode : "";
+            var prefix = this.options.separateDialCode ? "+" + this.selectedCountryData.dialCode + " " : "";
             return prefix + this.telInput.val();
         },
         // remove the dial code if separateDialCode is enabled

@@ -155,7 +155,7 @@
       "country": "Country *",
       "province": "Province",
       "zip": "Postal/Zip Code *",
-      "phone": "Phone *",
+      "phone": "Phone Number *",
       "set_default": "Set as default address",
       "add": "Add Address",
       "update": "Save Changes",

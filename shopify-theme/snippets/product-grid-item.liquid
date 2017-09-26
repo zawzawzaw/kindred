@@ -67,20 +67,20 @@
 
       <!-- display fullsize tea image, cause it blurs on high res phones -->
 
-      <a href="{{ product.url | within: collection }}" class="manic-image-container has-show-all" data-vertical-align="bottom">
+      <a href="{{ product.url | within: collection }}" class="manic-image-container has-show-all" data-vertical-align="top">
         <img src="" 
           data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" 
-          data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}" 
+          data-image-mobile="{{ product.featured_image.src | img_url: '400x' }}" 
           data-image-tablet="{{ product.featured_image.src | img_url: '420x' }}" 
           alt="{{ product.featured_image.alt | escape }}">
       </a>
       
     {% else %}
 
-      <a href="{{ product.url | within: collection }}" class="manic-image-container square-version" data-vertical-align="center">
+      <a href="{{ product.url | within: collection }}" class="manic-image-container square-version show-all {% if product.type == "Teaware" %}teaware-version{% endif %}" data-vertical-align="center">
         <img src="" 
           data-image-desktop="{{ product.featured_image.src | img_url: 'master' }}" 
-          data-image-mobile="{{ product.featured_image.src | img_url: '200x' }}"
+          data-image-mobile="{{ product.featured_image.src | img_url: '374x454' }}"
           data-image-tablet="{{ product.featured_image.src | img_url: 'master' }}" 
           alt="{{ product.featured_image.alt | escape }}">
       </a>

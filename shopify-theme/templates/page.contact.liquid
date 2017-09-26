@@ -5,8 +5,6 @@
 
 <article id="contact-page-form-section">
 
-  {% section 'contact-mobile-map' %}
-
   <div class="container-fluid has-breakpoint">
 
     <div class="row">
@@ -61,7 +59,7 @@
                     {% assign name_attr = 'contact.form.phone' | t | handle %}
                     <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
                     <div class="kindred-intltelinput-container"> 
-                      <input type="text" id="ContactFormPhone" class="kindred-intltelinput" name="contact[{{ name_attr }}]" placeholder="Please provide your contact no." value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+                      <input type="text" id="ContactFormPhone" class="kindred-intltelinput" name="contact[{{ name_attr }}]" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
                     </div>
                     
                     {% assign name_attr = 'contact.form.order_id' | t | handle %}
@@ -80,7 +78,7 @@
               <textarea id="ContactFormMessage" class="required" name="contact[body]" placeholder="Please write your message here."></textarea>
 
               <div class="cta-container">
-                <button type="submit" class="square-cta form-check-force-submit">send message</button>
+                <button type="submit" class="square-cta form-check-force-submit non-full-width-version">send message</button>
               </div>
 
 
@@ -97,3 +95,5 @@
 </article>
 
 {% section 'contact-detail' %}
+
+{% section 'contact-mobile-map' %}
