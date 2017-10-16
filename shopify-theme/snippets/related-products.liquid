@@ -168,6 +168,9 @@
     To randomize the related products, display all the related products in a div with display:none
   {% endcomment %}
 
+  {% assign counter = 0 %}
+  {% assign break_at = number_of_rows | times: number_of_related_products_per_row %}
+
   {% capture all_related_items %}
     {% for product in collection.products %}
       {% unless product.handle == current_product.handle %}
@@ -182,6 +185,10 @@
               {% endfor %}
 
               {% include 'product-grid-item' %}
+              {% assign counter = counter | plus: 1 %}
+               {% if counter == break_at %}
+                 {% break %}
+               {% endif %}
            {% endunless %}
         {% endunless %}
       {% endunless %}

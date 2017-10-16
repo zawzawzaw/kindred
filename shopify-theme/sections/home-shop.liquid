@@ -77,19 +77,17 @@
             {% comment %}
               Loop through products in your Frontpage collection.
             {% endcomment %}
-            {% for product in collections.frontpage.products %}
-              
+            {% for product in collections.frontpage.products %}              
               <div class="col-sm-6 col-xs-6">
                 <a href="{{ product.url | within: collection }}" title="{{ product.title }}" class="home-page-shop-item-mobile">
-                  <div class="manic-image-container">
+                  <div class="manic-image-container has-full-width">
                     
-                    <img src="" data-image-mobile="{{ product.featured_image.src | img_url: 'master' }}">
+                    <img src="" data-image-mobile="{{ product.featured_image | img_url: 'master' }}">
                     
                     {% comment %}<img src="" data-image-mobile="{{ product.images[1] | img_url: 'master' }}">{% endcomment %}
                   </div>
                 </a>
-              </div>
-
+              </div>              
             {% endfor %}
 
 

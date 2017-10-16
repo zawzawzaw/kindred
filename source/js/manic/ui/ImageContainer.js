@@ -93,7 +93,7 @@ manic.ui.ImageContainer = function(options, element) {
 
   }
 
-  console.log('this.current_image: ' + this.current_image);
+  // console.log('this.current_image: ' + this.current_image);
 
   
 
@@ -130,6 +130,9 @@ manic.ui.ImageContainer = function(options, element) {
 
   this.offset_tablet_landscape_width = this.options['offset_tablet_landscape_width'];
   this.offset_tablet_landscape_height = this.options['offset_tablet_landscape_height'];
+
+  this.offset_x = this.options['offset_x'];
+  this.offset_y = this.options['offset_y'];
 
   
 
@@ -184,6 +187,15 @@ manic.ui.ImageContainer = function(options, element) {
   if (goog.isDefAndNotNull(this.element.attr('data-offset-height'))) {
     this.offset_height = parseInt( this.element.attr('data-offset-height') );
   }
+
+  // new 
+  if (goog.isDefAndNotNull(this.element.attr('data-offset-x'))) {
+    this.offset_x = parseInt( this.element.attr('data-offset-x') );
+  }
+  if (goog.isDefAndNotNull(this.element.attr('data-offset-y'))) {
+    this.offset_y = parseInt( this.element.attr('data-offset-y') );
+  }
+
 
 
   this.data_original_width = 0;
@@ -275,6 +287,10 @@ manic.ui.ImageContainer.DEFAULT = {
   'has_window_height': false,
   'has_full_width': false,
   'has_full_window_width': false,
+
+  'offset_x': 0,
+  'offset_y': 0,
+
 
   'offset_width': 0,
   'offset_height': 0,
@@ -555,6 +571,9 @@ manic.ui.ImageContainer.prototype.use_scale_mode_stretch = function() {
   this.target_x = 0;
   this.target_y = 0;
 
+  this.target_x += this.offset_x;
+  this.target_y += this.offset_y;
+
   if (this.use_3D == true) {
     TweenMax.to(this.image_element, 0, {'x': 0, 'y': 0, 'width': this.target_width, 'height': this.target_height});
   } else {
@@ -609,6 +628,9 @@ manic.ui.ImageContainer.prototype.use_scale_mode_show_all = function() {
       this.target_y = this.container_height - this.target_height;
     }
 
+    this.target_x += this.offset_x;
+    this.target_y += this.offset_y;
+
     this.target_x = Math.round(this.target_x);
     this.target_y = Math.round(this.target_y);
     this.target_width = Math.round(this.target_width);
@@ -662,6 +684,14 @@ manic.ui.ImageContainer.prototype.use_scale_mode_best_fit = function() {
     } else if(this.vertical_align == manic.ui.ImageContainer.BOTTOM){
       this.target_y = this.container_height - this.target_height;
     }
+
+    this.target_x += this.offset_x;
+    this.target_y += this.offset_y;
+
+    console.log('this.image_aspect_ratio: ' + this.image_aspect_ratio);
+    console.log(this.image);
+    console.log('this.target_x: ' + this.target_x);
+    console.log('this.target_y: ' + this.target_y);
 
     this.target_x = Math.round(this.target_x);
     this.target_y = Math.round(this.target_y);
@@ -728,6 +758,9 @@ manic.ui.ImageContainer.prototype.use_scale_mode_best_fit_no_scale_down = functi
     } else if(this.vertical_align == manic.ui.ImageContainer.BOTTOM){
       this.target_y = this.container_height - this.target_height;
     }
+
+    this.target_x += this.offset_x;
+    this.target_y += this.offset_y;
 
     this.target_x = Math.round(this.target_x);
     this.target_y = Math.round(this.target_y);

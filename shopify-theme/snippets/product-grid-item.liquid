@@ -50,8 +50,8 @@
 {% if is_product_tea == true %}
 
 
-  {% assign product_item_grid_class = 'product-item-column col-md-3 col-tablet-landscape-md-4 col-sm-6 col-xs-6' %}
-  {% assign product_item_extra_class = '' %}
+  {% assign product_item_grid_class = 'product-item-column col-md-4 col-tablet-landscape-md-4 col-sm-6 col-xs-12' %}
+  {% assign product_item_extra_class = ' product-item-square-version' %}
 
 {% else %}
   {% assign product_item_grid_class = 'product-item-column col-md-4 col-tablet-landscape-md-4 col-sm-6 col-xs-12' %}
@@ -67,12 +67,12 @@
 
       <!-- display fullsize tea image, cause it blurs on high res phones -->
 
-      <a href="{{ product.url | within: collection }}" class="manic-image-container has-show-all" data-vertical-align="top">
+      <a href="{{ product.url | within: collection }}" class="manic-image-container" data-offset-y="10">        
         <img src="" 
-          data-image-desktop="{{ product.featured_image.src | img_url: '420x' }}" 
-          data-image-mobile="{{ product.featured_image.src | img_url: '400x' }}" 
-          data-image-tablet="{{ product.featured_image.src | img_url: '420x' }}" 
-          alt="{{ product.featured_image.alt | escape }}">
+          data-image-desktop="{{ product.images.last | img_url: 'master' }}" 
+          data-image-mobile="{{ product.images.last | img_url: '400x' }}" 
+          data-image-tablet="{{ product.images.last | img_url: '420x' }}" 
+          alt="{{ product.images.last.alt | escape }}">           
       </a>
       
     {% else %}

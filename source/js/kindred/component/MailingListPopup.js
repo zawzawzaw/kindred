@@ -60,7 +60,7 @@ kindred.component.MailingListPopup = function(options, element) {
 
     this.cookies.set('kindredpopup', 'hascookie', max_seconds);
 
-    TweenMax.delayedCall(5, this.open_popup, [], this);
+    TweenMax.delayedCall(12, this.open_popup, [], this);
     
     console.log('doesnt have cookie, will open in 5 secs');
   } else {

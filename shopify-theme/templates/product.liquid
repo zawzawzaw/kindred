@@ -81,12 +81,12 @@
                 
                 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
                 
-                {% if product.images.size >= 2 %}
+                {% if product.type != "Teaware" %}
                   <img src="" 
                     data-image-desktop="{{ featured_image  | product_img_url: 'master' }}" 
                     data-image-mobile="{{ featured_image  | product_img_url: 'master' }}" 
                     data-image-tablet="{{ featured_image  | product_img_url: '1152x570', crop: 'center' }}" 
-                    alt="{{ featured_image.alt | escape }}">
+                    alt="{{ product.images[1].alt | escape }}">
                 {% else %}
                   <img src="" 
                     data-image-desktop="{{ featured_image | img_url: 'master' }}" 
